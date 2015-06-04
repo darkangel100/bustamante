@@ -1,0 +1,45 @@
+c:\users\luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+C:\Users\Luis\documents\visual studio 2012\Projects\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
+C:\Users\USUARIO\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
+D:\Misdoc\Dropbox\ProyectoAnalisisSistemas\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
