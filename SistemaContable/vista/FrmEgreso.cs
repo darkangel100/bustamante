@@ -48,7 +48,7 @@ namespace SistemaContable.vista
                     pnlAsiento.Enabled = true;
                     btnGuardarAsiento.Enabled = false;
                 }
-                cboNomAsiento.ValueMember = "nombre_asiento";
+                //cboNomAsiento.ValueMember = "nombre_asiento";
                 cboNomAsiento.DataSource = objasi.getAsiento().LISTAASIENTO;
                 
             }
@@ -73,7 +73,7 @@ namespace SistemaContable.vista
                 AsientoContableDB asicon = new AsientoContableDB();
                 PagoDB objpa = new PagoDB();
                 int resp;
-
+                asicon.getAsientoContable().IDUSUARIO = "1";
                 objpa.getPago().FECHA = dtFechaAsiento.Text.Trim();
                 asicon.getAsientoContable().NOMBRE_ASIENTO = cboNomAsiento.Text.Trim();
                 objpa.getPago().MONTO = txtMonto.Text.Trim();
@@ -81,7 +81,7 @@ namespace SistemaContable.vista
                 
 
                 resp=objpa.InsertaPago(objpa.getPago());
-                //resp = asicon.InsertaAsiento(asicon.getAsientoContable());
+                resp = asicon.InsertaAsientoContable(asicon.getAsientoContable());
                 if (resp == 0)
                 {
                     MessageBox.Show("No se ingreso datos de Asiento Contable", "Panda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -90,7 +90,7 @@ namespace SistemaContable.vista
                 {
                     MessageBox.Show("Asiento Contable  Ingresado", "Panda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     estado = "";
-                    // Util.limpiar(tp2.Controls);
+                    
                 }
             }
             catch(Exception ex)
@@ -126,6 +126,35 @@ namespace SistemaContable.vista
             catch (Exception ex)
             {
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= '0' && le <= '9')||(le==8)||(le==44))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo numeros");
+            }
+        }
+
+        private void txtNomAsiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= 'A' && le <= 'Z') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo letras");
             }
         }
 

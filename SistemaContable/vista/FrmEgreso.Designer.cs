@@ -234,6 +234,7 @@
             this.txtNomAsiento.Name = "txtNomAsiento";
             this.txtNomAsiento.Size = new System.Drawing.Size(112, 20);
             this.txtNomAsiento.TabIndex = 23;
+            this.txtNomAsiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomAsiento_KeyPress);
             // 
             // btnModificar
             // 
@@ -276,6 +277,8 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(185, 20);
             this.txtMonto.TabIndex = 25;
+            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // label9
             // 
