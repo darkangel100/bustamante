@@ -8,21 +8,17 @@ namespace SistemaContable.modelo
     class AsientoContable
     {
         private string id_usuario;
-        private string id_asiento;
         private string nombre_asiento;
         private string descripcion;
         private List<AsientoContable> listaAsiento;
 
-        //public string IDUSUARIO
-        //{
-        //    get { return idusuario; }
-        //    set { idusuario = value; }
-        //}
-        //public string IDASIENTO
-        //{
-        //    get { return idasiento; }
-        //    set { idasiento = value; }
-        //}
+
+        public string IDUSUARIO
+        {
+            get { return id_usuario; }
+            set { id_usuario = value; }
+        }
+
         public string NOMBRE_ASIENTO
         {
             get { return nombre_asiento; }
