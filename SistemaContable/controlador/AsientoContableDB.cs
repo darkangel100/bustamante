@@ -33,7 +33,7 @@ namespace SistemaContable.controlador
         }
 
         //Insertar un asiento Contable a la Base de datos
-        public int InsertaAsiento(AsientoContable asiento)
+        public int InsertaAsientoContable(AsientoContable asiento)
         {
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();

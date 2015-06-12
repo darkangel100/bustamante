@@ -61,7 +61,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from Asiento order by nombre_asiento";
+                string sqlcad = "Select * from Asiento ";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -69,8 +69,7 @@ namespace SistemaContable.controlador
                 while (dr.Read())
                 {
                     asi = new AsientoDB();
-                    asi.getAsiento().NOMBREASIENTO = dr["nombre_asiento"].ToString();
-
+                    asi.getAsiento().NOMBREASIENTO = dr[0].ToString();
                     ListaAsiento.Add(asi.getAsiento());
                 }
                 dr.Close();
