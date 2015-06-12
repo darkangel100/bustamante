@@ -25,9 +25,8 @@ namespace SistemaContable.vista
         private void btnImportar_Click(object sender, EventArgs e)
         {
             ProductoDB pddb = new ProductoDB();
-            int b = pddb.eliminarProductos();
-            if (b != 0)
-            {
+            //int b = pddb.eliminarProductos();
+            
                 int r = pddb.guardar();
                 if (r == 0)
                 {
@@ -37,11 +36,6 @@ namespace SistemaContable.vista
                 {
                     MessageBox.Show("Importacion de productos finalizada", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-            }
-            else
-            {
-                MessageBox.Show("No se logro limpiar la base de datos para iniciar la importacion", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             llenaProductos();
         }
 

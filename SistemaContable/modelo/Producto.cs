@@ -50,12 +50,5 @@ namespace SistemaContable.modelo
             get { return listaProducto; }
             set { listaProducto = value; }
         }
-        private string codLote;
-
-        public string CodLote
-        {
-            get { return codLote; }
-            set { codLote = value; }
-        }
     }
 }

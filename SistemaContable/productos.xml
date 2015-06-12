@@ -1,19 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Producto>
   <Producto>
-    <codLote>A001</codLote>
-    <id_producto>1</id_producto>
     <nombre>pila</nombre>
     <precio>2.30</precio>
     <estado>a</estado>
     <stock_global>78</stock_global>
   </Producto>
   <Producto>
-    <codLote>A002</codLote>
-    <id_producto>2</id_producto>
     <nombre>bateria</nombre>
     <precio>3.30</precio>
     <estado>a</estado>
     <stock_global>99</stock_global>
+  </Producto>
+  <Producto>
+    <nombre>cuaderno 100 hojas</nombre>
+    <precio>0.75</precio>
+    <estado>a</estado>
+    <stock_global>20</stock_global>
+  </Producto>
+   <Producto>
+    <nombre>Lapiz</nombre>
+    <precio>0.45</precio>
+    <estado>a</estado>
+    <stock_global>30</stock_global>
   </Producto>
 </Producto> 
