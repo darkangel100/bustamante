@@ -59,6 +59,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ofdUrl = new System.Windows.Forms.OpenFileDialog();
+            this.btnAtras1 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.pnlProducto.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -248,6 +250,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnAtras1);
             this.tabPage1.Controls.Add(this.dgvProductos);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.btnImportar);
@@ -276,33 +279,38 @@
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersVisible = false;
-            this.dgvProductos.Size = new System.Drawing.Size(503, 150);
+            this.dgvProductos.Size = new System.Drawing.Size(507, 203);
             this.dgvProductos.TabIndex = 12;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Codigo";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Nombre";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Stock";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Precio";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Estado";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // label3
             // 
@@ -353,6 +361,21 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(872, 500);
             this.tabControl1.TabIndex = 0;
+            // 
+            // ofdUrl
+            // 
+            this.ofdUrl.FileName = "openFileDialog1";
+            this.ofdUrl.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdUrl_FileOk);
+            // 
+            // btnAtras1
+            // 
+            this.btnAtras1.Location = new System.Drawing.Point(399, 430);
+            this.btnAtras1.Name = "btnAtras1";
+            this.btnAtras1.Size = new System.Drawing.Size(75, 23);
+            this.btnAtras1.TabIndex = 13;
+            this.btnAtras1.Text = "Atras";
+            this.btnAtras1.UseVisualStyleBackColor = true;
+            this.btnAtras1.Click += new System.EventHandler(this.btnAtras1_Click);
             // 
             // FrmProducto
             // 
@@ -408,6 +431,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.OpenFileDialog ofdUrl;
+        private System.Windows.Forms.Button btnAtras1;
 
     }
 }

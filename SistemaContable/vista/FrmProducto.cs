@@ -17,6 +17,8 @@ namespace SistemaContable.vista
         {
             InitializeComponent();
         }
+
+        string url;
         private void btnModificar_Click(object sender, EventArgs e)
         {
             pnlProducto.Enabled = true;
@@ -24,18 +26,16 @@ namespace SistemaContable.vista
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
+           //revisar metodo
             ProductoDB pddb = new ProductoDB();
-            //int b = pddb.eliminarProductos();
-            
-                int r = pddb.guardar();
-                if (r == 0)
-                {
-                    MessageBox.Show("No logro importar los productos", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Importacion de productos finalizada", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+            ofdUrl.ShowDialog();
+            int r = pddb.guardar(url);
+            if (r == 0)
+                MessageBox.Show("No logro importar los productos", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (r == -5)
+                MessageBox.Show("No hay nuevos productos a importar", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if(r>0)
+                MessageBox.Show("Importacion de productos finalizada", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Information);  
             llenaProductos();
         }
 
@@ -74,6 +74,16 @@ namespace SistemaContable.vista
         private void FrmProducto_Load(object sender, EventArgs e)
         {
             llenaProductos();
+        }
+
+        private void ofdUrl_FileOk(object sender, CancelEventArgs e)
+        {
+            url = ofdUrl.FileName;
+        }
+
+        private void btnAtras1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

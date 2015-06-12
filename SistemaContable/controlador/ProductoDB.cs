@@ -31,10 +31,9 @@ namespace SistemaContable.controlador
             this.pro = prod;
         }
         //metodo para leer el archivo y envio del objeto para la insercion a la base de datos
-        public int guardar()
+        public int guardar(string url)
         {
-            // aqui se ubica la direccion del archivo.xml
-            XmlReader xmltr = XmlReader.Create("C:\\Users\\Luis\\Documents\\Visual Studio 2012\\Projects\\SistemaContable\\SistemaContable\\productos.xml");
+            XmlReader xmltr = XmlReader.Create(url);
             xmltr.MoveToContent();
             Producto p = new Producto();
             int r = 0;
@@ -44,15 +43,13 @@ namespace SistemaContable.controlador
                 {
                     switch (xmltr.Name)
                     {
-                        case "id_producto":
-                            if (xmltr.Read())
-                            {
-                                p.Id_producto = Int32.Parse(xmltr.Value);
-                            }
-                            break;
                         case "nombre":
                             if (xmltr.Read())
                             {
+                                if (p == null)
+                                {
+                                    p = new Producto();
+                                }
                                 p.Nombre = xmltr.Value;
                             }
                             break;
@@ -83,12 +80,21 @@ namespace SistemaContable.controlador
                 {
                     if (p != null)
                     {
-                        if(verificacionProducto(p.Nombre)==0)
+                        int v = verificacionProducto(p);
+                        if ( v== 0)
                         {
-                            r= insertaProducto(p);
-                            p = null;
+                            r = insertaProducto(p);
+                        }
+                        if (v == 2)
+                        {
+                            r = modificarProducto(p);
+                        }
+                        if (v == 1)
+                        {
+                            r = -5;
                         }
                     }
+                    p = null;
                 }
             }
             return r;
@@ -166,28 +172,27 @@ namespace SistemaContable.controlador
             return lista;
         }
 
-        //metodo para verificar si el producto se encuentra en la base de datos
-        public int verificacionProducto(string nombre)
+        //metodo para verificar si el producto se encuentra en la base de datos y si hay alguna modificacion de los valores
+        public int verificacionProducto(Producto p)
         { 
             int v=0;
             MySqlCommand cmd;
             MySqlConnection cn = co.getConexion();
             try
             {
-                string comandoSql = "Select * from producto where nombre='" + nombre + "'";
+                string comandoSql = "Select * from producto where nombre='" + p.Nombre + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    if(nombre == dr[1].ToString())
-                    {
-                        v=1;
-                    }
+                    if (p.Nombre == dr[1].ToString())
+                        v = 1;
+                    if (p.Nombre == dr[1].ToString() && (p.Precio != double.Parse(dr[2].ToString()) || p.Stock_global != int.Parse(dr[4].ToString())))
+                        v = 2;
                 }
                 dr.Close();
-
             }
             catch (MySqlException ex)
             {
@@ -203,5 +208,35 @@ namespace SistemaContable.controlador
             cmd = null;
             return v;  
         }
+
+        //metodo para modificar valores del producto
+        public int modificarProducto(Producto pro)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            int resp;
+            try
+            {
+                string comandoSql = "Update producto set precio='" + pro.Precio + "', estado='" + pro.Estado + "', stock_global='" + pro.Stock_global + "' WHERE nombre='" + pro.Nombre + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return resp;
+        }
+
     }
 }
