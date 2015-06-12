@@ -8,7 +8,7 @@ namespace SistemaContable.modelo
     class Pago
     {
         private string idpado;
-        private string fecha;
+        private string fecha_ingreso;
         private string monto;
         private List<Pago> listapago;
 
@@ -19,8 +19,8 @@ namespace SistemaContable.modelo
         }
         public string FECHA
         {
-            get { return fecha; }
-            set { fecha = value; }
+            get { return fecha_ingreso; }
+            set { fecha_ingreso = value; }
         }
         public string MONTO
         {
