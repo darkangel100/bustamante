@@ -39,7 +39,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert pago Values('" + pag.IDPAGO + "','" + pag.FECHA + "','" + pag.MONTO + "')";
+                string sqlcad = "Insert pago Values('"  + pag.FECHA + "','" + pag.MONTO + "')";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

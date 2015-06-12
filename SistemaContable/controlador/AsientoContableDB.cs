@@ -40,7 +40,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert asiento_contable  Values('" + asiento.IDUSUARIO + "','" + asiento.IDASIENTO + "','" + asiento.NOMBREASIENTO + "'," + asiento.DESCRIPCION + "," + asiento.TIPO + "," +asiento.ESTADO + "')";
+                string sqlcad = "Insert asiento_contable  Values('"  + asiento.NOMBRE_ASIENTO + "'," + asiento.DESCRIPCION  + "')";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
