@@ -27,12 +27,35 @@ namespace SistemaContable.vista
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            panelAsiento.Enabled = true;
+            pnlAsiento.Enabled = true;
         }
 
         private void FrmEgreso_Load(object sender, EventArgs e)
         {
             estado = "N";
+            llenaAsiento();
+
+        }
+        public void llenaAsiento()
+        {
+            try
+            {
+                AsientoDB objasi = new AsientoDB();
+                objasi.getAsiento().LISTAASIENTO = objasi.TraeAsientos();
+                if (objasi.getAsiento().LISTAASIENTO.Count == 0)
+                {
+                    MessageBox.Show("No existen Asientos Registrados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    pnlAsiento.Enabled = true;
+                    btnGuardarAsiento.Enabled = false;
+                }
+                cboNomAsiento.ValueMember = "nombre_asiento";
+                cboNomAsiento.DataSource = objasi.getAsiento().LISTAASIENTO;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
        private void btnGuardarAsiento_Click(object sender, EventArgs e)
@@ -51,13 +74,11 @@ namespace SistemaContable.vista
                 PagoDB objpa = new PagoDB();
                 int resp;
 
-                objpa.getPago().FECHA = dtFechaAsiento.ToString();
-                objpa.getPago().MONTO = txtMonto.ToString();
-                asicon.getAsientoContable().IDUSUARIO = usuario;
-                //asicon.getAsientoContable().IDASIENTO = "1";
-                asicon.getAsientoContable().NOMBREASIENTO = cboNomAsiento.ToString();
-                asicon.getAsientoContable().DESCRIPCION = txtDescripcionAsiento.ToString();
-                asicon.getAsientoContable().ESTADO = "A";
+                objpa.getPago().FECHA = dtFechaAsiento.Text.Trim();
+                asicon.getAsientoContable().NOMBRE_ASIENTO = cboNomAsiento.Text.Trim();
+                objpa.getPago().MONTO = txtMonto.Text.Trim();
+                asicon.getAsientoContable().DESCRIPCION = txtDescripcionAsiento.Text.Trim();
+                //asicon.getAsientoContable().ESTADO = "A";
                 
                 
                 resp = asicon.InsertaAsiento(asicon.getAsientoContable());
@@ -77,6 +98,40 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnGuardaAsi_Click(object sender, EventArgs e)
+        {
+            AdicionaAsiento();
+            btnGuardarAsiento.Enabled = true;
+            llenaAsiento();
+        }
+        public void AdicionaAsiento()
+        {
+            try
+            {
+                AsientoDB objas = new AsientoDB();
+                int resp;
+                objas.getAsiento().LISTAASIENTO = objas.TraeAsientos();
+                resp = objas.InsertaAsiento(objas.getAsiento());
+                if (resp == 0)
+                {
+                    MessageBox.Show("No se ingreso datos del Asiento", "Panda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Asiento Ingresado", "Panda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estado = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+
+       
 
         
     }

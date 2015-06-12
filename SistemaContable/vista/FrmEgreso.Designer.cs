@@ -33,7 +33,7 @@
             this.dtFechaAsiento = new System.Windows.Forms.DateTimePicker();
             this.btnGuardarAsiento = new System.Windows.Forms.Button();
             this.pnlAsiento = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnGuardaAsi = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNomAsiento = new System.Windows.Forms.TextBox();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -200,7 +200,7 @@
             // pnlAsiento
             // 
             this.pnlAsiento.BackColor = System.Drawing.Color.LightGray;
-            this.pnlAsiento.Controls.Add(this.button4);
+            this.pnlAsiento.Controls.Add(this.btnGuardaAsi);
             this.pnlAsiento.Controls.Add(this.label8);
             this.pnlAsiento.Controls.Add(this.txtNomAsiento);
             this.pnlAsiento.Enabled = false;
@@ -209,14 +209,15 @@
             this.pnlAsiento.Size = new System.Drawing.Size(297, 183);
             this.pnlAsiento.TabIndex = 30;
             // 
-            // button4
+            // btnGuardaAsi
             // 
-            this.button4.Location = new System.Drawing.Point(104, 103);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 25);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "Guardar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnGuardaAsi.Location = new System.Drawing.Point(104, 103);
+            this.btnGuardaAsi.Name = "btnGuardaAsi";
+            this.btnGuardaAsi.Size = new System.Drawing.Size(89, 25);
+            this.btnGuardaAsi.TabIndex = 32;
+            this.btnGuardaAsi.Text = "Guardar";
+            this.btnGuardaAsi.UseVisualStyleBackColor = true;
+            this.btnGuardaAsi.Click += new System.EventHandler(this.btnGuardaAsi_Click);
             // 
             // label8
             // 
@@ -1151,7 +1152,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlAsiento;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnGuardaAsi;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnGuardarAsiento;
         private System.Windows.Forms.DateTimePicker dtFechaAsiento;
