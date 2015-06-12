@@ -36,7 +36,7 @@ namespace SistemaContable.vista
             llenaAsiento();
 
         }
-        public void llenaAsiento()
+        private void llenaAsiento()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace SistemaContable.vista
             }
         }
 
-        public void Adiciona()
+        private void Adiciona()
         {
             try
             {
@@ -78,10 +78,10 @@ namespace SistemaContable.vista
                 asicon.getAsientoContable().NOMBRE_ASIENTO = cboNomAsiento.Text.Trim();
                 objpa.getPago().MONTO = txtMonto.Text.Trim();
                 asicon.getAsientoContable().DESCRIPCION = txtDescripcionAsiento.Text.Trim();
-                //asicon.getAsientoContable().ESTADO = "A";
                 
-                
-                resp = asicon.InsertaAsiento(asicon.getAsientoContable());
+
+                resp=objpa.InsertaPago(objpa.getPago());
+                //resp = asicon.InsertaAsiento(asicon.getAsientoContable());
                 if (resp == 0)
                 {
                     MessageBox.Show("No se ingreso datos de Asiento Contable", "Panda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -105,7 +105,7 @@ namespace SistemaContable.vista
             btnGuardarAsiento.Enabled = true;
             llenaAsiento();
         }
-        public void AdicionaAsiento()
+        private void AdicionaAsiento()
         {
             try
             {
