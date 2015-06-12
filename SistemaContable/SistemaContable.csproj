@@ -68,8 +68,10 @@
   <ItemGroup>
     <Compile Include="conexion.cs" />
     <Compile Include="controlador\AsientoContableDB.cs" />
+    <Compile Include="controlador\AsientoDB.cs" />
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
+    <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
