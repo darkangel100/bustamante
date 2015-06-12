@@ -67,7 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexion.cs" />
+    <Compile Include="controlador\AsientoContableDB.cs" />
+    <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
+    <Compile Include="modelo\AsientoContable.cs" />
+    <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
     <Compile Include="vista\FrmEgreso.cs">
       <SubType>Form</SubType>
