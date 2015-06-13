@@ -23,15 +23,14 @@ namespace SistemaContable.controlador
             }
             return this.asien;
         }
-
-        public int InsertaAsiento(Asiento asien)
+        public int InsertaAsiento(Asiento asi)
         {
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             int resp;
             try
             {
-                string sqlcad = "Insert Asiento Values ('" + asien.NOMBREASIENTO + "')";
+                string sqlcad = "Insert asiento Values('" + asi.NOMBREASIENTO + "')";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -49,44 +48,44 @@ namespace SistemaContable.controlador
             }
             cn.Close();
             cmd = null;
-            asien = null;
+            asi = null;
             return resp;
         }
-        
-        public List<Asiento> TraeAsientos()
+        public List<Asiento> traeAsiento()
         {
-            AsientoDB asi = null;
-            List<Asiento> ListaAsiento = new List<Asiento>();
+            Asiento asie = null;
+            List<Asiento> ListaAsi = new List<Asiento>();
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from Asiento ";
+                string sqlcad = "Select * from Asiento";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    asi = new AsientoDB();
-                    asi.getAsiento().NOMBREASIENTO = dr[0].ToString();
-                    ListaAsiento.Add(asi.getAsiento());
+                    asie = new Asiento();
+                    asie.NOMBREASIENTO = dr["nombre_asiento"].ToString();
+
+                    ListaAsi.Add(asie);
                 }
                 dr.Close();
             }
             catch (MySqlException ex)
             {
-                asi = null;
+                asie = null;
                 throw ex;
             }
             catch (Exception ex)
             {
-                asi = null;
+                asie = null;
                 throw ex;
             }
             cn.Close();
             cmd = null;
-            return ListaAsiento;
+            return ListaAsi;
         }
     }
 }
