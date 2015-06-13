@@ -39,6 +39,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -81,9 +84,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -219,6 +219,23 @@
             this.dataGridView4.Size = new System.Drawing.Size(466, 83);
             this.dataGridView4.TabIndex = 43;
             this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 200F;
+            this.Column5.HeaderText = "Producto";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 200;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio Unitario";
+            this.Precio.Name = "Precio";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Stock";
+            this.Column6.Name = "Column6";
             // 
             // button6
             // 
@@ -584,9 +601,9 @@
             this.label3.Location = new System.Drawing.Point(276, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(601, 31);
+            this.label3.Size = new System.Drawing.Size(623, 31);
             this.label3.TabIndex = 28;
-            this.label3.Text = "Busqueda, Listado, Activacion/Desactivacion";
+            this.label3.Text = "Busqueda, Listado, Activacion/Desactivacion jl";
             // 
             // textBox6
             // 
@@ -605,23 +622,6 @@
             this.label9.Size = new System.Drawing.Size(104, 17);
             this.label9.TabIndex = 26;
             this.label9.Text = "Codigo Factura";
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 200F;
-            this.Column5.HeaderText = "Producto";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 200;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio Unitario";
-            this.Precio.Name = "Precio";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Stock";
-            this.Column6.Name = "Column6";
             // 
             // FrmIngreso
             // 
