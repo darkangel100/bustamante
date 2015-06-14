@@ -30,9 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtSubt = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtIva = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -43,23 +43,23 @@
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFec = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDescr = new System.Windows.Forms.TextBox();
             this.lbl3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIdFactura = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnBusquedaPorFech = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
@@ -75,12 +75,12 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBusquedaPorNumF = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -107,9 +107,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox9);
+            this.tabPage1.Controls.Add(this.txtSubt);
             this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.textBox8);
+            this.tabPage1.Controls.Add(this.txtIva);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.label11);
@@ -117,16 +117,16 @@
             this.tabPage1.Controls.Add(this.textBox7);
             this.tabPage1.Controls.Add(this.dataGridView4);
             this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.btnGuardar);
+            this.tabPage1.Controls.Add(this.txtTotal);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dtpFec);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.txtDescr);
             this.tabPage1.Controls.Add(this.lbl3);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtIdFactura);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
@@ -137,12 +137,13 @@
             this.tabPage1.Text = "Registrar Factura";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // textBox9
+            // txtSubt
             // 
-            this.textBox9.Location = new System.Drawing.Point(762, 505);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(257, 22);
-            this.textBox9.TabIndex = 51;
+            this.txtSubt.Location = new System.Drawing.Point(762, 505);
+            this.txtSubt.Name = "txtSubt";
+            this.txtSubt.Size = new System.Drawing.Size(257, 22);
+            this.txtSubt.TabIndex = 51;
+            this.txtSubt.Text = "0";
             // 
             // label13
             // 
@@ -153,12 +154,13 @@
             this.label13.TabIndex = 50;
             this.label13.Text = "Iva";
             // 
-            // textBox8
+            // txtIva
             // 
-            this.textBox8.Location = new System.Drawing.Point(762, 539);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(257, 22);
-            this.textBox8.TabIndex = 49;
+            this.txtIva.Location = new System.Drawing.Point(762, 539);
+            this.txtIva.Name = "txtIva";
+            this.txtIva.Size = new System.Drawing.Size(257, 22);
+            this.txtIva.TabIndex = 49;
+            this.txtIva.Text = "0";
             // 
             // label12
             // 
@@ -247,23 +249,24 @@
             this.button6.Text = "+";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnGuardar
             // 
-            this.button1.Location = new System.Drawing.Point(195, 621);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 28);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGuardar.Location = new System.Drawing.Point(195, 621);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(148, 28);
+            this.btnGuardar.TabIndex = 41;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(761, 581);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 22);
-            this.textBox2.TabIndex = 40;
+            this.txtTotal.Location = new System.Drawing.Point(761, 581);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(258, 22);
+            this.txtTotal.TabIndex = 40;
+            this.txtTotal.Text = "0";
             // 
             // label5
             // 
@@ -313,13 +316,13 @@
             this.Column4.Name = "Column4";
             this.Column4.Width = 150;
             // 
-            // dateTimePicker1
+            // dtpFec
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(209, 125);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtpFec.Location = new System.Drawing.Point(209, 125);
+            this.dtpFec.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFec.Name = "dtpFec";
+            this.dtpFec.Size = new System.Drawing.Size(265, 22);
+            this.dtpFec.TabIndex = 11;
             // 
             // label4
             // 
@@ -332,14 +335,14 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Registro de Factura Ventas";
             // 
-            // textBox3
+            // txtDescr
             // 
-            this.textBox3.Location = new System.Drawing.Point(47, 534);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(350, 53);
-            this.textBox3.TabIndex = 5;
+            this.txtDescr.Location = new System.Drawing.Point(47, 534);
+            this.txtDescr.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescr.Multiline = true;
+            this.txtDescr.Name = "txtDescr";
+            this.txtDescr.Size = new System.Drawing.Size(350, 53);
+            this.txtDescr.TabIndex = 5;
             // 
             // lbl3
             // 
@@ -361,13 +364,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Fecha";
             // 
-            // textBox1
+            // txtIdFactura
             // 
-            this.textBox1.Location = new System.Drawing.Point(221, 79);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(253, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtIdFactura.Location = new System.Drawing.Point(221, 79);
+            this.txtIdFactura.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIdFactura.Name = "txtIdFactura";
+            this.txtIdFactura.Size = new System.Drawing.Size(253, 22);
+            this.txtIdFactura.TabIndex = 1;
             // 
             // label1
             // 
@@ -381,14 +384,14 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button7);
+            this.tabPage2.Controls.Add(this.btnBusquedaPorFech);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.dateTimePicker3);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.pnlFactura);
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.btnActivar);
             this.tabPage2.Controls.Add(this.dataGridView3);
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.btnBusquedaPorNumF);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.textBox6);
             this.tabPage2.Controls.Add(this.label9);
@@ -401,14 +404,14 @@
             this.tabPage2.Text = "Busqueda-Activacion/Desactivacion";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnBusquedaPorFech
             // 
-            this.button7.Location = new System.Drawing.Point(451, 162);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 23);
-            this.button7.TabIndex = 59;
-            this.button7.Text = "Buscar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnBusquedaPorFech.Location = new System.Drawing.Point(451, 162);
+            this.btnBusquedaPorFech.Name = "btnBusquedaPorFech";
+            this.btnBusquedaPorFech.Size = new System.Drawing.Size(100, 23);
+            this.btnBusquedaPorFech.TabIndex = 59;
+            this.btnBusquedaPorFech.Text = "Buscar";
+            this.btnBusquedaPorFech.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -542,15 +545,15 @@
             this.textBox4.Size = new System.Drawing.Size(132, 22);
             this.textBox4.TabIndex = 47;
             // 
-            // button4
+            // btnActivar
             // 
-            this.button4.Location = new System.Drawing.Point(331, 496);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(151, 28);
-            this.button4.TabIndex = 51;
-            this.button4.Text = "Activar/Desactivar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnActivar.Location = new System.Drawing.Point(331, 496);
+            this.btnActivar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(151, 28);
+            this.btnActivar.TabIndex = 51;
+            this.btnActivar.Text = "Activar/Desactivar";
+            this.btnActivar.UseVisualStyleBackColor = true;
             // 
             // dataGridView3
             // 
@@ -584,15 +587,15 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 150;
             // 
-            // button2
+            // btnBusquedaPorNumF
             // 
-            this.button2.Location = new System.Drawing.Point(451, 118);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
-            this.button2.TabIndex = 48;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBusquedaPorNumF.Location = new System.Drawing.Point(451, 118);
+            this.btnBusquedaPorNumF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBusquedaPorNumF.Name = "btnBusquedaPorNumF";
+            this.btnBusquedaPorNumF.Size = new System.Drawing.Size(100, 28);
+            this.btnBusquedaPorNumF.TabIndex = 48;
+            this.btnBusquedaPorNumF.Text = "Buscar";
+            this.btnBusquedaPorNumF.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -601,9 +604,9 @@
             this.label3.Location = new System.Drawing.Point(276, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(623, 31);
+            this.label3.Size = new System.Drawing.Size(609, 31);
             this.label3.TabIndex = 28;
-            this.label3.Text = "Busqueda, Listado, Activacion/Desactivacion jl";
+            this.label3.Text = "Busqueda, Listado, Activacion/Desactivacion ";
             // 
             // textBox6
             // 
@@ -652,17 +655,17 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDescr;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIdFactura;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFec;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -677,8 +680,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnBusquedaPorNumF;
+        private System.Windows.Forms.Button btnActivar;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Panel pnlFactura;
         private System.Windows.Forms.Label label11;
@@ -687,9 +690,9 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtSubt;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
@@ -698,7 +701,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnBusquedaPorFech;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label label14;

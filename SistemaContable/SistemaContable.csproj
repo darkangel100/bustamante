@@ -75,6 +75,7 @@
     <Compile Include="controlador\UsuariosBD.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
+    <Compile Include="modelo\Facturas.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
     <Compile Include="modelo\Usuarios.cs" />
