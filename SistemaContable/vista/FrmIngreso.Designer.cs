@@ -258,6 +258,7 @@
             this.btnGuardar.TabIndex = 41;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtTotal
             // 
@@ -635,6 +636,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmIngreso";
             this.Text = "FrmIngreso";
+            this.Load += new System.EventHandler(this.FrmIngreso_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

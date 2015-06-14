@@ -39,7 +39,7 @@ namespace SistemaContable.controlador
             MySqlCommand cmd;
             try
             {
-                string sqlcad = "Select max(num_fac) as nro from factura ";
+                string sqlcad = "Select max(id_factura) as nro from factura ";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();

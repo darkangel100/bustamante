@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SistemaContable.controlador;
 
 namespace SistemaContable.vista
 {
@@ -22,22 +23,28 @@ namespace SistemaContable.vista
         }
         public void llenausuario()
         {
+            //Inicio
             try
             {
-                datosUsuario objU = new datosUsuario();
+                UsuariosBD objU = new UsuariosBD();
                 objU.getUsuarios().ListaUsuarios = objU.Traeusuarios();
                 if (objU.getUsuarios().ListaUsuarios.Count == 0)
                 {
                     MessageBox.Show("No existen registros de usuarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                cmbUSU.DisplayMember = "NomUsu";
-                cmbUSU.ValueMember = "IdUsu";
-                cmbUSU.DataSource = objU.getUsuarios().ListaUsuarios;
+                comboBoxNomUsu.DisplayMember = "NomUsu";
+                comboBoxNomUsu.ValueMember = "IdUsu";
+                comboBoxNomUsu.DataSource = objU.getUsuarios().ListaUsuarios;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

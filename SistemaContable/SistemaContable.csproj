@@ -73,6 +73,7 @@
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
     <Compile Include="controlador\UsuariosBD.cs" />
+    <Compile Include="controlador\Utiles.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
     <Compile Include="modelo\Facturas.cs" />

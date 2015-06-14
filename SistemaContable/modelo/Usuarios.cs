@@ -7,6 +7,7 @@ namespace SistemaContable.modelo
 {
     class Usuarios
     {
+        //Atributos
         private int Id_Usu;
         private string Ced_Usu;
         private string Nom_Usu;

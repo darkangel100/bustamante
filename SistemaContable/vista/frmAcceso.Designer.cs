@@ -96,6 +96,7 @@
             this.btnIngreso.TabIndex = 7;
             this.btnIngreso.Text = "ACEPTAR";
             this.btnIngreso.UseVisualStyleBackColor = true;
+            this.btnIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // button2
             // 

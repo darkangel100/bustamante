@@ -10,7 +10,7 @@ namespace SistemaContable.controlador
 {
     class UsuariosBD
     {
-        //Conexion
+        //Conexion nuevo
         conexion con = new conexion();
         //
         Usuarios usu = null;
