@@ -7,42 +7,45 @@ using MySql.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SistemaContable.modelo;
+
 namespace SistemaContable.controlador
 {
-    class PagoDB
+    class DetalleFacturaDB
     {
         conexion con = new conexion();
-        Pago pag = null;
+        DetalleFactura defac = null;
 
-        public Pago getPago()
+        public DetalleFactura getDetalleFactura()
         {
-            if (this.pag == null)
+            if (this.defac == null)
             {
-                this.pag = new Pago();
-                Pago p = new Pago();
-                pag = p;
-                
+                this.defac = new DetalleFactura();
+                DetalleFactura defact = new DetalleFactura();
+                defac = defact;
             }
-            return this.pag;
+            return this.defac;
         }
-        public void setPago(Pago pa)
+
+        public void setDetalleFactura(DetalleFactura defactu)
         {
-            this.pag = pa;
+            this.defac = defactu;
         }
         public void limpiar()
         {
-            this.pag = null;
+            this.defac = null;
         }
+        
 
-        //Insertar un Pago a la Base de datos
-        public int InsertaPago(Pago pag)
+
+        //Insertar una factue=ra a la Base de datos
+        public int InsertaDetalleFactura(DetalleFactura defactur)
         {
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             int resp;
             try
             {
-                string sqlcad = "Insert pago set fecha_ingreso='" + pag.FECHA + "', monto='" + pag.MONTO + "'";
+                string sqlcad = "Insert detalle_factura set id_factura='" + defactur.IDFACTURA + "', id_producto='" + defactur.IDPRODUCTO + "',cantidad='" + defactur.CANTIDAD + "',nombre_producto='" + defactur.NOMBREPRODUCTO + "',costo_unitario='" + defactur.COSTOUNITARIO + "',costo_total='" + defactur.COSTOTOTAL + "'"; ;
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -60,7 +63,7 @@ namespace SistemaContable.controlador
             }
             cn.Close();
             cmd = null;
-            pag = null;
+            defactur = null;
             return resp;
         }
     }

@@ -46,6 +46,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbpRegistroFactura = new System.Windows.Forms.TabPage();
+            this.txtCostoUnidad = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtCostoCaja = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.btnProveedor = new System.Windows.Forms.Button();
@@ -105,37 +107,35 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.txtBuscaAsiento = new System.Windows.Forms.TextBox();
+            this.btnBusqueda = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dgvBuscPago = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvBuscaFactu = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvAsientoBusca = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtpBuscaAsiento = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCostoUnidad = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlAsiento.SuspendLayout();
@@ -144,9 +144,9 @@
             this.tabPage3.SuspendLayout();
             this.panelFactura.SuspendLayout();
             this.panelAsiento.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -184,9 +184,10 @@
             // 
             // dtFechaAsiento
             // 
-            this.dtFechaAsiento.Location = new System.Drawing.Point(191, 189);
+            this.dtFechaAsiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaAsiento.Location = new System.Drawing.Point(191, 146);
             this.dtFechaAsiento.Name = "dtFechaAsiento";
-            this.dtFechaAsiento.Size = new System.Drawing.Size(185, 20);
+            this.dtFechaAsiento.Size = new System.Drawing.Size(88, 20);
             this.dtFechaAsiento.TabIndex = 34;
             // 
             // btnGuardarAsiento
@@ -251,7 +252,7 @@
             // cboNomAsiento
             // 
             this.cboNomAsiento.FormattingEnabled = true;
-            this.cboNomAsiento.Location = new System.Drawing.Point(191, 143);
+            this.cboNomAsiento.Location = new System.Drawing.Point(191, 189);
             this.cboNomAsiento.Name = "cboNomAsiento";
             this.cboNomAsiento.Size = new System.Drawing.Size(185, 21);
             this.cboNomAsiento.TabIndex = 29;
@@ -294,7 +295,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(99, 146);
+            this.label6.Location = new System.Drawing.Point(99, 192);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 22;
@@ -303,7 +304,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 192);
+            this.label5.Location = new System.Drawing.Point(99, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 20;
@@ -361,6 +362,22 @@
             this.tbpRegistroFactura.TabIndex = 1;
             this.tbpRegistroFactura.Text = "Registro Factura";
             this.tbpRegistroFactura.UseVisualStyleBackColor = true;
+            // 
+            // txtCostoUnidad
+            // 
+            this.txtCostoUnidad.Location = new System.Drawing.Point(384, 120);
+            this.txtCostoUnidad.Name = "txtCostoUnidad";
+            this.txtCostoUnidad.Size = new System.Drawing.Size(118, 20);
+            this.txtCostoUnidad.TabIndex = 72;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(292, 123);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.TabIndex = 71;
+            this.label11.Text = "Cost/cad  unidad";
             // 
             // txtCostoCaja
             // 
@@ -682,19 +699,19 @@
             // 
             this.tabPage3.Controls.Add(this.panelFactura);
             this.tabPage3.Controls.Add(this.panelAsiento);
-            this.tabPage3.Controls.Add(this.comboBox2);
+            this.tabPage3.Controls.Add(this.cboCriterio);
             this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.textBox8);
-            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.txtBuscaAsiento);
+            this.tabPage3.Controls.Add(this.btnBusqueda);
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.button5);
             this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.dataGridView4);
-            this.tabPage3.Controls.Add(this.dataGridView3);
-            this.tabPage3.Controls.Add(this.dataGridView2);
-            this.tabPage3.Controls.Add(this.dateTimePicker3);
+            this.tabPage3.Controls.Add(this.dgvBuscPago);
+            this.tabPage3.Controls.Add(this.dgvBuscaFactu);
+            this.tabPage3.Controls.Add(this.dgvAsientoBusca);
+            this.tabPage3.Controls.Add(this.dtpBuscaAsiento);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.label3);
@@ -887,16 +904,17 @@
             this.textBox16.Size = new System.Drawing.Size(185, 20);
             this.textBox16.TabIndex = 55;
             // 
-            // comboBox2
+            // cboCriterio
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Nombre",
-            "Fecha"});
-            this.comboBox2.Location = new System.Drawing.Point(135, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(105, 21);
-            this.comboBox2.TabIndex = 51;
+            this.cboCriterio.FormattingEnabled = true;
+            this.cboCriterio.Items.AddRange(new object[] {
+            "NOMBRE",
+            "FECHA"});
+            this.cboCriterio.Location = new System.Drawing.Point(135, 74);
+            this.cboCriterio.Name = "cboCriterio";
+            this.cboCriterio.Size = new System.Drawing.Size(105, 21);
+            this.cboCriterio.TabIndex = 51;
+            this.cboCriterio.SelectedIndexChanged += new System.EventHandler(this.cboCriterio_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -907,21 +925,23 @@
             this.label17.TabIndex = 50;
             this.label17.Text = "Criterio";
             // 
-            // textBox8
+            // txtBuscaAsiento
             // 
-            this.textBox8.Location = new System.Drawing.Point(334, 71);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(140, 20);
-            this.textBox8.TabIndex = 49;
+            this.txtBuscaAsiento.Enabled = false;
+            this.txtBuscaAsiento.Location = new System.Drawing.Point(334, 71);
+            this.txtBuscaAsiento.Name = "txtBuscaAsiento";
+            this.txtBuscaAsiento.Size = new System.Drawing.Size(140, 20);
+            this.txtBuscaAsiento.TabIndex = 49;
             // 
-            // button7
+            // btnBusqueda
             // 
-            this.button7.Location = new System.Drawing.Point(768, 69);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(109, 23);
-            this.button7.TabIndex = 47;
-            this.button7.Text = "Buscar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Location = new System.Drawing.Point(768, 69);
+            this.btnBusqueda.Name = "btnBusqueda";
+            this.btnBusqueda.Size = new System.Drawing.Size(109, 23);
+            this.btnBusqueda.TabIndex = 47;
+            this.btnBusqueda.Text = "Buscar";
+            this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // button6
             // 
@@ -968,18 +988,18 @@
             this.button3.Text = "Modificar";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView4
+            // dgvBuscPago
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBuscPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBuscPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11});
-            this.dataGridView4.Location = new System.Drawing.Point(32, 324);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.Size = new System.Drawing.Size(228, 80);
-            this.dataGridView4.TabIndex = 41;
+            this.dgvBuscPago.Location = new System.Drawing.Point(32, 324);
+            this.dgvBuscPago.Name = "dgvBuscPago";
+            this.dgvBuscPago.RowHeadersVisible = false;
+            this.dgvBuscPago.Size = new System.Drawing.Size(228, 80);
+            this.dgvBuscPago.TabIndex = 41;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -996,21 +1016,21 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Decripcion";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // dataGridView3
+            // dgvBuscaFactu
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBuscaFactu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBuscaFactu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.Column7,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dataGridView3.Location = new System.Drawing.Point(354, 324);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.Size = new System.Drawing.Size(454, 80);
-            this.dataGridView3.TabIndex = 40;
+            this.dgvBuscaFactu.Location = new System.Drawing.Point(354, 324);
+            this.dgvBuscaFactu.Name = "dgvBuscaFactu";
+            this.dgvBuscaFactu.RowHeadersVisible = false;
+            this.dgvBuscaFactu.Size = new System.Drawing.Size(454, 80);
+            this.dgvBuscaFactu.TabIndex = 40;
             // 
             // Column5
             // 
@@ -1042,19 +1062,19 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Costo Total";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // dataGridView2
+            // dgvAsientoBusca
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAsientoBusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAsientoBusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dataGridView2.Location = new System.Drawing.Point(83, 132);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(609, 150);
-            this.dataGridView2.TabIndex = 39;
+            this.dgvAsientoBusca.Location = new System.Drawing.Point(83, 132);
+            this.dgvAsientoBusca.Name = "dgvAsientoBusca";
+            this.dgvAsientoBusca.RowHeadersVisible = false;
+            this.dgvAsientoBusca.Size = new System.Drawing.Size(609, 150);
+            this.dgvAsientoBusca.TabIndex = 39;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1078,12 +1098,13 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Estado";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // dateTimePicker3
+            // dtpBuscaAsiento
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(536, 71);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(185, 20);
-            this.dateTimePicker3.TabIndex = 38;
+            this.dtpBuscaAsiento.Enabled = false;
+            this.dtpBuscaAsiento.Location = new System.Drawing.Point(536, 71);
+            this.dtpBuscaAsiento.Name = "dtpBuscaAsiento";
+            this.dtpBuscaAsiento.Size = new System.Drawing.Size(185, 20);
+            this.dtpBuscaAsiento.TabIndex = 38;
             // 
             // label13
             // 
@@ -1113,22 +1134,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Busqueda, Lista y Activacion";
             // 
-            // txtCostoUnidad
-            // 
-            this.txtCostoUnidad.Location = new System.Drawing.Point(384, 120);
-            this.txtCostoUnidad.Name = "txtCostoUnidad";
-            this.txtCostoUnidad.Size = new System.Drawing.Size(118, 20);
-            this.txtCostoUnidad.TabIndex = 72;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(292, 123);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 13);
-            this.label11.TabIndex = 71;
-            this.label11.Text = "Cost/cad  unidad";
-            // 
             // FrmEgreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1152,9 +1157,9 @@
             this.panelFactura.PerformLayout();
             this.panelAsiento.ResumeLayout(false);
             this.panelAsiento.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1190,14 +1195,14 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button txtGuardaFactura;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvBuscPago;
+        private System.Windows.Forms.DataGridView dgvBuscaFactu;
+        private System.Windows.Forms.DataGridView dgvAsientoBusca;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dtpBuscaAsiento;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button5;
@@ -1214,10 +1219,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btnBusqueda;
+        private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtBuscaAsiento;
         private System.Windows.Forms.TextBox txtCanUnidades;
         private System.Windows.Forms.TextBox txtCantidadCajas;
         private System.Windows.Forms.TextBox txtProducto;

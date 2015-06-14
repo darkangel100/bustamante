@@ -237,6 +237,37 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
-
+        //ultimo id del producto 
+        public string traenumero()
+        {
+            MySqlConnection cn = co.getConexion();
+            MySqlCommand cmd;
+            string num = "";
+            try
+            {
+                string Sqlcad = "Select max(id_producto)as num from producto";
+                cmd = new MySqlCommand(Sqlcad, cn);
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    num = dr["num"].ToString();
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                num = "";
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                num = "";
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return num;
+        }
     }
 }

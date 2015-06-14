@@ -20,6 +20,8 @@ namespace SistemaContable.controlador
             if (this.ac == null)
             {
                 this.ac = new AsientoContable();
+                AsientoContable asiencon = new AsientoContable();
+                ac = asiencon;
             }
             return this.ac;
         }
@@ -40,7 +42,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert asiento_contable  Values('"  + asiento.NOMBRE_ASIENTO + "'," + asiento.DESCRIPCION  + "')";
+                string sqlcad = "Insert asiento_contable set nombre_asiento='" + asiento.NOMBRE_ASIENTO + "', descripcion='" + asiento.DESCRIPCION + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
