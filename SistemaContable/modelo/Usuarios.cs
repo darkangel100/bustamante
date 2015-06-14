@@ -9,6 +9,9 @@ namespace SistemaContable.modelo
     {
         //Atributos
         private int Id_Usu;
+
+        private int Id_Rol;
+
         private string Ced_Usu;
         private string Nom_Usu;
         private string Ape_Usu;
@@ -22,6 +25,11 @@ namespace SistemaContable.modelo
         {
             get { return Id_Usu; }
             set { Id_Usu = value; }
+        }
+        public int IdRol
+        {
+            get { return Id_Rol; }
+            set { IdRol = value; }
         }
         public string CedUsu
         {

@@ -69,16 +69,20 @@
     <Compile Include="conexion.cs" />
     <Compile Include="controlador\AsientoContableDB.cs" />
     <Compile Include="controlador\AsientoDB.cs" />
+    <Compile Include="controlador\CuentaBD.cs" />
     <Compile Include="controlador\FacturaBD.cs" />
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
+    <Compile Include="controlador\RolDB.cs" />
     <Compile Include="controlador\UsuariosBD.cs" />
     <Compile Include="controlador\Utiles.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
+    <Compile Include="modelo\Cuenta.cs" />
     <Compile Include="modelo\Facturas.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
+    <Compile Include="modelo\Rols.cs" />
     <Compile Include="modelo\Usuarios.cs" />
     <Compile Include="vista\frmAcceso.cs">
       <SubType>Form</SubType>

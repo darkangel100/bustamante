@@ -49,6 +49,9 @@ namespace SistemaContable.controlador
                     //BD
                     usu = new Usuarios();
                     usu.IdUsu = Convert.ToInt32(dr["id_usuario"]);
+                    //Nuevo
+                    usu.IdRol = Convert.ToInt32(dr["id_rol"]);
+                    //
                     usu.CedUsu = dr["cedula"].ToString();
                     usu.NomUsu = dr["nombre"].ToString();
                     usu.ApeUsu = dr["apellido"].ToString();
@@ -72,6 +75,72 @@ namespace SistemaContable.controlador
             cmd = null;
             return ListaUsu;
         }
+
+        public int Insertausuario(Usuarios usu)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            int resp;
+            try
+            {
+                string sqlcad = "Insert usuario Values (" + usu.IdUsu + "," + usu.IdRol + ",'" + usu.CedUsu + "','" + usu.NomUsu + "','" + usu.ApeUsu + "','" + usu.TelUsu + "','" + usu.DirUsu + "')";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            usu = null;
+            return resp;
+        }
+        public int TraeCodigo()
+        {
+            int nro = 0; ;
+            MySqlConnection cn = con.getConexion();
+            MySqlCommand cmd;
+            try
+            {
+                string sqlcad = "Select max(id_usuario) as nro from usuario ";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    if (DBNull.Value == dr["nro"])
+                        nro = 0;
+                    else
+                        nro = Convert.ToInt32(dr["nro"]);
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                nro = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                nro = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return nro;
+        }
+
+
+
 
     }
 }
