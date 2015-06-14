@@ -69,6 +69,7 @@
     <Compile Include="conexion.cs" />
     <Compile Include="controlador\AsientoContableDB.cs" />
     <Compile Include="controlador\AsientoDB.cs" />
+    <Compile Include="controlador\FacturaBD.cs" />
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
     <Compile Include="controlador\UsuariosBD.cs" />
