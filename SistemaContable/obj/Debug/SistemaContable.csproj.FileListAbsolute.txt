@@ -58,3 +58,26 @@ C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\bustamante.g
 C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\bustamante.git\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
 C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\bustamante.git\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
 C:\Users\Luis\Documents\Visual Studio 2012\Projects\SistemaContable\bustamante.git\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+C:\Users\Luis\Desktop\Nueva carpeta\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\Luis\Desktop\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\Luis\Desktop\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.pdb
+M:\GRUPO\TORTUGA\Nueva carpeta\SistemaContable\bin\Debug\SistemaContable.exe.config
+M:\GRUPO\TORTUGA\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.exe
+M:\GRUPO\TORTUGA\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.pdb
+C:\Users\USUARIO\Desktop\respalAOO\Nueva carpeta\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\USUARIO\Desktop\respalAOO\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\USUARIO\Desktop\respalAOO\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.pdb
+M:\respa2\Nueva carpeta\SistemaContable\bin\Debug\SistemaContable.exe.config
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.exe
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.pdb
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.frmAcceso.resources

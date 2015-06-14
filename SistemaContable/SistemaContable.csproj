@@ -71,10 +71,18 @@
     <Compile Include="controlador\AsientoDB.cs" />
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
+    <Compile Include="controlador\UsuariosBD.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
+    <Compile Include="modelo\Usuarios.cs" />
+    <Compile Include="vista\frmAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\frmAcceso.Designer.cs">
+      <DependentUpon>frmAcceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="vista\FrmEgreso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +137,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="vista\frmAcceso.resx">
+      <DependentUpon>frmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vista\FrmEgreso.resx">
       <DependentUpon>FrmEgreso.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +191,7 @@
     <Content Include="productos.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\imagesCAIHOOUG.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
