@@ -15,7 +15,7 @@ namespace SistemaContable.modelo
         private string Ced_Usu;
         private string Nom_Usu;
         private string Ape_Usu;
-        
+
         private string Tel_Usu;
         private string Dir_Usu;
 
@@ -29,7 +29,7 @@ namespace SistemaContable.modelo
         public int IdRol
         {
             get { return Id_Rol; }
-            set { IdRol = value; }
+            set { Id_Rol = value; }
         }
         public string CedUsu
         {
@@ -56,14 +56,13 @@ namespace SistemaContable.modelo
             get { return Dir_Usu; }
             set { Dir_Usu = value; }
         }
-       
-       
+
+
         public List<Usuarios> ListaUsuarios
         {
             get { return listaUsuarios; }
             set { listaUsuarios = value; }
         }
-
 
     }
 }

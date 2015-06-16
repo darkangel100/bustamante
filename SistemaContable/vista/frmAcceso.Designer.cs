@@ -72,6 +72,7 @@
             this.txtCedUsu.Name = "txtCedUsu";
             this.txtCedUsu.Size = new System.Drawing.Size(602, 22);
             this.txtCedUsu.TabIndex = 4;
+            this.txtCedUsu.Text = "111";
             // 
             // txtClave
             // 
@@ -79,6 +80,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(602, 22);
             this.txtClave.TabIndex = 5;
+            this.txtClave.Text = "luis1";
             // 
             // comboBoxNomUsu
             // 

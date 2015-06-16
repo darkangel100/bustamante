@@ -13,9 +13,11 @@ namespace SistemaContable
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        string tipo;
+        public FrmPrincipal(string tip)
         {
             InitializeComponent();
+            tipo = tip;
         }
 
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,6 +54,11 @@ namespace SistemaContable
         {
             FrmIngreso formIngreso = new FrmIngreso();
             formIngreso.ShowDialog();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

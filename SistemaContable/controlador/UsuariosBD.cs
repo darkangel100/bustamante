@@ -31,6 +31,57 @@ namespace SistemaContable.controlador
         {
             this.usu = null;
         }
+        public Usuarios TraeUsuario(int id)
+        {
+            Usuarios usu = null;
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from usuario Where id_usuario=" + id;
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    usu = new Usuarios();
+
+                    //   usu.IdRol = Convert.ToInt32(dr["id_rol"]);
+                    //Nuevo
+                    //  usu.Tipo = dr["tipo"].ToString();
+                    //    usu.Contrasenia = dr["contrasenia"].ToString();
+                    //   usu.Estado = dr["estado"].ToString();
+
+                    //  usu = new Usuarios();
+                    usu.IdUsu = Convert.ToInt32(dr["id_usuario"]);
+                    //Nuevo
+                    usu.IdRol = Convert.ToInt32(dr["id_rol"]);
+                    //
+                    usu.CedUsu = dr["cedula"].ToString();
+                    usu.NomUsu = dr["nombre"].ToString();
+                    usu.ApeUsu = dr["apellido"].ToString();
+                    usu.TelUsu = dr["telefono"].ToString();
+                    usu.DirUsu = dr["direccion"].ToString();
+
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                usu = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                usu = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return usu;
+        }
+
         public List<Usuarios> Traeusuarios()
         {
             Usuarios usu = null;

@@ -30,7 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtnroUsuarioGenerado = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlCuenta = new System.Windows.Forms.Panel();
             this.rbP = new System.Windows.Forms.RadioButton();
@@ -83,8 +85,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtnroUsuarioGenerado = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlCuenta.SuspendLayout();
@@ -125,6 +127,14 @@
             this.tabPage1.Text = "Registrar";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtnroUsuarioGenerado
+            // 
+            this.txtnroUsuarioGenerado.Enabled = false;
+            this.txtnroUsuarioGenerado.Location = new System.Drawing.Point(544, 61);
+            this.txtnroUsuarioGenerado.Name = "txtnroUsuarioGenerado";
+            this.txtnroUsuarioGenerado.Size = new System.Drawing.Size(224, 22);
+            this.txtnroUsuarioGenerado.TabIndex = 13;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Location = new System.Drawing.Point(535, 528);
@@ -135,6 +145,15 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(439, 61);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(74, 17);
+            this.label24.TabIndex = 12;
+            this.label24.Text = "Id_usuario";
             // 
             // label9
             // 
@@ -253,6 +272,8 @@
             // pnlProveedor
             // 
             this.pnlProveedor.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlProveedor.Controls.Add(this.txtApellido);
+            this.pnlProveedor.Controls.Add(this.label25);
             this.pnlProveedor.Controls.Add(this.label22);
             this.pnlProveedor.Controls.Add(this.cmbRoles);
             this.pnlProveedor.Controls.Add(this.label10);
@@ -322,7 +343,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(156, 51);
+            this.txtNombre.Location = new System.Drawing.Point(156, 19);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(224, 22);
@@ -351,7 +372,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 56);
+            this.label3.Location = new System.Drawing.Point(23, 19);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 17);
@@ -686,22 +707,21 @@
             this.label19.TabIndex = 20;
             this.label19.Text = "Datos Usuario";
             // 
-            // label24
+            // label25
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(439, 61);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(74, 17);
-            this.label24.TabIndex = 12;
-            this.label24.Text = "Id_usuario";
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(22, 56);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(58, 17);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "Apellido";
             // 
-            // txtnroUsuarioGenerado
+            // txtApellido
             // 
-            this.txtnroUsuarioGenerado.Enabled = false;
-            this.txtnroUsuarioGenerado.Location = new System.Drawing.Point(544, 61);
-            this.txtnroUsuarioGenerado.Name = "txtnroUsuarioGenerado";
-            this.txtnroUsuarioGenerado.Size = new System.Drawing.Size(224, 22);
-            this.txtnroUsuarioGenerado.TabIndex = 13;
+            this.txtApellido.Location = new System.Drawing.Point(156, 56);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(224, 22);
+            this.txtApellido.TabIndex = 13;
             // 
             // FrmUsuario
             // 
@@ -791,5 +811,7 @@
         private System.Windows.Forms.ComboBox cmbRoles;
         private System.Windows.Forms.TextBox txtnroUsuarioGenerado;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label label25;
     }
 }

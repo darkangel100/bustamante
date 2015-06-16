@@ -27,22 +27,24 @@ namespace SistemaContable.vista
         {
             try
             {
-               UsuariosBD objU = new UsuariosBD();
+                UsuariosBD objU = new UsuariosBD();
                 int resp;
                 objU.getUsuarios().IdUsu = Convert.ToInt32(txtnroUsuarioGenerado.Text.Trim());
-                objU.getUsuarios().IdRol =Convert.ToInt32(cmbRoles.SelectedValue.ToString());
-                   //  objF.getFacturas().cedper = cmbCliente.SelectedValue.ToString();
+                objU.getUsuarios().IdRol = Convert.ToInt32(cmbRoles.SelectedValue.ToString());
+
+                //  objF.getFacturas().cedper = cmbCliente.SelectedValue.ToString();
                 objU.getUsuarios().CedUsu = txtcedula.Text.Trim();
                 objU.getUsuarios().NomUsu = txtNombre.Text.Trim();
+                objU.getUsuarios().ApeUsu = txtApellido.Text.Trim();
                 objU.getUsuarios().TelUsu = txtTelefono.Text.Trim();
                 objU.getUsuarios().DirUsu = txtDireccion.Text.Trim();
-                
-                
-                
-               /* if (rbAdm.Checked == true)
-                    objU.getUsuarios().TipUsu = "A";
-                else
-                    objU.getUsuarios().TipUsu = "V";*/
+
+
+
+                /* if (rbAdm.Checked == true)
+                     objU.getUsuarios().TipUsu = "A";
+                 else
+                     objU.getUsuarios().TipUsu = "V";*/
 
                 resp = objU.Insertausuario(objU.getUsuarios());
 
@@ -52,17 +54,17 @@ namespace SistemaContable.vista
                 }
                 else
                 {
-                     MessageBox.Show("Usuario Ingresado", "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
-                     
+                    MessageBox.Show("Usuario Ingresado", "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
 
                 }
             }
-        
+
             catch (Exception ex)
             {
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            } 
         }
        private void AdicionaCuenta()
        {
@@ -80,8 +82,8 @@ namespace SistemaContable.vista
                    objU.getCuenta().Estado = "A";
                }
                else
-               {               
-                       objU.getCuenta().Estado = "P";                  
+               {
+                   objU.getCuenta().Estado = "P";
                }
                resp = objU.Insertacuenta(objU.getCuenta());
 
@@ -126,7 +128,7 @@ namespace SistemaContable.vista
             catch (Exception ex)
             {
                 MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            } 
         }
 
         private void button1_Click(object sender, EventArgs e)
