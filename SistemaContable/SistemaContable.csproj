@@ -79,6 +79,7 @@
     <Compile Include="controlador\Utiles.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
+    <Compile Include="modelo\Cuenta.cs" />
     <Compile Include="modelo\DetalleFactura.cs" />
     <Compile Include="modelo\Factura.cs" />
     <Compile Include="modelo\Facturas.cs" />
