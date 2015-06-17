@@ -86,7 +86,7 @@ namespace SistemaContable.vista
         {
             
                 AdicionaAsientoContable();
-            
+                Utiles.limpiar(panelAsiento.Controls);
            // Util.limpiar(tabPage1.Controls);
         }
 
@@ -130,7 +130,7 @@ namespace SistemaContable.vista
             pnlAsiento.Enabled = false;
             llenaAsiento(cboNomAsiento);
             //Util.limpiar(pnlAsiento.Controls);
-
+            Utiles.limpiar(panelAsiento.Controls);
         }
         private void AdicionaAsiento()
         {
@@ -236,10 +236,10 @@ namespace SistemaContable.vista
         {
             
                 AdicionaFactura();
-            
+                Utiles.limpiar(panelFactura.Controls);
             //Util.limpiar(tbpRegistroFactura.Controls);
-            dtgDetalleFactura.Rows.Clear();
-            dtgDetalleFactura.Columns.Clear();
+                dtgDetalleFactura.Rows.Clear();
+                dtgDetalleFactura.Columns.Clear();
         }
 
         public void AdicionaFactura()
@@ -312,18 +312,17 @@ namespace SistemaContable.vista
 
         private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCriterio.Items.Contains("NOMBRE"))
+            if (cboCriterio.Items.Equals("NOMBRE"))
             {
                 txtBuscaAsiento.Enabled = true;
                 dtpBuscaAsiento.Enabled = false;
             }
             else
             {
-                if (cboCriterio.Items.Contains("FECHA"))
-                {
+             
                     txtBuscaAsiento.Enabled = false;
                     dtpBuscaAsiento.Enabled = true;
-                }
+                
             }
             
         }
