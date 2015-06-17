@@ -23,7 +23,7 @@ namespace SistemaContable.modelo
         public string IDPRODUCTO
         {
             get { return id_producto; }
-            set {id_producto = value; }
+            set { id_producto = value; }
         }
         public string CANTIDAD
         {

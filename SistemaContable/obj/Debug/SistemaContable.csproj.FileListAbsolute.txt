@@ -81,3 +81,32 @@ M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmRepor
 M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
 M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
 M:\respa2\Nueva carpeta\SistemaContable\obj\Debug\SistemaContable.vista.frmAcceso.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.frmAcceso.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmUsuario.resources
+C:\Users\USUARIO\Downloads\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.frmAcceso.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
+C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb

@@ -33,7 +33,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert lote set codLote='" + lo.CODLOTE + "',id_producto='" + lo.IDPRODUCTO + "',descripcion='" + lo.DESCRIPCION + "',stock_unidades='" + lo.STOCKUNIDADES + "',fechaVencimiento='" + lo.FECHAVENCIMINTO + "',fechaElaboracion='" + lo.FECHAELABORACION + "'"; 
+                string sqlcad = "Insert lote set codLote='" + lo.CODLOTE + "',id_producto='" + lo.IDPRODUCTO + "',descripcion='" + lo.DESCRIPCION + "',stock_unidades='" + lo.STOCKUNIDADES + "',fechaVencimiento='" + lo.FECHAVENCIMINTO + "',fechaElaboracion='" + lo.FECHAELABORACION + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

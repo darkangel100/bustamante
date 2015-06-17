@@ -69,20 +69,22 @@
     <Compile Include="conexion.cs" />
     <Compile Include="controlador\AsientoContableDB.cs" />
     <Compile Include="controlador\AsientoDB.cs" />
-    <Compile Include="controlador\CuentaBD.cs" />
+    <Compile Include="controlador\DetalleFacturaDB.cs" />
     <Compile Include="controlador\FacturaBD.cs" />
+    <Compile Include="controlador\FacturaDB.cs" />
+    <Compile Include="controlador\LoteDB.cs" />
     <Compile Include="controlador\PagoDB.cs" />
     <Compile Include="controlador\ProductoDB.cs" />
-    <Compile Include="controlador\RolDB.cs" />
     <Compile Include="controlador\UsuariosBD.cs" />
     <Compile Include="controlador\Utiles.cs" />
     <Compile Include="modelo\Asiento.cs" />
     <Compile Include="modelo\AsientoContable.cs" />
-    <Compile Include="modelo\Cuenta.cs" />
+    <Compile Include="modelo\DetalleFactura.cs" />
+    <Compile Include="modelo\Factura.cs" />
     <Compile Include="modelo\Facturas.cs" />
+    <Compile Include="modelo\Lote.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />
-    <Compile Include="modelo\Rols.cs" />
     <Compile Include="modelo\Usuarios.cs" />
     <Compile Include="vista\frmAcceso.cs">
       <SubType>Form</SubType>
@@ -128,12 +130,6 @@
     <Compile Include="vista\FrmReportes.Designer.cs">
       <DependentUpon>FrmReportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\FrmUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="vista\FrmUsuario.Designer.cs">
-      <DependentUpon>FrmUsuario.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vista\FrmReportes.resx">
       <DependentUpon>FrmReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="vista\FrmUsuario.resx">
-      <DependentUpon>FrmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">

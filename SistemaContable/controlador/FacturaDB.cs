@@ -17,7 +17,7 @@ namespace SistemaContable.controlador
 
         public Factura getFactura()
         {
-            if (this.fac== null)
+            if (this.fac == null)
             {
                 this.fac = new Factura();
                 Factura fact = new Factura();
@@ -39,7 +39,7 @@ namespace SistemaContable.controlador
         {
             MySqlConnection cn = con.getConexion();
             MySqlCommand cmd;
-             string num = "";
+            string num = "";
             try
             {
                 string Sqlcad = "Select max(id_factura)as num from factura";
@@ -75,7 +75,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert factura set fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'"; 
+                string sqlcad = "Insert factura set fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

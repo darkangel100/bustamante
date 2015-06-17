@@ -87,7 +87,7 @@ namespace SistemaContable.vista
             
                 AdicionaAsientoContable();
             
-            Util.limpiar(tabPage1.Controls);
+           // Util.limpiar(tabPage1.Controls);
         }
 
         private void AdicionaAsientoContable()
@@ -129,7 +129,7 @@ namespace SistemaContable.vista
             btnGuardarAsiento.Enabled = true;
             pnlAsiento.Enabled = false;
             llenaAsiento(cboNomAsiento);
-            Util.limpiar(pnlAsiento.Controls);
+            //Util.limpiar(pnlAsiento.Controls);
 
         }
         private void AdicionaAsiento()
@@ -237,7 +237,7 @@ namespace SistemaContable.vista
             
                 AdicionaFactura();
             
-            Util.limpiar(tbpRegistroFactura.Controls);
+            //Util.limpiar(tbpRegistroFactura.Controls);
             dtgDetalleFactura.Rows.Clear();
             dtgDetalleFactura.Columns.Clear();
         }

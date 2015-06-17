@@ -34,7 +34,7 @@ namespace SistemaContable.controlador
         {
             this.defac = null;
         }
-        
+
 
 
         //Insertar una factue=ra a la Base de datos

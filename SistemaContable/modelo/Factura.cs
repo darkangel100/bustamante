@@ -52,6 +52,5 @@ namespace SistemaContable.modelo
             get { return listaFactura; }
             set { listaFactura = value; }
         }
-
     }
 }

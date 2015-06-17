@@ -34,8 +34,8 @@ namespace SistemaContable
 
         private void cuentaDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmUsuario formUsuario = new FrmUsuario();
-            formUsuario.ShowDialog();
+            //FrmUsuario formUsuario = new FrmUsuario();
+           // formUsuario.ShowDialog();
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
