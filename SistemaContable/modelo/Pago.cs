@@ -7,12 +7,16 @@ namespace SistemaContable.modelo
 {
     class Pago
     {
-      
+        private string id_pago;
         private string fecha_ingreso;
         private string monto;
         private List<Pago> listapago;
 
-      
+        public string IDPAGO
+        {
+            get { return id_pago; }
+            set { id_pago = value; }
+        }
         public string FECHA
         {
             get { return fecha_ingreso; }

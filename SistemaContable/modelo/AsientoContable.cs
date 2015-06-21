@@ -8,6 +8,7 @@ namespace SistemaContable.modelo
     class AsientoContable
     {
         private string id_usuario;
+        private string id_asiento;
         private string nombre_asiento;
         private string descripcion;
         private List<AsientoContable> listaAsiento;
@@ -19,6 +20,11 @@ namespace SistemaContable.modelo
             set { id_usuario = value; }
         }
 
+        public string IDASIENTO
+        {
+            get { return id_asiento; }
+            set { id_asiento = value; }
+        }
         public string NOMBRE_ASIENTO
         {
             get { return nombre_asiento; }

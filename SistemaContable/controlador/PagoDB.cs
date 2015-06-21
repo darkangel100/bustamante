@@ -42,7 +42,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert pago set fecha_ingreso='" + pag.FECHA + "', monto='" + pag.MONTO + "'";
+                string sqlcad = "Insert pago set id_pago='" + pag.IDPAGO + "',fecha_ingreso='" + pag.FECHA + "', monto='" + pag.MONTO + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -63,5 +63,7 @@ namespace SistemaContable.controlador
             pag = null;
             return resp;
         }
+
+        
     }
 }

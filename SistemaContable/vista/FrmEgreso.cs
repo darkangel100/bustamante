@@ -19,26 +19,34 @@ namespace SistemaContable.vista
             InitializeComponent();
             
         }
+       //VARIABLES
         string tipofac = "C";
-        
         string usuario = "usu";
         int agrega = -1;
-        string num = "", idpro = "";
-        int id_factura, id_producto;
+        string num = "", idpro = "", idasiento = "";
+        int id_factura, id_producto, id_asien;
 
-        private void label18_Click(object sender, EventArgs e)
+        //TRAE EL ID PRODUCTO
+        private void IDEASIENTO()
         {
-
+            AsientoContableDB objasicon = new AsientoContableDB();
+            idasiento = objasicon.traenumero();
+            if (idasiento.Equals(""))
+            {
+                id_asien = 1;
+            }
+            else
+            {
+                id_asien = Convert.ToInt32(idasiento);
+                id_asien++;
+            }
         }
 
-        
-
+        //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
         private void FrmEgreso_Load(object sender, EventArgs e)
         {
-           
+           //TRAE EL LTIMO ID DE FACTURA
             FacturaDB objfac = new FacturaDB();
-            ProductoDB objproducto = new ProductoDB();
-            
             num = objfac.traenumero();
             if (num.Equals(""))
             {
@@ -50,6 +58,8 @@ namespace SistemaContable.vista
                 id_factura++;
             }
 
+            //TRE EL ULTIMO ID DE PRODUCTO
+            ProductoDB objproducto = new ProductoDB();
             idpro = objproducto.traenumero();
             if (idpro.Equals(""))
             {
@@ -60,8 +70,11 @@ namespace SistemaContable.vista
                 id_producto = Convert.ToInt32(idpro);
                 id_producto++;
             }
-            txtNomAsiento.CharacterCasing = CharacterCasing.Upper;
+            //TRE EL ULTIMO ID DE ASIENTOCONTABLE
             
+            
+            
+            txtNomAsiento.CharacterCasing = CharacterCasing.Upper;
             llenaAsiento(cboNomAsiento);
         }
   
@@ -81,15 +94,14 @@ namespace SistemaContable.vista
             cbo.DataSource = objAsi.getAsiento().LISTAASIENTO;
             
         }
-
+        //ASIENTO CONTABLE
        private void btnGuardarAsiento_Click(object sender, EventArgs e)
         {
-            
-                AdicionaAsientoContable();
-                Utiles.limpiar(panelAsiento.Controls);
-           // Util.limpiar(tabPage1.Controls);
+            IDEASIENTO();
+            AdicionaAsientoContable();
+                Utiles.limpiar(tbAsientoContable.Controls);
         }
-
+        //INGRESA ASIENTO_CONTABLE A LA BASE DE DATOS
         private void AdicionaAsientoContable()
         {
             try
@@ -101,12 +113,14 @@ namespace SistemaContable.vista
                 objAs.getAsientoContable().IDUSUARIO = usuario;
                 objAs.getAsientoContable().NOMBRE_ASIENTO = cboNomAsiento.Text.Trim();
                 objAs.getAsientoContable().DESCRIPCION = txtDescripcionAsiento.Text.Trim();
-                objpa.getPago().FECHA = Convert.ToString(dtFechaAsiento);
+                
+                
+                objpa.getPago().IDPAGO = id_asien.ToString();
+                objpa.getPago().FECHA = Utiles.girafecha(dtFechaAsiento.Value.ToShortDateString());
                 objpa.getPago().MONTO = txtMonto.Text.Trim();
 
-                resp = objpa.InsertaPago(objpa.getPago());
                 resp = objAs.InsertaAsientoContable(objAs.getAsientoContable());
-                
+                resp = objpa.InsertaPago(objpa.getPago());
                 if (resp == 0)
                 {
                     MessageBox.Show("No se ingreso datos del Asiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -129,9 +143,10 @@ namespace SistemaContable.vista
             btnGuardarAsiento.Enabled = true;
             pnlAsiento.Enabled = false;
             llenaAsiento(cboNomAsiento);
-            //Util.limpiar(pnlAsiento.Controls);
+            Utiles.limpiar(pnlAsiento.Controls);
             Utiles.limpiar(panelAsiento.Controls);
         }
+        //ASIENTO
         private void AdicionaAsiento()
         {
             try
@@ -156,11 +171,6 @@ namespace SistemaContable.vista
             {
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void txtMonto_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
@@ -312,18 +322,7 @@ namespace SistemaContable.vista
 
         private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCriterio.Items.Equals("NOMBRE"))
-            {
-                txtBuscaAsiento.Enabled = true;
-                dtpBuscaAsiento.Enabled = false;
-            }
-            else
-            {
-             
-                    txtBuscaAsiento.Enabled = false;
-                    dtpBuscaAsiento.Enabled = true;
-                
-            }
+            
             
         }
 
