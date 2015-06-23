@@ -142,5 +142,36 @@ namespace SistemaContable.controlador
             return resp;
         }
 
+        public int ActualizaCuenta(Cuenta per)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            int resp;
+            try
+            {
+
+                string sqlcad = "Update cuenta set usuario='" + per.Usuario + "',contrasenia='" + per.Contrasenia + "',estado='" + per.Estado + "' WHERE id_usuario=" + per.IdUsuario + "";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return resp;
+        }
+
+
+
     }
 }

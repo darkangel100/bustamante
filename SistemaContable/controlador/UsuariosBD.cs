@@ -189,6 +189,35 @@ namespace SistemaContable.controlador
             cmd = null;
             return nro;
         }
+        public int ActualizaUsuario(Usuarios per)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            int resp;
+            try
+            {
+
+                string sqlcad = "Update usuario set id_rol=" + per.IdRol + ",cedula='" + per.CedUsu + "',nombre='" + per.NomUsu + "',apellido='" + per.ApeUsu + "',telefono='" + per.TelUsu + "',direccion='" + per.DirUsu + "' WHERE id_usuario=" + per.IdUsu + "";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return resp;
+        }
+
 
 
 

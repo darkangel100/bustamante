@@ -40,6 +40,23 @@ namespace SistemaContable.vista
             {
                 MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+/*
+            try
+            {
+                UsuariosBD objU = new UsuariosBD();
+                objU.getUsuarios().ListaUsuarios = objU.Traeusuarios();
+                if (objU.getUsuarios().ListaUsuarios.Count == 0)
+                {
+                    MessageBox.Show("No existen registros de usuarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                cmbUsuarioSeleccion.DisplayMember = "ApeUsu";
+                cmbUsuarioSeleccion.ValueMember = "IdUsu";
+                cmbUsuarioSeleccion.DataSource = objU.getUsuarios().ListaUsuarios;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
         }
         private void verificar()
         {
