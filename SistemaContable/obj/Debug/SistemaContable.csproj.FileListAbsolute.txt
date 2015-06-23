@@ -110,3 +110,18 @@ C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContab
 C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache
 C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
 C:\Users\USUARIO\Desktop\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe.config
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.exe
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.pdb
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\bin\Debug\SistemaContable.exe
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\bin\Debug\SistemaContable.pdb
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csprojResolveAssemblyReference.cache
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.Properties.Resources.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.frmAcceso.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmEgreso.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmIngreso.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.FrmPrincipal.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProducto.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmProveedor.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.vista.FrmReportes.resources
+M:\CANGUROM\pruebas est\SistemaContable\SistemaContable\obj\Debug\SistemaContable.csproj.GenerateResource.Cache

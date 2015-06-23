@@ -332,9 +332,9 @@
             this.label4.Location = new System.Drawing.Point(385, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(371, 31);
+            this.label4.Size = new System.Drawing.Size(277, 31);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Registro de Factura Ventas";
+            this.label4.Text = "Registro de Pedidos";
             // 
             // txtDescr
             // 

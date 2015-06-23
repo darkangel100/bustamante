@@ -48,7 +48,7 @@ namespace SistemaContable.vista
                 objF.getFacturas().Iva = Convert.ToInt32(txtIva.Text);
 
                 
-                objF.getFacturas().Tipo_fac = "A";// A de actualiza  E de eliminar
+                objF.getFacturas().Tipo_fac = "I";// A de actualiza  E de eliminar
                 resp = objF.InsertaFacturas(objF.getFacturas());
 
 
@@ -58,7 +58,7 @@ namespace SistemaContable.vista
                 }
                 else
                 {
-                    MessageBox.Show("Factura Ingresada", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Factura de Ventas Ingresada", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
