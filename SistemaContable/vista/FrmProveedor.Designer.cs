@@ -99,7 +99,6 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.tcProveedor.SuspendLayout();
             this.tpRegistro.SuspendLayout();
             this.pnlDistribuidora.SuspendLayout();
@@ -124,7 +123,6 @@
             // 
             // tpRegistro
             // 
-            this.tpRegistro.Controls.Add(this.button4);
             this.tpRegistro.Controls.Add(this.btnGuardarProveedor);
             this.tpRegistro.Controls.Add(this.label9);
             this.tpRegistro.Controls.Add(this.pnlDistribuidora);
@@ -770,15 +768,6 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Seleccione parametro de busqueda";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(367, 97);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // FrmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -881,7 +870,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Button button4;
 
     }
 }
