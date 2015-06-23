@@ -136,6 +136,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.paneldatosfactura = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tbAsientoContable.SuspendLayout();
             this.pnlAsiento.SuspendLayout();
@@ -147,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).BeginInit();
+            this.paneldatosfactura.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -321,38 +323,18 @@
             // 
             // tbpRegistroFactura
             // 
-            this.tbpRegistroFactura.Controls.Add(this.txtCostoUnidad);
-            this.tbpRegistroFactura.Controls.Add(this.label11);
-            this.tbpRegistroFactura.Controls.Add(this.txtCostoCaja);
-            this.tbpRegistroFactura.Controls.Add(this.label18);
-            this.tbpRegistroFactura.Controls.Add(this.btnProveedor);
-            this.tbpRegistroFactura.Controls.Add(this.label28);
-            this.tbpRegistroFactura.Controls.Add(this.cboProvedor);
+            this.tbpRegistroFactura.Controls.Add(this.paneldatosfactura);
             this.tbpRegistroFactura.Controls.Add(this.txtSubTotal);
             this.tbpRegistroFactura.Controls.Add(this.label27);
             this.tbpRegistroFactura.Controls.Add(this.txtIva);
             this.tbpRegistroFactura.Controls.Add(this.label26);
             this.tbpRegistroFactura.Controls.Add(this.btnAgregaDetalle);
-            this.tbpRegistroFactura.Controls.Add(this.dtpFechaCadu);
-            this.tbpRegistroFactura.Controls.Add(this.label25);
-            this.tbpRegistroFactura.Controls.Add(this.dtpFechaEla);
-            this.tbpRegistroFactura.Controls.Add(this.label24);
-            this.tbpRegistroFactura.Controls.Add(this.txtCanUnidades);
-            this.tbpRegistroFactura.Controls.Add(this.txtCantidadCajas);
-            this.tbpRegistroFactura.Controls.Add(this.txtProducto);
-            this.tbpRegistroFactura.Controls.Add(this.txtCodLote);
-            this.tbpRegistroFactura.Controls.Add(this.label22);
-            this.tbpRegistroFactura.Controls.Add(this.label19);
-            this.tbpRegistroFactura.Controls.Add(this.label20);
-            this.tbpRegistroFactura.Controls.Add(this.label21);
             this.tbpRegistroFactura.Controls.Add(this.txtGuardaFactura);
             this.tbpRegistroFactura.Controls.Add(this.txtTotal);
             this.tbpRegistroFactura.Controls.Add(this.label12);
             this.tbpRegistroFactura.Controls.Add(this.txtDescripFactura);
             this.tbpRegistroFactura.Controls.Add(this.label10);
             this.tbpRegistroFactura.Controls.Add(this.dtgDetalleFactura);
-            this.tbpRegistroFactura.Controls.Add(this.dtpFechaFactura);
-            this.tbpRegistroFactura.Controls.Add(this.label4);
             this.tbpRegistroFactura.Controls.Add(this.label2);
             this.tbpRegistroFactura.Location = new System.Drawing.Point(4, 22);
             this.tbpRegistroFactura.Name = "tbpRegistroFactura";
@@ -364,7 +346,7 @@
             // 
             // txtCostoUnidad
             // 
-            this.txtCostoUnidad.Location = new System.Drawing.Point(384, 120);
+            this.txtCostoUnidad.Location = new System.Drawing.Point(365, 55);
             this.txtCostoUnidad.Name = "txtCostoUnidad";
             this.txtCostoUnidad.Size = new System.Drawing.Size(118, 20);
             this.txtCostoUnidad.TabIndex = 72;
@@ -372,7 +354,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(292, 123);
+            this.label11.Location = new System.Drawing.Point(273, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 71;
@@ -380,7 +362,7 @@
             // 
             // txtCostoCaja
             // 
-            this.txtCostoCaja.Location = new System.Drawing.Point(129, 166);
+            this.txtCostoCaja.Location = new System.Drawing.Point(110, 101);
             this.txtCostoCaja.Name = "txtCostoCaja";
             this.txtCostoCaja.Size = new System.Drawing.Size(118, 20);
             this.txtCostoCaja.TabIndex = 70;
@@ -388,7 +370,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(49, 169);
+            this.label18.Location = new System.Drawing.Point(30, 104);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 13);
             this.label18.TabIndex = 69;
@@ -396,7 +378,7 @@
             // 
             // btnProveedor
             // 
-            this.btnProveedor.Location = new System.Drawing.Point(666, 170);
+            this.btnProveedor.Location = new System.Drawing.Point(654, 94);
             this.btnProveedor.Name = "btnProveedor";
             this.btnProveedor.Size = new System.Drawing.Size(75, 23);
             this.btnProveedor.TabIndex = 68;
@@ -406,7 +388,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(599, 123);
+            this.label28.Location = new System.Drawing.Point(535, 61);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(56, 13);
             this.label28.TabIndex = 67;
@@ -415,9 +397,9 @@
             // cboProvedor
             // 
             this.cboProvedor.FormattingEnabled = true;
-            this.cboProvedor.Location = new System.Drawing.Point(661, 120);
+            this.cboProvedor.Location = new System.Drawing.Point(597, 58);
             this.cboProvedor.Name = "cboProvedor";
-            this.cboProvedor.Size = new System.Drawing.Size(121, 21);
+            this.cboProvedor.Size = new System.Drawing.Size(185, 21);
             this.cboProvedor.TabIndex = 66;
             // 
             // txtSubTotal
@@ -454,7 +436,7 @@
             // 
             // btnAgregaDetalle
             // 
-            this.btnAgregaDetalle.Location = new System.Drawing.Point(270, 218);
+            this.btnAgregaDetalle.Location = new System.Drawing.Point(402, 218);
             this.btnAgregaDetalle.Name = "btnAgregaDetalle";
             this.btnAgregaDetalle.Size = new System.Drawing.Size(75, 23);
             this.btnAgregaDetalle.TabIndex = 61;
@@ -465,7 +447,7 @@
             // dtpFechaCadu
             // 
             this.dtpFechaCadu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaCadu.Location = new System.Drawing.Point(384, 170);
+            this.dtpFechaCadu.Location = new System.Drawing.Point(365, 105);
             this.dtpFechaCadu.Name = "dtpFechaCadu";
             this.dtpFechaCadu.Size = new System.Drawing.Size(118, 20);
             this.dtpFechaCadu.TabIndex = 60;
@@ -473,7 +455,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(311, 172);
+            this.label25.Location = new System.Drawing.Point(292, 107);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(64, 13);
             this.label25.TabIndex = 59;
@@ -482,7 +464,7 @@
             // dtpFechaEla
             // 
             this.dtpFechaEla.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaEla.Location = new System.Drawing.Point(384, 146);
+            this.dtpFechaEla.Location = new System.Drawing.Point(365, 81);
             this.dtpFechaEla.Name = "dtpFechaEla";
             this.dtpFechaEla.Size = new System.Drawing.Size(118, 20);
             this.dtpFechaEla.TabIndex = 58;
@@ -490,7 +472,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(311, 152);
+            this.label24.Location = new System.Drawing.Point(292, 87);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(61, 13);
             this.label24.TabIndex = 57;
@@ -498,28 +480,28 @@
             // 
             // txtCanUnidades
             // 
-            this.txtCanUnidades.Location = new System.Drawing.Point(384, 95);
+            this.txtCanUnidades.Location = new System.Drawing.Point(365, 30);
             this.txtCanUnidades.Name = "txtCanUnidades";
             this.txtCanUnidades.Size = new System.Drawing.Size(118, 20);
             this.txtCanUnidades.TabIndex = 54;
             // 
             // txtCantidadCajas
             // 
-            this.txtCantidadCajas.Location = new System.Drawing.Point(129, 141);
+            this.txtCantidadCajas.Location = new System.Drawing.Point(110, 76);
             this.txtCantidadCajas.Name = "txtCantidadCajas";
             this.txtCantidadCajas.Size = new System.Drawing.Size(118, 20);
             this.txtCantidadCajas.TabIndex = 53;
             // 
             // txtProducto
             // 
-            this.txtProducto.Location = new System.Drawing.Point(129, 117);
+            this.txtProducto.Location = new System.Drawing.Point(110, 52);
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(118, 20);
             this.txtProducto.TabIndex = 52;
             // 
             // txtCodLote
             // 
-            this.txtCodLote.Location = new System.Drawing.Point(129, 92);
+            this.txtCodLote.Location = new System.Drawing.Point(110, 27);
             this.txtCodLote.Name = "txtCodLote";
             this.txtCodLote.Size = new System.Drawing.Size(118, 20);
             this.txtCodLote.TabIndex = 51;
@@ -527,7 +509,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(57, 95);
+            this.label22.Location = new System.Drawing.Point(38, 30);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(64, 13);
             this.label22.TabIndex = 49;
@@ -537,7 +519,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(267, 98);
+            this.label19.Location = new System.Drawing.Point(248, 33);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(112, 13);
             this.label19.TabIndex = 47;
@@ -546,7 +528,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(71, 120);
+            this.label20.Location = new System.Drawing.Point(52, 55);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 13);
             this.label20.TabIndex = 46;
@@ -555,7 +537,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(25, 144);
+            this.label21.Location = new System.Drawing.Point(6, 79);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(96, 13);
             this.label21.TabIndex = 45;
@@ -623,7 +605,6 @@
             this.dtgDetalleFactura.RowHeadersVisible = false;
             this.dtgDetalleFactura.Size = new System.Drawing.Size(703, 171);
             this.dtgDetalleFactura.TabIndex = 37;
-            this.dtgDetalleFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDetalleFactura_CellContentClick);
             // 
             // Column8
             // 
@@ -669,7 +650,7 @@
             // 
             // dtpFechaFactura
             // 
-            this.dtpFechaFactura.Location = new System.Drawing.Point(661, 79);
+            this.dtpFechaFactura.Location = new System.Drawing.Point(597, 27);
             this.dtpFechaFactura.Name = "dtpFechaFactura";
             this.dtpFechaFactura.Size = new System.Drawing.Size(185, 20);
             this.dtpFechaFactura.TabIndex = 36;
@@ -677,7 +658,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(599, 85);
+            this.label4.Location = new System.Drawing.Point(535, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 35;
@@ -1132,6 +1113,34 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Busqueda, Lista y Activacion";
             // 
+            // paneldatosfactura
+            // 
+            this.paneldatosfactura.Controls.Add(this.txtCodLote);
+            this.paneldatosfactura.Controls.Add(this.btnProveedor);
+            this.paneldatosfactura.Controls.Add(this.txtCostoUnidad);
+            this.paneldatosfactura.Controls.Add(this.label28);
+            this.paneldatosfactura.Controls.Add(this.label21);
+            this.paneldatosfactura.Controls.Add(this.cboProvedor);
+            this.paneldatosfactura.Controls.Add(this.label11);
+            this.paneldatosfactura.Controls.Add(this.label20);
+            this.paneldatosfactura.Controls.Add(this.txtCostoCaja);
+            this.paneldatosfactura.Controls.Add(this.label19);
+            this.paneldatosfactura.Controls.Add(this.label18);
+            this.paneldatosfactura.Controls.Add(this.label22);
+            this.paneldatosfactura.Controls.Add(this.txtProducto);
+            this.paneldatosfactura.Controls.Add(this.txtCantidadCajas);
+            this.paneldatosfactura.Controls.Add(this.txtCanUnidades);
+            this.paneldatosfactura.Controls.Add(this.label24);
+            this.paneldatosfactura.Controls.Add(this.dtpFechaEla);
+            this.paneldatosfactura.Controls.Add(this.label25);
+            this.paneldatosfactura.Controls.Add(this.dtpFechaFactura);
+            this.paneldatosfactura.Controls.Add(this.label4);
+            this.paneldatosfactura.Controls.Add(this.dtpFechaCadu);
+            this.paneldatosfactura.Location = new System.Drawing.Point(54, 52);
+            this.paneldatosfactura.Name = "paneldatosfactura";
+            this.paneldatosfactura.Size = new System.Drawing.Size(834, 160);
+            this.paneldatosfactura.TabIndex = 73;
+            // 
             // FrmEgreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1158,6 +1167,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).EndInit();
+            this.paneldatosfactura.ResumeLayout(false);
+            this.paneldatosfactura.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1272,6 +1283,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.TextBox txtCostoUnidad;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel paneldatosfactura;
 
     }
 }

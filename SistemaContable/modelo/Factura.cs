@@ -8,7 +8,7 @@ namespace SistemaContable.modelo
     class Factura
     {
         private string id_proveedor;
-        //private string id_factura;
+        private string id_factura;
         private string fecha;
         private string total;
         private string subtotal;
@@ -21,6 +21,11 @@ namespace SistemaContable.modelo
         {
             get { return id_proveedor; }
             set { id_proveedor = value; }
+        }
+        public string IDFACTURA
+        {
+            get { return id_factura; }
+            set { id_factura = value; }
         }
         public string FECHA
         {

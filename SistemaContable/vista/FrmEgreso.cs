@@ -26,7 +26,7 @@ namespace SistemaContable.vista
         string num = "", idpro = "", idasiento = "";
         int id_factura, id_producto, id_asien;
 
-        //TRAE EL ID PRODUCTO
+        //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
         {
             AsientoContableDB objasicon = new AsientoContableDB();
@@ -42,10 +42,9 @@ namespace SistemaContable.vista
             }
         }
 
-        //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
-        private void FrmEgreso_Load(object sender, EventArgs e)
+        //TRAE EL ID DE LA FACTURA
+        private void IDFACTURA()
         {
-           //TRAE EL LTIMO ID DE FACTURA
             FacturaDB objfac = new FacturaDB();
             num = objfac.traenumero();
             if (num.Equals(""))
@@ -57,8 +56,10 @@ namespace SistemaContable.vista
                 id_factura = Convert.ToInt32(num);
                 id_factura++;
             }
-
-            //TRE EL ULTIMO ID DE PRODUCTO
+       }
+        //TRAE EL ULTIMO ID DE PRODUCTO
+        private void IDPRODUCTO()
+        {
             ProductoDB objproducto = new ProductoDB();
             idpro = objproducto.traenumero();
             if (idpro.Equals(""))
@@ -70,14 +71,15 @@ namespace SistemaContable.vista
                 id_producto = Convert.ToInt32(idpro);
                 id_producto++;
             }
-            //TRE EL ULTIMO ID DE ASIENTOCONTABLE
-            
-            
-            
+        }
+
+        //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
+        private void FrmEgreso_Load(object sender, EventArgs e)
+        {
             txtNomAsiento.CharacterCasing = CharacterCasing.Upper;
             llenaAsiento(cboNomAsiento);
         }
-  
+  //CARGA LOS ASIENTOS_CONTABLES AL COMBOBOX
         private void llenaAsiento(ComboBox cbo)
         {
             AsientoDB objAsi = new AsientoDB();
@@ -99,7 +101,7 @@ namespace SistemaContable.vista
         {
             IDEASIENTO();
             AdicionaAsientoContable();
-                Utiles.limpiar(tbAsientoContable.Controls);
+            Utiles.limpiar(tbAsientoContable.Controls);
         }
         //INGRESA ASIENTO_CONTABLE A LA BASE DE DATOS
         private void AdicionaAsientoContable()
@@ -204,106 +206,180 @@ namespace SistemaContable.vista
         }
         double subtotal = 0, iva, totalfactura;
         int numcajas, unidades, totalunidades;
-        double  costocaja, total;
+        double costocaja, total, costounidad;
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
-
-                numcajas = Convert.ToInt32(txtCantidadCajas.Text);
-                unidades = Convert.ToInt32(txtCanUnidades.Text);
-                costocaja = Convert.ToDouble(txtCostoCaja.Text);
-
-
-                totalunidades = numcajas * unidades;
-                total = costocaja * numcajas;
-
-                subtotal = subtotal + total;
-                iva = subtotal * 0.12;
-                totalfactura = subtotal + iva;
-
-                agrega++;
-                dtgDetalleFactura.Rows.Add(1);
-                dtgDetalleFactura.Rows[agrega].Cells[0].Value = txtCodLote.Text.Trim();
-                dtgDetalleFactura.Rows[agrega].Cells[1].Value = txtProducto.Text.Trim();
-                dtgDetalleFactura.Rows[agrega].Cells[2].Value = totalunidades.ToString();
-                dtgDetalleFactura.Rows[agrega].Cells[3].Value = txtCostoCaja.Text.Trim();
-                dtgDetalleFactura.Rows[agrega].Cells[4].Value = dtpFechaEla.Text.Trim();
-                dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaCadu.Text.Trim();
-                dtgDetalleFactura.Rows[agrega].Cells[6].Value = total.ToString();
-
-                txtSubTotal.Text = subtotal.ToString();
-                txtIva.Text = iva.ToString();
-                txtTotal.Text = totalfactura.ToString();
-
+            Agrega();
         }
 
-        private void dtgDetalleFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Agrega()
         {
+            numcajas = Convert.ToInt32(txtCantidadCajas.Text);
+            unidades = Convert.ToInt32(txtCanUnidades.Text);
+            costocaja = Convert.ToDouble(txtCostoCaja.Text);
+            costounidad = Convert.ToDouble(txtCostoUnidad.Text);
 
+            totalunidades = numcajas * unidades;
+            total = costocaja * numcajas;
+
+            subtotal = subtotal + total;
+            iva = subtotal * 0.12;
+            totalfactura = subtotal + iva;
+
+            agrega++;
+            dtgDetalleFactura.Rows.Add(1);
+            dtgDetalleFactura.Rows[agrega].Cells[0].Value = txtCodLote.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[1].Value = txtProducto.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[2].Value = totalunidades.ToString();
+            dtgDetalleFactura.Rows[agrega].Cells[3].Value = txtCostoCaja.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[4].Value = dtpFechaEla.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaCadu.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[6].Value = total.ToString();
+
+            txtSubTotal.Text = subtotal.ToString();
+            txtIva.Text = iva.ToString();
+            txtTotal.Text = totalfactura.ToString();
+            Utiles.limpiar(paneldatosfactura.Controls);
         }
-
         private void txtGuardaFactura_Click(object sender, EventArgs e)
         {
-            
-                AdicionaFactura();
-                Utiles.limpiar(panelFactura.Controls);
-            //Util.limpiar(tbpRegistroFactura.Controls);
-                dtgDetalleFactura.Rows.Clear();
-                dtgDetalleFactura.Columns.Clear();
+            IDFACTURA();
+            IDEASIENTO();
+            IDPRODUCTO();
+            AdicionaFactura();
+            Utiles.limpiar(tbpRegistroFactura.Controls);
+            dtgDetalleFactura.Rows.Clear();
+            dtgDetalleFactura.Columns.Clear();
+            Close();
         }
 
         public void AdicionaFactura()
         {
-           
             try
             {
-
+                AsientoContableDB objasi = new AsientoContableDB();
                 FacturaDB objfac = new FacturaDB();
                 DetalleFacturaDB objdefac = new DetalleFacturaDB();
                 ProductoDB objproducto = new ProductoDB();
                 LoteDB objLote = new LoteDB();
+                PagoDB  objpa = new PagoDB();
 
-                int resp;
-                
+                int respa;
+                int respf;
+                int respdf;
+                int resppro;
+                int resplo;
+                int resppag;
+
+                objasi.getAsientoContable().IDUSUARIO = usuario;
+                objasi.getAsientoContable().NOMBRE_ASIENTO = "COMPRA DE MERCADERIA";
+                objasi.getAsientoContable().DESCRIPCION = txtDescripFactura.Text;
+                respa = objasi.InsertaAsientoContable(objasi.getAsientoContable());
+
                 objfac.getFactura().IDPROVEEDOR = usuario;
-                objfac.getFactura().FECHA = dtpFechaFactura.Value.Date.ToShortDateString();
-                objfac.getFactura().TOTAL = txtTotal.Text.Trim();
-                objfac.getFactura().SUBTOTAL = txtSubTotal.Text.Trim();
-                objfac.getFactura().IVA = txtIva.Text.Trim();
+                objfac.getFactura().IDFACTURA = Convert.ToString(id_asien);
+                objfac.getFactura().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
+                objfac.getFactura().TOTAL = txtTotal.Text;
+                objfac.getFactura().SUBTOTAL = txtSubTotal.Text;
+                objfac.getFactura().IVA = txtIva.Text;
                 objfac.getFactura().TIPOFACTURA = tipofac;
+                respf = objfac.InsertaFactura(objfac.getFactura());
 
-                objdefac.getDetalleFactura().IDFACTURA = Convert.ToString(id_factura);
-                objdefac.getDetalleFactura().IDPRODUCTO = Convert.ToString(id_producto);
-                objdefac.getDetalleFactura().CANTIDAD = totalunidades.ToString().Trim();
-                objdefac.getDetalleFactura().NOMBREPRODUCTO = txtProducto.Text.Trim();
-                objdefac.getDetalleFactura().COSTOUNITARIO = txtCostoUnidad.Text.Trim();
-                objdefac.getDetalleFactura().COSTOTOTAL = total.ToString();
-
-                objproducto.getProducto().Nombre = txtProducto.Text.Trim();
-                objproducto.getProducto().Precio = Convert.ToDouble(txtCostoUnidad.Text);
+                objproducto.getProducto().Nombre = txtProducto.Text;
+                objproducto.getProducto().Precio = costounidad;
                 objproducto.getProducto().Estado = "A";
                 objproducto.getProducto().Stock_global = totalunidades;
+                resppro = objproducto.insertaProducto(objproducto.getProducto());
 
-                objLote.getLote().CODLOTE = txtCodLote.Text.Trim();
+                if (resppro == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de  producto", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Producto Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    for (int i = 0; i < agrega; i++)
+                    {
+                        objI.getDetalleFactura().idfac = Convert.ToInt32(txtid.Text);
+                        objI.getDetalleFactura().codpro = dgDatos.Rows[i].Cells[1].Value.ToString();
+                        cp = dgDatos.Rows[i].Cells[1].Value.ToString();
+                        objI.getDetalleFactura().canfac = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
+                        cca = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
+                        objI.getDetalleFactura().preven = Convert.ToDouble(dgDatos.Rows[i].Cells[3].Value);
+                        objI.getDetalleFactura().pretot = Convert.ToDouble(dgDatos.Rows[i].Cells[5].Value);
+                        resp1 = objI.InsertaItemFactura(objI.getDetalleFactura());
+
+                        objdefac.getDetalleFactura().IDFACTURA = Convert.ToString(id_asien);
+                        objdefac.getDetalleFactura().IDPRODUCTO = Convert.ToString(id_producto);
+                        objdefac.getDetalleFactura().CANTIDAD = totalunidades.ToString();
+                        objdefac.getDetalleFactura().NOMBREPRODUCTO = txtProducto.Text;
+                        objdefac.getDetalleFactura().COSTOUNITARIO = txtCostoUnidad.Text;
+                        objdefac.getDetalleFactura().COSTOTOTAL = total.ToString();
+                    }
+                }
+                
+
+                objLote.getLote().CODLOTE = txtCodLote.Text;
                 objLote.getLote().IDPRODUCTO = Convert.ToString(id_producto);
-                objLote.getLote().DESCRIPCION = txtDescripcionAsiento.Text.Trim();
+                objLote.getLote().DESCRIPCION = txtDescripcionAsiento.Text;
                 objLote.getLote().STOCKUNIDADES = Convert.ToString(totalunidades);
-                objLote.getLote().FECHAVENCIMINTO = dtpFechaCadu.Value.Date.ToShortDateString();
-                objLote.getLote().FECHAELABORACION = dtpFechaEla.Value.Date.ToShortDateString();
+                objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
+                objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
 
-                resp = objfac.InsertaFactura(objfac.getFactura());
-                resp = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
-                resp = objproducto.insertaProducto(objproducto.getProducto());
-                resp = objLote.InsertaLote(objLote.getLote());
+                
 
-                if (resp == 0)
+                objpa.getPago().IDPAGO = Convert.ToString(id_asien);
+                objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
+                objpa.getPago().MONTO = txtTotal.Text;
+
+                
+                
+                
+                respdf = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
+                resplo = objLote.InsertaLote(objLote.getLote());
+                resppag = objpa.InsertaPago(objpa.getPago());
+
+                if (respa == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de  Asiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (respf == 0)
                 {
                     MessageBox.Show("No se ingreso datos de  Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     MessageBox.Show("Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+                } 
+                
+                if (respdf == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de  detalle Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("detalle Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (resplo == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Lote Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (resppag == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de Pago", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Pago Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -322,13 +398,17 @@ namespace SistemaContable.vista
 
         private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (cboCriterio.SelectedIndex.Equals(0))
+            {
+                txtBuscaAsiento.Enabled = true;
+                dtpBuscaAsiento.Enabled = false;
+            }
+            else
+            {
+                dtpBuscaAsiento.Enabled = true;
+                txtBuscaAsiento.Enabled = false;
+            }
             
         }
-
-       
-      
-
-       
     }
 }
