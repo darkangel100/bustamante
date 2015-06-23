@@ -28,7 +28,7 @@ namespace SistemaContable.vista
             if (txtRDireccion.Text != "" && txtRNDistri.Text != "" && txtRTelefono.Text != "")
             {
                 agregarDis();
-                llenaDistri();
+                llenaDistri(cmbRDistri);
                 Utiles.limpiar(pnlDistribuidora.Controls);
                 pnlDistribuidora.Enabled = false;
             }
@@ -71,7 +71,7 @@ namespace SistemaContable.vista
             }
         }
 
-        public void llenaDistri()
+        public void llenaDistri(ComboBox cb)
         {
             try
             {
@@ -82,9 +82,30 @@ namespace SistemaContable.vista
                     cmbRDistri.Text = "No existen distribuidoras registradas";
                 }
                 //variables
-                cmbRDistri.DisplayMember = "nombre"; //lo q se quiere visualizar
-                cmbRDistri.ValueMember = "id"; //la llave primaria segun el atributo
-                cmbRDistri.DataSource = cdb.getDistribuidora().ListaDistribuidora;
+                cb.DisplayMember = "nombre"; //lo q se quiere visualizar
+                cb.ValueMember = "id"; //la llave primaria segun el atributo
+                cb.DataSource = cdb.getDistribuidora().ListaDistribuidora;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos ()," + ex.Message, "Tienda", MessageBoxButtons.OK);
+            }
+        }
+
+        public void llenaProveedor()
+        {
+            try
+            {
+                ProveedorDB cdb = new ProveedorDB();
+                cdb.getProveedor().ListaProveedor = cdb.traeProveedores();
+                if (cdb.getProveedor().ListaProveedor.Count == 0)
+                {
+                    cmbRDistri.Text = "No existen proveedores registrados";
+                }
+                //variables
+                cmbMProv.DisplayMember = "nombre"; //lo q se quiere visualizar
+                cmbMProv.ValueMember = "idProveedor"; //la llave primaria segun el atributo
+                cmbMProv.DataSource = cdb.getProveedor().ListaProveedor;
             }
             catch (Exception ex)
             {
@@ -94,7 +115,10 @@ namespace SistemaContable.vista
 
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
-            llenaDistri();
+            llenaDistri(cmbRDistri);
+            llenaDistri(cmbMdis);
+            llenaDistri(cmbMdistribuidoraP);
+            llenaProveedor();
         }
 
         private void btnGuardarProveedor_Click(object sender, EventArgs e)
@@ -103,6 +127,7 @@ namespace SistemaContable.vista
             {
                 agregarProveedor();
                 Utiles.limpiar(pnlProveedor.Controls);
+                llenaProveedor();
             }
             else
                 MessageBox.Show("Llene todos los campos obligatorios", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -132,5 +157,77 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al ingresar los datos " + ex.Message, "Sistema Contable", MessageBoxButtons.OK);
             }
         }
+
+        private void cmbMProv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mostrarProveedor();
+        }
+
+        private void mostrarProveedor()
+        {
+            try
+            {
+                ProveedorDB objB = new ProveedorDB();
+                objB.setProveedor(objB.traeProveedor(int.Parse(cmbMProv.SelectedValue.ToString())));
+                if (objB.getProveedor().IdProveedor == 0)
+                {
+                    MessageBox.Show("No existe registro del usuario", "tienda", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    txtMcelular.Text = objB.getProveedor().Celular;
+                    txtMNombre.Text = objB.getProveedor().Nombre;
+                    txtMcorreo.Text = objB.getProveedor().Correo;
+                    txtMtiempo.Text = objB.getProveedor().Tiempo;
+                    for (int i = 0; i < cmbMdistribuidoraP.Items.Count; i++)
+                    {
+                        cmbMdistribuidoraP.SelectedIndex = i;
+                        if (cmbMdistribuidoraP.SelectedValue.ToString() == objB.getProveedor().IdDistri.ToString())
+                            i = cmbMdistribuidoraP.Items.Count;
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos," + ex.Message, "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMProveedor_Click(object sender, EventArgs e)
+        {
+            modificarProveedor();
+        }
+
+        public void modificarProveedor()
+        {
+            try
+            {
+                ProveedorDB objB = new ProveedorDB();
+                objB.getProveedor().IdProveedor = int.Parse(cmbMProv.SelectedValue.ToString());
+                objB.getProveedor().IdDistri = int.Parse(cmbMdistribuidoraP.SelectedValue.ToString());
+                objB.getProveedor().Nombre = txtMNombre.Text;
+                objB.getProveedor().Tiempo = txtMtiempo.Text;
+                objB.getProveedor().Celular = txtMcelular.Text;
+                objB.getProveedor().Correo = txtMcorreo.Text;
+                
+                int resp = objB.actualizaProveedor(objB.getProveedor());
+                if (resp == 0)
+                {
+                    MessageBox.Show("No se modifico datos del Proveedor", "Sistema Contable", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Proveedor modificado", "tienda", MessageBoxButtons.OK);
+                    llenaProveedor();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar datos, " + ex.Message, "Sistema Contable", MessageBoxButtons.OK);
+            }
+        }
+
+
     }
 }

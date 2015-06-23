@@ -60,29 +60,29 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbMdis = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnMDistri = new System.Windows.Forms.Button();
+            this.txtMdireccion = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtMTelefono = new System.Windows.Forms.TextBox();
+            this.txtMnombreD = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtMtiempo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtMcorreo = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.cmbMdistribuidoraP = new System.Windows.Forms.ComboBox();
+            this.txtMcelular = new System.Windows.Forms.TextBox();
+            this.txtMNombre = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbMProv = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMProveedor = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -419,13 +419,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.comboBox4);
+            this.panel1.Controls.Add(this.cmbMdis);
             this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.btnMDistri);
+            this.panel1.Controls.Add(this.txtMdireccion);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.txtMTelefono);
+            this.panel1.Controls.Add(this.txtMnombreD);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Location = new System.Drawing.Point(445, 107);
@@ -433,13 +433,13 @@
             this.panel1.Size = new System.Drawing.Size(340, 260);
             this.panel1.TabIndex = 16;
             // 
-            // comboBox4
+            // cmbMdis
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(153, 18);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(169, 21);
-            this.comboBox4.TabIndex = 22;
+            this.cmbMdis.FormattingEnabled = true;
+            this.cmbMdis.Location = new System.Drawing.Point(153, 18);
+            this.cmbMdis.Name = "cmbMdis";
+            this.cmbMdis.Size = new System.Drawing.Size(169, 21);
+            this.cmbMdis.TabIndex = 22;
             // 
             // label20
             // 
@@ -450,21 +450,21 @@
             this.label20.TabIndex = 21;
             this.label20.Text = "Seleccionar Distribuidora";
             // 
-            // button2
+            // btnMDistri
             // 
-            this.button2.Location = new System.Drawing.Point(122, 222);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnMDistri.Location = new System.Drawing.Point(122, 222);
+            this.btnMDistri.Name = "btnMDistri";
+            this.btnMDistri.Size = new System.Drawing.Size(124, 23);
+            this.btnMDistri.TabIndex = 13;
+            this.btnMDistri.Text = "Guardar";
+            this.btnMDistri.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtMdireccion
             // 
-            this.textBox6.Location = new System.Drawing.Point(153, 155);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(169, 20);
-            this.textBox6.TabIndex = 12;
+            this.txtMdireccion.Location = new System.Drawing.Point(153, 155);
+            this.txtMdireccion.Name = "txtMdireccion";
+            this.txtMdireccion.Size = new System.Drawing.Size(169, 20);
+            this.txtMdireccion.TabIndex = 12;
             // 
             // label11
             // 
@@ -475,29 +475,29 @@
             this.label11.TabIndex = 11;
             this.label11.Text = "Direccion";
             // 
-            // textBox7
+            // txtMTelefono
             // 
-            this.textBox7.Location = new System.Drawing.Point(153, 110);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(169, 20);
-            this.textBox7.TabIndex = 10;
+            this.txtMTelefono.Location = new System.Drawing.Point(153, 110);
+            this.txtMTelefono.Name = "txtMTelefono";
+            this.txtMTelefono.Size = new System.Drawing.Size(169, 20);
+            this.txtMTelefono.TabIndex = 10;
             // 
-            // textBox8
+            // txtMnombreD
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(153, 65);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(169, 20);
-            this.textBox8.TabIndex = 9;
+            this.txtMnombreD.Enabled = false;
+            this.txtMnombreD.Location = new System.Drawing.Point(153, 65);
+            this.txtMnombreD.Name = "txtMnombreD";
+            this.txtMnombreD.Size = new System.Drawing.Size(169, 20);
+            this.txtMnombreD.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(24, 110);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 13);
+            this.label12.Size = new System.Drawing.Size(49, 13);
             this.label12.TabIndex = 8;
-            this.label12.Text = "Celular";
+            this.label12.Text = "Telefono";
             // 
             // label13
             // 
@@ -511,30 +511,30 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel2.Controls.Add(this.textBox9);
+            this.panel2.Controls.Add(this.txtMtiempo);
             this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.textBox10);
+            this.panel2.Controls.Add(this.txtMcorreo);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.textBox14);
-            this.panel2.Controls.Add(this.textBox15);
+            this.panel2.Controls.Add(this.cmbMdistribuidoraP);
+            this.panel2.Controls.Add(this.txtMcelular);
+            this.panel2.Controls.Add(this.txtMNombre);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label24);
             this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.comboBox3);
+            this.panel2.Controls.Add(this.cmbMProv);
             this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnMProveedor);
             this.panel2.Location = new System.Drawing.Point(32, 107);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(340, 260);
             this.panel2.TabIndex = 15;
             // 
-            // textBox9
+            // txtMtiempo
             // 
-            this.textBox9.Location = new System.Drawing.Point(146, 150);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(169, 20);
-            this.textBox9.TabIndex = 30;
+            this.txtMtiempo.Location = new System.Drawing.Point(146, 150);
+            this.txtMtiempo.Name = "txtMtiempo";
+            this.txtMtiempo.Size = new System.Drawing.Size(169, 20);
+            this.txtMtiempo.TabIndex = 30;
             // 
             // label14
             // 
@@ -545,12 +545,12 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "Tiempo Visita";
             // 
-            // textBox10
+            // txtMcorreo
             // 
-            this.textBox10.Location = new System.Drawing.Point(146, 95);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(169, 20);
-            this.textBox10.TabIndex = 28;
+            this.txtMcorreo.Location = new System.Drawing.Point(146, 95);
+            this.txtMcorreo.Name = "txtMcorreo";
+            this.txtMcorreo.Size = new System.Drawing.Size(169, 20);
+            this.txtMcorreo.TabIndex = 28;
             // 
             // label15
             // 
@@ -561,27 +561,27 @@
             this.label15.TabIndex = 27;
             this.label15.Text = "Correo";
             // 
-            // comboBox2
+            // cmbMdistribuidoraP
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(146, 174);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 26;
+            this.cmbMdistribuidoraP.FormattingEnabled = true;
+            this.cmbMdistribuidoraP.Location = new System.Drawing.Point(146, 174);
+            this.cmbMdistribuidoraP.Name = "cmbMdistribuidoraP";
+            this.cmbMdistribuidoraP.Size = new System.Drawing.Size(169, 21);
+            this.cmbMdistribuidoraP.TabIndex = 26;
             // 
-            // textBox14
+            // txtMcelular
             // 
-            this.textBox14.Location = new System.Drawing.Point(146, 121);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(169, 20);
-            this.textBox14.TabIndex = 25;
+            this.txtMcelular.Location = new System.Drawing.Point(146, 121);
+            this.txtMcelular.Name = "txtMcelular";
+            this.txtMcelular.Size = new System.Drawing.Size(169, 20);
+            this.txtMcelular.TabIndex = 25;
             // 
-            // textBox15
+            // txtMNombre
             // 
-            this.textBox15.Location = new System.Drawing.Point(146, 67);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(169, 20);
-            this.textBox15.TabIndex = 24;
+            this.txtMNombre.Location = new System.Drawing.Point(146, 67);
+            this.txtMNombre.Name = "txtMNombre";
+            this.txtMNombre.Size = new System.Drawing.Size(169, 20);
+            this.txtMNombre.TabIndex = 24;
             // 
             // label16
             // 
@@ -610,13 +610,14 @@
             this.label25.TabIndex = 21;
             this.label25.Text = "Nombre";
             // 
-            // comboBox3
+            // cmbMProv
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(145, 32);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(169, 21);
-            this.comboBox3.TabIndex = 20;
+            this.cmbMProv.FormattingEnabled = true;
+            this.cmbMProv.Location = new System.Drawing.Point(145, 32);
+            this.cmbMProv.Name = "cmbMProv";
+            this.cmbMProv.Size = new System.Drawing.Size(169, 21);
+            this.cmbMProv.TabIndex = 20;
+            this.cmbMProv.SelectedIndexChanged += new System.EventHandler(this.cmbMProv_SelectedIndexChanged);
             // 
             // label19
             // 
@@ -627,14 +628,15 @@
             this.label19.TabIndex = 19;
             this.label19.Text = "Seleccionar Proveedor";
             // 
-            // button1
+            // btnMProveedor
             // 
-            this.button1.Location = new System.Drawing.Point(116, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMProveedor.Location = new System.Drawing.Point(116, 222);
+            this.btnMProveedor.Name = "btnMProveedor";
+            this.btnMProveedor.Size = new System.Drawing.Size(124, 23);
+            this.btnMProveedor.TabIndex = 18;
+            this.btnMProveedor.Text = "Guardar";
+            this.btnMProveedor.UseVisualStyleBackColor = true;
+            this.btnMProveedor.Click += new System.EventHandler(this.btnMProveedor_Click);
             // 
             // label17
             // 
@@ -825,17 +827,17 @@
         private System.Windows.Forms.Button btnGuardarDistribuidora;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cmbMdis;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btnMDistri;
+        private System.Windows.Forms.TextBox txtMdireccion;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtMTelefono;
+        private System.Windows.Forms.TextBox txtMnombreD;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMProveedor;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox11;
@@ -848,17 +850,17 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtRCorreo;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtMtiempo;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtMcorreo;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.ComboBox cmbMdistribuidoraP;
+        private System.Windows.Forms.TextBox txtMcelular;
+        private System.Windows.Forms.TextBox txtMNombre;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbMProv;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn corre;
