@@ -41,6 +41,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlProveedor = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.txtRVisita = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtRCorreo = new System.Windows.Forms.TextBox();
@@ -96,9 +99,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.tcProveedor.SuspendLayout();
             this.tpRegistro.SuspendLayout();
             this.pnlDistribuidora.SuspendLayout();
@@ -123,6 +124,7 @@
             // 
             // tpRegistro
             // 
+            this.tpRegistro.Controls.Add(this.button4);
             this.tpRegistro.Controls.Add(this.btnGuardarProveedor);
             this.tpRegistro.Controls.Add(this.label9);
             this.tpRegistro.Controls.Add(this.pnlDistribuidora);
@@ -252,6 +254,33 @@
             this.pnlProveedor.Name = "pnlProveedor";
             this.pnlProveedor.Size = new System.Drawing.Size(340, 232);
             this.pnlProveedor.TabIndex = 9;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(14, 205);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(114, 13);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "(*) Campos obligatorios";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(292, 84);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(11, 13);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "*";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(292, 33);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(11, 13);
+            this.label26.TabIndex = 13;
+            this.label26.Text = "*";
             // 
             // txtRVisita
             // 
@@ -741,32 +770,14 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Seleccione parametro de busqueda";
             // 
-            // label26
+            // button4
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(292, 33);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(11, 13);
-            this.label26.TabIndex = 13;
-            this.label26.Text = "*";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(292, 84);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(11, 13);
-            this.label27.TabIndex = 14;
-            this.label27.Text = "*";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(14, 205);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(114, 13);
-            this.label28.TabIndex = 15;
-            this.label28.Text = "(*) Campos obligatorios";
+            this.button4.Location = new System.Drawing.Point(367, 97);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // FrmProveedor
             // 
@@ -870,6 +881,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button4;
 
     }
 }
