@@ -56,5 +56,12 @@ namespace SistemaContable.modelo
             get { return estado; }
             set { estado = value; }
         }
+        private List<Proveedor> listaProveedor;
+
+        public List<Proveedor> ListaProveedor
+        {
+            get { return listaProveedor; }
+            set { listaProveedor = value; }
+        }
     }
 }
