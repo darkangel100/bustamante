@@ -301,14 +301,14 @@ namespace SistemaContable.vista
                     MessageBox.Show("Producto Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     for (int i = 0; i < agrega; i++)
                     {
-                        objI.getDetalleFactura().idfac = Convert.ToInt32(txtid.Text);
-                        objI.getDetalleFactura().codpro = dgDatos.Rows[i].Cells[1].Value.ToString();
-                        cp = dgDatos.Rows[i].Cells[1].Value.ToString();
-                        objI.getDetalleFactura().canfac = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
-                        cca = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
-                        objI.getDetalleFactura().preven = Convert.ToDouble(dgDatos.Rows[i].Cells[3].Value);
-                        objI.getDetalleFactura().pretot = Convert.ToDouble(dgDatos.Rows[i].Cells[5].Value);
-                        resp1 = objI.InsertaItemFactura(objI.getDetalleFactura());
+                        //objI.getDetalleFactura().idfac = Convert.ToInt32(txtid.Text);
+                        //objI.getDetalleFactura().codpro = dgDatos.Rows[i].Cells[1].Value.ToString();
+                        //cp = dgDatos.Rows[i].Cells[1].Value.ToString();
+                        //objI.getDetalleFactura().canfac = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
+                        //cca = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
+                        //objI.getDetalleFactura().preven = Convert.ToDouble(dgDatos.Rows[i].Cells[3].Value);
+                        //objI.getDetalleFactura().pretot = Convert.ToDouble(dgDatos.Rows[i].Cells[5].Value);
+                        //resp1 = objI.InsertaItemFactura(objI.getDetalleFactura());
 
                         objdefac.getDetalleFactura().IDFACTURA = Convert.ToString(id_asien);
                         objdefac.getDetalleFactura().IDPRODUCTO = Convert.ToString(id_producto);
