@@ -26,7 +26,7 @@
   </Producto>
   <Producto>
     <nombre>Esfero</nombre>
-    <precio>0.40</precio>
+    <precio>0.60</precio>
     <estado>a</estado>
     <stock_global>60</stock_global>
   </Producto>
@@ -41,5 +41,11 @@
     <precio>0.35</precio>
     <estado>a</estado>
     <stock_global>45</stock_global>
+  </Producto>
+  <Producto>
+    <nombre>Corrector</nombre>
+    <precio>0.40</precio>
+    <estado>a</estado>
+    <stock_global>105</stock_global>
   </Producto>
 </Producto> 
