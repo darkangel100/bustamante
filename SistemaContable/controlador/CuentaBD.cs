@@ -72,14 +72,14 @@ namespace SistemaContable.controlador
             cmd = null;
             return ListaUsu;
         }
-        public Cuenta TraeCuenta(int id)
+        public Cuenta TraeCuenta(string nombreCuenta)
         {
             Cuenta usu = null;
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from cuenta Where id_usuario=" + id;
+                string sqlcad = "Select * from cuenta Where usuario='" + nombreCuenta +"'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

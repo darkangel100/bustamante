@@ -22,6 +22,7 @@ namespace SistemaContable.vista
             codigo();
             llenaRoles();
             llenaUsuarios();
+            
         }
         public void llenaUsuarios()
         {
