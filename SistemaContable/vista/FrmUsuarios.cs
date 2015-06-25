@@ -94,6 +94,11 @@ namespace SistemaContable.vista
                 cmbRoles.DisplayMember = "Tipo";
                 cmbRoles.ValueMember = "IdRol";
                 cmbRoles.DataSource = objU.getRol().ListaRoles;
+
+
+                cmbRolMod.DisplayMember = "Tipo";
+                cmbRolMod.ValueMember = "IdRol";
+                cmbRolMod.DataSource = objU.getRol().ListaRoles;
             }
             catch (Exception ex)
             {
@@ -195,6 +200,7 @@ namespace SistemaContable.vista
             {
                 UsuariosBD objP = new UsuariosBD();
                 int resp;
+                objP.getUsuarios().IdUsu = Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString());
                 objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
                 objP.getUsuarios().CedUsu = txtCedMod.Text.Trim();
                 //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
@@ -234,6 +240,7 @@ namespace SistemaContable.vista
                 CuentaBD objC = new CuentaBD();
                 int resp;
                // objC.getCuenta().Usuario = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
+                objC.getCuenta().IdUsuario = Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString());
                 objC.getCuenta().Usuario = txtNomUsuMod.Text.Trim();
                 //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
                 //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRoles.SelectedValue.ToString());
@@ -265,13 +272,6 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
-
-
-
-
-
         }
 
         private void modificar()
@@ -301,7 +301,7 @@ namespace SistemaContable.vista
                 objC.setCuenta(objC.TraeCuentaPorId(Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString())));
                 if (objC.getCuenta().Usuario == "")
                 {
-                    MessageBox.Show("No existen Cuentas de Usuario", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("No existen Cuentas", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {             
@@ -309,11 +309,11 @@ namespace SistemaContable.vista
                     txtCeñaMod.Text = objC.getCuenta().Contrasenia;
                     if (objC.getCuenta().Estado.Equals("A"))
                     {
-                        rbA.Checked = true;
+                        rbActMod.Checked = true;
                     }
                     else
                     {
-                        rbP.Checked = true;
+                        rbPasMod.Checked = true;
                     }
                 }
 
@@ -326,7 +326,7 @@ namespace SistemaContable.vista
 
         private void cmbUsuarioSeleccion_SelectedValueChanged(object sender, EventArgs e)
         {
-            modificar();
+           // modificar();
         }
 
         private void cmbUsuarioSeleccion_SelectedIndexChanged(object sender, EventArgs e)

@@ -636,7 +636,7 @@
             this.cmbUsuarioSeleccion.Name = "cmbUsuarioSeleccion";
             this.cmbUsuarioSeleccion.Size = new System.Drawing.Size(381, 24);
             this.cmbUsuarioSeleccion.TabIndex = 1;
-            this.cmbUsuarioSeleccion.SelectedIndexChanged += new System.EventHandler(this.txtAutoIncremeId_TextChanged);
+            this.cmbUsuarioSeleccion.SelectedIndexChanged += new System.EventHandler(this.cmbUsuarioSeleccion_SelectedIndexChanged);
             this.cmbUsuarioSeleccion.SelectedValueChanged += new System.EventHandler(this.cmbUsuarioSeleccion_SelectedValueChanged);
             // 
             // label14
