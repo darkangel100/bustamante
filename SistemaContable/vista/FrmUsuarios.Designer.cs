@@ -121,6 +121,7 @@
             this.txtAutoIncremeId.Name = "txtAutoIncremeId";
             this.txtAutoIncremeId.Size = new System.Drawing.Size(265, 22);
             this.txtAutoIncremeId.TabIndex = 2;
+            this.txtAutoIncremeId.TextChanged += new System.EventHandler(this.txtAutoIncremeId_TextChanged);
             // 
             // panel1
             // 
@@ -405,6 +406,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Modificar Desactivar";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // btnEdita
             // 
@@ -634,7 +636,7 @@
             this.cmbUsuarioSeleccion.Name = "cmbUsuarioSeleccion";
             this.cmbUsuarioSeleccion.Size = new System.Drawing.Size(381, 24);
             this.cmbUsuarioSeleccion.TabIndex = 1;
-            this.cmbUsuarioSeleccion.SelectedIndexChanged += new System.EventHandler(this.cmbUsuarioSeleccion_SelectedIndexChanged);
+            this.cmbUsuarioSeleccion.SelectedIndexChanged += new System.EventHandler(this.txtAutoIncremeId_TextChanged);
             this.cmbUsuarioSeleccion.SelectedValueChanged += new System.EventHandler(this.cmbUsuarioSeleccion_SelectedValueChanged);
             // 
             // label14

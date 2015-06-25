@@ -110,6 +110,45 @@ namespace SistemaContable.controlador
             cmd = null;
             return usu;
         }
+        public Cuenta TraeCuentaPorId(int numCuenta)
+        {
+            Cuenta usu = null;
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+              //  string sqlcad = "Select * from cuenta Where id_usuario='" ;
+                string sqlcad = "Select * from cuenta Where id_usuario=" + numCuenta;
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    usu = new Cuenta();
+
+                    usu.IdUsuario = Convert.ToInt32(dr["id_usuario"]);
+                    //Nuevo
+                    usu.Usuario = dr["usuario"].ToString();
+                    usu.Contrasenia = dr["contrasenia"].ToString();
+                    usu.Estado = dr["estado"].ToString();
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                usu = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                usu = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return usu;
+        }
 
 
 

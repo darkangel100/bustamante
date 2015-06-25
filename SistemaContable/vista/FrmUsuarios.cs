@@ -298,7 +298,7 @@ namespace SistemaContable.vista
                 }
                 //Cuenta
                 CuentaBD objC = new CuentaBD();
-                objC.setCuenta(objC.TraeCuenta(Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString())));
+                objC.setCuenta(objC.TraeCuentaPorId(Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString())));
                 if (objC.getCuenta().Usuario == "")
                 {
                     MessageBox.Show("No existen Cuentas de Usuario", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -332,6 +332,16 @@ namespace SistemaContable.vista
         private void cmbUsuarioSeleccion_SelectedIndexChanged(object sender, EventArgs e)
         {
              modificar();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAutoIncremeId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
