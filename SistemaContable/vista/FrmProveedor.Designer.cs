@@ -440,6 +440,7 @@
             this.cmbMdis.Name = "cmbMdis";
             this.cmbMdis.Size = new System.Drawing.Size(169, 21);
             this.cmbMdis.TabIndex = 22;
+            this.cmbMdis.SelectedIndexChanged += new System.EventHandler(this.cmbMdis_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -452,12 +453,14 @@
             // 
             // btnMDistri
             // 
+            this.btnMDistri.Enabled = false;
             this.btnMDistri.Location = new System.Drawing.Point(122, 222);
             this.btnMDistri.Name = "btnMDistri";
             this.btnMDistri.Size = new System.Drawing.Size(124, 23);
             this.btnMDistri.TabIndex = 13;
             this.btnMDistri.Text = "Guardar";
             this.btnMDistri.UseVisualStyleBackColor = true;
+            this.btnMDistri.Click += new System.EventHandler(this.btnMDistri_Click);
             // 
             // txtMdireccion
             // 
@@ -630,6 +633,7 @@
             // 
             // btnMProveedor
             // 
+            this.btnMProveedor.Enabled = false;
             this.btnMProveedor.Location = new System.Drawing.Point(116, 222);
             this.btnMProveedor.Name = "btnMProveedor";
             this.btnMProveedor.Size = new System.Drawing.Size(124, 23);
@@ -684,7 +688,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(627, 229);
+            this.button5.Location = new System.Drawing.Point(337, 327);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(115, 27);
             this.button5.TabIndex = 5;
@@ -693,6 +697,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -703,46 +709,54 @@
             this.Column4,
             this.Column5});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.Location = new System.Drawing.Point(89, 192);
+            this.dataGridView1.Location = new System.Drawing.Point(60, 156);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(532, 126);
+            this.dataGridView1.Size = new System.Drawing.Size(703, 145);
             this.dataGridView1.TabIndex = 3;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Nombre";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // corre
             // 
             this.corre.HeaderText = "Correo";
             this.corre.Name = "corre";
+            this.corre.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Celular";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // TiempoVisita
             // 
             this.TiempoVisita.HeaderText = "Tiempo de Visita";
             this.TiempoVisita.Name = "TiempoVisita";
+            this.TiempoVisita.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Distribuidora";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Telefono Distribuidora";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Estado";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // textBox11
             // 

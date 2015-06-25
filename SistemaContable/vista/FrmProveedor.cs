@@ -161,6 +161,7 @@ namespace SistemaContable.vista
         private void cmbMProv_SelectedIndexChanged(object sender, EventArgs e)
         {
             mostrarProveedor();
+            btnMProveedor.Enabled = true;
         }
 
         private void mostrarProveedor()
@@ -171,7 +172,7 @@ namespace SistemaContable.vista
                 objB.setProveedor(objB.traeProveedor(int.Parse(cmbMProv.SelectedValue.ToString())));
                 if (objB.getProveedor().IdProveedor == 0)
                 {
-                    MessageBox.Show("No existe registro del usuario", "tienda", MessageBoxButtons.OK);
+                    MessageBox.Show("No existe registro de proveedores", "Sistema Contable", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -186,7 +187,6 @@ namespace SistemaContable.vista
                             i = cmbMdistribuidoraP.Items.Count;
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -197,6 +197,13 @@ namespace SistemaContable.vista
         private void btnMProveedor_Click(object sender, EventArgs e)
         {
             modificarProveedor();
+            cmbMProv.Text = "";
+            cmbMdistribuidoraP.Text = "";
+            txtMNombre.Text = "";
+            txtMcorreo.Text = "";
+            txtMcelular.Text = "";
+            txtMtiempo.Text = "";
+            btnMProveedor.Enabled = false;
         }
 
         public void modificarProveedor()
@@ -218,7 +225,7 @@ namespace SistemaContable.vista
                 }
                 else
                 {
-                    MessageBox.Show("Proveedor modificado", "tienda", MessageBoxButtons.OK);
+                    MessageBox.Show("Proveedor modificado", "Sistema Contable", MessageBoxButtons.OK);
                     llenaProveedor();
                 }
             }
@@ -228,6 +235,71 @@ namespace SistemaContable.vista
             }
         }
 
+        private void btnMDistri_Click(object sender, EventArgs e)
+        {
+            modificarDistribuidora();
+            cmbMdis.Text = "";
+            txtMnombreD.Text = "";
+            txtMTelefono.Text = "";
+            txtMdireccion.Text = "";
+            btnMDistri.Enabled = false;
+        }
 
+        private void cmbMdis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mostrarDistribuidora();
+            btnMDistri.Enabled = true;
+        }
+
+        private void mostrarDistribuidora()
+        {
+            try
+            {
+                DistribuidoraDB objB = new DistribuidoraDB();
+                objB.setDistribuidora(objB.traeDistribuidora(int.Parse(cmbMdis.SelectedValue.ToString())));
+                if (objB.getDistribuidora().Id == 0)
+                {
+                    MessageBox.Show("No existe registro de distribuidoras", "Sistema Contable", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    txtMnombreD.Text = objB.getDistribuidora().Nombre;
+                    txtMTelefono.Text = objB.getDistribuidora().Telefono;
+                    txtMdireccion.Text = objB.getDistribuidora().Direccion;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos," + ex.Message, "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void modificarDistribuidora()
+        {
+            try
+            {
+                DistribuidoraDB objB = new DistribuidoraDB();
+                objB.getDistribuidora().Id = int.Parse(cmbMdis.SelectedValue.ToString());
+                objB.getDistribuidora().Nombre = txtMnombreD.Text;
+                objB.getDistribuidora().Direccion = txtMdireccion.Text;
+                objB.getDistribuidora().Telefono = txtMTelefono.Text;
+                objB.getDistribuidora().Estado = txtMcorreo.Text;
+
+                int resp = objB.actualizaDistribuidora(objB.getDistribuidora());
+                if (resp == 0)
+                {
+                    MessageBox.Show("No se modifico los datos de la Distribuidora", "Sistema Contable", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Distribuidora modificada", "Sistema Contable", MessageBoxButtons.OK);
+                    llenaProveedor();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar datos, " + ex.Message, "Sistema Contable", MessageBoxButtons.OK);
+            }
+        }
     }
 }

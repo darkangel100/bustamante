@@ -86,5 +86,96 @@ namespace SistemaContable.vista
             this.Close();
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ProductoDB p=new ProductoDB();
+            if (cmbCriterio.Text == "Nombre")
+            {
+                mostrarProducto(0, "nombre");
+            }
+            else
+                if(txtBusqueda.Text!="")
+                    mostrarProducto(int.Parse(txtBusqueda.Text), "id");
+            
+        }
+        private void mostrarProducto(int i,string c)
+        {
+            ProductoDB objB = new ProductoDB();
+            try
+            {
+                
+                objB.setProducto(objB.traeProducto(i, txtBusqueda.Text, c));
+                txtCodB.Text = objB.getProducto().Id_producto.ToString();
+                txtNomB.Text = objB.getProducto().Nombre;
+                txtPrecioB.Text = objB.getProducto().Precio.ToString();
+                txtStockB.Text = objB.getProducto().Stock_global.ToString();
+                if (objB.getProducto().Estado == "a")
+                    rdbActivo.Checked = true;
+                else
+                    rdbInactivo.Checked = true;
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No existe producto registrado con dicho " + cmbCriterio.Text, "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void cmbCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnBuscar.Enabled = true;
+            txtBusqueda.Text = "";
+        }
+
+        private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbCriterio.Text == "Nombre")
+            {
+                if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar!=8) 
+                {
+                    e.Handled = true;
+                }   
+            }
+            if (cmbCriterio.Text == "Codigo" && e.KeyChar != 8)
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void cmbCriterio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetterOrDigit(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsSeparator(e.KeyChar) || char.IsSymbol(e.KeyChar) || e.KeyChar==8 || char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnDesactivar_Click(object sender, EventArgs e)
+        {
+            ProductoDB objB = new ProductoDB();
+            objB.getProducto().Nombre = txtNomB.Text;
+            objB.getProducto().Precio = double.Parse(txtPrecioB.Text);
+            objB.getProducto().Stock_global = int.Parse(txtStockB.Text);
+            if (rdbActivo.Checked)
+                objB.getProducto().Estado = "i";
+            else
+                objB.getProducto().Estado = "a";
+
+            int resp = objB.modificarProducto(objB.getProducto());
+            if (resp == 0)
+            {
+                MessageBox.Show("No se modifico el estado del producto", "Sistema Contable", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Estado del producto modificado", "Sistema Contable", MessageBoxButtons.OK);
+                llenaProductos();
+                Utiles.limpiar(pnlProducto.Controls);
+                tcProducto.SelectTab(0);
+            }
+        }
     }
 }

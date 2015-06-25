@@ -269,5 +269,45 @@ namespace SistemaContable.controlador
             cmd = null;
             return num;
         }
+
+        //metodo para traer un producto en particular segun el criterio
+        public Producto traeProducto(int id, string nombre, string criterio)
+        {
+            ProductoDB p = null;
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            try
+            {
+                string comandoSql = "Select * from producto Where id_producto='" + id + "'";
+                if (criterio == "nombre")
+                    comandoSql = "Select * from producto Where nombre='" + nombre + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    p = new ProductoDB();
+                    p.getProducto().Id_producto = int.Parse(dr[0].ToString());
+                    p.getProducto().Nombre = dr[1].ToString();
+                    p.getProducto().Precio = double.Parse(dr[2].ToString());
+                    p.getProducto().Estado = dr[3].ToString();
+                    p.getProducto().Stock_global = int.Parse(dr[4].ToString());
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                p = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                p = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return p.getProducto();
+        }
     }
 }

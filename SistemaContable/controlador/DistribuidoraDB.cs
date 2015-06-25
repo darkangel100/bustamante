@@ -128,5 +128,71 @@ namespace SistemaContable.controlador
             cmd = null;
             return v;
         }
+
+        public Distribuidora traeDistribuidora(int p)
+        {
+            DistribuidoraDB d = null;
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            try
+            {
+                string comandoSql = "Select * from distribuidora Where id_distribuidora='" + p + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    d = new DistribuidoraDB();
+                    d.getDistribuidora().Id = int.Parse(dr[0].ToString());
+                    d.getDistribuidora().Nombre = dr[1].ToString();
+                    d.getDistribuidora().Direccion = dr[2].ToString();
+                    d.getDistribuidora().Telefono = dr[3].ToString();
+                    d.getDistribuidora().Estado = dr[4].ToString();
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                d = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                d = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return d.getDistribuidora();
+        }
+
+        public int actualizaDistribuidora(Distribuidora d)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            int resp;
+            try
+            {
+                string comandoSql = "Update distribuidora set nombreDistribuidora='" + d.Nombre + "', direccionDistribuidora='" + d.Direccion + "', telefonoDistribuidora='" + d.Telefono + "' WHERE id_distribuidora='" + d.Id + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return resp;
+        }
+
     }
 }
