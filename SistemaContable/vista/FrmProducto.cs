@@ -26,17 +26,24 @@ namespace SistemaContable.vista
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-           //revisar metodo
-            ProductoDB pddb = new ProductoDB();
-            ofdUrl.ShowDialog();
-            int r = pddb.guardar(url);
-            if (r == 0)
-                MessageBox.Show("No logro importar los productos", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            if (r == -5)
-                MessageBox.Show("No hay nuevos productos a importar", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            if(r>0)
-                MessageBox.Show("Importacion de productos finalizada", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Information);  
-            llenaProductos();
+            //revisar metodo
+            try
+            {
+                ProductoDB pddb = new ProductoDB();
+                ofdUrl.ShowDialog();
+                int r = pddb.guardar(url);
+                if (r == 0)
+                    MessageBox.Show("No logro importar los productos", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (r == -5)
+                    MessageBox.Show("No hay nuevos productos a importar", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (r > 0)
+                    MessageBox.Show("Importacion de productos finalizada", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                llenaProductos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Archivo no seleccionado", "Sistema Contable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

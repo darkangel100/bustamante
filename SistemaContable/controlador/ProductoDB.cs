@@ -33,71 +33,80 @@ namespace SistemaContable.controlador
         //metodo para leer el archivo y envio del objeto para la insercion a la base de datos
         public int guardar(string url)
         {
-            XmlReader xmltr = XmlReader.Create(url);
-            xmltr.MoveToContent();
-            Producto p = new Producto();
             int r = 0;
-            while (xmltr.Read())
+            try
             {
-                if (xmltr.IsStartElement())
+                XmlReader xmltr = XmlReader.Create(url);
+                xmltr.MoveToContent();
+                Producto p = new Producto();
+                
+                while (xmltr.Read())
                 {
-                    switch (xmltr.Name)
+                    if (xmltr.IsStartElement())
                     {
-                        case "nombre":
-                            if (xmltr.Read())
-                            {
-                                if (p == null)
+                        switch (xmltr.Name)
+                        {
+                            case "nombre":
+                                if (xmltr.Read())
                                 {
-                                    p = new Producto();
+                                    if (p == null)
+                                    {
+                                        p = new Producto();
+                                    }
+                                    p.Nombre = xmltr.Value;
                                 }
-                                p.Nombre = xmltr.Value;
-                            }
-                            break;
-                        case "precio":
-                            if (xmltr.Read())
-                            {
-                                p.Precio = double.Parse(xmltr.Value);
-                            }
-                            break;
-                        case "estado":
-                            if (xmltr.Read())
-                            {
-                                p.Estado = xmltr.Value;
-                            }
-                            break;
-                        case "stock_global":
-                            if (xmltr.Read())
-                            {
-                                p.Stock_global = Int32.Parse(xmltr.Value);
-                            }
-                            break;
+                                break;
+                            case "precio":
+                                if (xmltr.Read())
+                                {
+                                    p.Precio = double.Parse(xmltr.Value);
+                                }
+                                break;
+                            case "estado":
+                                if (xmltr.Read())
+                                {
+                                    p.Estado = xmltr.Value;
+                                }
+                                break;
+                            case "stock_global":
+                                if (xmltr.Read())
+                                {
+                                    p.Stock_global = Int32.Parse(xmltr.Value);
+                                }
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                else if (xmltr.Name == "Producto")
-                {
-                    if (p != null)
+                    else if (xmltr.Name == "Producto")
                     {
-                        int v = verificacionProducto(p);
-                        if ( v== 0)
+                        if (p != null)
                         {
-                            r = insertaProducto(p);
+                            int v = verificacionProducto(p);
+                            if (v == 0)
+                            {
+                                r = insertaProducto(p);
+                            }
+                            if (v == 2)
+                            {
+                                r = modificarProducto(p);
+                            }
+                            if (v == 1)
+                            {
+                                r = -5;
+                            }
                         }
-                        if (v == 2)
-                        {
-                            r = modificarProducto(p);
-                        }
-                        if (v == 1)
-                        {
-                            r = -5;
-                        }
+                        p = null;
                     }
-                    p = null;
                 }
+                return r;
             }
-            return r;
+            catch(Exception ex)
+            {
+                r=0;
+                throw ex;
+            }
         }
         //metodo para insertar un producto en la base de datos
         public int insertaProducto(Producto pr)
