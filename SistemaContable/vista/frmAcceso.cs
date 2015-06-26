@@ -68,6 +68,7 @@ namespace SistemaContable.vista
         private void btnIngreso_Click(object sender, EventArgs e)
         {
             verificar();
+
         }
 
     }
