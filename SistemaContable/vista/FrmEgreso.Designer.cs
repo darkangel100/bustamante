@@ -138,6 +138,7 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tbAsientoContable.SuspendLayout();
             this.pnlAsiento.SuspendLayout();
@@ -644,7 +645,8 @@
             this.Column3,
             this.Column9,
             this.Column10,
-            this.Column4});
+            this.Column4,
+            this.costunidad});
             this.dtgDetalleFactura.Location = new System.Drawing.Point(80, 247);
             this.dtgDetalleFactura.Name = "dtgDetalleFactura";
             this.dtgDetalleFactura.ReadOnly = true;
@@ -1149,6 +1151,13 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // costunidad
+            // 
+            this.costunidad.HeaderText = "CostoUnitario";
+            this.costunidad.Name = "costunidad";
+            this.costunidad.ReadOnly = true;
+            this.costunidad.Visible = false;
+            // 
             // FrmEgreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1293,6 +1302,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costunidad;
 
     }
 }

@@ -211,6 +211,8 @@ namespace SistemaContable.vista
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
             Agrega();
+
+            IDPRODUCTO();
         }
 
         private void Agrega()
@@ -230,12 +232,14 @@ namespace SistemaContable.vista
             agrega++;
             dtgDetalleFactura.Rows.Add(1);
             dtgDetalleFactura.Rows[agrega].Cells[0].Value = txtCodLote.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[1].Value = txtProducto.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[2].Value = totalunidades.ToString();
-            dtgDetalleFactura.Rows[agrega].Cells[3].Value = txtCostoCaja.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[4].Value = dtpFechaEla.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaCadu.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[6].Value = total.ToString();
+            dtgDetalleFactura.Rows[agrega].Cells[1].Value = id_producto;
+            dtgDetalleFactura.Rows[agrega].Cells[2].Value = txtProducto.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[3].Value = totalunidades.ToString();
+            dtgDetalleFactura.Rows[agrega].Cells[4].Value = txtCostoCaja.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaEla.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[6].Value = dtpFechaCadu.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[7].Value = total.ToString();
+            dtgDetalleFactura.Rows[agrega].Cells[8].Value = txtCostoUnidad.Text.Trim();
 
             txtSubTotal.Text = subtotal.ToString();
             txtIva.Text = iva.ToString();
@@ -246,7 +250,6 @@ namespace SistemaContable.vista
         {
             IDFACTURA();
             IDEASIENTO();
-            IDPRODUCTO();
             AdicionaFactura();
             Utiles.limpiar(tbpRegistroFactura.Controls);
             dtgDetalleFactura.Rows.Clear();
@@ -268,7 +271,7 @@ namespace SistemaContable.vista
                 int respa;
                 int respf;
                 int respdf;
-                int resppro;
+                
                 int resplo;
                 int resppag;
 
@@ -276,6 +279,14 @@ namespace SistemaContable.vista
                 objasi.getAsientoContable().NOMBRE_ASIENTO = "COMPRA DE MERCADERIA";
                 objasi.getAsientoContable().DESCRIPCION = txtDescripFactura.Text;
                 respa = objasi.InsertaAsientoContable(objasi.getAsientoContable());
+                if (respa == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de  Asiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 objfac.getFactura().IDPROVEEDOR = usuario;
                 objfac.getFactura().IDFACTURA = Convert.ToString(id_asien);
@@ -285,41 +296,27 @@ namespace SistemaContable.vista
                 objfac.getFactura().IVA = txtIva.Text;
                 objfac.getFactura().TIPOFACTURA = tipofac;
                 respf = objfac.InsertaFactura(objfac.getFactura());
-
-                objproducto.getProducto().Nombre = txtProducto.Text;
-                objproducto.getProducto().Precio = costounidad;
-                objproducto.getProducto().Estado = "A";
-                objproducto.getProducto().Stock_global = totalunidades;
-                resppro = objproducto.insertaProducto(objproducto.getProducto());
-
-                if (resppro == 0)
+                if (respf == 0)
                 {
-                    MessageBox.Show("No se ingreso datos de  producto", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se ingreso datos de  Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    MessageBox.Show("Producto Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
                     for (int i = 0; i < agrega; i++)
                     {
-                        //objI.getDetalleFactura().idfac = Convert.ToInt32(txtid.Text);
-                        //objI.getDetalleFactura().codpro = dgDatos.Rows[i].Cells[1].Value.ToString();
-                        //cp = dgDatos.Rows[i].Cells[1].Value.ToString();
-                        //objI.getDetalleFactura().canfac = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
-                        //cca = Convert.ToInt32(dgDatos.Rows[i].Cells[0].Value);
-                        //objI.getDetalleFactura().preven = Convert.ToDouble(dgDatos.Rows[i].Cells[3].Value);
-                        //objI.getDetalleFactura().pretot = Convert.ToDouble(dgDatos.Rows[i].Cells[5].Value);
-                        //resp1 = objI.InsertaItemFactura(objI.getDetalleFactura());
-
+                        
                         objdefac.getDetalleFactura().IDFACTURA = Convert.ToString(id_asien);
-                        objdefac.getDetalleFactura().IDPRODUCTO = Convert.ToString(id_producto);
+                        objdefac.getDetalleFactura().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
                         objdefac.getDetalleFactura().CANTIDAD = totalunidades.ToString();
-                        objdefac.getDetalleFactura().NOMBREPRODUCTO = txtProducto.Text;
-                        objdefac.getDetalleFactura().COSTOUNITARIO = txtCostoUnidad.Text;
-                        objdefac.getDetalleFactura().COSTOTOTAL = total.ToString();
+                        objdefac.getDetalleFactura().NOMBREPRODUCTO = dtgDetalleFactura.Rows[i].Cells[2].Value.ToString();
+                        objdefac.getDetalleFactura().COSTOUNITARIO = dtgDetalleFactura.Rows[i].Cells[8].Value.ToString();
+                        objdefac.getDetalleFactura().COSTOTOTAL = dtgDetalleFactura.Rows[i].Cells[7].Value.ToString();
                     }
-                }
-                
 
+                }
                 objLote.getLote().CODLOTE = txtCodLote.Text;
                 objLote.getLote().IDPRODUCTO = Convert.ToString(id_producto);
                 objLote.getLote().DESCRIPCION = txtDescripcionAsiento.Text;
@@ -340,22 +337,8 @@ namespace SistemaContable.vista
                 resplo = objLote.InsertaLote(objLote.getLote());
                 resppag = objpa.InsertaPago(objpa.getPago());
 
-                if (respa == 0)
-                {
-                    MessageBox.Show("No se ingreso datos de  Asiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                if (respf == 0)
-                {
-                    MessageBox.Show("No se ingreso datos de  Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } 
+                
+                
                 
                 if (respdf == 0)
                 {
