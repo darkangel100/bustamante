@@ -366,7 +366,7 @@ namespace SistemaContable.vista
 
         private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCriterio.SelectedIndex.Equals(0))
+            if (cboCriterio.Text=="NOMBRE")
             {
                 txtBuscaAsiento.Enabled = true;
                 dtpBuscaAsiento.Enabled = false;
@@ -398,6 +398,81 @@ namespace SistemaContable.vista
                  e.Handled = true;
                  MessageBox.Show("Introducir solo Numeros", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
              }
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            AsientoContableDB objasc = new AsientoContableDB();
+            FacturaBD objf = new FacturaBD();
+            PagoDB objpa = new PagoDB();
+            try
+            {
+                if (cboCriterio.Text == "NOMBRE")
+                {
+                    traedatoasiento();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void traedatoasiento()
+        {
+            try
+            {
+                AsientoContableDB objasicon = new AsientoContableDB();
+                objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
+                if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
+                {
+                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                    {
+                        dgvAsientoBusca.Rows.Add(1);
+                        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
+                        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvAsientoBusca_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                FacturaDB objfac = new FacturaDB();
+                objfac.getFactura().LISTAFACTURA = //objfac.traefacid();
+                //objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
+                //if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
+                //{
+                //    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                //    {
+                //        dgvAsientoBusca.Rows.Add(1);
+                //        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
+                //        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
+                //        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
+                //        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
