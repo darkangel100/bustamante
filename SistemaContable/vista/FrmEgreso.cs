@@ -23,8 +23,8 @@ namespace SistemaContable.vista
         string tipofac = "C";
         string usuario = "usu";
         int agrega = -1;
-        string num = "", idpro = "", idasiento = "";
-        int id_factura, id_producto, id_asien;
+        string num = "",  idasiento = "", nombrepro = "";
+        int id_factura, id_asien, idpro;
 
         //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
@@ -57,21 +57,7 @@ namespace SistemaContable.vista
                 id_factura++;
             }
        }
-        //TRAE EL ULTIMO ID DE PRODUCTO
-        private void IDPRODUCTO()
-        {
-            ProductoDB objproducto = new ProductoDB();
-            idpro = objproducto.traenumero();
-            if (idpro.Equals(""))
-            {
-                id_producto = 1;
-            }
-            else
-            {
-                id_producto = Convert.ToInt32(idpro);
-                id_producto++;
-            }
-        }
+        
 
         //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
         private void FrmEgreso_Load(object sender, EventArgs e)
@@ -210,11 +196,26 @@ namespace SistemaContable.vista
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
-            Agrega();
+            ProductoDB objpro = new ProductoDB();
+            objpro.getProducto().Nombre = txtProducto.Text;
+            int a=objpro.verificacionProducto(objpro.getProducto());
+            if (a != 0)
+            {
+                objpro.setProducto(objpro.traeProducto(idpro, txtProducto.Text, "nombre"));
+                idpro = objpro.getProducto().Id_producto;
+                nombrepro = objpro.getProducto().Nombre;
+                Agrega();
+            }
+            else
+            {
+                MessageBox.Show("No existe el producto en la base de datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+            
+           
 
-            IDPRODUCTO();
         }
-
+        
         private void Agrega()
         {
             numcajas = Convert.ToInt32(txtCantidadCajas.Text);
@@ -232,8 +233,8 @@ namespace SistemaContable.vista
             agrega++;
             dtgDetalleFactura.Rows.Add(1);
             dtgDetalleFactura.Rows[agrega].Cells[0].Value = txtCodLote.Text.Trim();
-            dtgDetalleFactura.Rows[agrega].Cells[1].Value = id_producto;
-            dtgDetalleFactura.Rows[agrega].Cells[2].Value = txtProducto.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[1].Value = idpro;
+            dtgDetalleFactura.Rows[agrega].Cells[2].Value = nombrepro;
             dtgDetalleFactura.Rows[agrega].Cells[3].Value = totalunidades.ToString();
             dtgDetalleFactura.Rows[agrega].Cells[4].Value = txtCostoCaja.Text.Trim();
             dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaEla.Text.Trim();
@@ -288,12 +289,12 @@ namespace SistemaContable.vista
                     MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                objfac.getFactura().IDPROVEEDOR = usuario;
-                objfac.getFactura().IDFACTURA = Convert.ToString(id_asien);
+                objfac.getFactura().IDPROVEEDOR = 1;
+                objfac.getFactura().IDFACTURA = id_asien;
                 objfac.getFactura().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
-                objfac.getFactura().TOTAL = txtTotal.Text;
-                objfac.getFactura().SUBTOTAL = txtSubTotal.Text;
-                objfac.getFactura().IVA = txtIva.Text;
+                objfac.getFactura().TOTAL = total;
+                objfac.getFactura().SUBTOTAL = subtotal;
+                objfac.getFactura().IVA = iva;
                 objfac.getFactura().TIPOFACTURA = tipofac;
                 respf = objfac.InsertaFactura(objfac.getFactura());
                 if (respf == 0)
@@ -305,7 +306,7 @@ namespace SistemaContable.vista
                     MessageBox.Show("Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    for (int i = 0; i < agrega; i++)
+                    for (int i = 0; i <= agrega; i++)
                     {
                         
                         objdefac.getDetalleFactura().IDFACTURA = Convert.ToString(id_asien);
@@ -314,32 +315,18 @@ namespace SistemaContable.vista
                         objdefac.getDetalleFactura().NOMBREPRODUCTO = dtgDetalleFactura.Rows[i].Cells[2].Value.ToString();
                         objdefac.getDetalleFactura().COSTOUNITARIO = dtgDetalleFactura.Rows[i].Cells[8].Value.ToString();
                         objdefac.getDetalleFactura().COSTOTOTAL = dtgDetalleFactura.Rows[i].Cells[7].Value.ToString();
+
+                        objLote.getLote().CODLOTE = dtgDetalleFactura.Rows[i].Cells[0].Value.ToString();
+                        objLote.getLote().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
+                        objLote.getLote().DESCRIPCION = txtDescripFactura.Text;
+                        objLote.getLote().STOCKUNIDADES = Convert.ToString(totalunidades);
+                        objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
+                        objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
+
                     }
 
                 }
-                objLote.getLote().CODLOTE = txtCodLote.Text;
-                objLote.getLote().IDPRODUCTO = Convert.ToString(id_producto);
-                objLote.getLote().DESCRIPCION = txtDescripcionAsiento.Text;
-                objLote.getLote().STOCKUNIDADES = Convert.ToString(totalunidades);
-                objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
-                objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
-
-                
-
-                objpa.getPago().IDPAGO = Convert.ToString(id_asien);
-                objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
-                objpa.getPago().MONTO = txtTotal.Text;
-
-                
-                
-                
                 respdf = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
-                resplo = objLote.InsertaLote(objLote.getLote());
-                resppag = objpa.InsertaPago(objpa.getPago());
-
-                
-                
-                
                 if (respdf == 0)
                 {
                     MessageBox.Show("No se ingreso datos de  detalle Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -348,6 +335,7 @@ namespace SistemaContable.vista
                 {
                     MessageBox.Show("detalle Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                resplo = objLote.InsertaLote(objLote.getLote());
                 if (resplo == 0)
                 {
                     MessageBox.Show("No se ingreso datos de Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -356,6 +344,11 @@ namespace SistemaContable.vista
                 {
                     MessageBox.Show("Lote Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                objpa.getPago().IDPAGO = Convert.ToString(id_asien);
+                objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
+                objpa.getPago().MONTO = txtTotal.Text;
+                resppag = objpa.InsertaPago(objpa.getPago());
                 if (resppag == 0)
                 {
                     MessageBox.Show("No se ingreso datos de Pago", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -368,14 +361,6 @@ namespace SistemaContable.vista
             catch (Exception ex)
             {
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Panda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnBusqueda_Click(object sender, EventArgs e)
-        {
-            if (cboCriterio.Items.Contains("NOMBRE"))
-            {
-
             }
         }
 
@@ -392,6 +377,27 @@ namespace SistemaContable.vista
                 txtBuscaAsiento.Enabled = false;
             }
             
+        }
+
+        private void txtCostoCaja_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             if (Char.IsDigit(e.KeyChar))
+             {
+                 e.Handled = false;
+             }
+             else if (Char.IsControl(e.KeyChar))
+             {
+                 e.Handled = false;
+             }
+             else if (Char.IsPunctuation(e.KeyChar))
+             {
+                 e.Handled = false;
+             }
+             else
+             {
+                 e.Handled = true;
+                 MessageBox.Show("Introducir solo Numeros", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+             }
         }
     }
 }
