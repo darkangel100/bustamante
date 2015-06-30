@@ -25,6 +25,7 @@ namespace SistemaContable.controlador
             }
             return this.ac;
         }
+       
         public void setAsientoContable(AsientoContable aconta)
         {
             this.ac = aconta;
@@ -94,6 +95,46 @@ namespace SistemaContable.controlador
             cn.Close();
             cmd = null;
             return num;
+        }
+        //traer asiento por el nombre
+        public List<AsientoContable> traeasicon(string nombre)
+        {
+            AsientoContableDB asicn = null;
+            List<AsientoContable> ListaAsiento = new List<AsientoContable>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "' and estado='A'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    asicn = new AsientoContableDB();
+                    asicn.getAsientoContable().IDASIENTO = dr["id_asiento"].ToString();
+                    asicn.getAsientoContable().NOMBRE_ASIENTO = dr["nombre_asiento"].ToString();
+                    asicn.getAsientoContable().DESCRIPCION = dr["descripcion"].ToString();
+                    asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
+                    ListaAsiento.Add(asicn.getAsientoContable());
+                   
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaAsiento;
         }
     }
 }

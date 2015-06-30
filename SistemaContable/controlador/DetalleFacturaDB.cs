@@ -66,5 +66,45 @@ namespace SistemaContable.controlador
             defactur = null;
             return resp;
         }
+        //trae detalle por id de factura
+        public List<DetalleFactura> traedetaid(int id)
+        {
+            DetalleFacturaDB det = null;
+            List<DetalleFactura> ListaDetalle = new List<DetalleFactura>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from detalle_factura where id_fac='" + id + "'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    
+                    det = new DetalleFacturaDB();
+                    det.getDetalleFactura().CANTIDAD = dr["cantidad"].ToString();
+                    det.getDetalleFactura().NOMBREPRODUCTO = dr["nombre_producto"].ToString();
+                    det.getDetalleFactura().COSTOUNITARIO = dr["costo_unitario"].ToString();
+                    det.getDetalleFactura().COSTOTOTAL = dr["costo_total"].ToString();
+                    ListaDetalle.Add(det.getDetalleFactura());
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                det = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                det = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaDetalle;
+        }
     }
 }

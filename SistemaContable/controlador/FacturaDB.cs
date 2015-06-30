@@ -96,5 +96,41 @@ namespace SistemaContable.controlador
             factur = null;
             return resp;
         }
+        public List<Factura> traefacid(int id)
+        {
+            FacturaDB fac = null;
+            List<Factura> ListaFac = new List<Factura>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from factura where id_fac='" + id + "' and tipo='C'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    fac = new FacturaDB();
+
+                    fac.getFactura().FECHA = dr["fecha"].ToString();
+                    ListaFac.Add(fac.getFactura());
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                fac = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                fac = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaFac;
+        }
     }
 }
