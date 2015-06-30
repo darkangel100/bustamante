@@ -79,6 +79,15 @@
             this.txtDescripFactura = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dtgDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelFactura = new System.Windows.Forms.Panel();
@@ -130,15 +139,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tbAsientoContable.SuspendLayout();
             this.pnlAsiento.SuspendLayout();
@@ -447,6 +447,7 @@
             this.txtCostoCaja.Name = "txtCostoCaja";
             this.txtCostoCaja.Size = new System.Drawing.Size(118, 20);
             this.txtCostoCaja.TabIndex = 70;
+            this.txtCostoCaja.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoCaja_KeyPress);
             // 
             // label19
             // 
@@ -653,6 +654,61 @@
             this.dtgDetalleFactura.RowHeadersVisible = false;
             this.dtgDetalleFactura.Size = new System.Drawing.Size(808, 171);
             this.dtgDetalleFactura.TabIndex = 37;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Codigo";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "Id_Producto";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Producto";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Cantidad";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Costo Unitario";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Fech Elabo";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Fech Exped";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Costo Total";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // costunidad
+            // 
+            this.costunidad.HeaderText = "CostoUnitario";
+            this.costunidad.Name = "costunidad";
+            this.costunidad.ReadOnly = true;
+            this.costunidad.Visible = false;
             // 
             // label2
             // 
@@ -910,7 +966,6 @@
             this.btnBusqueda.TabIndex = 47;
             this.btnBusqueda.Text = "Buscar";
             this.btnBusqueda.UseVisualStyleBackColor = true;
-            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // button6
             // 
@@ -1102,61 +1157,6 @@
             this.label3.Size = new System.Drawing.Size(317, 25);
             this.label3.TabIndex = 9;
             this.label3.Text = "Busqueda, Lista y Activacion";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Codigo";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id_Producto";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Producto";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Cantidad";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Costo Unitario";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Fech Elabo";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Fech Exped";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Costo Total";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // costunidad
-            // 
-            this.costunidad.HeaderText = "CostoUnitario";
-            this.costunidad.Name = "costunidad";
-            this.costunidad.ReadOnly = true;
-            this.costunidad.Visible = false;
             // 
             // FrmEgreso
             // 
