@@ -11,6 +11,7 @@ namespace SistemaContable.modelo
         private string id_asiento;
         private string nombre_asiento;
         private string descripcion;
+        private string estado;
         private List<AsientoContable> listaAsiento;
 
 
@@ -35,7 +36,11 @@ namespace SistemaContable.modelo
             get { return descripcion; }
             set { descripcion = value; }
         }
-        
+        public string ESTADO
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
         public List<AsientoContable> LISTAASIENTO
         {
             get { return listaAsiento; }
