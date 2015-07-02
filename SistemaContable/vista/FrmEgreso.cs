@@ -38,7 +38,7 @@ namespace SistemaContable.vista
             else
             {
                 id_asien = Convert.ToInt32(idasiento);
-                id_asien++;
+               
             }
         }
 
@@ -85,9 +85,15 @@ namespace SistemaContable.vista
         //ASIENTO CONTABLE
        private void btnGuardarAsiento_Click(object sender, EventArgs e)
         {
-            IDEASIENTO();
-            AdicionaAsientoContable();
-            Utiles.limpiar(tbAsientoContable.Controls);
+            if (txtMonto.TextLength < 0 || txtDescripcionAsiento.TextLength < 5)
+            {
+                MessageBox.Show("Faltan datos");
+            }
+            else
+            {
+                AdicionaAsientoContable();
+                Utiles.limpiar(tbAsientoContable.Controls);
+            }
         }
         //INGRESA ASIENTO_CONTABLE A LA BASE DE DATOS
         private void AdicionaAsientoContable()
@@ -101,13 +107,15 @@ namespace SistemaContable.vista
                 objAs.getAsientoContable().IDUSUARIO = usuario;
                 objAs.getAsientoContable().NOMBRE_ASIENTO = cboNomAsiento.Text.Trim();
                 objAs.getAsientoContable().DESCRIPCION = txtDescripcionAsiento.Text.Trim();
+                resp = objAs.InsertaAsientoContable(objAs.getAsientoContable());
                 
+                IDEASIENTO();
                 
                 objpa.getPago().IDPAGO = id_asien.ToString();
                 objpa.getPago().FECHA = Utiles.girafecha(dtFechaAsiento.Value.ToShortDateString());
                 objpa.getPago().MONTO = txtMonto.Text.Trim();
 
-                resp = objAs.InsertaAsientoContable(objAs.getAsientoContable());
+                
                 resp = objpa.InsertaPago(objpa.getPago());
                 if (resp == 0)
                 {
@@ -196,6 +204,7 @@ namespace SistemaContable.vista
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
+            
             ProductoDB objpro = new ProductoDB();
             objpro.getProducto().Nombre = txtProducto.Text;
             int a=objpro.verificacionProducto(objpro.getProducto());
@@ -315,6 +324,7 @@ namespace SistemaContable.vista
                         objdefac.getDetalleFactura().NOMBREPRODUCTO = dtgDetalleFactura.Rows[i].Cells[2].Value.ToString();
                         objdefac.getDetalleFactura().COSTOUNITARIO = dtgDetalleFactura.Rows[i].Cells[8].Value.ToString();
                         objdefac.getDetalleFactura().COSTOTOTAL = dtgDetalleFactura.Rows[i].Cells[7].Value.ToString();
+                        respdf = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
 
                         objLote.getLote().CODLOTE = dtgDetalleFactura.Rows[i].Cells[0].Value.ToString();
                         objLote.getLote().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
@@ -322,28 +332,28 @@ namespace SistemaContable.vista
                         objLote.getLote().STOCKUNIDADES = Convert.ToString(totalunidades);
                         objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
                         objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
-
+                        resplo = objLote.InsertaLote(objLote.getLote());
                     }
+                    //if (respdf == 0)
+                    //{
+                    //    MessageBox.Show("No se ingreso datos de  detalle Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("detalle Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
 
+                    //if (resplo == 0)
+                    //{
+                    //    MessageBox.Show("No se ingreso datos de Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Lote Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
                 }
-                respdf = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
-                if (respdf == 0)
-                {
-                    MessageBox.Show("No se ingreso datos de  detalle Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("detalle Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                resplo = objLote.InsertaLote(objLote.getLote());
-                if (resplo == 0)
-                {
-                    MessageBox.Show("No se ingreso datos de Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Lote Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                
+                
 
                 objpa.getPago().IDPAGO = Convert.ToString(id_asien);
                 objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
@@ -402,6 +412,7 @@ namespace SistemaContable.vista
 
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
+            dgvAsientoBusca.Rows.Clear();
             AsientoContableDB objasc = new AsientoContableDB();
             FacturaBD objf = new FacturaBD();
             PagoDB objpa = new PagoDB();
@@ -447,6 +458,8 @@ namespace SistemaContable.vista
 
         private void dgvAsientoBusca_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgvBuscaFactu.Rows.Clear();
+            dgvBuscPago.Rows.Clear();
             fila = dgvAsientoBusca.CurrentRow.Index;
             iddetalle = Convert.ToInt32(dgvAsientoBusca.CurrentRow.Cells[0].Value);
             
@@ -458,21 +471,45 @@ namespace SistemaContable.vista
         {
              try
             {
-                FacturaDB objfac = new FacturaDB();
-                objfac.getFactura().LISTAFACTURA = objfac.traefacid(iddetalle);
-                if (objfac.getFactura().LISTAFACTURA.Count == 0)
+                //FacturaDB objfac = new FacturaDB();
+                //objfac.getFactura().LISTAFACTURA = objfac.traefacid(iddetalle);
+                PagoDB objpago = new PagoDB();
+                objpago.getPago().LISTAPAGO = objpago.traePAGOtid(iddetalle);
+                 DetalleFacturaDB objdetalle=new DetalleFacturaDB();
+                 objdetalle.getDetalleFactura().LISTADETALLE=objdetalle.traedetaid(iddetalle);
+                if (objdetalle.getDetalleFactura().LISTADETALLE.Count==0)
                 {
-                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                    if (objpago.getPago().LISTAPAGO.Count == 0)
+                    {
+                        MessageBox.Show("No existen registros de asiento contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < objpago.getPago().LISTAPAGO.Count; i++)
+                        {
+                            dgvBuscPago.Rows.Add(1);
+                            dgvBuscPago.Rows[i].Cells[0].Value = objpago.getPago().LISTAPAGO[i].FECHA;
+                            dgvBuscPago.Rows[i].Cells[1].Value = objpago.getPago().LISTAPAGO[i].MONTO;
+                        }
+                    }
                 }
                 else
                 {
-                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                    for (int i = 0; i < objdetalle.getDetalleFactura().LISTADETALLE.Count;i++)
                     {
-                //        dgvAsientoBusca.Rows.Add(1);
-                //        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
-                //        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
-                //        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
-                //        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
+                        dgvBuscaFactu.Rows.Add(1);
+                        dgvBuscaFactu.Rows[i].Cells[0].Value = objpago.getPago().LISTAPAGO[0].FECHA;
+                        dgvBuscaFactu.Rows[i].Cells[1].Value = objdetalle.getDetalleFactura().LISTADETALLE[i].CANTIDAD;
+                        dgvBuscaFactu.Rows[i].Cells[2].Value = objdetalle.getDetalleFactura().LISTADETALLE[i].NOMBREPRODUCTO;
+                        dgvBuscaFactu.Rows[i].Cells[3].Value = objdetalle.getDetalleFactura().LISTADETALLE[i].COSTOUNITARIO;
+                        dgvBuscaFactu.Rows[i].Cells[4].Value = objdetalle.getDetalleFactura().LISTADETALLE[i].COSTOTOTAL;
+                    }
+                    for (int i = 0; i < objpago.getPago().LISTAPAGO.Count; i++)
+                    {
+                        dgvBuscPago.Rows.Add(1);
+                        dgvBuscPago.Rows[i].Cells[0].Value = objpago.getPago().LISTAPAGO[i].FECHA;
+                        dgvBuscPago.Rows[i].Cells[1].Value = objpago.getPago().LISTAPAGO[i].MONTO;
                     }
                 }
             }
