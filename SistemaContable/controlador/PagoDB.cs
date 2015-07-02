@@ -63,7 +63,43 @@ namespace SistemaContable.controlador
             pag = null;
             return resp;
         }
+        public List<Pago> traePAGOtid(int id)
+        {
+            PagoDB pag = null;
+            List<Pago> listapago = new List<Pago>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from pago where id_pago='" + id + "'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
 
+                    pag = new PagoDB();
+                    pag.getPago().FECHA = dr["fecha_ingreso"].ToString();
+                    pag.getPago().MONTO = dr["monto"].ToString();
+                    listapago.Add(pag.getPago());
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                pag = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                pag = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return listapago;
+        }
         
     }
 }

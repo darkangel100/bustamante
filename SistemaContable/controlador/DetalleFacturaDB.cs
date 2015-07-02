@@ -75,7 +75,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from detalle_factura where id_fac='" + id + "'";
+                string sqlcad = "Select * from detalle_factura where id_factura='" + id + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
