@@ -113,9 +113,9 @@ namespace SistemaContable.vista
                 
                 objpa.getPago().IDPAGO = id_asien.ToString();
                 objpa.getPago().FECHA = Utiles.girafecha(dtFechaAsiento.Value.ToShortDateString());
-                objpa.getPago().MONTO = txtMonto.Text.Trim();
+                objpa.getPago().MONTO = Convert.ToDouble(txtMonto.Text);
 
-                
+
                 resp = objpa.InsertaPago(objpa.getPago());
                 if (resp == 0)
                 {
@@ -172,7 +172,7 @@ namespace SistemaContable.vista
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
             char le = e.KeyChar;
-            if ((le >= '0' && le <= '9')||(le==8)||(le==44))
+            if ((le >= '0' && le <= '9') || (le == 8) || (le == 46))
             { }
             else
             {
@@ -183,6 +183,7 @@ namespace SistemaContable.vista
 
         private void txtNomAsiento_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //METODO PARA INGRESAR SOLO LETRAS
             char le = e.KeyChar;
             if ((le >= 'A' && le <= 'Z') || (le >= 'a' && le <= 'z') || (le == 8) || (le == 32))
             { }
@@ -204,10 +205,18 @@ namespace SistemaContable.vista
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
-            
+            if (dtpFechaEla.Value == dtpFechaFactura.Value || dtpFechaCadu.Value == dtpFechaFactura.Value)
+            {
+                MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales a la fecha actual ");
+            }
+            if (dtpFechaEla.Value == dtpFechaCadu.Value)
+            {
+                MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales");
+            }
+
             ProductoDB objpro = new ProductoDB();
             objpro.getProducto().Nombre = txtProducto.Text;
-            int a=objpro.verificacionProducto(objpro.getProducto());
+            int a = objpro.verificacionProducto(objpro.getProducto());
             if (a != 0)
             {
                 objpro.setProducto(objpro.traeProducto(idpro, txtProducto.Text, "nombre"));
@@ -219,10 +228,6 @@ namespace SistemaContable.vista
             {
                 MessageBox.Show("No existe el producto en la base de datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
-            
-           
-
         }
         
         private void Agrega()
@@ -233,7 +238,7 @@ namespace SistemaContable.vista
             costounidad = Convert.ToDouble(txtCostoUnidad.Text);
 
             totalunidades = numcajas * unidades;
-            total = costocaja * numcajas;
+            total = totalunidades * costounidad;
 
             subtotal = subtotal + total;
             iva = subtotal * 0.12;
@@ -245,11 +250,10 @@ namespace SistemaContable.vista
             dtgDetalleFactura.Rows[agrega].Cells[1].Value = idpro;
             dtgDetalleFactura.Rows[agrega].Cells[2].Value = nombrepro;
             dtgDetalleFactura.Rows[agrega].Cells[3].Value = totalunidades.ToString();
-            dtgDetalleFactura.Rows[agrega].Cells[4].Value = txtCostoCaja.Text.Trim();
+            dtgDetalleFactura.Rows[agrega].Cells[4].Value = txtCostoUnidad.Text.Trim();
             dtgDetalleFactura.Rows[agrega].Cells[5].Value = dtpFechaEla.Text.Trim();
             dtgDetalleFactura.Rows[agrega].Cells[6].Value = dtpFechaCadu.Text.Trim();
             dtgDetalleFactura.Rows[agrega].Cells[7].Value = total.ToString();
-            dtgDetalleFactura.Rows[agrega].Cells[8].Value = txtCostoUnidad.Text.Trim();
 
             txtSubTotal.Text = subtotal.ToString();
             txtIva.Text = iva.ToString();
@@ -258,13 +262,19 @@ namespace SistemaContable.vista
         }
         private void txtGuardaFactura_Click(object sender, EventArgs e)
         {
-            IDFACTURA();
-            IDEASIENTO();
-            AdicionaFactura();
-            Utiles.limpiar(tbpRegistroFactura.Controls);
-            dtgDetalleFactura.Rows.Clear();
-            dtgDetalleFactura.Columns.Clear();
-            Close();
+            //IDFACTURA();
+            if (txtCodLote.Text == "" || txtCantidadCajas.Text == "" || txtCanUnidades.Text == "" || txtCostoCaja.Text == "" || txtCostoUnidad.Text == "" || txtProducto.Text == "")
+            {
+                MessageBox.Show("Faltan datos de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                AdicionaFactura();
+                Utiles.limpiar(tbpRegistroFactura.Controls);
+                dtgDetalleFactura.Rows.Clear();
+                dtgDetalleFactura.Columns.Clear();
+                Close();
+            }
         }
 
         public void AdicionaFactura()
@@ -281,7 +291,7 @@ namespace SistemaContable.vista
                 int respa;
                 int respf;
                 int respdf;
-                
+                int respro;
                 int resplo;
                 int resppag;
 
@@ -296,12 +306,13 @@ namespace SistemaContable.vista
                 else
                 {
                     MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    IDEASIENTO();
                 }
 
                 objfac.getFactura().IDPROVEEDOR = 1;
                 objfac.getFactura().IDFACTURA = id_asien;
                 objfac.getFactura().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
-                objfac.getFactura().TOTAL = total;
+                objfac.getFactura().TOTAL = totalfactura;
                 objfac.getFactura().SUBTOTAL = subtotal;
                 objfac.getFactura().IVA = iva;
                 objfac.getFactura().TIPOFACTURA = tipofac;
@@ -322,10 +333,15 @@ namespace SistemaContable.vista
                         objdefac.getDetalleFactura().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
                         objdefac.getDetalleFactura().CANTIDAD = totalunidades.ToString();
                         objdefac.getDetalleFactura().NOMBREPRODUCTO = dtgDetalleFactura.Rows[i].Cells[2].Value.ToString();
-                        objdefac.getDetalleFactura().COSTOUNITARIO = dtgDetalleFactura.Rows[i].Cells[8].Value.ToString();
+                        objdefac.getDetalleFactura().COSTOUNITARIO = dtgDetalleFactura.Rows[i].Cells[4].Value.ToString();
                         objdefac.getDetalleFactura().COSTOTOTAL = dtgDetalleFactura.Rows[i].Cells[7].Value.ToString();
                         respdf = objdefac.InsertaDetalleFactura(objdefac.getDetalleFactura());
-
+                        if (respdf != 0)
+                        {
+                            
+                                respro=objproducto.agregapro(dtgDetalleFactura.Rows[i].Cells[1].Value.ToString(),totalunidades);
+                            
+                        }
                         objLote.getLote().CODLOTE = dtgDetalleFactura.Rows[i].Cells[0].Value.ToString();
                         objLote.getLote().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
                         objLote.getLote().DESCRIPCION = txtDescripFactura.Text;
@@ -333,6 +349,7 @@ namespace SistemaContable.vista
                         objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
                         objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
                         resplo = objLote.InsertaLote(objLote.getLote());
+
                     }
                     //if (respdf == 0)
                     //{
@@ -357,7 +374,7 @@ namespace SistemaContable.vista
 
                 objpa.getPago().IDPAGO = Convert.ToString(id_asien);
                 objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
-                objpa.getPago().MONTO = txtTotal.Text;
+                objpa.getPago().MONTO = Convert.ToDouble(txtTotal.Text);
                 resppag = objpa.InsertaPago(objpa.getPago());
                 if (resppag == 0)
                 {
@@ -389,26 +406,7 @@ namespace SistemaContable.vista
             
         }
 
-        private void txtCostoCaja_KeyPress(object sender, KeyPressEventArgs e)
-        {
-             if (Char.IsDigit(e.KeyChar))
-             {
-                 e.Handled = false;
-             }
-             else if (Char.IsControl(e.KeyChar))
-             {
-                 e.Handled = false;
-             }
-             else if (Char.IsPunctuation(e.KeyChar))
-             {
-                 e.Handled = false;
-             }
-             else
-             {
-                 e.Handled = true;
-                 MessageBox.Show("Introducir solo Numeros", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-             }
-        }
+       
 
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
@@ -517,6 +515,107 @@ namespace SistemaContable.vista
             {
                 MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtDescripcionAsiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //valida que se ingrese solo letras
+            char le = e.KeyChar;
+            if ((le >= 'a' && le <= 'z') || (le >= 'A' && le <= 'Z') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo letras");
+            }
+        }
+
+        private void txtCodLote_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= 'a' && le <= 'z') || (le >= 'A' && le <= 'Z') || (le >= '0' && le <= '9') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("No caracteres");
+            }
+        }
+
+        private void txtProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= 'a' && le <= 'z') || (le >= 'A' && le <= 'Z') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo letras");
+            }
+        }
+
+        private void txtCantidadCajas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= '0' && le <= '9') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo numeros enteros");
+            }
+        }
+        private void txtCostoCaja_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= '0' && le <= '9') || (le == 8) || (le == 46))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Ingresar el .(punto) no la ,(coma)");
+            }
+        }
+
+        private void txtCanUnidades_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= '0' && le <= '9') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo numeros enteros");
+            }
+        }
+
+        private void txtCostoUnidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= '0' && le <= '9') || (le == 8) || (le == 46))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Ingresar el .(punto) no la ,(coma)");
+            }
+        }
+
+        private void txtDescripFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char le = e.KeyChar;
+            if ((le >= 'a' && le <= 'z') || (le >= 'A' && le <= 'Z') || (le == 8) || (le == 32))
+            { }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo letras");
+            }
+        }
+
+        private void dgvBuscaFactu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

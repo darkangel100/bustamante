@@ -87,7 +87,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelFactura = new System.Windows.Forms.Panel();
@@ -122,6 +121,11 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvBuscaFactu = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvAsientoBusca = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,11 +135,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tbAsientoContable.SuspendLayout();
             this.pnlAsiento.SuspendLayout();
@@ -265,6 +264,7 @@
             this.txtDescripcionAsiento.Name = "txtDescripcionAsiento";
             this.txtDescripcionAsiento.Size = new System.Drawing.Size(185, 97);
             this.txtDescripcionAsiento.TabIndex = 28;
+            this.txtDescripcionAsiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripcionAsiento_KeyPress);
             // 
             // label7
             // 
@@ -377,6 +377,7 @@
             this.txtCodLote.Name = "txtCodLote";
             this.txtCodLote.Size = new System.Drawing.Size(118, 20);
             this.txtCodLote.TabIndex = 51;
+            this.txtCodLote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodLote_KeyPress);
             // 
             // btnProveedor
             // 
@@ -393,6 +394,7 @@
             this.txtCostoUnidad.Name = "txtCostoUnidad";
             this.txtCostoUnidad.Size = new System.Drawing.Size(118, 20);
             this.txtCostoUnidad.TabIndex = 72;
+            this.txtCostoUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoUnidad_KeyPress);
             // 
             // label28
             // 
@@ -480,6 +482,7 @@
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(118, 20);
             this.txtProducto.TabIndex = 52;
+            this.txtProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProducto_KeyPress);
             // 
             // txtCantidadCajas
             // 
@@ -487,6 +490,7 @@
             this.txtCantidadCajas.Name = "txtCantidadCajas";
             this.txtCantidadCajas.Size = new System.Drawing.Size(118, 20);
             this.txtCantidadCajas.TabIndex = 53;
+            this.txtCantidadCajas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadCajas_KeyPress);
             // 
             // txtCanUnidades
             // 
@@ -494,6 +498,7 @@
             this.txtCanUnidades.Name = "txtCanUnidades";
             this.txtCanUnidades.Size = new System.Drawing.Size(118, 20);
             this.txtCanUnidades.TabIndex = 54;
+            this.txtCanUnidades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCanUnidades_KeyPress);
             // 
             // label24
             // 
@@ -547,6 +552,8 @@
             // 
             // txtSubTotal
             // 
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubTotal.Location = new System.Drawing.Point(585, 426);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(86, 20);
@@ -563,6 +570,8 @@
             // 
             // txtIva
             // 
+            this.txtIva.Enabled = false;
+            this.txtIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIva.Location = new System.Drawing.Point(585, 448);
             this.txtIva.Name = "txtIva";
             this.txtIva.Size = new System.Drawing.Size(86, 20);
@@ -599,6 +608,8 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(585, 470);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(86, 20);
@@ -620,6 +631,7 @@
             this.txtDescripFactura.Name = "txtDescripFactura";
             this.txtDescripFactura.Size = new System.Drawing.Size(228, 42);
             this.txtDescripFactura.TabIndex = 39;
+            this.txtDescripFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripFactura_KeyPress);
             // 
             // label10
             // 
@@ -643,8 +655,7 @@
             this.Column3,
             this.Column9,
             this.Column10,
-            this.Column4,
-            this.costunidad});
+            this.Column4});
             this.dtgDetalleFactura.Location = new System.Drawing.Point(80, 247);
             this.dtgDetalleFactura.Name = "dtgDetalleFactura";
             this.dtgDetalleFactura.ReadOnly = true;
@@ -699,13 +710,6 @@
             this.Column4.HeaderText = "Costo Total";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            // 
-            // costunidad
-            // 
-            this.costunidad.HeaderText = "CostoUnitario";
-            this.costunidad.Name = "costunidad";
-            this.costunidad.ReadOnly = true;
-            this.costunidad.Visible = false;
             // 
             // label2
             // 
@@ -1012,16 +1016,19 @@
             // 
             this.dataGridViewTextBoxColumn9.HeaderText = "Fecha";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.HeaderText = "Monto";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.HeaderText = "Decripcion";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // dgvBuscaFactu
             // 
@@ -1040,6 +1047,37 @@
             this.dgvBuscaFactu.RowHeadersVisible = false;
             this.dgvBuscaFactu.Size = new System.Drawing.Size(603, 80);
             this.dgvBuscaFactu.TabIndex = 40;
+            this.dgvBuscaFactu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscaFactu_CellClick);
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Fecha";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Producto";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Costo Unitario";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Costo Total";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dgvAsientoBusca
             // 
@@ -1063,23 +1101,27 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Id";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Nombre Asiento";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 200;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Descripcion";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 400;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Estado";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dtpBuscaAsiento
             // 
@@ -1116,36 +1158,6 @@
             this.label3.Size = new System.Drawing.Size(317, 25);
             this.label3.TabIndex = 9;
             this.label3.Text = "Busqueda, Lista y Activacion";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Fecha";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cantidad";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Costo Unitario";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Costo Total";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // FrmEgreso
             // 
@@ -1275,6 +1287,11 @@
         private System.Windows.Forms.TextBox txtCostoUnidad;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel paneldatosfactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1283,12 +1300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costunidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
 
     }
 }
