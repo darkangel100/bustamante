@@ -24,8 +24,8 @@ namespace SistemaContable.vista
         string usuario = "usu";
         int agrega = -1;
         string num = "",  idasiento = "", nombrepro = "";
-        int id_factura, id_asien, idpro;
-
+        int id_factura, id_asien, idpro, fila, iddetalle;
+        
         //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
         {
@@ -447,32 +447,39 @@ namespace SistemaContable.vista
 
         private void dgvAsientoBusca_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            fila = dgvAsientoBusca.CurrentRow.Index;
+            iddetalle = Convert.ToInt32(dgvAsientoBusca.CurrentRow.Cells[0].Value);
+            
+            llenadetalle(iddetalle);
+           
+
+        }
+        private void llenadetalle(int id)
+        {
+             try
             {
                 FacturaDB objfac = new FacturaDB();
-                objfac.getFactura().LISTAFACTURA = //objfac.traefacid();
-                //objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
-                //if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
-                //{
-                //    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-                //else
-                //{
-                //    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
-                //    {
+                objfac.getFactura().LISTAFACTURA = objfac.traefacid(iddetalle);
+                if (objfac.getFactura().LISTAFACTURA.Count == 0)
+                {
+                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                    {
                 //        dgvAsientoBusca.Rows.Add(1);
                 //        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
                 //        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
                 //        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
                 //        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
-                //    }
-                //}
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }
