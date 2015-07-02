@@ -81,7 +81,7 @@ namespace SistemaContable.controlador
 
                     pag = new PagoDB();
                     pag.getPago().FECHA = dr["fecha_ingreso"].ToString();
-                    pag.getPago().MONTO = dr["monto"].ToString();
+                    pag.getPago().MONTO = Convert.ToDouble(dr["monto"].ToString());
                     listapago.Add(pag.getPago());
                 }
                 dr.Close();

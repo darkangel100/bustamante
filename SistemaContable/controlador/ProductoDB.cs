@@ -318,5 +318,36 @@ namespace SistemaContable.controlador
             cmd = null;
             return p.getProducto();
         }
+        //actualiza producto cuando se compra
+        public int agregapro(string cod, int can)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            int resp;
+
+            try
+            {
+                string sqlcad = "Update producto set stock_global=stock_global+" + can + " where id_producto='" + cod + "'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cmd = null;
+            cn.Close();
+            return resp;
+
+
+        }
     }
 }
