@@ -9,7 +9,7 @@ namespace SistemaContable.modelo
     {
         private string id_pago;
         private string fecha_ingreso;
-        private string monto;
+        private double monto;
         private List<Pago> listapago;
 
         public string IDPAGO
@@ -22,7 +22,7 @@ namespace SistemaContable.modelo
             get { return fecha_ingreso; }
             set { fecha_ingreso = value; }
         }
-        public string MONTO
+        public double MONTO
         {
             get { return monto; }
             set { monto = value; }
