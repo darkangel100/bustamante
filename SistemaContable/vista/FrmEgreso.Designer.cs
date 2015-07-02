@@ -101,12 +101,12 @@
             this.label33 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.panelAsiento = new System.Windows.Forms.Panel();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechamodifica = new System.Windows.Forms.DateTimePicker();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.txtMontoModifica = new System.Windows.Forms.TextBox();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtBuscaAsiento = new System.Windows.Forms.TextBox();
@@ -114,8 +114,8 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnActiva = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.dgvBuscPago = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -732,8 +732,8 @@
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Controls.Add(this.btnActiva);
+            this.tabPage3.Controls.Add(this.btnModificar);
             this.tabPage3.Controls.Add(this.dgvBuscPago);
             this.tabPage3.Controls.Add(this.dgvBuscaFactu);
             this.tabPage3.Controls.Add(this.dgvAsientoBusca);
@@ -851,24 +851,24 @@
             // panelAsiento
             // 
             this.panelAsiento.BackColor = System.Drawing.Color.LightGray;
-            this.panelAsiento.Controls.Add(this.dateTimePicker6);
+            this.panelAsiento.Controls.Add(this.dtpFechamodifica);
             this.panelAsiento.Controls.Add(this.textBox13);
             this.panelAsiento.Controls.Add(this.label30);
             this.panelAsiento.Controls.Add(this.label23);
             this.panelAsiento.Controls.Add(this.label29);
-            this.panelAsiento.Controls.Add(this.textBox16);
+            this.panelAsiento.Controls.Add(this.txtMontoModifica);
             this.panelAsiento.Enabled = false;
             this.panelAsiento.Location = new System.Drawing.Point(119, 412);
             this.panelAsiento.Name = "panelAsiento";
             this.panelAsiento.Size = new System.Drawing.Size(255, 146);
             this.panelAsiento.TabIndex = 52;
             // 
-            // dateTimePicker6
+            // dtpFechamodifica
             // 
-            this.dateTimePicker6.Location = new System.Drawing.Point(64, 3);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(185, 20);
-            this.dateTimePicker6.TabIndex = 58;
+            this.dtpFechamodifica.Location = new System.Drawing.Point(64, 3);
+            this.dtpFechamodifica.Name = "dtpFechamodifica";
+            this.dtpFechamodifica.Size = new System.Drawing.Size(185, 20);
+            this.dtpFechamodifica.TabIndex = 58;
             // 
             // textBox13
             // 
@@ -905,12 +905,12 @@
             this.label29.TabIndex = 54;
             this.label29.Text = "Monto";
             // 
-            // textBox16
+            // txtMontoModifica
             // 
-            this.textBox16.Location = new System.Drawing.Point(64, 31);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(185, 20);
-            this.textBox16.TabIndex = 55;
+            this.txtMontoModifica.Location = new System.Drawing.Point(64, 31);
+            this.txtMontoModifica.Name = "txtMontoModifica";
+            this.txtMontoModifica.Size = new System.Drawing.Size(185, 20);
+            this.txtMontoModifica.TabIndex = 55;
             // 
             // cboCriterio
             // 
@@ -978,23 +978,24 @@
             this.label15.TabIndex = 44;
             this.label15.Text = "Pagos Varios";
             // 
-            // button5
+            // btnActiva
             // 
-            this.button5.Location = new System.Drawing.Point(557, 288);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(109, 23);
-            this.button5.TabIndex = 43;
-            this.button5.Text = "Activar/Desactivar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnActiva.Location = new System.Drawing.Point(557, 288);
+            this.btnActiva.Name = "btnActiva";
+            this.btnActiva.Size = new System.Drawing.Size(109, 23);
+            this.btnActiva.TabIndex = 43;
+            this.btnActiva.Text = "Activar/Desactivar";
+            this.btnActiva.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnModificar
             // 
-            this.button3.Location = new System.Drawing.Point(338, 288);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnModificar.Location = new System.Drawing.Point(338, 288);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(109, 23);
+            this.btnModificar.TabIndex = 42;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // dgvBuscPago
             // 
@@ -1232,8 +1233,8 @@
         private System.Windows.Forms.DateTimePicker dtpBuscaAsiento;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnActiva;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -1278,12 +1279,12 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Panel panelAsiento;
-        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private System.Windows.Forms.DateTimePicker dtpFechamodifica;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox txtMontoModifica;
         private System.Windows.Forms.TextBox txtCostoUnidad;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel paneldatosfactura;

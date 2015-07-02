@@ -205,28 +205,40 @@ namespace SistemaContable.vista
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
-            if (dtpFechaEla.Value == dtpFechaFactura.Value || dtpFechaCadu.Value == dtpFechaFactura.Value)
+            if (txtCodLote.Text == "" || txtCantidadCajas.Text == "" || txtCanUnidades.Text == "" || txtCostoCaja.Text == "" || txtCostoUnidad.Text == "" || txtProducto.Text == "")
             {
-                MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales a la fecha actual ");
-            }
-            if (dtpFechaEla.Value == dtpFechaCadu.Value)
-            {
-                MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales");
-            }
-
-            ProductoDB objpro = new ProductoDB();
-            objpro.getProducto().Nombre = txtProducto.Text;
-            int a = objpro.verificacionProducto(objpro.getProducto());
-            if (a != 0)
-            {
-                objpro.setProducto(objpro.traeProducto(idpro, txtProducto.Text, "nombre"));
-                idpro = objpro.getProducto().Id_producto;
-                nombrepro = objpro.getProducto().Nombre;
-                Agrega();
+                MessageBox.Show("Faltan datos de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("No existe el producto en la base de datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dtpFechaEla.Value.ToShortDateString() == dtpFechaFactura.Value.ToShortDateString() || dtpFechaCadu.Value.ToShortDateString() == dtpFechaFactura.Value.ToShortDateString())
+                {
+                    MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales a la fecha actual ");
+                }
+                else
+                {
+                    if (dtpFechaEla.Value.ToShortDateString() == dtpFechaCadu.Value.ToShortDateString())
+                    {
+                        MessageBox.Show("La fecha de elaboracion o fecha de  caducacion no pueden ser iguales");
+                    }
+                    else
+                    {
+                        ProductoDB objpro = new ProductoDB();
+                        objpro.getProducto().Nombre = txtProducto.Text;
+                        int a = objpro.verificacionProducto(objpro.getProducto());
+                        if (a != 0)
+                        {
+                            objpro.setProducto(objpro.traeProducto(idpro, txtProducto.Text, "nombre"));
+                            idpro = objpro.getProducto().Id_producto;
+                            nombrepro = objpro.getProducto().Nombre;
+                            Agrega();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No existe el producto en la base de datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
             }
         }
         
@@ -262,19 +274,12 @@ namespace SistemaContable.vista
         }
         private void txtGuardaFactura_Click(object sender, EventArgs e)
         {
-            //IDFACTURA();
-            if (txtCodLote.Text == "" || txtCantidadCajas.Text == "" || txtCanUnidades.Text == "" || txtCostoCaja.Text == "" || txtCostoUnidad.Text == "" || txtProducto.Text == "")
-            {
-                MessageBox.Show("Faltan datos de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                AdicionaFactura();
-                Utiles.limpiar(tbpRegistroFactura.Controls);
-                dtgDetalleFactura.Rows.Clear();
-                dtgDetalleFactura.Columns.Clear();
-                Close();
-            }
+            AdicionaFactura();
+            Utiles.limpiar(tbpRegistroFactura.Controls);
+            dtgDetalleFactura.Rows.Clear();
+            dtgDetalleFactura.Columns.Clear();
+            Close();
+            
         }
 
         public void AdicionaFactura()
@@ -420,6 +425,10 @@ namespace SistemaContable.vista
                 {
                     traedatoasiento();
                 }
+                else
+                {
+                    traefechasiento();
+                }
             }
             catch (Exception ex)
             {
@@ -453,6 +462,33 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void traefechasiento()
+        {
+            try
+            {
+                AsientoContableDB objasicon = new AsientoContableDB();
+                objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
+                if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
+                {
+                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                    {
+                        dgvAsientoBusca.Rows.Add(1);
+                        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
+                        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void dgvAsientoBusca_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -460,7 +496,7 @@ namespace SistemaContable.vista
             dgvBuscPago.Rows.Clear();
             fila = dgvAsientoBusca.CurrentRow.Index;
             iddetalle = Convert.ToInt32(dgvAsientoBusca.CurrentRow.Cells[0].Value);
-            
+            Utiles.limpiar(panelAsiento.Controls);
             llenadetalle(iddetalle);
            
 
@@ -617,5 +653,31 @@ namespace SistemaContable.vista
         {
 
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            cargapago();
+                
+        }
+        private void cargapago()
+        {
+
+            PagoDB objpago = new PagoDB();
+            objpago.getPago().LISTAPAGO = objpago.traePAGOtid(iddetalle);
+            DetalleFacturaDB objdetalle = new DetalleFacturaDB();
+            objdetalle.getDetalleFactura().LISTADETALLE = objdetalle.traedetaid(iddetalle);
+            
+
+                if (objpago.getPago().LISTAPAGO.Count == 0)
+                {
+                    MessageBox.Show("No existen registros de asiento contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    // dtpFechamodifica.Value=objpago.getPago().LISTAPAGO[0].FECHA;
+                    txtMontoModifica.Text = Convert.ToString(objpago.getPago().LISTAPAGO[0].MONTO);
+                }
+            }
+        
     }
 }
