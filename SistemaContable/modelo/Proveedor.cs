@@ -9,6 +9,9 @@ namespace SistemaContable.modelo
     {
         private int idDistri;
 
+        /// <summary>
+        ///  Propiedad del atributo idDistri ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public int IdDistri
         {
             get { return idDistri; }
@@ -16,6 +19,9 @@ namespace SistemaContable.modelo
         }
         private int idProveedor;
 
+        /// <summary>
+        ///  Propiedad del atributo idProveedor ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public int IdProveedor
         {
             get { return idProveedor; }
@@ -23,6 +29,9 @@ namespace SistemaContable.modelo
         }
         private string nombre;
 
+        /// <summary>
+        ///  Propiedad del atributo Nombre ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Nombre
         {
             get { return nombre; }
@@ -30,6 +39,9 @@ namespace SistemaContable.modelo
         }
         private string correo;
 
+        /// <summary>
+        ///  Propiedad del atributo Correo ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Correo
         {
             get { return correo; }
@@ -37,6 +49,9 @@ namespace SistemaContable.modelo
         }
         private string celular;
 
+        /// <summary>
+        ///  Propiedad del atributo Celular ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Celular
         {
             get { return celular; }
@@ -44,6 +59,9 @@ namespace SistemaContable.modelo
         }
         private string tiempo;
 
+        /// <summary>
+        ///  Propiedad del atributo Tiempo ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Tiempo
         {
             get { return tiempo; }
@@ -51,6 +69,9 @@ namespace SistemaContable.modelo
         }
         private string estado;
 
+        /// <summary>
+        ///  Propiedad del atributo Estado ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Estado
         {
             get { return estado; }
@@ -58,6 +79,9 @@ namespace SistemaContable.modelo
         }
         private List<Proveedor> listaProveedor;
 
+        /// <summary>
+        ///  Propiedad del atributo listaProveedor ya sea para la obtencion del listado de proveedores o asignacion de una lista de proveedores
+        /// </summary>
         public List<Proveedor> ListaProveedor
         {
             get { return listaProveedor; }

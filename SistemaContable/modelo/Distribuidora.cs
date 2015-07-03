@@ -9,6 +9,9 @@ namespace SistemaContable.modelo
     {
         private int id;
 
+        /// <summary>
+        /// Propiedad del atributo Id ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public int Id
         {
             get { return id; }
@@ -16,6 +19,9 @@ namespace SistemaContable.modelo
         }
         private string nombre;
 
+        /// <summary>
+        /// Propiedad del atributo Nombre ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Nombre
         {
             get { return nombre; }
@@ -23,6 +29,9 @@ namespace SistemaContable.modelo
         }
         private string direccion;
 
+        /// <summary>
+        /// Propiedad de la atributo Direccion ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Direccion
         {
             get { return direccion; }
@@ -30,6 +39,9 @@ namespace SistemaContable.modelo
         }
         private string telefono;
 
+        /// <summary>
+        /// Propiedad del atributo Telefono ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Telefono
         {
             get { return telefono; }
@@ -37,6 +49,9 @@ namespace SistemaContable.modelo
         }
         private string estado;
 
+        /// <summary>
+        /// Propiedad del atributo Estado ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Estado
         {
             get { return estado; }
@@ -44,6 +59,9 @@ namespace SistemaContable.modelo
         }
         private List<Distribuidora> listaDistribuidora;
 
+        /// <summary>
+        ///  Propiedad del atributo listaDistribuidora ya sea para la obtencion del listado o asignacion de una lista de tipo Distribuidora
+        /// </summary>
         public List<Distribuidora> ListaDistribuidora
         {
             get { return listaDistribuidora; }

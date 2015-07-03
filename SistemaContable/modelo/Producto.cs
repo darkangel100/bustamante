@@ -10,6 +10,9 @@ namespace SistemaContable.modelo
     {
         private int id_producto;
 
+        /// <summary>
+        ///  Propiedad del atributo id_producto ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public int Id_producto
         {
             get { return id_producto; }
@@ -17,6 +20,9 @@ namespace SistemaContable.modelo
         }
         private string nombre;
 
+        /// <summary>
+        ///  Propiedad del atributo nombre ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Nombre
         {
             get { return nombre; }
@@ -24,6 +30,9 @@ namespace SistemaContable.modelo
         }
         private double precio;
 
+        /// <summary>
+        ///  Propiedad del atributo Precio ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public double Precio
         {
             get { return precio; }
@@ -31,6 +40,9 @@ namespace SistemaContable.modelo
         }
         private string estado;
 
+        /// <summary>
+        ///  Propiedad del atributo Estado ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public string Estado
         {
             get { return estado; }
@@ -38,6 +50,9 @@ namespace SistemaContable.modelo
         }
         private int stock_global;
 
+        /// <summary>
+        ///  Propiedad del atributo stock_global ya sea para la obtencion de su valor o asignacion de un valor
+        /// </summary>
         public int Stock_global
         {
             get { return stock_global; }
@@ -45,6 +60,9 @@ namespace SistemaContable.modelo
         }
         private List<Producto> listaProducto;
 
+        /// <summary>
+        /// Propiedad del atributo listaProducto ya sea para la obtencion del listado o asignacion de una lista de tipo Producto
+        /// </summary>
         public List<Producto> ListaProducto
         {
             get { return listaProducto; }
