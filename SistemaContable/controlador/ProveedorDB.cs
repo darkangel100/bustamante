@@ -13,6 +13,11 @@ namespace SistemaContable.controlador
     {
         conexion co = new conexion();
         Proveedor pr = null;
+
+        /// <summary>
+        /// Se obtiene un objeto de tipo Proveedor si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo Proveedor</returns>
         public Proveedor getProveedor()
         {
             if (this.pr == null)
@@ -23,11 +28,21 @@ namespace SistemaContable.controlador
             }
             return this.pr;
         }
+
+        /// <summary>
+        /// Asignacion de un objeto de tipo Proveedor a la variable pr
+        /// </summary>
+        /// <param name="p">Objeto de tipo Proveedor</param>
         public void setProveedor(Proveedor p)
         {
             this.pr = p;
         }
 
+        /// <summary>
+        /// Insercion de los datos contenidos en el objeto de tipo Proveedor a la base de datos
+        /// </summary>
+        /// <param name="proveedor">Objeto de tipo Proveedor</param>
+        /// <returns>Numero que indica si se realizo la insercion</returns>
         internal int insertaDistribuidora(Proveedor proveedor)
         {
             MySqlCommand cmd;
@@ -57,7 +72,11 @@ namespace SistemaContable.controlador
             return resp;
         }
 
-        internal List<Proveedor> traeProveedores()
+        /// <summary>
+        /// Obtiene la lista de proveedores registrados en la base de datos
+        /// </summary>
+        /// <returns>Lista de Proveedores</returns>
+        public List<Proveedor> traeProveedores()
         {
             ProveedorDB p = null;
             List<Proveedor> lista = new List<Proveedor>();
@@ -100,8 +119,14 @@ namespace SistemaContable.controlador
             return lista;
         }
 
-
-        public Proveedor traeProveedor(int id)
+        /// <summary>
+        /// Obtencion del Proveedor segun el criterio de busqueda seleccionado en la vista
+        /// </summary>
+        /// <param name="id">Id del proveedor</param>
+        /// <param name="busqueda">Nombre o id del proveedor</param>
+        /// <param name="c">Criterio de busqueda seleccionado</param>
+        /// <returns>Objeto de tipo Proveedor</returns>
+        public Proveedor traeProveedor(int id, string busqueda, int c)
         {
             ProveedorDB p = null;
             MySqlCommand cmd;
@@ -109,6 +134,10 @@ namespace SistemaContable.controlador
             try 
             {
                 string comandoSql = "Select * from proveedor Where id_proveedor='" + id + "'";
+                if (c == 0)
+                    comandoSql = "Select * from proveedor Where nombreProveedor='" + busqueda + "'";
+                if (c == 1)
+                    comandoSql = "Select * from proveedor Where id_proveedor='" + int.Parse(busqueda) + "'";
                 cmd = new MySqlCommand(comandoSql,cn);
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
@@ -137,16 +166,26 @@ namespace SistemaContable.controlador
             }
             cn.Close();
             cmd = null;
+            if (p == null)
+            {
+                p = new ProveedorDB();
+            }
             return p.getProveedor();
         }
-        public int actualizaProveedor(Proveedor per)
+
+        /// <summary>
+        /// Actializacion de los datos del Producto
+        /// </summary>
+        /// <param name="prod">Objeto de tipo Producto</param>
+        /// <returns>Numero que indica si se realizo la actualizacion</returns>
+        public int actualizaProveedor(Proveedor prod)
         {
             MySqlCommand cmd;
             MySqlConnection cn = co.getConexion();
             int resp;
             try
             {
-                string comandoSql = "Update proveedor set id_distribuidora='" + per.IdDistri + "', nombreProveedor='" + per.Nombre + "', correoProveedor='" + per.Correo + "', celularProveedor='" + per.Celular + "', tiempoVisita='" + per.Tiempo +  "' WHERE id_proveedor='" + per.IdProveedor + "'";
+                string comandoSql = "Update proveedor set id_distribuidora='" + prod.IdDistri + "', nombreProveedor='" + prod.Nombre + "', correoProveedor='" + prod.Correo + "', celularProveedor='" + prod.Celular + "', tiempoVisita='" + prod.Tiempo +  "' WHERE id_proveedor='" + prod.IdProveedor + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

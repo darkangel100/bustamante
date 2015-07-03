@@ -16,6 +16,10 @@ namespace SistemaContable.controlador
         conexion co = new conexion();
         Producto pro = null;
 
+        /// <summary>
+        /// Se obtiene un objeto de tipo producto si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo producto</returns>
         public Producto getProducto()
         {
             if (this.pro == null)
@@ -26,11 +30,20 @@ namespace SistemaContable.controlador
             }
             return this.pro;
         }
+        /// <summary>
+        /// Asignacion de un objeto de tipo producto a la variable pro
+        /// </summary>
+        /// <param name="prod">Objeto de tipo producto</param>
         public void setProducto(Producto prod)
         {
             this.pro = prod;
         }
-        //metodo para leer el archivo y envio del objeto para la insercion a la base de datos
+
+        /// <summary>
+        /// Permite leer un archivo XML para posteriormente guardar dicha informacion
+        /// </summary>
+        /// <param name="url">Direccion de la ubicacion del archivo</param>
+        /// <returns>Numero que indica la operacion realizada o si hubo algun fallo</returns>
         public int guardar(string url)
         {
             int r = 0;
@@ -108,7 +121,11 @@ namespace SistemaContable.controlador
                 throw ex;
             }
         }
-        //metodo para insertar un producto en la base de datos
+        /// <summary>
+        /// Insertar los datos del objeto producto a la base de datos
+        /// </summary>
+        /// <param name="pr">Objeto de tipo producto</param>
+        /// <returns>Numero que indica si se realizo o no la insercion de producto a la base de datos</returns>
         public int insertaProducto(Producto pr)
         {
             MySqlCommand cmd;
@@ -139,7 +156,10 @@ namespace SistemaContable.controlador
         }
 
         
-        //listado de productos
+        /// <summary>
+        /// Obtencion del listado de productos que se encuentran en la base de datos
+        /// </summary>
+        /// <returns>Listado de productos</returns>
         public List<Producto> traeProductos()
         {
             ProductoDB pro = null;
@@ -181,7 +201,11 @@ namespace SistemaContable.controlador
             return lista;
         }
 
-        //metodo para verificar si el producto se encuentra en la base de datos y si hay alguna modificacion de los valores
+        /// <summary>
+        /// Verifica si el producto ya se encuentra en la base de datos
+        /// </summary>
+        /// <param name="p">Objeto de tipo producto</param>
+        /// <returns>Numero que indica si el producto se encuentra en la base de datos o si hubo algun fallo</returns>
         public int verificacionProducto(Producto p)
         { 
             int v=0;
@@ -218,7 +242,11 @@ namespace SistemaContable.controlador
             return v;  
         }
 
-        //metodo para modificar valores del producto
+        /// <summary>
+        /// Actualizacion de los datos del producto
+        /// </summary>
+        /// <param name="pro">Objeto de tipo producto</param>
+        /// <returns>Numero que indica si se realizo o no la actualizacion del producto</returns>
         public int modificarProducto(Producto pro)
         {
             MySqlCommand cmd;
@@ -246,7 +274,11 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
-        //ultimo id del producto 
+        //ultimo id del producto
+        /// <summary>
+        /// Obtencion del id del ultimo producto guardado en la base de datos
+        /// </summary>
+        /// <returns>Id del producto</returns>
         public string traenumero()
         {
             MySqlConnection cn = co.getConexion();
@@ -279,7 +311,13 @@ namespace SistemaContable.controlador
             return num;
         }
 
-        //metodo para traer un producto en particular segun el criterio
+        /// <summary>
+        /// Obtencion del producto segun el criterio de busqueda seleccionado en la vista
+        /// </summary>
+        /// <param name="id">Numero que representa el id del producto</param>
+        /// <param name="nombre">Nombre del producto</param>
+        /// <param name="criterio">Criterio seleccionado</param>
+        /// <returns>Objeto de tipo producto</returns>
         public Producto traeProducto(int id, string nombre, string criterio)
         {
             ProductoDB p = null;

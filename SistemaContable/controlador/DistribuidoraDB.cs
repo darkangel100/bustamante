@@ -14,6 +14,10 @@ namespace SistemaContable.controlador
         conexion co = new conexion();
         Distribuidora dis = null;
 
+        /// <summary>
+        /// Se obtiene un objeto de tipo Distribuidora si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo Distribuidora</returns>
         public Distribuidora getDistribuidora()
         {
             if (this.dis == null)
@@ -24,11 +28,21 @@ namespace SistemaContable.controlador
             }
             return this.dis;
         }
+
+        /// <summary>
+        /// Asignacion de un objeto de tipo Distribuidora a la variable dis
+        /// </summary>
+        /// <param name="d">Objeto de tipo Distribuidora</param>
         public void setDistribuidora(Distribuidora d)
         {
             this.dis = d;
         }
-        // inserccion distribuidora
+        
+        /// <summary>
+        /// Insercion de los datos contenidos en el objeto de tipo Distribuidora a la base de datos
+        /// </summary>
+        /// <param name="d">Objeto de tipo Distribuidora</param>
+        /// <returns>Numero que indica si se realizo la insercion</returns>
         public int insertaDistribuidora(Distribuidora d)
         {
             MySqlCommand cmd;
@@ -57,7 +71,11 @@ namespace SistemaContable.controlador
             cn = null;
             return resp;
         }
-        //listado de distribuidoras
+        
+        /// <summary>
+        /// Obtencion de las distribuidoras registradas en la base de datos
+        /// </summary>
+        /// <returns>Lista de distribuidoras</returns>
         public List<Distribuidora> traeDistribuidoras()
         {
             DistribuidoraDB d = null;
@@ -99,7 +117,11 @@ namespace SistemaContable.controlador
             return lista;
         }
 
-        //verificacion si la distribuidora existe
+        /// <summary>
+        /// Verifica si existe la distribuidora en la base de datos
+        /// </summary>
+        /// <param name="d">Objeto de tipo Distribuidora</param>
+        /// <returns>Numero que indica si existe o no en la base de datos</returns>
         public int verificacionDistri(Distribuidora d)
         {
             int v = 0;
@@ -129,6 +151,11 @@ namespace SistemaContable.controlador
             return v;
         }
 
+        /// <summary>
+        /// Obtiene los datos de la distribuidora
+        /// </summary>
+        /// <param name="p">Id de la Distribuidora</param>
+        /// <returns>Objeto de tipo Distribuidora</returns>
         public Distribuidora traeDistribuidora(int p)
         {
             DistribuidoraDB d = null;
@@ -166,6 +193,11 @@ namespace SistemaContable.controlador
             return d.getDistribuidora();
         }
 
+        /// <summary>
+        /// Actualiza los datos de la Distribuidora
+        /// </summary>
+        /// <param name="d">Objeto de tipo Distribuidora</param>
+        /// <returns>Numero que indica si se realizo la actualizacion</returns>
         public int actualizaDistribuidora(Distribuidora d)
         {
             MySqlCommand cmd;
