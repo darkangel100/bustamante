@@ -86,9 +86,9 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbParamBusqueda = new System.Windows.Forms.ComboBox();
+            this.btnActivar = new System.Windows.Forms.Button();
+            this.dgvBusqueda = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.corre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +96,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.tcProveedor.SuspendLayout();
             this.tpRegistro.SuspendLayout();
@@ -107,7 +107,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
             // tcProveedor
@@ -664,11 +664,11 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.comboBox5);
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.dataGridView1);
-            this.tabPage3.Controls.Add(this.textBox11);
-            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Controls.Add(this.cmbParamBusqueda);
+            this.tabPage3.Controls.Add(this.btnActivar);
+            this.tabPage3.Controls.Add(this.dgvBusqueda);
+            this.tabPage3.Controls.Add(this.txtBusqueda);
+            this.tabPage3.Controls.Add(this.btnBuscar);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -677,30 +677,33 @@
             this.tabPage3.Text = "Buscar y Desactivar";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // cmbParamBusqueda
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(227, 54);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 6;
-            this.comboBox5.Text = "Nombre";
+            this.cmbParamBusqueda.FormattingEnabled = true;
+            this.cmbParamBusqueda.Items.AddRange(new object[] {
+            "Nombre",
+            "Id"});
+            this.cmbParamBusqueda.Location = new System.Drawing.Point(227, 54);
+            this.cmbParamBusqueda.Name = "cmbParamBusqueda";
+            this.cmbParamBusqueda.Size = new System.Drawing.Size(121, 21);
+            this.cmbParamBusqueda.TabIndex = 6;
+            this.cmbParamBusqueda.SelectedIndexChanged += new System.EventHandler(this.cmbParamBusqueda_SelectedIndexChanged);
             // 
-            // button5
+            // btnActivar
             // 
-            this.button5.Location = new System.Drawing.Point(337, 327);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 27);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Activar/Desactivar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnActivar.Location = new System.Drawing.Point(335, 393);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(115, 27);
+            this.btnActivar.TabIndex = 5;
+            this.btnActivar.Text = "Activar/Desactivar";
+            this.btnActivar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvBusqueda
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBusqueda.AllowUserToAddRows = false;
+            this.dgvBusqueda.AllowUserToDeleteRows = false;
+            this.dgvBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBusqueda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.corre,
             this.Column2,
@@ -708,13 +711,13 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 156);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(703, 145);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvBusqueda.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dgvBusqueda.Location = new System.Drawing.Point(60, 156);
+            this.dgvBusqueda.Name = "dgvBusqueda";
+            this.dgvBusqueda.ReadOnly = true;
+            this.dgvBusqueda.RowHeadersVisible = false;
+            this.dgvBusqueda.Size = new System.Drawing.Size(703, 211);
+            this.dgvBusqueda.TabIndex = 3;
             // 
             // Column1
             // 
@@ -758,21 +761,23 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // textBox11
+            // txtBusqueda
             // 
-            this.textBox11.Location = new System.Drawing.Point(403, 55);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(185, 20);
-            this.textBox11.TabIndex = 2;
+            this.txtBusqueda.Location = new System.Drawing.Point(403, 55);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(185, 20);
+            this.txtBusqueda.TabIndex = 2;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
-            // button3
+            // btnBuscar
             // 
-            this.button3.Location = new System.Drawing.Point(335, 109);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Buscar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(335, 109);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(117, 23);
+            this.btnBuscar.TabIndex = 1;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label21
             // 
@@ -808,7 +813,7 @@
             this.panel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -854,12 +859,12 @@
         private System.Windows.Forms.Button btnMProveedor;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.DataGridView dgvBusqueda;
+        private System.Windows.Forms.Button btnActivar;
+        private System.Windows.Forms.ComboBox cmbParamBusqueda;
         private System.Windows.Forms.TextBox txtRVisita;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtRCorreo;

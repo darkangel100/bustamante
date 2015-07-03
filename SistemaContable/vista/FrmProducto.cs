@@ -181,6 +181,8 @@ namespace SistemaContable.vista
                 MessageBox.Show("Estado del producto modificado", "Sistema Contable", MessageBoxButtons.OK);
                 llenaProductos();
                 Utiles.limpiar(pnlProducto.Controls);
+                cmbCriterio.Text = "";
+                txtBusqueda.Text = "";
                 tcProducto.SelectTab(0);
             }
         }
