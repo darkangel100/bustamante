@@ -241,14 +241,17 @@ namespace SistemaContable.vista
 
         private void btnMProveedor_Click(object sender, EventArgs e)
         {
-            modificarProveedor();
-            cmbMProv.Text = "";
-            cmbMdistribuidoraP.Text = "";
-            txtMNombre.Text = "";
-            txtMcorreo.Text = "";
-            txtMcelular.Text = "";
-            txtMtiempo.Text = "";
-            btnMProveedor.Enabled = false;
+            if (txtMNombre.Text != "" && txtMcelular.Text != "")
+            {
+                modificarProveedor();
+                cmbMProv.Text = "";
+                cmbMdistribuidoraP.Text = "";
+                txtMNombre.Text = "";
+                txtMcorreo.Text = "";
+                txtMcelular.Text = "";
+                txtMtiempo.Text = "";
+                btnMProveedor.Enabled = false;
+            }
         }
 
         public void modificarProveedor()
@@ -282,12 +285,15 @@ namespace SistemaContable.vista
 
         private void btnMDistri_Click(object sender, EventArgs e)
         {
-            modificarDistribuidora();
-            cmbMdis.Text = "";
-            txtMnombreD.Text = "";
-            txtMTelefono.Text = "";
-            txtMdireccion.Text = "";
-            btnMDistri.Enabled = false;
+            if (txtMnombreD.Text != "" && txtMdireccion.Text != "" && txtMTelefono.Text != "")
+            {
+                modificarDistribuidora();
+                cmbMdis.Text = "";
+                txtMnombreD.Text = "";
+                txtMTelefono.Text = "";
+                txtMdireccion.Text = "";
+                btnMDistri.Enabled = false;
+            }
         }
 
         private void cmbMdis_SelectedIndexChanged(object sender, EventArgs e)
@@ -380,6 +386,118 @@ namespace SistemaContable.vista
         private void cmbParamBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBusqueda.Text = "";
+        }
+
+        private void txtRNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }   
+        }
+
+        private void txtRCorreo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar!=64 && e.KeyChar!=46 && e.KeyChar!=95 && e.KeyChar!=45 && e.KeyChar!=8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRVisita_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar!=32)
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void txtRNDistri_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar!= 32 && e.KeyChar != 8 && e.KeyChar!=45)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMcorreo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 64 && e.KeyChar != 46 && e.KeyChar != 95 && e.KeyChar != 45 && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMcelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMtiempo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMnombreD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMdireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 32 && e.KeyChar != 8 && e.KeyChar != 45)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

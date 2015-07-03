@@ -186,9 +186,11 @@
             // txtRDireccion
             // 
             this.txtRDireccion.Location = new System.Drawing.Point(135, 123);
+            this.txtRDireccion.MaxLength = 50;
             this.txtRDireccion.Name = "txtRDireccion";
             this.txtRDireccion.Size = new System.Drawing.Size(169, 20);
             this.txtRDireccion.TabIndex = 12;
+            this.txtRDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRDireccion_KeyPress);
             // 
             // label8
             // 
@@ -202,16 +204,20 @@
             // txtRTelefono
             // 
             this.txtRTelefono.Location = new System.Drawing.Point(135, 78);
+            this.txtRTelefono.MaxLength = 10;
             this.txtRTelefono.Name = "txtRTelefono";
             this.txtRTelefono.Size = new System.Drawing.Size(169, 20);
             this.txtRTelefono.TabIndex = 10;
+            this.txtRTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRTelefono_KeyPress);
             // 
             // txtRNDistri
             // 
             this.txtRNDistri.Location = new System.Drawing.Point(135, 33);
+            this.txtRNDistri.MaxLength = 40;
             this.txtRNDistri.Name = "txtRNDistri";
             this.txtRNDistri.Size = new System.Drawing.Size(169, 20);
             this.txtRNDistri.TabIndex = 9;
+            this.txtRNDistri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRNDistri_KeyPress);
             // 
             // label6
             // 
@@ -283,9 +289,11 @@
             // txtRVisita
             // 
             this.txtRVisita.Location = new System.Drawing.Point(117, 110);
+            this.txtRVisita.MaxLength = 20;
             this.txtRVisita.Name = "txtRVisita";
             this.txtRVisita.Size = new System.Drawing.Size(169, 20);
             this.txtRVisita.TabIndex = 12;
+            this.txtRVisita.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRVisita_KeyPress);
             // 
             // label23
             // 
@@ -299,9 +307,11 @@
             // txtRCorreo
             // 
             this.txtRCorreo.Location = new System.Drawing.Point(117, 55);
+            this.txtRCorreo.MaxLength = 50;
             this.txtRCorreo.Name = "txtRCorreo";
             this.txtRCorreo.Size = new System.Drawing.Size(169, 20);
             this.txtRCorreo.TabIndex = 10;
+            this.txtRCorreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRCorreo_KeyPress);
             // 
             // label22
             // 
@@ -333,16 +343,20 @@
             // txtRCelular
             // 
             this.txtRCelular.Location = new System.Drawing.Point(117, 81);
+            this.txtRCelular.MaxLength = 10;
             this.txtRCelular.Name = "txtRCelular";
             this.txtRCelular.Size = new System.Drawing.Size(169, 20);
             this.txtRCelular.TabIndex = 6;
+            this.txtRCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRCelular_KeyPress);
             // 
             // txtRNombre
             // 
             this.txtRNombre.Location = new System.Drawing.Point(117, 27);
+            this.txtRNombre.MaxLength = 40;
             this.txtRNombre.Name = "txtRNombre";
             this.txtRNombre.Size = new System.Drawing.Size(169, 20);
             this.txtRNombre.TabIndex = 5;
+            this.txtRNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRNombre_KeyPress);
             // 
             // label5
             // 
@@ -468,6 +482,7 @@
             this.txtMdireccion.Name = "txtMdireccion";
             this.txtMdireccion.Size = new System.Drawing.Size(169, 20);
             this.txtMdireccion.TabIndex = 12;
+            this.txtMdireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMdireccion_KeyPress);
             // 
             // label11
             // 
@@ -484,6 +499,7 @@
             this.txtMTelefono.Name = "txtMTelefono";
             this.txtMTelefono.Size = new System.Drawing.Size(169, 20);
             this.txtMTelefono.TabIndex = 10;
+            this.txtMTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMTelefono_KeyPress);
             // 
             // txtMnombreD
             // 
@@ -492,6 +508,7 @@
             this.txtMnombreD.Name = "txtMnombreD";
             this.txtMnombreD.Size = new System.Drawing.Size(169, 20);
             this.txtMnombreD.TabIndex = 9;
+            this.txtMnombreD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMnombreD_KeyPress);
             // 
             // label12
             // 
@@ -538,6 +555,7 @@
             this.txtMtiempo.Name = "txtMtiempo";
             this.txtMtiempo.Size = new System.Drawing.Size(169, 20);
             this.txtMtiempo.TabIndex = 30;
+            this.txtMtiempo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMtiempo_KeyPress);
             // 
             // label14
             // 
@@ -554,6 +572,7 @@
             this.txtMcorreo.Name = "txtMcorreo";
             this.txtMcorreo.Size = new System.Drawing.Size(169, 20);
             this.txtMcorreo.TabIndex = 28;
+            this.txtMcorreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMcorreo_KeyPress);
             // 
             // label15
             // 
@@ -578,6 +597,7 @@
             this.txtMcelular.Name = "txtMcelular";
             this.txtMcelular.Size = new System.Drawing.Size(169, 20);
             this.txtMcelular.TabIndex = 25;
+            this.txtMcelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMcelular_KeyPress);
             // 
             // txtMNombre
             // 
@@ -585,6 +605,7 @@
             this.txtMNombre.Name = "txtMNombre";
             this.txtMNombre.Size = new System.Drawing.Size(169, 20);
             this.txtMNombre.TabIndex = 24;
+            this.txtMNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMNombre_KeyPress);
             // 
             // label16
             // 
