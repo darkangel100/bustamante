@@ -35,6 +35,10 @@ namespace SistemaContable.controlador
             this.fac = null;
         }
         //id de la factura
+        /// <summary>
+        /// Trae el ultimo id de la factura
+        /// </summary>
+        /// <returns>el ultimo id de la factura</returns>
         public string traenumero()
         {
             MySqlConnection cn = con.getConexion();
@@ -67,7 +71,12 @@ namespace SistemaContable.controlador
             return num;
         }
 
-        //Insertar una factue=ra a la Base de datos
+        //Insertar una factura a la Base de datos
+        /// <summary>
+        /// Inserta una factura en la base de datos
+        /// </summary>
+        /// <param name="factur">objeto de la factura</param>
+        /// <returns>numero que indica que la factura se ingreso correctamente</returns>
         public int InsertaFactura(Factura factur)
         {
             MySqlCommand cmd;
@@ -75,7 +84,7 @@ namespace SistemaContable.controlador
             int resp;
             try
             {
-                string sqlcad = "Insert factura set id_factura='"+factur.IDFACTURA+"',fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'";
+                string sqlcad = "Insert factura set id_proveedor='" + factur.IDPROVEEDOR + "',id_factura='" + factur.IDFACTURA + "',fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -96,6 +105,12 @@ namespace SistemaContable.controlador
             factur = null;
             return resp;
         }
+
+        /// <summary>
+        /// Trae lista de facturas segun el id 
+        /// </summary>
+        /// <param name="id">entero</param>
+        /// <returns>lista de facturas segun el id</returns>
         public List<Factura> traefacid(int id)
         {
             FacturaDB fac = null;

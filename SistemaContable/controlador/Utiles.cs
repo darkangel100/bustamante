@@ -8,6 +8,10 @@ namespace SistemaContable.controlador
 {
     class Utiles
     {
+        /// <summary>
+        /// Limpia los componentes de un panel
+        /// </summary>
+        /// <param name="cont">coleccion de componentes</param>
         public static void limpiar(Control.ControlCollection cont)
         {
             foreach (Control c in cont)

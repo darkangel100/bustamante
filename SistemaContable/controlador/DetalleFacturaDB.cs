@@ -34,10 +34,11 @@ namespace SistemaContable.controlador
         {
             this.defac = null;
         }
-
-
-
-        //Insertar una factue=ra a la Base de datos
+        /// <summary>
+        /// Inserta un dettalle de la factura
+        /// </summary>
+        /// <param name="defactur">objeto de la clase detallefactura</param>
+        /// <returns>numero que indica que el detalle se ingreso correctamente</returns>
         public int InsertaDetalleFactura(DetalleFactura defactur)
         {
             MySqlCommand cmd;
@@ -67,6 +68,11 @@ namespace SistemaContable.controlador
             return resp;
         }
         //trae detalle por id de factura
+        /// <summary>
+        /// Trar un detalle por el id de detalle
+        /// </summary>
+        /// <param name="id">entero</param>
+        /// <returns>Lista de los detalles de la factura segun el id del detalle</returns>
         public List<DetalleFactura> traedetaid(int id)
         {
             DetalleFacturaDB det = null;

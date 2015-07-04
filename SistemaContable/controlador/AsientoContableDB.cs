@@ -14,7 +14,10 @@ namespace SistemaContable.controlador
     {
         conexion con = new conexion();
         AsientoContable ac = null;
-
+        /// <summary>
+        /// Obtiene un 
+        /// </summary>
+        /// <returns>un objeto de la clase asiento contable</returns>
         public AsientoContable getAsientoContable()
         {
             if (this.ac == null)
@@ -34,8 +37,12 @@ namespace SistemaContable.controlador
         {
             this.ac = null;
         }
-
-        //Insertar un asiento Contable a la Base de datos
+        /// <summary>
+        /// Inserta un asiento Contable a la Base de datos
+        /// </summary>
+        /// <param name="asiento"></param>
+        /// <returns>un numero que indica que se inserto correctamente a la base de datos</returns>
+        
         public int InsertaAsientoContable(AsientoContable asiento)
         {
             MySqlCommand cmd;
@@ -65,6 +72,10 @@ namespace SistemaContable.controlador
             return resp;
         }
         //ultimo id de ASIENTOCONTABLE 
+        /// <summary>
+        /// Trae el ultimo ide de un asiento contable
+        /// </summary>
+        /// <returns>el ultimo id de asiento</returns>
         public string traenumero()
         {
             MySqlConnection cn = con.getConexion();
@@ -96,7 +107,12 @@ namespace SistemaContable.controlador
             cmd = null;
             return num;
         }
-        //traer asiento por el nombre
+        
+        /// <summary>
+        ///trae un asiento ontable por el nombre 
+        /// </summary>
+        /// <param name="nombre">nombre asiento</param>
+        /// <returns>la lista de asientos con el mismo numero</returns>
         public List<AsientoContable> traeasicon(string nombre)
         {
             AsientoContableDB asicn = null;

@@ -26,6 +26,11 @@ namespace SistemaContable.controlador
             }
             return this.lo;
         }
+        /// <summary>
+        /// Inserta un lote a la base de datos
+        /// </summary>
+        /// <param name="lo">objeto de la clase lote</param>
+        /// <returns>numero que indica que el loste se ingreso correctamente</returns>
         public int InsertaLote(Lote lo)
         {
             MySqlCommand cmd;
@@ -54,41 +59,5 @@ namespace SistemaContable.controlador
             lo = null;
             return resp;
         }
-        //public List<Lote> traeLote()
-        //{
-        //    Lote lo = null;
-        //    List<Lote> ListaAsi = new List<Lote>();
-        //    MySqlCommand cmd;
-        //    MySqlConnection cn = con.getConexion();
-        //    try
-        //    {
-        //        string sqlcad = "Select * from Asiento";
-        //        cmd = new MySqlCommand(sqlcad, cn);
-        //        cmd.CommandType = CommandType.Text;
-        //        cn.Open();
-        //        MySqlDataReader dr = cmd.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            lo = new Lote();
-        //            asie.NOMBREASIENTO = dr["nombre_asiento"].ToString();
-
-        //            ListaAsi.Add(asie);
-        //        }
-        //        dr.Close();
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        asie = null;
-        //        throw ex;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        asie = null;
-        //        throw ex;
-        //    }
-        //    cn.Close();
-        //    cmd = null;
-        //    return ListaAsi;
-        //}
     }
 }

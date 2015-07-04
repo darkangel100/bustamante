@@ -25,6 +25,11 @@ namespace SistemaContable.controlador
             }
             return this.asien;
         }
+        /// <summary>
+        /// Inserta un asiento en la base de datos
+        /// </summary>
+        /// <param name="asi">objeto de la clase asiento</param>
+        /// <returns>numero que indica  que se ingreso correctamente el asiento</returns>
         public int InsertaAsiento(Asiento asi)
         {
             MySqlCommand cmd;
@@ -53,7 +58,10 @@ namespace SistemaContable.controlador
             asi = null;
             return resp;
         }
-
+        /// <summary>
+        /// Trae los nombres de los asientos
+        /// </summary>
+        /// <returns>lista de asientos </returns>
         public List<Asiento> traeAsiento()
         {
             Asiento asie = null;

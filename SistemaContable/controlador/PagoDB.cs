@@ -35,6 +35,11 @@ namespace SistemaContable.controlador
         }
 
         //Insertar un Pago a la Base de datos
+        /// <summary>
+        /// Inserta un pago a la base de datos
+        /// </summary>
+        /// <param name="pag">objeto de la clase Pago</param>
+        /// <returns>numero que indique que el pago se ingreso correctamente</returns>
         public int InsertaPago(Pago pag)
         {
             MySqlCommand cmd;
@@ -63,6 +68,11 @@ namespace SistemaContable.controlador
             pag = null;
             return resp;
         }
+        /// <summary>
+        /// Trae un pago segun su id 
+        /// </summary>
+        /// <param name="id">entero id</param>
+        /// <returns>lista de pago segun su id</returns>
         public List<Pago> traePAGOtid(int id)
         {
             PagoDB pag = null;
