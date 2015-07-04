@@ -24,7 +24,7 @@ namespace SistemaContable.vista
         string usuario = "usu";
         int agrega = -1;
         string num = "",  idasiento = "", nombrepro = "";
-        int id_factura, id_asien, idpro, fila, iddetalle;
+        int id_factura, id_asien, idpro, fila, iddetalle, idproveedor;
         
         //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
@@ -62,8 +62,11 @@ namespace SistemaContable.vista
         //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
         private void FrmEgreso_Load(object sender, EventArgs e)
         {
+            llenaProveedor(cboProvedor);
             txtNomAsiento.CharacterCasing = CharacterCasing.Upper;
             llenaAsiento(cboNomAsiento);
+
+
         }
   //CARGA LOS ASIENTOS_CONTABLES AL COMBOBOX
         private void llenaAsiento(ComboBox cbo)
@@ -140,7 +143,6 @@ namespace SistemaContable.vista
             pnlAsiento.Enabled = false;
             llenaAsiento(cboNomAsiento);
             Utiles.limpiar(pnlAsiento.Controls);
-            Utiles.limpiar(panelAsiento.Controls);
         }
         //ASIENTO
         private void AdicionaAsiento()
@@ -274,12 +276,19 @@ namespace SistemaContable.vista
         }
         private void txtGuardaFactura_Click(object sender, EventArgs e)
         {
-            AdicionaFactura();
-            Utiles.limpiar(tbpRegistroFactura.Controls);
-            dtgDetalleFactura.Rows.Clear();
-            dtgDetalleFactura.Columns.Clear();
-            Close();
-            
+            if (txtDescripFactura.Text == "")
+            {
+                MessageBox.Show("Faltan datos de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDescripFactura.Focus();
+            }
+            else
+            {
+                AdicionaFactura();
+                Utiles.limpiar(tbpRegistroFactura.Controls);
+                dtgDetalleFactura.Rows.Clear();
+                dtgDetalleFactura.Columns.Clear();
+                Close();
+            }
         }
 
         public void AdicionaFactura()
@@ -314,7 +323,7 @@ namespace SistemaContable.vista
                     IDEASIENTO();
                 }
 
-                objfac.getFactura().IDPROVEEDOR = 1;
+                objfac.getFactura().IDPROVEEDOR = Convert.ToInt32(cboProvedor.SelectedValue.ToString());
                 objfac.getFactura().IDFACTURA = id_asien;
                 objfac.getFactura().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
                 objfac.getFactura().TOTAL = totalfactura;
@@ -356,23 +365,7 @@ namespace SistemaContable.vista
                         resplo = objLote.InsertaLote(objLote.getLote());
 
                     }
-                    //if (respdf == 0)
-                    //{
-                    //    MessageBox.Show("No se ingreso datos de  detalle Factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("detalle Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
-
-                    //if (resplo == 0)
-                    //{
-                    //    MessageBox.Show("No se ingreso datos de Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Lote Factura Ingresada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
+                 
                 }
                 
                 
@@ -496,7 +489,6 @@ namespace SistemaContable.vista
             dgvBuscPago.Rows.Clear();
             fila = dgvAsientoBusca.CurrentRow.Index;
             iddetalle = Convert.ToInt32(dgvAsientoBusca.CurrentRow.Cells[0].Value);
-            Utiles.limpiar(panelAsiento.Controls);
             llenadetalle(iddetalle);
            
 
@@ -654,30 +646,33 @@ namespace SistemaContable.vista
 
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            cargapago();
-                
-        }
-        private void cargapago()
-        {
+        
 
-            PagoDB objpago = new PagoDB();
-            objpago.getPago().LISTAPAGO = objpago.traePAGOtid(iddetalle);
-            DetalleFacturaDB objdetalle = new DetalleFacturaDB();
-            objdetalle.getDetalleFactura().LISTADETALLE = objdetalle.traedetaid(iddetalle);
+       
+        private void tbpRegistroFactura_Click(object sender, EventArgs e)
+        {
             
-
-                if (objpago.getPago().LISTAPAGO.Count == 0)
-                {
-                    MessageBox.Show("No existen registros de asiento contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    // dtpFechamodifica.Value=objpago.getPago().LISTAPAGO[0].FECHA;
-                    txtMontoModifica.Text = Convert.ToString(objpago.getPago().LISTAPAGO[0].MONTO);
-                }
+        }
+        private void llenaProveedor(ComboBox cbo)
+        {
+            ProveedorDB objPro = new ProveedorDB();
+            objPro.getProveedor().ListaProveedor = objPro.traeProveedores();
+            if (objPro.getProveedor().ListaProveedor.Count == 0)
+            {
+                 MessageBox.Show("No existen registros de Asientos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else
+            {
+                cbo.DisplayMember = "Nombre";
+                cbo.ValueMember = "IdProveedor";
+                cbo.DataSource = objPro.getProveedor().ListaProveedor;
+            }
+        }
+
+        private void cboProvedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

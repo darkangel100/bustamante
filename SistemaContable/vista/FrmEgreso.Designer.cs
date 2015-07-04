@@ -89,33 +89,13 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panelFactura = new System.Windows.Forms.Panel();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.panelAsiento = new System.Windows.Forms.Panel();
-            this.dtpFechamodifica = new System.Windows.Forms.DateTimePicker();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtMontoModifica = new System.Windows.Forms.TextBox();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtBuscaAsiento = new System.Windows.Forms.TextBox();
             this.btnBusqueda = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnActiva = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
             this.dgvBuscPago = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,8 +122,6 @@
             this.paneldatosfactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleFactura)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.panelFactura.SuspendLayout();
-            this.panelAsiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).BeginInit();
@@ -297,9 +275,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(99, 192);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Id_Usuario";
+            this.label6.Text = "Asiento";
             // 
             // label5
             // 
@@ -342,6 +320,7 @@
             this.tbpRegistroFactura.TabIndex = 1;
             this.tbpRegistroFactura.Text = "Registro Factura";
             this.tbpRegistroFactura.UseVisualStyleBackColor = true;
+            this.tbpRegistroFactura.Click += new System.EventHandler(this.tbpRegistroFactura_Click);
             // 
             // paneldatosfactura
             // 
@@ -421,6 +400,7 @@
             this.cboProvedor.Name = "cboProvedor";
             this.cboProvedor.Size = new System.Drawing.Size(185, 21);
             this.cboProvedor.TabIndex = 66;
+            this.cboProvedor.SelectedIndexChanged += new System.EventHandler(this.cboProvedor_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -723,17 +703,13 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.panelFactura);
-            this.tabPage3.Controls.Add(this.panelAsiento);
             this.tabPage3.Controls.Add(this.cboCriterio);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.txtBuscaAsiento);
             this.tabPage3.Controls.Add(this.btnBusqueda);
-            this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.btnActiva);
-            this.tabPage3.Controls.Add(this.btnModificar);
             this.tabPage3.Controls.Add(this.dgvBuscPago);
             this.tabPage3.Controls.Add(this.dgvBuscaFactu);
             this.tabPage3.Controls.Add(this.dgvAsientoBusca);
@@ -748,169 +724,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Buscar";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // panelFactura
-            // 
-            this.panelFactura.BackColor = System.Drawing.Color.LightGray;
-            this.panelFactura.Controls.Add(this.textBox21);
-            this.panelFactura.Controls.Add(this.label36);
-            this.panelFactura.Controls.Add(this.textBox20);
-            this.panelFactura.Controls.Add(this.label35);
-            this.panelFactura.Controls.Add(this.textBox17);
-            this.panelFactura.Controls.Add(this.dateTimePicker7);
-            this.panelFactura.Controls.Add(this.label31);
-            this.panelFactura.Controls.Add(this.label32);
-            this.panelFactura.Controls.Add(this.label33);
-            this.panelFactura.Controls.Add(this.textBox18);
-            this.panelFactura.Enabled = false;
-            this.panelFactura.Location = new System.Drawing.Point(540, 410);
-            this.panelFactura.Name = "panelFactura";
-            this.panelFactura.Size = new System.Drawing.Size(281, 138);
-            this.panelFactura.TabIndex = 59;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(79, 103);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(185, 20);
-            this.textBox21.TabIndex = 65;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(3, 106);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(52, 13);
-            this.label36.TabIndex = 64;
-            this.label36.Text = "CostTotal";
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(79, 80);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(185, 20);
-            this.textBox20.TabIndex = 63;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(3, 82);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(64, 13);
-            this.label35.TabIndex = 62;
-            this.label35.Text = "CostUnitario";
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(79, 56);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(185, 20);
-            this.textBox17.TabIndex = 59;
-            // 
-            // dateTimePicker7
-            // 
-            this.dateTimePicker7.Location = new System.Drawing.Point(79, 11);
-            this.dateTimePicker7.Name = "dateTimePicker7";
-            this.dateTimePicker7.Size = new System.Drawing.Size(185, 20);
-            this.dateTimePicker7.TabIndex = 58;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(2, 16);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(37, 13);
-            this.label31.TabIndex = 53;
-            this.label31.Text = "Fecha";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(3, 60);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(50, 13);
-            this.label32.TabIndex = 56;
-            this.label32.Text = "Producto";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(1, 38);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(43, 13);
-            this.label33.TabIndex = 54;
-            this.label33.Text = "Cntidad";
-            // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(79, 34);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(185, 20);
-            this.textBox18.TabIndex = 55;
-            // 
-            // panelAsiento
-            // 
-            this.panelAsiento.BackColor = System.Drawing.Color.LightGray;
-            this.panelAsiento.Controls.Add(this.dtpFechamodifica);
-            this.panelAsiento.Controls.Add(this.textBox13);
-            this.panelAsiento.Controls.Add(this.label30);
-            this.panelAsiento.Controls.Add(this.label23);
-            this.panelAsiento.Controls.Add(this.label29);
-            this.panelAsiento.Controls.Add(this.txtMontoModifica);
-            this.panelAsiento.Enabled = false;
-            this.panelAsiento.Location = new System.Drawing.Point(119, 412);
-            this.panelAsiento.Name = "panelAsiento";
-            this.panelAsiento.Size = new System.Drawing.Size(255, 146);
-            this.panelAsiento.TabIndex = 52;
-            // 
-            // dtpFechamodifica
-            // 
-            this.dtpFechamodifica.Location = new System.Drawing.Point(64, 3);
-            this.dtpFechamodifica.Name = "dtpFechamodifica";
-            this.dtpFechamodifica.Size = new System.Drawing.Size(185, 20);
-            this.dtpFechamodifica.TabIndex = 58;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(64, 55);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(185, 81);
-            this.textBox13.TabIndex = 57;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(2, 6);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(37, 13);
-            this.label30.TabIndex = 53;
-            this.label30.Text = "Fecha";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1, 84);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(63, 13);
-            this.label23.TabIndex = 56;
-            this.label23.Text = "Descripcion";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(1, 33);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(37, 13);
-            this.label29.TabIndex = 54;
-            this.label29.Text = "Monto";
-            // 
-            // txtMontoModifica
-            // 
-            this.txtMontoModifica.Location = new System.Drawing.Point(64, 31);
-            this.txtMontoModifica.Name = "txtMontoModifica";
-            this.txtMontoModifica.Size = new System.Drawing.Size(185, 20);
-            this.txtMontoModifica.TabIndex = 55;
             // 
             // cboCriterio
             // 
@@ -951,19 +764,10 @@
             this.btnBusqueda.UseVisualStyleBackColor = true;
             this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(405, 465);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(82, 23);
-            this.button6.TabIndex = 46;
-            this.button6.Text = "Guardar";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(626, 310);
+            this.label16.Location = new System.Drawing.Point(626, 324);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(87, 13);
             this.label16.TabIndex = 45;
@@ -972,7 +776,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(81, 307);
+            this.label15.Location = new System.Drawing.Point(81, 321);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(69, 13);
             this.label15.TabIndex = 44;
@@ -980,22 +784,12 @@
             // 
             // btnActiva
             // 
-            this.btnActiva.Location = new System.Drawing.Point(557, 288);
+            this.btnActiva.Location = new System.Drawing.Point(425, 288);
             this.btnActiva.Name = "btnActiva";
             this.btnActiva.Size = new System.Drawing.Size(109, 23);
             this.btnActiva.TabIndex = 43;
             this.btnActiva.Text = "Activar/Desactivar";
             this.btnActiva.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(338, 288);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(109, 23);
-            this.btnModificar.TabIndex = 42;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // dgvBuscPago
             // 
@@ -1006,7 +800,7 @@
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11});
-            this.dgvBuscPago.Location = new System.Drawing.Point(20, 324);
+            this.dgvBuscPago.Location = new System.Drawing.Point(20, 338);
             this.dgvBuscPago.Name = "dgvBuscPago";
             this.dgvBuscPago.ReadOnly = true;
             this.dgvBuscPago.RowHeadersVisible = false;
@@ -1042,7 +836,7 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dgvBuscaFactu.Location = new System.Drawing.Point(338, 324);
+            this.dgvBuscaFactu.Location = new System.Drawing.Point(338, 338);
             this.dgvBuscaFactu.Name = "dgvBuscaFactu";
             this.dgvBuscaFactu.ReadOnly = true;
             this.dgvBuscaFactu.RowHeadersVisible = false;
@@ -1181,10 +975,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleFactura)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.panelFactura.ResumeLayout(false);
-            this.panelFactura.PerformLayout();
-            this.panelAsiento.ResumeLayout(false);
-            this.panelAsiento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaFactu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsientoBusca)).EndInit();
@@ -1234,13 +1024,11 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnActiva;
-        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnBusqueda;
         private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.Label label17;
@@ -1267,24 +1055,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtCostoCaja;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Panel panelFactura;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.DateTimePicker dateTimePicker7;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.Panel panelAsiento;
-        private System.Windows.Forms.DateTimePicker dtpFechamodifica;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txtMontoModifica;
         private System.Windows.Forms.TextBox txtCostoUnidad;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel paneldatosfactura;
