@@ -12,17 +12,17 @@ namespace SistemaContable.controlador
     class FacturaBD
     {
         conexion con = new conexion();
-        Facturas fac = null;
+        Factura fac = null;
 
-        public Facturas getFacturas()
+        public Factura getFacturas()
         {
             if (this.fac == null)
             {
-                this.fac = new Facturas();
+                this.fac = new Factura();
             }
             return this.fac;
         }
-        public void setFacturas(Facturas f)
+        public void setFacturas(Factura f)
         {
             this.fac = f;
         }
@@ -66,15 +66,25 @@ namespace SistemaContable.controlador
             cmd = null;
             return nro;
         }
-        public int InsertaFacturas(Facturas c)
+        //Este metodo debe copiarse en DB
+        public int InsertaFacturas(Factura factur, string tipo)
         {
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             int resp = 0;
             try
             {
-              //  string sqlcad = "Insert factura Values (" + c.idfac + ",'" + c.numfac + "','" + c.cedper + "','" + c.fecfac + "'," + c.iva0 + "," + c.iva12 + "," + c.ivafac + "," + c.totfac + ",'" + c.estfac + "')";
-                string sqlcad = "Insert factura Values (null," + c.Id_Factura + ",'" + c.Fecha + "'," + c.Total + "," + c.SubTotal + "," + c.Iva + ",'" + c.Tipo_fac + "')";
+                string sqlcad = "";
+                if (tipo.Equals("C"))
+                {
+                    sqlcad = "Insert factura set id_proveedor='" + factur.IDPROVEEDOR + "',id_factura='" + factur.IDFACTURA + "',fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'";
+                }
+                else
+                {
+                    //  string sqlcad = "Insert factura Values (" + c.idfac + ",'" + c.numfac + "','" + c.cedper + "','" + c.fecfac + "'," + c.iva0 + "," + c.iva12 + "," + c.ivafac + "," + c.totfac + ",'" + c.estfac + "')";
+
+                    sqlcad = "Insert factura Values (null," + factur.IDFACTURA + ",'" + factur.FECHA + "'," + factur.TOTAL + "," + factur.SUBTOTAL + "," + factur.IVA + ",'" + factur.TIPOFACTURA + "')";
+                }
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -94,6 +104,7 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
+
 
     }
 }
