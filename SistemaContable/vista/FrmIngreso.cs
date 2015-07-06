@@ -88,7 +88,7 @@ namespace SistemaContable.vista
                 //Paso 1
                 AsientoContableDB objAsiVenta = new AsientoContableDB();
                 int respa;
-                objAsiVenta.getAsientoContable().IDUSUARIO = "1";
+                objAsiVenta.getAsientoContable().IDUSUARIO = Convert.ToString(Utiles.IdUsuarioActual);
                 objAsiVenta.getAsientoContable().NOMBRE_ASIENTO = "VENTA DE MERCADERIAS";
                 objAsiVenta.getAsientoContable().DESCRIPCION = txtDescr.Text;
                 objAsiVenta.getAsientoContable().ESTADO = "A";

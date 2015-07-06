@@ -8,6 +8,9 @@ namespace SistemaContable.controlador
 {
     class Utiles
     {
+
+
+        public static int IdUsuarioActual;
         /// <summary>
         /// Limpia los componentes de un panel
         /// </summary>

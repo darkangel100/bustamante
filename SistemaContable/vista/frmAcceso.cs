@@ -40,6 +40,9 @@ namespace SistemaContable.vista
                    int idCuentaUsuario = objC.getCuenta().IdUsuario;
                    objU.setUsuarios(objU.TraeUsuario(idCuentaUsuario));
                    
+                    //Extraccion de Usuario del Acceso
+                   Utiles.IdUsuarioActual = objU.getUsuarios().IdUsu;
+                   //
                     int rolDeUsu = objU.getUsuarios().IdRol;
                     //
                     RolDB objR = new RolDB();
