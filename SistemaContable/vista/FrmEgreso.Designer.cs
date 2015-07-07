@@ -352,7 +352,7 @@
             // 
             // txtCodLote
             // 
-            this.txtCodLote.Location = new System.Drawing.Point(110, 27);
+            this.txtCodLote.Location = new System.Drawing.Point(110, 29);
             this.txtCodLote.Name = "txtCodLote";
             this.txtCodLote.Size = new System.Drawing.Size(118, 20);
             this.txtCodLote.TabIndex = 51;

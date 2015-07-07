@@ -24,7 +24,7 @@ namespace SistemaContable.vista
         string usuario = "usu";
         int agrega = -1;
         string num = "",  idasiento = "", nombrepro = "";
-        int id_factura, id_asien, idpro, fila, iddetalle, idproveedor;
+        int id_factura, id_asien, idpro, fila, iddetalle;//, idproveedor;
         
         //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
@@ -472,24 +472,15 @@ namespace SistemaContable.vista
                     for (int j = 0; j < objpago.getPago().LISTAPAGO.Count; j++)
                     {
                         idas = Convert.ToInt32(objpago.getPago().LISTAPAGO[j].IDPAGO);
-
                         AsientoContableDB objasicon = new AsientoContableDB();
-                        objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasiconid(idas);
-                        if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
-                        {
-                            MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            //for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
-                            //{
-                                dgvAsientoBusca.Rows.Add(1);
-                                dgvAsientoBusca.Rows[j].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[j].IDASIENTO;
-                                dgvAsientoBusca.Rows[j].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[j].NOMBRE_ASIENTO;
-                                dgvAsientoBusca.Rows[j].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[j].DESCRIPCION;
-                                dgvAsientoBusca.Rows[j].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[j].ESTADO;
-                            //}
-                        }
+                        objasicon.setAsientoContable(objasicon.traeasiconid(idas));
+                        dgvAsientoBusca.Rows.Add(1);
+                        dgvAsientoBusca.Rows[j].Cells[0].Value = objasicon.getAsientoContable().IDASIENTO;
+                        dgvAsientoBusca.Rows[j].Cells[1].Value = objasicon.getAsientoContable().NOMBRE_ASIENTO;
+                        dgvAsientoBusca.Rows[j].Cells[2].Value = objasicon.getAsientoContable().DESCRIPCION;
+                        dgvAsientoBusca.Rows[j].Cells[3].Value = objasicon.getAsientoContable().ESTADO;
+
+
                     }
                 }
             }
