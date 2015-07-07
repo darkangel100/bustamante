@@ -920,11 +920,13 @@
             // 
             // dtpBuscaAsiento
             // 
+            this.dtpBuscaAsiento.Checked = false;
             this.dtpBuscaAsiento.Enabled = false;
             this.dtpBuscaAsiento.Location = new System.Drawing.Point(536, 71);
             this.dtpBuscaAsiento.Name = "dtpBuscaAsiento";
             this.dtpBuscaAsiento.Size = new System.Drawing.Size(185, 20);
             this.dtpBuscaAsiento.TabIndex = 38;
+            this.dtpBuscaAsiento.Value = new System.DateTime(2015, 7, 7, 12, 37, 45, 0);
             // 
             // label13
             // 

@@ -457,23 +457,39 @@ namespace SistemaContable.vista
         }
         private void traefechasiento()
         {
+            int idas;
             try
             {
-                AsientoContableDB objasicon = new AsientoContableDB();
-                objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
-                if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
+                PagoDB objpago = new PagoDB();
+                objpago.getPago().LISTAPAGO = objpago.traePAGOfecha(Utiles.girafecha(dtpBuscaAsiento.Value.ToShortDateString()));
+                
+                if (objpago.getPago().LISTAPAGO.Count==0)
                 {
-                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No existen registros de aseinto contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                    for (int j = 0; j < objpago.getPago().LISTAPAGO.Count; j++)
                     {
-                        dgvAsientoBusca.Rows.Add(1);
-                        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
-                        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
-                        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
-                        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
+                        idas = Convert.ToInt32(objpago.getPago().LISTAPAGO[j].IDPAGO);
+
+                        AsientoContableDB objasicon = new AsientoContableDB();
+                        objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasiconid(idas);
+                        if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
+                        {
+                            MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            //for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
+                            //{
+                                dgvAsientoBusca.Rows.Add(1);
+                                dgvAsientoBusca.Rows[j].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[j].IDASIENTO;
+                                dgvAsientoBusca.Rows[j].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[j].NOMBRE_ASIENTO;
+                                dgvAsientoBusca.Rows[j].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[j].DESCRIPCION;
+                                dgvAsientoBusca.Rows[j].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[j].ESTADO;
+                            //}
+                        }
                     }
                 }
             }
