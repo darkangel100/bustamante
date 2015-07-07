@@ -71,7 +71,7 @@ namespace SistemaContable.controlador
             asiento = null;
             return resp;
         }
-        //ultimo id de ASIENTOCONTABLE 
+        
         /// <summary>
         /// Trae el ultimo ide de un asiento contable
         /// </summary>
@@ -121,7 +121,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "' and estado='A'";
+                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -135,6 +135,46 @@ namespace SistemaContable.controlador
                     asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
                     ListaAsiento.Add(asicn.getAsientoContable());
                    
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaAsiento;
+        }
+
+        public List<AsientoContable> traeasiconid(int id)
+        {
+            AsientoContableDB asicn = null;
+            List<AsientoContable> ListaAsiento = new List<AsientoContable>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from asiento_contable where id_asiento='" + id + "'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    asicn = new AsientoContableDB();
+                    asicn.getAsientoContable().IDASIENTO = dr["id_asiento"].ToString();
+                    asicn.getAsientoContable().NOMBRE_ASIENTO = dr["nombre_asiento"].ToString();
+                    asicn.getAsientoContable().DESCRIPCION = dr["descripcion"].ToString();
+                    asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
+                    ListaAsiento.Add(asicn.getAsientoContable());
+
                 }
                 dr.Close();
             }
