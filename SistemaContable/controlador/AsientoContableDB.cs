@@ -37,6 +37,7 @@ namespace SistemaContable.controlador
         {
             this.ac = null;
         }
+
         /// <summary>
         /// Inserta un asiento Contable a la Base de datos
         /// </summary>
@@ -153,7 +154,7 @@ namespace SistemaContable.controlador
             return ListaAsiento;
         }
 
-        public List<AsientoContable> traeasiconid(int id)
+        public AsientoContable traeasiconid(int id)
         {
             AsientoContableDB asicn = null;
             List<AsientoContable> ListaAsiento = new List<AsientoContable>();
@@ -173,7 +174,6 @@ namespace SistemaContable.controlador
                     asicn.getAsientoContable().NOMBRE_ASIENTO = dr["nombre_asiento"].ToString();
                     asicn.getAsientoContable().DESCRIPCION = dr["descripcion"].ToString();
                     asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
-                    ListaAsiento.Add(asicn.getAsientoContable());
 
                 }
                 dr.Close();
@@ -190,7 +190,7 @@ namespace SistemaContable.controlador
             }
             cn.Close();
             cmd = null;
-            return ListaAsiento;
+            return asicn.getAsientoContable();
         }
     }
 }
