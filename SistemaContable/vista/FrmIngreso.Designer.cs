@@ -206,6 +206,9 @@
             // 
             // dgvDatos
             // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.AllowUserToOrderColumns = true;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -216,6 +219,7 @@
             this.dgvDatos.Location = new System.Drawing.Point(8, 81);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.Size = new System.Drawing.Size(650, 161);
             this.dgvDatos.TabIndex = 38;
@@ -225,28 +229,33 @@
             // 
             this.Column1.HeaderText = "Cantidad";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "IdProd";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Producto";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 200;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Costo Unitario";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 150;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Costo Total";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Width = 150;
             // 
             // btnAgrega

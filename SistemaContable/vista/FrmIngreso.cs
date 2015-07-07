@@ -13,9 +13,7 @@ namespace SistemaContable.vista
 {
     public partial class FrmIngreso : Form
     {
-        string estado = "";
-        //int fila = -1;
-        //Joe
+        //string estado = "";
         int pos = 0;
         double tot = 0;
         double iva = 0;
@@ -276,19 +274,10 @@ namespace SistemaContable.vista
            // dgvDatos.Rows[pos].Cells[4].Value = ;
             //Este tot referencia al valor del producto (+ iva) 
             tot = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(dGVProds.Rows[fila].Cells[2].Value.ToString());
-
-          //  if (lbliva.Text.Equals("N"))
-
-                txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + tot);
-          //  else
-           // {
-                iva = Math.Round(tot - tot / 1.12, 2);
-                //....incrementa txt
-                txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + iva);
-                //...incrementa txt
-             //   txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text) + tot);
-           // }
-            txtTotal.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + Convert.ToDouble(txtIva.Text));
+            txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + (tot/1.12));
+            iva = tot - (tot / 1.12);    
+            txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + iva);
+            txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text)+tot);
             dgvDatos.Rows[pos].Cells[4].Value = tot.ToString();
 
             if (pos == 0) btnEditar.Enabled = true;
@@ -325,14 +314,14 @@ namespace SistemaContable.vista
                     tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);
                     txtCantidad.Text = ca.ToString();
                     //if (lbliva.Equals("N"))
-                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - tot);
+                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot/1.12));
                     // else
                     //{
-                    iva = Math.Round(tot - tot / 1.12, 2);
+                    iva = tot-(tot/1.12);
                     txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);
                     //txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text) - tot);
                     //}
-                    txtTotal.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + Convert.ToString(txtIva.Text));
+                    txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text)-tot);
                     btnAgrega.Enabled = false;
                     btnQuita.Enabled = false;
                     dgvDatos.Enabled = false;
@@ -346,14 +335,14 @@ namespace SistemaContable.vista
                     tot = Convert.ToDouble(txtCantidad.Text) * pre;
 
                     //   if (lbliva.Text.Equals("N"))
-                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + tot);
+                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + (tot/1.12));
                     // else
                     // {
-                    iva = Math.Round(tot - tot / 1.12, 2);
+                    iva = tot-(tot/1.12);
                     txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + iva);
                     // txt12.Text = Convert.ToString(Convert.ToDouble(txt12.Text) + tot);
                     //  }
-                    txtTotal.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + Convert.ToDouble(txtSubt.Text));
+                    txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text)+tot);
                     dgvDatos.Rows[fila].Cells[4].Value = tot.ToString();
                     btnAgrega.Enabled = true;
                     btnQuita.Enabled = true;
@@ -378,9 +367,10 @@ namespace SistemaContable.vista
                 //    txt0.Text = Convert.ToString(Convert.ToDouble(txt0.Text) - tot);
                 //else
                 //{
-                iva = Math.Round(tot - tot / 1.12, 2);
+                iva = tot-(tot/1.12);
                 txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);
-                txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - tot);
+                txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot/1.12));
+
             }
             txtTotal.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + Convert.ToDouble(txtIva.Text));
             dgvDatos.Rows.RemoveAt(fila);
