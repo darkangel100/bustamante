@@ -44,21 +44,7 @@ namespace SistemaContable.vista
         {
             pnlFactura.Enabled = true;
         }
-        private void codigo()
-        {
-            try
-            {
-                int nro;
-                AsientoContableDB objf = new AsientoContableDB();
-                nro = objf.TraeNumeroUltimo();
-                nro++;
-                txtIdFactura.Text = Convert.ToString(nro);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error de Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+     
         private void IDEASIENTO()
         {
             AsientoContableDB objasicon = new AsientoContableDB();
