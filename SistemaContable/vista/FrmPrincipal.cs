@@ -34,8 +34,9 @@ namespace SistemaContable
 
         private void cuentaDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FrmUsuario formUsuario = new FrmUsuario();
-           // formUsuario.ShowDialog();
+            
+            FrmUsuarios f1 = new FrmUsuarios();
+            f1.ShowDialog();
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,8 +47,15 @@ namespace SistemaContable
 
         private void egresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmEgreso formEgreso = new FrmEgreso();
-            formEgreso.ShowDialog();
+            if (tipo.Equals("B"))
+            {
+
+            }
+            else
+            {
+                FrmEgreso formEgreso = new FrmEgreso();
+                formEgreso.ShowDialog();
+            }
         }
 
         private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)

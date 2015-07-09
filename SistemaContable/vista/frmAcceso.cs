@@ -34,7 +34,7 @@ namespace SistemaContable.vista
                 //paso 2
                 if (objC.getCuenta().Contrasenia.Equals(txtClave.Text))
                 {
-                    MessageBox.Show("Clave Correcta", "Acceso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   // MessageBox.Show("Clave Correcta", "Acceso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                   //paso 3
                    UsuariosBD objU = new UsuariosBD();
                    int idCuentaUsuario = objC.getCuenta().IdUsuario;

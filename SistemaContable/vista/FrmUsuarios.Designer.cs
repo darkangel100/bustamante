@@ -49,9 +49,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbP = new System.Windows.Forms.RadioButton();
-            this.rbA = new System.Windows.Forms.RadioButton();
             this.txtCeña2 = new System.Windows.Forms.TextBox();
             this.txtCeña1 = new System.Windows.Forms.TextBox();
             this.txtNomUsuario = new System.Windows.Forms.TextBox();
@@ -63,9 +60,6 @@
             this.btnEdita = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbPasMod = new System.Windows.Forms.RadioButton();
-            this.rbActMod = new System.Windows.Forms.RadioButton();
             this.txtCeñaMod = new System.Windows.Forms.TextBox();
             this.txtNomUsuMod = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -86,15 +80,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.cmbUsuarioSeleccion = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.rbActMod = new System.Windows.Forms.RadioButton();
+            this.rbPasMod = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -288,7 +284,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.txtCeña2);
             this.panel2.Controls.Add(this.txtCeña1);
             this.panel2.Controls.Add(this.txtNomUsuario);
@@ -299,39 +294,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(368, 287);
             this.panel2.TabIndex = 6;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbP);
-            this.groupBox1.Controls.Add(this.rbA);
-            this.groupBox1.Location = new System.Drawing.Point(51, 162);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 93);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estado";
-            // 
-            // rbP
-            // 
-            this.rbP.AutoSize = true;
-            this.rbP.Location = new System.Drawing.Point(19, 49);
-            this.rbP.Name = "rbP";
-            this.rbP.Size = new System.Drawing.Size(77, 21);
-            this.rbP.TabIndex = 1;
-            this.rbP.TabStop = true;
-            this.rbP.Text = "Pasivo";
-            this.rbP.UseVisualStyleBackColor = true;
-            // 
-            // rbA
-            // 
-            this.rbA.AutoSize = true;
-            this.rbA.Location = new System.Drawing.Point(19, 21);
-            this.rbA.Name = "rbA";
-            this.rbA.Size = new System.Drawing.Size(73, 21);
-            this.rbA.TabIndex = 0;
-            this.rbA.TabStop = true;
-            this.rbA.Text = "Activo";
-            this.rbA.UseVisualStyleBackColor = true;
             // 
             // txtCeña2
             // 
@@ -438,39 +400,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(368, 276);
             this.panel4.TabIndex = 7;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbPasMod);
-            this.groupBox2.Controls.Add(this.rbActMod);
-            this.groupBox2.Location = new System.Drawing.Point(36, 174);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 79);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Estado";
-            // 
-            // rbPasMod
-            // 
-            this.rbPasMod.AutoSize = true;
-            this.rbPasMod.Location = new System.Drawing.Point(19, 49);
-            this.rbPasMod.Name = "rbPasMod";
-            this.rbPasMod.Size = new System.Drawing.Size(77, 21);
-            this.rbPasMod.TabIndex = 1;
-            this.rbPasMod.TabStop = true;
-            this.rbPasMod.Text = "Pasivo";
-            this.rbPasMod.UseVisualStyleBackColor = true;
-            // 
-            // rbActMod
-            // 
-            this.rbActMod.AutoSize = true;
-            this.rbActMod.Location = new System.Drawing.Point(19, 21);
-            this.rbActMod.Name = "rbActMod";
-            this.rbActMod.Size = new System.Drawing.Size(73, 21);
-            this.rbActMod.TabIndex = 0;
-            this.rbActMod.TabStop = true;
-            this.rbActMod.Text = "Activo";
-            this.rbActMod.UseVisualStyleBackColor = true;
             // 
             // txtCeñaMod
             // 
@@ -648,6 +577,39 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Seleccionar ID Usuario";
             // 
+            // rbActMod
+            // 
+            this.rbActMod.AutoSize = true;
+            this.rbActMod.Location = new System.Drawing.Point(19, 21);
+            this.rbActMod.Name = "rbActMod";
+            this.rbActMod.Size = new System.Drawing.Size(73, 21);
+            this.rbActMod.TabIndex = 0;
+            this.rbActMod.TabStop = true;
+            this.rbActMod.Text = "Activo";
+            this.rbActMod.UseVisualStyleBackColor = true;
+            // 
+            // rbPasMod
+            // 
+            this.rbPasMod.AutoSize = true;
+            this.rbPasMod.Location = new System.Drawing.Point(19, 49);
+            this.rbPasMod.Name = "rbPasMod";
+            this.rbPasMod.Size = new System.Drawing.Size(77, 21);
+            this.rbPasMod.TabIndex = 1;
+            this.rbPasMod.TabStop = true;
+            this.rbPasMod.Text = "Pasivo";
+            this.rbPasMod.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbPasMod);
+            this.groupBox2.Controls.Add(this.rbActMod);
+            this.groupBox2.Location = new System.Drawing.Point(36, 174);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(306, 79);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Estado";
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -665,16 +627,14 @@
             this.tabPage1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -701,9 +661,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbP;
-        private System.Windows.Forms.RadioButton rbA;
         private System.Windows.Forms.TextBox txtCeña2;
         private System.Windows.Forms.TextBox txtCeña1;
         private System.Windows.Forms.TextBox txtNomUsuario;
@@ -713,9 +670,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbPasMod;
-        private System.Windows.Forms.RadioButton rbActMod;
         private System.Windows.Forms.TextBox txtCeñaMod;
         private System.Windows.Forms.TextBox txtNomUsuMod;
         private System.Windows.Forms.Label label23;
@@ -739,5 +693,8 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEdita;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbPasMod;
+        private System.Windows.Forms.RadioButton rbActMod;
     }
 }

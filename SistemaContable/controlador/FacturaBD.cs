@@ -31,7 +31,10 @@ namespace SistemaContable.controlador
             this.fac = null;
         }
 
-
+        /// <summary>
+        /// descpr
+        /// </summary>
+        /// <returns>lo q retorna</returns>
         public int TraeCodigo()
         {
             int nro = 0; ;
@@ -67,7 +70,13 @@ namespace SistemaContable.controlador
             return nro;
         }
         //Este metodo debe copiarse en DB
-        public int InsertaFacturas(Factura factur, string tipo)
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="factur">Nombre del objeto</param>
+       /// <param name="tipo">Numero que indica que la factura se ingresó correctamente</param>
+       /// <returns></returns>
+        public int InsertaFacturasVC(Factura factur, string tipo)
         {
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();

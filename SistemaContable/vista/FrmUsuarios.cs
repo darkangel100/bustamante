@@ -161,16 +161,8 @@ namespace SistemaContable.vista
                 objU.getCuenta().Usuario = txtNomUsuario.Text.Trim();
                 if(txtCeña1.Text.ToString().Equals(txtCeña2.Text.ToString())){
                       objU.getCuenta().Contrasenia = txtCeña1.Text.Trim();
-                }
-
-                if (rbA.Checked == true)
-                {
-                    objU.getCuenta().Estado = "A";
-                }
-                else
-                {
-                    objU.getCuenta().Estado = "P";
-                }
+                }       
+                 objU.getCuenta().Estado = "A";        
                 resp = objU.Insertacuenta(objU.getCuenta());
 
                 if (resp == 0)
@@ -290,7 +282,7 @@ namespace SistemaContable.vista
                     cmbRolMod.SelectedValue = objB.getUsuarios().IdRol;
                     txtCedMod.Text = objB.getUsuarios().CedUsu;
                     txtNomMod.Text = objB.getUsuarios().NomUsu;
-                    txtApellido.Text = objB.getUsuarios().ApeUsu;
+                    txtApeMod.Text = objB.getUsuarios().ApeUsu;
                     txtTelMod.Text = objB.getUsuarios().TelUsu;
                     txtDirMod.Text = objB.getUsuarios().DirUsu;
                    

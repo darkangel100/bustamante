@@ -70,31 +70,35 @@
             this.txtIdFactura = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dtpFecBusq = new System.Windows.Forms.DateTimePicker();
+            this.cmbIds = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnBusquedaPorFech = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.pnlFactura = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvItemsBusq = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btnActivar = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBusquedaPorNumF = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnMostrarDetalles = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -102,8 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGVProds)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.pnlFactura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItemsBusq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -260,6 +264,7 @@
             // 
             // btnAgrega
             // 
+            this.btnAgrega.Enabled = false;
             this.btnAgrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgrega.Location = new System.Drawing.Point(370, 22);
             this.btnAgrega.Name = "btnAgrega";
@@ -308,16 +313,16 @@
             // 
             // txtIva
             // 
-            this.txtIva.Location = new System.Drawing.Point(352, 285);
+            this.txtIva.Location = new System.Drawing.Point(148, 285);
             this.txtIva.Name = "txtIva";
-            this.txtIva.Size = new System.Drawing.Size(257, 22);
+            this.txtIva.Size = new System.Drawing.Size(461, 22);
             this.txtIva.TabIndex = 49;
             this.txtIva.Text = "0";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(87, 274);
+            this.label13.Location = new System.Drawing.Point(87, 288);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(26, 17);
             this.label13.TabIndex = 50;
@@ -336,9 +341,9 @@
             // 
             // txtSubt
             // 
-            this.txtSubt.Location = new System.Drawing.Point(354, 257);
+            this.txtSubt.Location = new System.Drawing.Point(148, 257);
             this.txtSubt.Name = "txtSubt";
-            this.txtSubt.Size = new System.Drawing.Size(257, 22);
+            this.txtSubt.Size = new System.Drawing.Size(463, 22);
             this.txtSubt.TabIndex = 51;
             this.txtSubt.Text = "0";
             // 
@@ -353,17 +358,17 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(351, 314);
+            this.txtTotal.Location = new System.Drawing.Point(148, 314);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(258, 22);
+            this.txtTotal.Size = new System.Drawing.Size(461, 22);
             this.txtTotal.TabIndex = 40;
             this.txtTotal.Text = "0";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(82, 296);
+            this.label5.Location = new System.Drawing.Point(82, 313);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
@@ -510,16 +515,19 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnMostrarDetalles);
+            this.tabPage2.Controls.Add(this.dtpFecBusq);
+            this.tabPage2.Controls.Add(this.cmbIds);
+            this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.btnBusquedaPorFech);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.dateTimePicker3);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.pnlFactura);
             this.tabPage2.Controls.Add(this.btnActivar);
-            this.tabPage2.Controls.Add(this.dataGridView3);
+            this.tabPage2.Controls.Add(this.dgvFacturas);
             this.tabPage2.Controls.Add(this.btnBusquedaPorNumF);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.textBox6);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -530,8 +538,37 @@
             this.tabPage2.Text = "Busqueda-Activacion/Desactivacion";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dtpFecBusq
+            // 
+            this.dtpFecBusq.Location = new System.Drawing.Point(8, 236);
+            this.dtpFecBusq.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFecBusq.Name = "dtpFecBusq";
+            this.dtpFecBusq.Size = new System.Drawing.Size(234, 22);
+            this.dtpFecBusq.TabIndex = 44;
+            // 
+            // cmbIds
+            // 
+            this.cmbIds.FormattingEnabled = true;
+            this.cmbIds.Location = new System.Drawing.Point(168, 120);
+            this.cmbIds.Name = "cmbIds";
+            this.cmbIds.Size = new System.Drawing.Size(245, 24);
+            this.cmbIds.TabIndex = 61;
+            this.cmbIds.SelectedIndexChanged += new System.EventHandler(this.cmbIds_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Id",
+            "Fecha"});
+            this.comboBox1.Location = new System.Drawing.Point(168, 76);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(245, 24);
+            this.comboBox1.TabIndex = 60;
+            // 
             // btnBusquedaPorFech
             // 
+            this.btnBusquedaPorFech.Enabled = false;
             this.btnBusquedaPorFech.Location = new System.Drawing.Point(451, 162);
             this.btnBusquedaPorFech.Name = "btnBusquedaPorFech";
             this.btnBusquedaPorFech.Size = new System.Drawing.Size(100, 23);
@@ -550,6 +587,7 @@
             // 
             // dateTimePicker3
             // 
+            this.dateTimePicker3.Enabled = false;
             this.dateTimePicker3.Location = new System.Drawing.Point(168, 162);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(245, 22);
@@ -567,11 +605,10 @@
             // pnlFactura
             // 
             this.pnlFactura.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlFactura.Controls.Add(this.dateTimePicker2);
             this.pnlFactura.Controls.Add(this.label8);
             this.pnlFactura.Controls.Add(this.label7);
             this.pnlFactura.Controls.Add(this.textBox5);
-            this.pnlFactura.Controls.Add(this.dataGridView2);
+            this.pnlFactura.Controls.Add(this.dgvItemsBusq);
             this.pnlFactura.Controls.Add(this.label6);
             this.pnlFactura.Controls.Add(this.textBox4);
             this.pnlFactura.Enabled = false;
@@ -580,14 +617,6 @@
             this.pnlFactura.Name = "pnlFactura";
             this.pnlFactura.Size = new System.Drawing.Size(617, 528);
             this.pnlFactura.TabIndex = 53;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(132, 55);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker2.TabIndex = 44;
             // 
             // label8
             // 
@@ -618,40 +647,25 @@
             this.textBox5.Size = new System.Drawing.Size(449, 111);
             this.textBox5.TabIndex = 43;
             // 
-            // dataGridView2
+            // dgvItemsBusq
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvItemsBusq.AllowUserToAddRows = false;
+            this.dgvItemsBusq.AllowUserToDeleteRows = false;
+            this.dgvItemsBusq.AllowUserToOrderColumns = true;
+            this.dgvItemsBusq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItemsBusq.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.Column9,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dataGridView2.Location = new System.Drawing.Point(39, 91);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(406, 71);
-            this.dataGridView2.TabIndex = 45;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Costo Unitario";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dgvItemsBusq.Location = new System.Drawing.Point(39, 91);
+            this.dgvItemsBusq.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvItemsBusq.Name = "dgvItemsBusq";
+            this.dgvItemsBusq.ReadOnly = true;
+            this.dgvItemsBusq.RowHeadersVisible = false;
+            this.dgvItemsBusq.Size = new System.Drawing.Size(508, 154);
+            this.dgvItemsBusq.TabIndex = 45;
             // 
             // label6
             // 
@@ -673,6 +687,7 @@
             // 
             // btnActivar
             // 
+            this.btnActivar.Enabled = false;
             this.btnActivar.Location = new System.Drawing.Point(331, 496);
             this.btnActivar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActivar.Name = "btnActivar";
@@ -681,19 +696,21 @@
             this.btnActivar.Text = "Activar/Desactivar";
             this.btnActivar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dgvFacturas
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvFacturas.AllowUserToOrderColumns = true;
+            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dataGridView3.Location = new System.Drawing.Point(41, 266);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.Size = new System.Drawing.Size(450, 185);
-            this.dataGridView3.TabIndex = 49;
+            this.Column10,
+            this.Column11,
+            this.Column12});
+            this.dgvFacturas.Location = new System.Drawing.Point(8, 266);
+            this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.RowHeadersVisible = false;
+            this.dgvFacturas.Size = new System.Drawing.Size(453, 109);
+            this.dgvFacturas.TabIndex = 49;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -701,20 +718,24 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Width = 150;
             // 
-            // dataGridViewTextBoxColumn6
+            // Column10
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 150;
+            this.Column10.HeaderText = "Total";
+            this.Column10.Name = "Column10";
             // 
-            // dataGridViewTextBoxColumn7
+            // Column11
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 150;
+            this.Column11.HeaderText = "Subtotal";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Iva";
+            this.Column12.Name = "Column12";
             // 
             // btnBusquedaPorNumF
             // 
+            this.btnBusquedaPorNumF.Enabled = false;
             this.btnBusquedaPorNumF.Location = new System.Drawing.Point(451, 118);
             this.btnBusquedaPorNumF.Margin = new System.Windows.Forms.Padding(4);
             this.btnBusquedaPorNumF.Name = "btnBusquedaPorNumF";
@@ -734,14 +755,6 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Busqueda, Listado, Activacion/Desactivacion ";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(168, 118);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(245, 22);
-            this.textBox6.TabIndex = 27;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -751,6 +764,47 @@
             this.label9.Size = new System.Drawing.Size(104, 17);
             this.label9.TabIndex = 26;
             this.label9.Text = "Codigo Factura";
+            // 
+            // btnMostrarDetalles
+            // 
+            this.btnMostrarDetalles.Location = new System.Drawing.Point(331, 389);
+            this.btnMostrarDetalles.Name = "btnMostrarDetalles";
+            this.btnMostrarDetalles.Size = new System.Drawing.Size(130, 41);
+            this.btnMostrarDetalles.TabIndex = 63;
+            this.btnMostrarDetalles.Text = "Detalles";
+            this.btnMostrarDetalles.UseVisualStyleBackColor = true;
+            this.btnMostrarDetalles.Click += new System.EventHandler(this.btnMostrarDetalles_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "IdProd";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Costo Unitario";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FrmIngreso
             // 
@@ -773,8 +827,8 @@
             this.tabPage2.PerformLayout();
             this.pnlFactura.ResumeLayout(false);
             this.pnlFactura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItemsBusq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -797,21 +851,16 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DataGridView dgvItemsBusq;
+        private System.Windows.Forms.DateTimePicker dtpFecBusq;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnBusquedaPorNumF;
         private System.Windows.Forms.Button btnActivar;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvFacturas;
         private System.Windows.Forms.Panel pnlFactura;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -823,9 +872,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button btnBusquedaPorFech;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
@@ -848,5 +894,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button btnNueva;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbIds;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Button btnMostrarDetalles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

@@ -72,21 +72,20 @@
             // 
             // txtNomCuent
             // 
-            this.txtNomCuent.Location = new System.Drawing.Point(418, 172);
+            this.txtNomCuent.Location = new System.Drawing.Point(243, 172);
             this.txtNomCuent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNomCuent.Name = "txtNomCuent";
-            this.txtNomCuent.Size = new System.Drawing.Size(901, 30);
+            this.txtNomCuent.Size = new System.Drawing.Size(339, 30);
             this.txtNomCuent.TabIndex = 4;
-            this.txtNomCuent.Text = "luis111";
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(418, 264);
+            this.txtClave.Location = new System.Drawing.Point(226, 261);
             this.txtClave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(901, 30);
+            this.txtClave.PasswordChar = '*';
+            this.txtClave.Size = new System.Drawing.Size(386, 30);
             this.txtClave.TabIndex = 5;
-            this.txtClave.Text = "luis1";
             // 
             // btnIngreso
             // 
@@ -128,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 518);
+            this.ClientSize = new System.Drawing.Size(1006, 436);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnIngreso);
