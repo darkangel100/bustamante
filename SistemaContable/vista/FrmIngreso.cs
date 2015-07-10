@@ -144,7 +144,7 @@ namespace SistemaContable.vista
                         {
                             MessageBox.Show("No se ingreso item de datos de la Factura", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        resp2 = objproducto.agregapro(cp, cca);
+                        resp2 = objproducto.decrecePro(cp, cca);
                         if (resp2 == 0)
                         {
                             MessageBox.Show("No se actualizo Productos", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -164,7 +164,7 @@ namespace SistemaContable.vista
 
         private void FrmIngreso_Load(object sender, EventArgs e)
         {
-            //Referncia Nro Asiento, se fija en el txt de Factura
+            //Referncia Nro Asiento + 1, se fija en Vista
             IDEASIENTO();
             //codigo();
             llenaProductos();
@@ -173,7 +173,7 @@ namespace SistemaContable.vista
         }
         private void llenafacts(string tipoV)
         {
-            //MessageBox.Show(ced.ToString());
+            
             try
             {
                 FacturaDB objP = new FacturaDB();
@@ -283,7 +283,7 @@ namespace SistemaContable.vista
                 {
                     txtPrecio.Text = pro.getProducto().Precio.ToString();
                     txtStock.Text = pro.getProducto().Stock_global.ToString(); ;
-                    //lblIva.Text = pro.getProducto().iva.ToString();
+                   
                 }
             }
             catch (Exception ex)
@@ -305,6 +305,7 @@ namespace SistemaContable.vista
             dgvDatos.Rows[pos].Cells[1].Value = dGVProds.Rows[fila].Cells[0].Value.ToString();
             //Nombre Producto
             dgvDatos.Rows[pos].Cells[2].Value = dGVProds.Rows[fila].Cells[1].Value.ToString();
+           //
             dgvDatos.Rows[pos].Cells[3].Value = dGVProds.Rows[fila].Cells[2].Value.ToString();//Corresponde a "pre_ven" por la ref lblpre
            // dgvDatos.Rows[pos].Cells[4].Value = ;
             //Este tot referencia al valor del producto (+ iva) 
@@ -388,14 +389,10 @@ namespace SistemaContable.vista
             quita();
         }
         private void quita()
-        {
-           
+        {        
             if (fila >= 0)
             {
-               
-                tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);
-
-                
+               tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);             
                 iva = tot-(tot/1.12);
                 txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);
                 txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot/1.12));

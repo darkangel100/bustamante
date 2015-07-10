@@ -66,7 +66,16 @@ namespace SistemaContable
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            if (tipo.Equals("B"))
+            {
+                cuentaDeUsuarioToolStripMenuItem.Enabled = false;
+                //egresosToolStripMenuItem.Enabled = false;
+                ingresosToolStripMenuItem.Enabled = false;
+                egresosToolStripMenuItem.Enabled = false;
+                reportesToolStripMenuItem.Enabled = false;
 
+            }
+        
         }
     }
 }
