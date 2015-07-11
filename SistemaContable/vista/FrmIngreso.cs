@@ -407,7 +407,8 @@ namespace SistemaContable.vista
 
         private void cmbIds_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mostrar();
+            //mostrar();
+            btnBusquedaPorNumF.Enabled = true;
         }
         public void mostrar()
         {
@@ -500,6 +501,17 @@ namespace SistemaContable.vista
         {
          int idF=Convert.ToInt32(dgvFacturas.Rows[0].Cells[0].Value);
          llenaItems(idF);
+        }
+
+        private void btnBusquedaPorFech_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnBusquedaPorNumF_Click(object sender, EventArgs e)
+        {
+            mostrar();
         }
 
       

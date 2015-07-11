@@ -70,18 +70,24 @@
             this.txtIdFactura = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnMostrarDetalles = new System.Windows.Forms.Button();
             this.dtpFecBusq = new System.Windows.Forms.DateTimePicker();
             this.cmbIds = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnBusquedaPorFech = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaBusq = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.pnlFactura = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dgvItemsBusq = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btnActivar = new System.Windows.Forms.Button();
@@ -93,12 +99,6 @@
             this.btnBusquedaPorNumF = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnMostrarDetalles = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -521,7 +521,7 @@
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.btnBusquedaPorFech);
             this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.dateTimePicker3);
+            this.tabPage2.Controls.Add(this.dtpFechaBusq);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.pnlFactura);
             this.tabPage2.Controls.Add(this.btnActivar);
@@ -537,6 +537,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Busqueda-Activacion/Desactivacion";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnMostrarDetalles
+            // 
+            this.btnMostrarDetalles.Location = new System.Drawing.Point(331, 389);
+            this.btnMostrarDetalles.Name = "btnMostrarDetalles";
+            this.btnMostrarDetalles.Size = new System.Drawing.Size(130, 41);
+            this.btnMostrarDetalles.TabIndex = 63;
+            this.btnMostrarDetalles.Text = "Detalles";
+            this.btnMostrarDetalles.UseVisualStyleBackColor = true;
+            this.btnMostrarDetalles.Click += new System.EventHandler(this.btnMostrarDetalles_Click);
             // 
             // dtpFecBusq
             // 
@@ -575,6 +585,7 @@
             this.btnBusquedaPorFech.TabIndex = 59;
             this.btnBusquedaPorFech.Text = "Buscar";
             this.btnBusquedaPorFech.UseVisualStyleBackColor = true;
+            this.btnBusquedaPorFech.Click += new System.EventHandler(this.btnBusquedaPorFech_Click);
             // 
             // label16
             // 
@@ -585,13 +596,13 @@
             this.label16.TabIndex = 58;
             this.label16.Text = "Elija Un Criterio ";
             // 
-            // dateTimePicker3
+            // dtpFechaBusq
             // 
-            this.dateTimePicker3.Enabled = false;
-            this.dateTimePicker3.Location = new System.Drawing.Point(168, 162);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(245, 22);
-            this.dateTimePicker3.TabIndex = 56;
+            this.dtpFechaBusq.Enabled = false;
+            this.dtpFechaBusq.Location = new System.Drawing.Point(168, 162);
+            this.dtpFechaBusq.Name = "dtpFechaBusq";
+            this.dtpFechaBusq.Size = new System.Drawing.Size(245, 22);
+            this.dtpFechaBusq.TabIndex = 56;
             // 
             // label14
             // 
@@ -666,6 +677,37 @@
             this.dgvItemsBusq.RowHeadersVisible = false;
             this.dgvItemsBusq.Size = new System.Drawing.Size(508, 154);
             this.dgvItemsBusq.TabIndex = 45;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "IdProd";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Costo Unitario";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // label6
             // 
@@ -743,6 +785,7 @@
             this.btnBusquedaPorNumF.TabIndex = 48;
             this.btnBusquedaPorNumF.Text = "Buscar";
             this.btnBusquedaPorNumF.UseVisualStyleBackColor = true;
+            this.btnBusquedaPorNumF.Click += new System.EventHandler(this.btnBusquedaPorNumF_Click);
             // 
             // label3
             // 
@@ -764,47 +807,6 @@
             this.label9.Size = new System.Drawing.Size(104, 17);
             this.label9.TabIndex = 26;
             this.label9.Text = "Codigo Factura";
-            // 
-            // btnMostrarDetalles
-            // 
-            this.btnMostrarDetalles.Location = new System.Drawing.Point(331, 389);
-            this.btnMostrarDetalles.Name = "btnMostrarDetalles";
-            this.btnMostrarDetalles.Size = new System.Drawing.Size(130, 41);
-            this.btnMostrarDetalles.TabIndex = 63;
-            this.btnMostrarDetalles.Text = "Detalles";
-            this.btnMostrarDetalles.UseVisualStyleBackColor = true;
-            this.btnMostrarDetalles.Click += new System.EventHandler(this.btnMostrarDetalles_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "IdProd";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Costo Unitario";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Costo Total";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FrmIngreso
             // 
@@ -874,7 +876,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnBusquedaPorFech;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dtpFechaBusq;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;

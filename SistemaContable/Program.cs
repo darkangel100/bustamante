@@ -17,7 +17,7 @@ namespace SistemaContable
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal("a"));
+            Application.Run(new frmAcceso());
         }
     }
 }
