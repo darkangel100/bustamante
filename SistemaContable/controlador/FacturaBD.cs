@@ -18,7 +18,10 @@ namespace SistemaContable.controlador
         {
             if (this.fac == null)
             {
+                //this.fac = new Factura();
                 this.fac = new Factura();
+                Factura p = new Factura();
+                fac = p;
             }
             return this.fac;
         }
@@ -113,7 +116,49 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
+        
+        public List<Factura> libroDiario(string fi, string ff)
+        {
+            FacturaBD p = null;
+            List<Factura> lista = new List<Factura>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string comandoSql = "Select * from factura Where fecha BETWEEN '" + fi + "' AND '" + ff + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    p = new FacturaBD();
+                    p.getFacturas().IDPROVEEDOR = int.Parse(dr[0].ToString());
+                    p.getFacturas().IDFACTURA = int.Parse(dr[1].ToString());
+                    p.getFacturas().FECHA = dr[2].ToString();
+                    p.getFacturas().TOTAL = double.Parse(dr[3].ToString());
+                    p.getFacturas().SUBTOTAL = double.Parse(dr[4].ToString());
+                    p.getFacturas().IVA = double.Parse(dr[5].ToString());
+                    p.getFacturas().TIPOFACTURA = dr[6].ToString();
+                    lista.Add(p.getFacturas());
+                }
+                dr.Close();
 
+            }
+            catch (MySqlException ex)
+            {
+                p = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                p = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return lista;
+        }
 
     }
 }

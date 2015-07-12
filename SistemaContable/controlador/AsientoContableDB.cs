@@ -37,7 +37,6 @@ namespace SistemaContable.controlador
         {
             this.ac = null;
         }
-
         /// <summary>
         /// Inserta un asiento Contable a la Base de datos
         /// </summary>
@@ -72,7 +71,38 @@ namespace SistemaContable.controlador
             asiento = null;
             return resp;
         }
-        
+        // Registra IdUsuario del  Acceso, (Pero no se lo utilizó)
+        public int InsertaAsientoContable1(AsientoContable asiento)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            int resp;
+            try
+            {          
+                string sqlcad= "Insert asiento_contable Values (" + asiento.IDUSUARIO + ",null,'" + asiento.NOMBRE_ASIENTO + "','" + asiento.DESCRIPCION + "','" + asiento.ESTADO + "')";
+                
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            asiento = null;
+            return resp;
+        }
+       
+        //ultimo id de ASIENTOCONTABLE 
         /// <summary>
         /// Trae el ultimo ide de un asiento contable
         /// </summary>
@@ -108,6 +138,14 @@ namespace SistemaContable.controlador
             cmd = null;
             return num;
         }
+
+       
+        
+        /// <summary>
+        ///trae un asiento ontable por el nombre 
+        /// </summary>
+        /// <param name="nombre">nombre asiento</param>
+        /// <returns>la lista de asientos con el mismo numero</returns>
         
         /// <summary>
         ///trae un asiento ontable por el nombre 
@@ -122,7 +160,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "'";
+                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "' and estado='A'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -154,43 +192,41 @@ namespace SistemaContable.controlador
             return ListaAsiento;
         }
 
-        public AsientoContable traeasiconid(int id)
+        public AsientoContable libroDiario(int id)
         {
-            AsientoContableDB asicn = null;
-            List<AsientoContable> ListaAsiento = new List<AsientoContable>();
+            AsientoContableDB per = null;
             MySqlCommand cmd;
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from asiento_contable where id_asiento='" + id + "'";
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
+                string comandoSql = "Select * from asiento_contable Where id_asiento='" + id + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    asicn = new AsientoContableDB();
-                    asicn.getAsientoContable().IDASIENTO = dr["id_asiento"].ToString();
-                    asicn.getAsientoContable().NOMBRE_ASIENTO = dr["nombre_asiento"].ToString();
-                    asicn.getAsientoContable().DESCRIPCION = dr["descripcion"].ToString();
-                    asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
-
+                    per = new AsientoContableDB();
+                    per.getAsientoContable().IDUSUARIO = dr[0].ToString();
+                    per.getAsientoContable().IDASIENTO = dr[1].ToString();
+                    per.getAsientoContable().NOMBRE_ASIENTO = dr[2].ToString();
+                    per.getAsientoContable().DESCRIPCION = dr[3].ToString();
+                    per.getAsientoContable().ESTADO = dr[4].ToString();
                 }
                 dr.Close();
             }
             catch (MySqlException ex)
             {
-                asicn = null;
+                per = null;
                 throw ex;
             }
             catch (Exception ex)
             {
-                asicn = null;
+                per = null;
                 throw ex;
             }
             cn.Close();
             cmd = null;
-            return asicn.getAsientoContable();
+            return per.getAsientoContable();
+        }
         }
     }
-}

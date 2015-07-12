@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SistemaContable.controlador
 {
@@ -51,5 +53,41 @@ namespace SistemaContable.controlador
             return fec;
         }
 
+        public static string fecha(DateTimePicker dtp)
+        {
+            int a = dtp.Value.Year;
+            int m = dtp.Value.Month;
+            string ms = m.ToString();
+            if (m < 10)
+            {
+                ms = "0" + m;
+            }
+            int d = dtp.Value.Day;
+            string ds = d.ToString();
+            if (d < 10)
+            {
+                ds = "0" + d;
+            }
+            string f = a + "-" + ms + "-" + ds;
+            return f;
+        }
+        public static string ObtenerRuta()
+        {
+            string directory = "";
+            directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return directory;
+        }
+        public static void guardarReporte(string datos, string nombre)
+        {
+            try
+            {
+                StreamWriter escribir = new StreamWriter(Utiles.ObtenerRuta() + "/Panda/" + nombre + ".html");
+                escribir.Write(datos);
+                escribir.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

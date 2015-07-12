@@ -148,5 +148,44 @@ namespace SistemaContable.controlador
             cmd = null;
             return listapago;
         }
+
+        internal List<Pago> rptLibroDiario(string p1, string p2)
+        {
+            PagoDB p = null;
+            List<Pago> lista = new List<Pago>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string comandoSql = "Select * from pago Where fecha_ingreso BETWEEN '" + p1 + "' AND '" + p2 + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    p = new PagoDB();
+                    p.getPago().IDPAGO = dr[0].ToString();
+                    p.getPago().FECHA = dr[1].ToString();
+                    p.getPago().MONTO = double.Parse(dr[2].ToString());
+                    lista.Add(p.getPago());
+                }
+                dr.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                p = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                p = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return lista;
+        }
     }
 }
