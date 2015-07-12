@@ -184,7 +184,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                // string sqlcad = "Select * from Factura Where id_fac='" + id + "'";
+               
                 string sqlcad = "Select * from factura  Where id_factura=" + id;
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
@@ -192,20 +192,18 @@ namespace SistemaContable.controlador
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    //Destino Vista
+                    
                     per = new FacturaDB();
-                    //
+                    
                     per.getFactura().IDFACTURA = Convert.ToInt32(dr[1].ToString());
                     per.getFactura().FECHA = dr[2].ToString();
-                    //
+                   
                     per.getFactura().TOTAL =Convert.ToDouble(dr[3].ToString());
-                    //per.getFacturas().cedper = dr[2].ToString();
-                    //per.getFactura().FECHA = dr[2].ToString();
+                    
                     per.getFactura().SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
                     per.getFactura().IVA = Convert.ToDouble(dr[5].ToString());//este es subtotal             
                     per.getFactura().TIPOFACTURA = dr[6].ToString();
-                    //per.getFacturas().Usuario.tipusu = dr[7].ToString();
-                    //
+                    
                 }
                 dr.Close();
             }
@@ -224,7 +222,7 @@ namespace SistemaContable.controlador
             return per.getFactura();
         }
         //Llena Listado de Facturas
-        public List<Factura> TraeFacts(string cat)
+        public List<Factura> TraeFacts(string tipo)
         {
             Factura fac = null;
             List<Factura> ListaFs = new List<Factura>();
@@ -234,8 +232,8 @@ namespace SistemaContable.controlador
             {
 
                
-              //  string sqlcad = "Select * from factura  order by id_factura";
-                string sqlcad = "Select * from factura where tipo_fac='" + cat + "' order by id_factura";
+              
+                string sqlcad = "Select * from factura where tipo_fac='" + tipo + "' order by id_factura";
 
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
@@ -243,21 +241,16 @@ namespace SistemaContable.controlador
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    //fac = new Factura();  FALLA
-                    //Destino Vista
+                    
                     fac = new Factura();
                     fac.IDFACTURA = Convert.ToInt32(dr[1].ToString());
-                    //
-                    //fac.numfac = dr[1].ToString();
-                    //fac.cedper = dr[2].ToString();
+                   
                     fac.FECHA = dr[2].ToString();
-                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es subtotal
+                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es total
                     fac.SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
                     fac.IVA = Convert.ToDouble(dr[5].ToString());
                     fac.TIPOFACTURA = dr[6].ToString();
-                    //fac.estfac = dr[8].ToString();
-                    //per.getFacturas().Usuario.tipusu = dr[7].ToString();
-                    //
+                    
                     ListaFs.Add(fac);
                 }
                 dr.Close();
@@ -287,7 +280,7 @@ namespace SistemaContable.controlador
             {
 
 
-                //  string sqlcad = "Select * from factura  order by id_factura";
+               
                 string sqlcad = "Select * from factura where fecha='" + fecha + "' order by id_factura";
 
                 cmd = new MySqlCommand(sqlcad, cn);
@@ -296,21 +289,16 @@ namespace SistemaContable.controlador
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    //fac = new Factura();  FALLA
-                    //Destino Vista
+                    
                     fac = new Factura();
                     fac.IDFACTURA = Convert.ToInt32(dr[1].ToString());
-                    //
-                    //fac.numfac = dr[1].ToString();
-                    //fac.cedper = dr[2].ToString();
+                    
                     fac.FECHA = dr[2].ToString();
-                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es subtotal
+                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es total
                     fac.SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
                     fac.IVA = Convert.ToDouble(dr[5].ToString());
                     fac.TIPOFACTURA = dr[6].ToString();
-                    //fac.estfac = dr[8].ToString();
-                    //per.getFacturas().Usuario.tipusu = dr[7].ToString();
-                    //
+                    
                     ListaFs.Add(fac);
                 }
                 dr.Close();
