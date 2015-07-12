@@ -23,26 +23,30 @@ namespace SistemaContable
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProveedor formProveedor = new FrmProveedor();
-            formProveedor.ShowDialog();
+            formProveedor.MdiParent = this;
+            formProveedor.Show();
         }
 
         private void productoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProducto formProducto = new FrmProducto();
-            formProducto.ShowDialog();
+            formProducto.MdiParent = this;
+            formProducto.Show();
         }
 
         private void cuentaDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
             FrmUsuarios f1 = new FrmUsuarios();
-            f1.ShowDialog();
+            f1.MdiParent = this;
+            f1.Show();
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmReportes formReportes = new FrmReportes();
-            formReportes.ShowDialog();
+            formReportes.MdiParent = this;
+            formReportes.Show();
         }
 
         private void egresosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,28 +58,21 @@ namespace SistemaContable
             else
             {
                 FrmEgreso formEgreso = new FrmEgreso();
-                formEgreso.ShowDialog();
+                formEgreso.MdiParent = this;
+                formEgreso.Show();
             }
         }
 
         private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmIngreso formIngreso = new FrmIngreso();
-            formIngreso.ShowDialog();
+            formIngreso.MdiParent = this;
+            formIngreso.Show();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            if (tipo.Equals("B"))
-            {
-                cuentaDeUsuarioToolStripMenuItem.Enabled = false;
-                //egresosToolStripMenuItem.Enabled = false;
-                ingresosToolStripMenuItem.Enabled = false;
-                egresosToolStripMenuItem.Enabled = false;
-                reportesToolStripMenuItem.Enabled = false;
 
-            }
-        
         }
     }
 }
