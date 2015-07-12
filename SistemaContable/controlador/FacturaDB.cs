@@ -105,7 +105,7 @@ namespace SistemaContable.controlador
             factur = null;
             return resp;
         }
-        //NUEVO METODO
+        //INGRESOS
         public int InsertaFacturasV(Factura factur)
         {
             MySqlCommand cmd;
@@ -276,8 +276,8 @@ namespace SistemaContable.controlador
             cmd = null;
             return ListaFs;
         }
-        //Nuevisimo
-        public List<Factura> TraeFactsFecha(string cat)
+        //INGRESOS 11/07
+        public List<Factura> TraeFactsFecha(string fecha)
         {
             Factura fac = null;
             List<Factura> ListaFs = new List<Factura>();
@@ -288,7 +288,7 @@ namespace SistemaContable.controlador
 
 
                 //  string sqlcad = "Select * from factura  order by id_factura";
-                string sqlcad = "Select * from factura where fecha='" + cat + "' order by id_factura";
+                string sqlcad = "Select * from factura where fecha='" + fecha + "' order by id_factura";
 
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
@@ -329,58 +329,6 @@ namespace SistemaContable.controlador
             cmd = null;
             return ListaFs;
         }
-        //NUEVO
-        public List<Factura> TraeFactsFecha1(string cat1)
-        {
-            Factura fac = null;
-            List<Factura> ListaFs = new List<Factura>();
-            MySqlCommand cmd;
-            MySqlConnection cn = con.getConexion();
-            try
-            {
-
-
-                //  string sqlcad = "Select * from factura  order by id_factura";
-                string sqlcad = "Select * from factura where fecha='" + cat1 + "' order by id_factura";
-
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    //fac = new Factura();  FALLA
-                    //Destino Vista
-                    fac = new Factura();
-                    fac.IDFACTURA = Convert.ToInt32(dr[1].ToString());
-                    //
-                    //fac.numfac = dr[1].ToString();
-                    //fac.cedper = dr[2].ToString();
-                    fac.FECHA = dr[2].ToString();
-                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es subtotal
-                    fac.SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
-                    fac.IVA = Convert.ToDouble(dr[5].ToString());
-                    fac.TIPOFACTURA = dr[6].ToString();
-                    //fac.estfac = dr[8].ToString();
-                    //per.getFacturas().Usuario.tipusu = dr[7].ToString();
-                    //
-                    ListaFs.Add(fac);
-                }
-                dr.Close();
-            }
-            catch (MySqlException ex)
-            {
-                fac = null;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                fac = null;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            return ListaFs;
-        }
+        
     }
 }
