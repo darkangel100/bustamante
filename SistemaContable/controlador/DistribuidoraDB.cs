@@ -156,7 +156,7 @@ namespace SistemaContable.controlador
         /// </summary>
         /// <param name="p">Id de la Distribuidora</param>
         /// <returns>Objeto de tipo Distribuidora</returns>
-        public Distribuidora traeDistribuidora(int p)
+        public Distribuidora traeDistribuidora(int p, string n)
         {
             DistribuidoraDB d = null;
             MySqlCommand cmd;
@@ -164,6 +164,8 @@ namespace SistemaContable.controlador
             try
             {
                 string comandoSql = "Select * from distribuidora Where id_distribuidora='" + p + "'";
+                if (n != "")
+                    comandoSql = "Select * from distribuidora Where nombreDistribuidora='" + n + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();

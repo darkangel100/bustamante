@@ -14,6 +14,10 @@ namespace SistemaContable.controlador
         conexion con = new conexion();
         Factura fac = null;
 
+        /// <summary>
+        /// Obtiene un objeto de tipo Factura si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo Factura</returns>
         public Factura getFacturas()
         {
             if (this.fac == null)
@@ -25,99 +29,15 @@ namespace SistemaContable.controlador
             }
             return this.fac;
         }
-        public void setFacturas(Factura f)
-        {
-            this.fac = f;
-        }
-        public void limpiar()
-        {
-            this.fac = null;
-        }
-
-        /// <summary>
-        /// descpr
-        /// </summary>
-        /// <returns>lo q retorna</returns>
-        public int TraeCodigo()
-        {
-            int nro = 0; ;
-            MySqlConnection cn = con.getConexion();
-            MySqlCommand cmd;
-            try
-            {
-                string sqlcad = "Select max(id_factura) as nro from factura ";
-                cmd = new MySqlCommand(sqlcad, cn);
-                cn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    if (DBNull.Value == dr["nro"])
-                        nro = 0;
-                    else
-                        nro = Convert.ToInt32(dr["nro"]);
-                }
-                dr.Close();
-            }
-            catch (MySqlException ex)
-            {
-                nro = 0;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                nro = 0;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            return nro;
-        }
-        //Este metodo debe copiarse en DB
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="factur">Nombre del objeto</param>
-       /// <param name="tipo">Numero que indica que la factura se ingresó correctamente</param>
-       /// <returns></returns>
-        public int InsertaFacturasVC(Factura factur, string tipo)
-        {
-            MySqlCommand cmd;
-            MySqlConnection cn = con.getConexion();
-            int resp = 0;
-            try
-            {
-                string sqlcad = "";
-                if (tipo.Equals("C"))
-                {
-                    sqlcad = "Insert factura set id_proveedor='" + factur.IDPROVEEDOR + "',id_factura='" + factur.IDFACTURA + "',fecha='" + factur.FECHA + "', total='" + factur.TOTAL + "',subtotal='" + factur.SUBTOTAL + "',iva='" + factur.IVA + "',tipo_fac='" + factur.TIPOFACTURA + "'";
-                }
-                else
-                {
-                    //  string sqlcad = "Insert factura Values (" + c.idfac + ",'" + c.numfac + "','" + c.cedper + "','" + c.fecfac + "'," + c.iva0 + "," + c.iva12 + "," + c.ivafac + "," + c.totfac + ",'" + c.estfac + "')";
-
-                    sqlcad = "Insert factura Values (null," + factur.IDFACTURA + ",'" + factur.FECHA + "'," + factur.TOTAL + "," + factur.SUBTOTAL + "," + factur.IVA + ",'" + factur.TIPOFACTURA + "')";
-                }
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                resp = cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            return resp;
-        }
         
-        public List<Factura> libroDiario(string fi, string ff)
+        /// <summary>
+        /// Obtiene una lista de objetos de tipo Factura dado un intervalo de fecha y el tipo de factura
+        /// </summary>
+        /// <param name="fi">Fecha inicial</param>
+        /// <param name="ff">Fecha final</param>
+        /// <param name="tipo">Tipo factura</param>
+        /// <returns>Lista de tipo Factura</returns>
+        public List<Factura> libros(string fi, string ff, string tipo)
         {
             FacturaBD p = null;
             List<Factura> lista = new List<Factura>();
@@ -126,6 +46,8 @@ namespace SistemaContable.controlador
             try
             {
                 string comandoSql = "Select * from factura Where fecha BETWEEN '" + fi + "' AND '" + ff + "'";
+                if (tipo != "")
+                    comandoSql = "Select * from factura Where fecha BETWEEN '" + fi + "' AND '" + ff + "'AND tipo_fac='" + tipo + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -143,7 +65,6 @@ namespace SistemaContable.controlador
                     lista.Add(p.getFacturas());
                 }
                 dr.Close();
-
             }
             catch (MySqlException ex)
             {
@@ -159,6 +80,5 @@ namespace SistemaContable.controlador
             cmd = null;
             return lista;
         }
-
     }
 }

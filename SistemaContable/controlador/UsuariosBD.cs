@@ -10,11 +10,14 @@ namespace SistemaContable.controlador
 {
     class UsuariosBD
     {
-        //Conexion nuevo
+        
         conexion con = new conexion();
-        //
         Usuarios usu = null;
 
+        /// <summary>
+        /// Obtencion de un objeto de tipo Usuarios
+        /// </summary>
+        /// <returns>Objeto de tipo Usuarios</returns>
         public Usuarios getUsuarios()
         {
             if (this.usu == null)
@@ -23,14 +26,21 @@ namespace SistemaContable.controlador
             }
             return this.usu;
         }
+
+        /// <summary>
+        /// Fija un objeto de tipo Usuarios
+        /// </summary>
+        /// <param name="usua">Objeto tipo Usuarios</param>
         public void setUsuarios(Usuarios usua)
         {
             this.usu = usua;
         }
-        public void limpiar()
-        {
-            this.usu = null;
-        }
+        
+        /// <summary>
+        /// Obtiene un objeto de tipo Usuarios dado su ID
+        /// </summary>
+        /// <param name="id">Numero con el ID del Usuario</param>
+        /// <returns>Objeto de tipo Usuarios</returns>
         public Usuarios TraeUsuario(int id)
         {
             Usuarios usu = null;
@@ -46,18 +56,8 @@ namespace SistemaContable.controlador
                 while (dr.Read())
                 {
                     usu = new Usuarios();
-
-                    //   usu.IdRol = Convert.ToInt32(dr["id_rol"]);
-                    //Nuevo
-                    //  usu.Tipo = dr["tipo"].ToString();
-                    //    usu.Contrasenia = dr["contrasenia"].ToString();
-                    //   usu.Estado = dr["estado"].ToString();
-
-                    //  usu = new Usuarios();
                     usu.IdUsu = Convert.ToInt32(dr["id_usuario"]);
-                    //Nuevo
                     usu.IdRol = Convert.ToInt32(dr["id_rol"]);
-                    //
                     usu.CedUsu = dr["cedula"].ToString();
                     usu.NomUsu = dr["nombre"].ToString();
                     usu.ApeUsu = dr["apellido"].ToString();
@@ -82,6 +82,10 @@ namespace SistemaContable.controlador
             return usu;
         }
 
+        /// <summary>
+        /// Devuelve una lista de objetos de tipo Usuarios
+        /// </summary>
+        /// <returns>Lista de tipo Usuarios</returns>
         public List<Usuarios> Traeusuarios()
         {
             Usuarios usu = null;
@@ -127,6 +131,11 @@ namespace SistemaContable.controlador
             return ListaUsu;
         }
 
+        /// <summary>
+        /// Inserta los datos que contiene el objeto de tipo Usuarios a la base de datos
+        /// </summary>
+        /// <param name="usu">Objeto de tipo Usuario</param>
+        /// <returns>Numero que indica si se realizo la operacion</returns>
         public int Insertausuario(Usuarios usu)
         {
             MySqlCommand cmd;
@@ -155,6 +164,11 @@ namespace SistemaContable.controlador
             usu = null;
             return resp;
         }
+
+        /// <summary>
+        /// Trae el ultimo ID de usuario registrado
+        /// </summary>
+        /// <returns>Numero con el ID del Usuario</returns>
         public int TraeCodigo()
         {
             int nro = 0; ;
@@ -189,6 +203,12 @@ namespace SistemaContable.controlador
             cmd = null;
             return nro;
         }
+
+        /// <summary>
+        /// Actuliza los datos del usuario dado su id
+        /// </summary>
+        /// <param name="per">Objeto de tipo Usuarios</param>
+        /// <returns>Numero que indica si se realizo la operacion</returns>
         public int ActualizaUsuario(Usuarios per)
         {
             MySqlCommand cmd;
@@ -217,10 +237,5 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
-
-
-
-
-
     }
 }

@@ -356,7 +356,13 @@ namespace SistemaContable.controlador
             cmd = null;
             return p.getProducto();
         }
-        //actualiza producto cuando se compra
+        
+        /// <summary>
+        /// Actializa el stock del producto
+        /// </summary>
+        /// <param name="cod">Cadena con el nombre del producto</param>
+        /// <param name="can">Numero de existencia del producto</param>
+        /// <returns>Numero q indica si se realizo la operacion</returns>
         public int agregapro(string cod, int can)
         {
             MySqlCommand cmd;
@@ -366,37 +372,6 @@ namespace SistemaContable.controlador
             try
             {
                 string sqlcad = "Update producto set stock_global=stock_global+" + can + " where id_producto='" + cod + "'";
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                resp = cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            cmd = null;
-            cn.Close();
-            return resp;
-
-
-        }
-        //Factura de venta Resta del stock
-        public int decrecePro(string cod, int can)
-        {
-            MySqlCommand cmd;
-            MySqlConnection cn = co.getConexion();
-            int resp;
-
-            try
-            {
-                string sqlcad = "Update producto set stock_global=stock_global-" + can + " where id_producto='" + cod + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

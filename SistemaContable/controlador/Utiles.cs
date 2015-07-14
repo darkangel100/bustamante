@@ -25,34 +25,12 @@ namespace SistemaContable.controlador
                     c.Text = "";
             }
         }
-        public static string girafecha(String f)
-        {
-            String fec = "";
-            fec = f.Substring(6, 4) + "-" + f.Substring(3, 2) + "-" + f.Substring(0, 2);
-            return fec;
-        }
-        public static string codi(string cod, int nro)
-        {
-            string num = cod;
-            nro++;
-            if (nro < 10)
-                num += "000" + Convert.ToString(nro);
-            else if (nro < 100)
-                num += "00" + Convert.ToString(nro);
-            else if (nro < 1000)
-                num += "0" + Convert.ToString(nro);
-            else
-                num += Convert.ToString(nro);
-            return num;
-        }
-
-        public string girafechaVenta(String f)
-        {
-            String fec = "";
-            fec = f.Substring(6, 4) + "-" + f.Substring(3, 2) + "-" + f.Substring(0, 2);
-            return fec;
-        }
-
+        
+        /// <summary>
+        /// Convierte la fecha ingresada en el DateTimePicker en una cadena con formato aa-mm-dd para insertar en la base de datos
+        /// </summary>
+        /// <param name="dtp">Objeto de tipo DateTimePicker</param>
+        /// <returns>Cadena que contiene la fecha</returns>
         public static string fecha(DateTimePicker dtp)
         {
             int a = dtp.Value.Year;
@@ -71,12 +49,23 @@ namespace SistemaContable.controlador
             string f = a + "-" + ms + "-" + ds;
             return f;
         }
+
+        /// <summary>
+        /// Devuelve la ruta de donde se encuentra ubicada la Carpeta "Mis Documentos"
+        /// </summary>
+        /// <returns>Cadena con la ruta de la carpeta</returns>
         public static string ObtenerRuta()
         {
             string directory = "";
             directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             return directory;
         }
+
+        /// <summary>
+        /// Guarda la cadena de texto en unarchivo .html con el nombre especificado
+        /// </summary>
+        /// <param name="datos">Cadena de texto</param>
+        /// <param name="nombre">Cadena con el nombre del documento</param>
         public static void guardarReporte(string datos, string nombre)
         {
             try

@@ -14,7 +14,11 @@ namespace SistemaContable.controlador
         conexion con = new conexion();
         //
         Rols usu = null;
-
+        
+        /// <summary>
+        /// Obtiene un objeto de tipo Rols
+        /// </summary>
+        /// <returns>Objeto de tipo Rols</returns>
         public Rols getRol()
         {
             if (this.usu == null)
@@ -23,14 +27,20 @@ namespace SistemaContable.controlador
             }
             return this.usu;
         }
+
+        /// <summary>
+        /// Fija un objeto de tipo Rols
+        /// </summary>
+        /// <param name="usua">Objeto de tipo Rols</param>
         public void setRol(Rols usua)
         {
             this.usu = usua;
         }
-        public void limpiar()
-        {
-            this.usu = null;
-        }
+        
+        /// <summary>
+        /// Trae una lista de tipo Rols
+        /// </summary>
+        /// <returns>Lista de objetos de tipo Rols</returns>
         public List<Rols> TraeRoles()
         {
             Rols usu = null;
@@ -69,6 +79,12 @@ namespace SistemaContable.controlador
             cmd = null;
             return ListaUsu;
         }
+
+        /// <summary>
+        /// Obtiene un objeto de tipo Rols
+        /// </summary>
+        /// <param name="id">Numero que contiene el Id del Rol</param>
+        /// <returns>Objeto de tipo Rols</returns>
         public Rols TraeRol(int id)
         {
             Rols usu = null;
@@ -107,8 +123,5 @@ namespace SistemaContable.controlador
             cmd = null;
             return usu;
         }
-        
-
-        
     }
 }

@@ -10,11 +10,15 @@ namespace SistemaContable.controlador
 {
     class CuentaBD
     {
-        //Conexion nuevo
+ 
         conexion con = new conexion();
-        //
+        
         Cuenta usu = null;
 
+        /// <summary>
+        /// Obtiene un objeto de tipo Cuenta si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo Cuenta</returns>
         public Cuenta getCuenta()
         {
             if (this.usu == null)
@@ -23,6 +27,11 @@ namespace SistemaContable.controlador
             }
             return this.usu;
         }
+
+        /// <summary>
+        /// Fija un objeto de tipo Cuenta a la variable global
+        /// </summary>
+        /// <param name="usua">Objeto de tipo Cuenta</param>
         public void setCuenta(Cuenta usua)
         {
             this.usu = usua;
@@ -31,47 +40,12 @@ namespace SistemaContable.controlador
         {
             this.usu = null;
         }
-        public List<Cuenta> Traecuentas()
-        {
-            Cuenta usu = null;
-            List<Cuenta> ListaUsu = new List<Cuenta>();
-            MySqlCommand cmd;
-            MySqlConnection cn = con.getConexion();
-            try
-            {
-                string sqlcad = "Select * from cuenta order by id_usuario";
-                // string sqlcad = "Select * from cuenta Where id_usuario=" + id;
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    //BD
-                    usu = new Cuenta();
-                    usu.IdUsuario = Convert.ToInt32(dr["id_usuario"]);
-                    //Nuevo
-                    usu.Usuario = dr["usuario"].ToString();
-                    usu.Contrasenia = dr["contrasenia"].ToString();
-                    usu.Estado = dr["estado"].ToString();
-                    ListaUsu.Add(usu);
-                }
-                dr.Close();
-            }
-            catch (MySqlException ex)
-            {
-                usu = null;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                usu = null;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            return ListaUsu;
-        }
+        
+        /// <summary>
+        /// Obtiene un objeto de tipo Cuenta dado el nombre de la cuenta
+        /// </summary>
+        /// <param name="nombreCuenta">String que contiene el nombre de la cuenta</param>
+        /// <returns></returns>
         public Cuenta TraeCuenta(string nombreCuenta)
         {
             Cuenta usu = null;
@@ -110,6 +84,12 @@ namespace SistemaContable.controlador
             cmd = null;
             return usu;
         }
+
+        /// <summary>
+        /// Obtiene un objeto de tipo Cuenta dado un Id de usuario
+        /// </summary>
+        /// <param name="numCuenta">Numero del ID del usuario</param>
+        /// <returns>Objeto de tipo Cuenta</returns>
         public Cuenta TraeCuentaPorId(int numCuenta)
         {
             Cuenta usu = null;
@@ -150,8 +130,11 @@ namespace SistemaContable.controlador
             return usu;
         }
 
-
-
+        /// <summary>
+        /// Inserta los datos que contiene el objeto Cuenta a la base de datos
+        /// </summary>
+        /// <param name="usu">Objeto de tipo Cuenta</param>
+        /// <returns>Numero que indica si se realizo la operacion de insercion</returns>
         public int Insertacuenta(Cuenta usu)
         {
             MySqlCommand cmd;
@@ -181,6 +164,11 @@ namespace SistemaContable.controlador
             return resp;
         }
 
+        /// <summary>
+        /// Actualiza los datos de la cuenta del usuario
+        /// </summary>
+        /// <param name="per">Objeto de tipo Cuenta</param>
+        /// <returns>Numero que indica si se realizo la operacion</returns>
         public int ActualizaCuenta(Cuenta per)
         {
             MySqlCommand cmd;
@@ -209,8 +197,5 @@ namespace SistemaContable.controlador
             cmd = null;
             return resp;
         }
-
-
-
     }
 }

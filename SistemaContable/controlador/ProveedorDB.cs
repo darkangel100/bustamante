@@ -43,14 +43,16 @@ namespace SistemaContable.controlador
         /// </summary>
         /// <param name="proveedor">Objeto de tipo Proveedor</param>
         /// <returns>Numero que indica si se realizo la insercion</returns>
-        internal int insertaDistribuidora(Proveedor proveedor)
+        internal int insertaDistribuidora(Proveedor proveedor, int id)
         {
             MySqlCommand cmd;
             MySqlConnection cn = co.getConexion();
             int resp;
             try
             {
-                string comandoSql = "Insert proveedor set id_distribuidora='" + proveedor.IdDistri + "', nombreProveedor='" + proveedor.Nombre + "', celularProveedor='" + proveedor.Celular + "', correoProveedor='" + proveedor.Correo + "', tiempoVisita='" + proveedor.Tiempo + "'";
+                string comandoSql = "Insert proveedor set id_distribuidora='" + id + "', nombreProveedor='default', celularProveedor='0000000000'";
+                if (proveedor != null)
+                    comandoSql = comandoSql = "Insert proveedor set id_distribuidora='" + proveedor.IdDistri + "', nombreProveedor='" + proveedor.Nombre + "', celularProveedor='" + proveedor.Celular + "', correoProveedor='" + proveedor.Correo + "', tiempoVisita='" + proveedor.Tiempo + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -204,6 +206,39 @@ namespace SistemaContable.controlador
             cn.Close();
             cmd = null;
             return resp;
+        }
+
+        public int verificacion(string nombre)
+        {
+            int v=0;
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            try
+            {
+                string comandoSql = "Select * from proveedor where nombreProveedor='" + nombre + "'";
+                cmd = new MySqlCommand(comandoSql, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                        v = 1;
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                v=0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                v=0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return v;  
         }
     }
 }

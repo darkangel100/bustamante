@@ -14,6 +14,10 @@ namespace SistemaContable.controlador
         conexion con = new conexion();
         Pago pag = null;
 
+        /// <summary>
+        /// Obtiene un objeto de tipo Pago
+        /// </summary>
+        /// <returns>Objeto de tipo Pago</returns>
         public Pago getPago()
         {
             if (this.pag == null)
@@ -25,15 +29,7 @@ namespace SistemaContable.controlador
             }
             return this.pag;
         }
-        public void setPago(Pago pa)
-        {
-            this.pag = pa;
-        }
-        public void limpiar()
-        {
-            this.pag = null;
-        }
-
+     
         //Insertar un Pago a la Base de datos
         /// <summary>
         /// Inserta un pago a la base de datos
@@ -68,11 +64,12 @@ namespace SistemaContable.controlador
             pag = null;
             return resp;
         }
+
         /// <summary>
         /// Trae un pago segun su id 
         /// </summary>
         /// <param name="id">entero id</param>
-        /// <returns>lista de pago segun su id</returns>
+        /// <returns>lista de objetos de tipo Pago</returns>
         public List<Pago> traePAGOtid(int id)
         {
             PagoDB pag = null;
@@ -111,45 +108,14 @@ namespace SistemaContable.controlador
             return listapago;
         }
 
-        public List<Pago> traePAGOfecha(string  fecha)
-        {
-            PagoDB pag = null;
-            List<Pago> listapago = new List<Pago>();
-            MySqlCommand cmd;
-            MySqlConnection cn = con.getConexion();
-            try
-            {
-                string sqlcad = "Select * from pago where fecha_ingreso='" + fecha + "'";
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-
-                    pag = new PagoDB();
-                    pag.getPago().FECHA = dr["fecha_ingreso"].ToString();
-                    pag.getPago().IDPAGO = dr["id_pago"].ToString();
-                    listapago.Add(pag.getPago());
-                }
-                dr.Close();
-            }
-            catch (MySqlException ex)
-            {
-                pag = null;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                pag = null;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            return listapago;
-        }
-
-        internal List<Pago> rptLibroDiario(string p1, string p2)
+        /// <summary>
+        /// Listo de objetos de tipo pago dado un periodo de tiempo y id de pago
+        /// </summary>
+        /// <param name="p1">Cadena con la fecha incial</param>
+        /// <param name="p2">Cadena con la fecha final</param>
+        /// <param name="id">Numero del Id del pago</param>
+        /// <returns>Lista de objetos de tipo Pago</returns>
+        internal List<Pago> rptLibros(string p1, string p2, int id)
         {
             PagoDB p = null;
             List<Pago> lista = new List<Pago>();
@@ -158,6 +124,8 @@ namespace SistemaContable.controlador
             try
             {
                 string comandoSql = "Select * from pago Where fecha_ingreso BETWEEN '" + p1 + "' AND '" + p2 + "'";
+                if (id != 0)
+                    comandoSql = "Select * from pago Where fecha_ingreso BETWEEN '" + p1 + "' AND '" + p2 + "'AND id_pago='" + id + "'";
                 cmd = new MySqlCommand(comandoSql, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();

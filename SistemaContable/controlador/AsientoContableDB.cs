@@ -14,10 +14,11 @@ namespace SistemaContable.controlador
     {
         conexion con = new conexion();
         AsientoContable ac = null;
+
         /// <summary>
-        /// Obtiene un 
+        /// Se obtiene un objeto de tipo AsientoContable si es nulo lo crea
         /// </summary>
-        /// <returns>un objeto de la clase asiento contable</returns>
+        /// <returns>Objeto de tipo AsientoContable</returns>
         public AsientoContable getAsientoContable()
         {
             if (this.ac == null)
@@ -29,20 +30,20 @@ namespace SistemaContable.controlador
             return this.ac;
         }
        
+        /// <summary>
+        /// Fija un objeto de tipo AsientoContable a la variable global
+        /// </summary>
+        /// <param name="aconta">Objeto de tipo AsientoContable</param>
         public void setAsientoContable(AsientoContable aconta)
         {
             this.ac = aconta;
         }
-        public void limpiar()
-        {
-            this.ac = null;
-        }
-        /// <summary>
-        /// Inserta un asiento Contable a la Base de datos
-        /// </summary>
-        /// <param name="asiento"></param>
-        /// <returns>un numero que indica que se inserto correctamente a la base de datos</returns>
         
+        /// <summary>
+        /// Inserta de los datos que se encuentran en el objeto asiento Contable a la Base de datos
+        /// </summary>
+        /// <param name="asiento">Objeto de tipo AsientoContable</param>
+        /// <returns>Numero que indica si se realiza la operacion</returns>
         public int InsertaAsientoContable(AsientoContable asiento)
         {
             MySqlCommand cmd;
@@ -71,42 +72,11 @@ namespace SistemaContable.controlador
             asiento = null;
             return resp;
         }
-        // Registra IdUsuario del  Acceso, (Pero no se lo utilizó)
-        public int InsertaAsientoContable1(AsientoContable asiento)
-        {
-            MySqlCommand cmd;
-            MySqlConnection cn = con.getConexion();
-            int resp;
-            try
-            {          
-                string sqlcad= "Insert asiento_contable Values (" + asiento.IDUSUARIO + ",null,'" + asiento.NOMBRE_ASIENTO + "','" + asiento.DESCRIPCION + "','" + asiento.ESTADO + "')";
-                
-                cmd = new MySqlCommand(sqlcad, cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                resp = cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                resp = 0;
-                throw ex;
-            }
-            cn.Close();
-            cmd = null;
-            asiento = null;
-            return resp;
-        }
-       
-        //ultimo id de ASIENTOCONTABLE 
+ 
         /// <summary>
-        /// Trae el ultimo ide de un asiento contable
+        /// Trae el ultimo "id" de un asiento contable
         /// </summary>
-        /// <returns>el ultimo id de asiento</returns>
+        /// <returns>String que contiene el Id</returns>
         public string traenumero()
         {
             MySqlConnection cn = con.getConexion();
@@ -138,20 +108,12 @@ namespace SistemaContable.controlador
             cmd = null;
             return num;
         }
-
-       
         
         /// <summary>
-        ///trae un asiento ontable por el nombre 
+        ///trae una lista de asientos contables  dado un nombre de asiento
         /// </summary>
-        /// <param name="nombre">nombre asiento</param>
-        /// <returns>la lista de asientos con el mismo numero</returns>
-        
-        /// <summary>
-        ///trae un asiento ontable por el nombre 
-        /// </summary>
-        /// <param name="nombre">nombre asiento</param>
-        /// <returns>la lista de asientos con el mismo numero</returns>
+        /// <param name="nombre">String con el nombre del asiento</param>
+        /// <returns>Lista de tipo AsientoContable</returns>
         public List<AsientoContable> traeasicon(string nombre)
         {
             AsientoContableDB asicn = null;
@@ -160,7 +122,7 @@ namespace SistemaContable.controlador
             MySqlConnection cn = con.getConexion();
             try
             {
-                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "' and estado='A'";
+                string sqlcad = "Select * from asiento_contable where nombre_asiento='" + nombre + "'";
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -192,7 +154,56 @@ namespace SistemaContable.controlador
             return ListaAsiento;
         }
 
-        public AsientoContable libroDiario(int id)
+        /// <summary>
+        /// Obtiene todos los asientos contables registrados
+        /// </summary>
+        /// <returns>Lista de tipo AsientoContable</returns>
+        public List<AsientoContable> traeasicon()
+        {
+            AsientoContableDB asicn = null;
+            List<AsientoContable> ListaAsiento = new List<AsientoContable>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                string sqlcad = "Select * from asiento_contable";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    asicn = new AsientoContableDB();
+                    asicn.getAsientoContable().IDASIENTO = dr["id_asiento"].ToString();
+                    asicn.getAsientoContable().NOMBRE_ASIENTO = dr["nombre_asiento"].ToString();
+                    asicn.getAsientoContable().DESCRIPCION = dr["descripcion"].ToString();
+                    asicn.getAsientoContable().ESTADO = dr["estado"].ToString();
+                    ListaAsiento.Add(asicn.getAsientoContable());
+
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                asicn = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaAsiento;
+        }
+
+        /// <summary>
+        /// Lista de Asientos contables dado un id
+        /// </summary>
+        /// <param name="id">id del AsientoContable</param>
+        /// <returns>Objeto de tipo AsientoContable</returns>
+        public AsientoContable cuentasLibros(int id)
         {
             AsientoContableDB per = null;
             MySqlCommand cmd;

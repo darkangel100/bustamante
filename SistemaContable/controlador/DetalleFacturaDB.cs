@@ -14,7 +14,11 @@ namespace SistemaContable.controlador
     {
         conexion con = new conexion();
         DetalleFactura defac = null;
-
+        
+        /// <summary>
+        /// Obtiene un objeto de tipo DetalleFactura si es nulo lo crea
+        /// </summary>
+        /// <returns>Objeto de tipo DetalleFactura</returns>
         public DetalleFactura getDetalleFactura()
         {
             if (this.defac == null)
@@ -26,19 +30,11 @@ namespace SistemaContable.controlador
             return this.defac;
         }
 
-        public void setDetalleFactura(DetalleFactura defactu)
-        {
-            this.defac = defactu;
-        }
-        public void limpiar()
-        {
-            this.defac = null;
-        }
         /// <summary>
-        /// Inserta un dettalle de la factura
+        /// Inserta los datos contenidos en el objeto  DetalleFactura a la base de datos
         /// </summary>
-        /// <param name="defactur">objeto de la clase detallefactura</param>
-        /// <returns>numero que indica que el detalle se ingreso correctamente</returns>
+        /// <param name="defactur">Objeto de tipo DetalleFactura</param>
+        /// <returns>Numero que indica que el detalle se ingreso correctamente</returns>
         public int InsertaDetalleFactura(DetalleFactura defactur)
         {
             MySqlCommand cmd;
@@ -67,12 +63,13 @@ namespace SistemaContable.controlador
             defactur = null;
             return resp;
         }
-        //trae detalle por id de factura
+
+
         /// <summary>
-        /// Trar un detalle por el id de detalle
+        /// Trar una lista de DetalleFactura dado el id de la Factura
         /// </summary>
-        /// <param name="id">entero</param>
-        /// <returns>Lista de los detalles de la factura segun el id del detalle</returns>
+        /// <param name="id">Numero con el Id de la factura</param>
+        /// <returns>Lista de objetos de tipo DetalleFactura</returns>
         public List<DetalleFactura> traedetaid(int id)
         {
             DetalleFacturaDB det = null;
