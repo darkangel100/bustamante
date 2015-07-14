@@ -92,7 +92,6 @@
     <Compile Include="modelo\DetalleFactura.cs" />
     <Compile Include="modelo\Distribuidora.cs" />
     <Compile Include="modelo\Factura.cs" />
-    <Compile Include="modelo\Facturas.cs" />
     <Compile Include="modelo\Lote.cs" />
     <Compile Include="modelo\Pago.cs" />
     <Compile Include="modelo\Producto.cs" />

@@ -117,7 +117,7 @@ namespace SistemaContable.vista
                     for (int i = 0; i < cdb.getProveedor().ListaProveedor.Count; i++)
                     {
                         DistribuidoraDB d = new DistribuidoraDB();
-                        d.setDistribuidora(d.traeDistribuidora(cdb.getProveedor().ListaProveedor[i].IdDistri));
+                        d.setDistribuidora(d.traeDistribuidora(cdb.getProveedor().ListaProveedor[i].IdDistri,""));
                         dgvBusqueda.Rows.Add(1);
                         dgvBusqueda.Rows[i].Cells[0].Value = cdb.getProveedor().ListaProveedor[i].Nombre;
                         dgvBusqueda.Rows[i].Cells[1].Value = cdb.getProveedor().ListaProveedor[i].Correo;
@@ -134,6 +134,31 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al presentar los datos ()," + ex.Message, "Tienda", MessageBoxButtons.OK);
             }
         }
+
+
+        public void llenaProveedor(ComboBox cbo)
+        {
+            try
+            {
+                ProveedorDB cdb = new ProveedorDB();
+                cdb.getProveedor().ListaProveedor = cdb.traeProveedores();
+                if (cdb.getProveedor().ListaProveedor.Count == 0)
+                {
+                    cmbRDistri.Text = "No existen proveedores registrados";
+                }
+                else
+                {
+                    cbo.DisplayMember = "nombre"; //lo q se quiere visualizar
+                    cbo.ValueMember = "idProveedor"; //la llave primaria segun el atributo
+                    cbo.DataSource = cdb.getProveedor().ListaProveedor;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos ()," + ex.Message, "Tienda", MessageBoxButtons.OK);
+            }
+        }
+
 
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
@@ -167,7 +192,7 @@ namespace SistemaContable.vista
                 objB.getProveedor().Tiempo = txtRVisita.Text;
                 objB.getProveedor().Celular = txtRCelular.Text;
                 objB.getProveedor().Correo = txtRCorreo.Text;
-                int resp = objB.insertaDistribuidora(objB.getProveedor());
+                int resp = objB.insertaDistribuidora(objB.getProveedor(),0);
                 if (resp == 0)
                 {
                     MessageBox.Show("No se logro registrar al proveedor", "Sistema Contable", MessageBoxButtons.OK);
@@ -221,7 +246,7 @@ namespace SistemaContable.vista
                     if (criterio != -1 && parametro != "")
                     {
                         DistribuidoraDB d = new DistribuidoraDB();
-                        d.setDistribuidora(d.traeDistribuidora(objB.getProveedor().IdDistri));
+                        d.setDistribuidora(d.traeDistribuidora(objB.getProveedor().IdDistri, ""));
                         dgvBusqueda.Rows.Add(1);
                         dgvBusqueda.Rows[0].Cells[0].Value = objB.getProveedor().Nombre;
                         dgvBusqueda.Rows[0].Cells[1].Value = objB.getProveedor().Correo;
@@ -307,7 +332,7 @@ namespace SistemaContable.vista
             try
             {
                 DistribuidoraDB objB = new DistribuidoraDB();
-                objB.setDistribuidora(objB.traeDistribuidora(int.Parse(cmbMdis.SelectedValue.ToString())));
+                objB.setDistribuidora(objB.traeDistribuidora(int.Parse(cmbMdis.SelectedValue.ToString()),""));
                 if (objB.getDistribuidora().Id == 0)
                 {
                     MessageBox.Show("No existe registro de distribuidoras", "Sistema Contable", MessageBoxButtons.OK);

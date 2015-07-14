@@ -78,6 +78,32 @@ namespace SistemaContable.vista
             }
         }
 
+
+        public void llenaProductos(ComboBox cbo)
+        {
+            try
+            {
+                dgvProductos.Rows.Clear();
+                ProductoDB objC = new ProductoDB();
+                objC.getProducto().ListaProducto = objC.traeProductos();
+                if (objC.getProducto().ListaProducto.Count == 0)
+                {
+                    MessageBox.Show("No existen productos registrados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    cbo.DisplayMember = "Nombre";
+                    cbo.ValueMember = "Id_producto";
+                    cbo.DataSource = objC.getProducto().ListaProducto;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos, " + ex.Message, "Tienda", MessageBoxButtons.OK);
+            }
+        }
+
+
         private void FrmProducto_Load(object sender, EventArgs e)
         {
             llenaProductos();

@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbpRegistroFactura = new System.Windows.Forms.TabPage();
             this.paneldatosfactura = new System.Windows.Forms.Panel();
+            this.cboProductoFac = new System.Windows.Forms.ComboBox();
             this.txtCodLote = new System.Windows.Forms.TextBox();
             this.btnProveedor = new System.Windows.Forms.Button();
             this.txtCostoUnidad = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtCantidadCajas = new System.Windows.Forms.TextBox();
             this.txtCanUnidades = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -324,6 +324,7 @@
             // 
             // paneldatosfactura
             // 
+            this.paneldatosfactura.Controls.Add(this.cboProductoFac);
             this.paneldatosfactura.Controls.Add(this.txtCodLote);
             this.paneldatosfactura.Controls.Add(this.btnProveedor);
             this.paneldatosfactura.Controls.Add(this.txtCostoUnidad);
@@ -336,7 +337,6 @@
             this.paneldatosfactura.Controls.Add(this.label19);
             this.paneldatosfactura.Controls.Add(this.label18);
             this.paneldatosfactura.Controls.Add(this.label22);
-            this.paneldatosfactura.Controls.Add(this.txtProducto);
             this.paneldatosfactura.Controls.Add(this.txtCantidadCajas);
             this.paneldatosfactura.Controls.Add(this.txtCanUnidades);
             this.paneldatosfactura.Controls.Add(this.label24);
@@ -349,6 +349,14 @@
             this.paneldatosfactura.Name = "paneldatosfactura";
             this.paneldatosfactura.Size = new System.Drawing.Size(834, 160);
             this.paneldatosfactura.TabIndex = 73;
+            // 
+            // cboProductoFac
+            // 
+            this.cboProductoFac.FormattingEnabled = true;
+            this.cboProductoFac.Location = new System.Drawing.Point(110, 52);
+            this.cboProductoFac.Name = "cboProductoFac";
+            this.cboProductoFac.Size = new System.Drawing.Size(118, 21);
+            this.cboProductoFac.TabIndex = 73;
             // 
             // txtCodLote
             // 
@@ -387,7 +395,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 79);
+            this.label21.Location = new System.Drawing.Point(6, 78);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(96, 13);
             this.label21.TabIndex = 45;
@@ -414,7 +422,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(52, 55);
+            this.label20.Location = new System.Drawing.Point(52, 54);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 13);
             this.label20.TabIndex = 46;
@@ -422,7 +430,7 @@
             // 
             // txtCostoCaja
             // 
-            this.txtCostoCaja.Location = new System.Drawing.Point(110, 101);
+            this.txtCostoCaja.Location = new System.Drawing.Point(110, 99);
             this.txtCostoCaja.Name = "txtCostoCaja";
             this.txtCostoCaja.Size = new System.Drawing.Size(118, 20);
             this.txtCostoCaja.TabIndex = 70;
@@ -431,16 +439,16 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(248, 33);
+            this.label19.Location = new System.Drawing.Point(259, 33);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(112, 13);
+            this.label19.Size = new System.Drawing.Size(94, 13);
             this.label19.TabIndex = 47;
-            this.label19.Text = "Cantidad de Unidades";
+            this.label19.Text = "Unidades por Caja";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(30, 104);
+            this.label18.Location = new System.Drawing.Point(30, 102);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 13);
             this.label18.TabIndex = 69;
@@ -455,14 +463,6 @@
             this.label22.TabIndex = 49;
             this.label22.Text = "Codigo Lote";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtProducto
-            // 
-            this.txtProducto.Location = new System.Drawing.Point(110, 52);
-            this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(118, 20);
-            this.txtProducto.TabIndex = 52;
-            this.txtProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProducto_KeyPress);
             // 
             // txtCantidadCajas
             // 
@@ -1037,7 +1037,6 @@
         private System.Windows.Forms.TextBox txtBuscaAsiento;
         private System.Windows.Forms.TextBox txtCanUnidades;
         private System.Windows.Forms.TextBox txtCantidadCajas;
-        private System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.TextBox txtCodLote;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label19;
@@ -1073,6 +1072,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.ComboBox cboProductoFac;
 
     }
 }

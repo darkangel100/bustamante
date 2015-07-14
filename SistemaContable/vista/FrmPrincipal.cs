@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaContable.vista;
+using SistemaContable.controlador;
 
 namespace SistemaContable
 {
@@ -72,7 +73,28 @@ namespace SistemaContable
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            proveedorDefault();
+        }
 
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void proveedorDefault()
+        {
+            try
+            {
+                DistribuidoraDB d = new DistribuidoraDB();
+                d.setDistribuidora(d.traeDistribuidora(0,"default"));
+                ProveedorDB p = new ProveedorDB();
+                if (p.verificacion("default") == 0)
+                    p.insertaDistribuidora(null,d.getDistribuidora().Id);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

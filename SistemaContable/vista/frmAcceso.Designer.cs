@@ -140,7 +140,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAcceso";
             this.Text = "frmAcceso";
-            this.Load += new System.EventHandler(this.frmAcceso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

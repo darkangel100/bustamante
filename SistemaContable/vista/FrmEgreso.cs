@@ -20,11 +20,11 @@ namespace SistemaContable.vista
             
         }
        //VARIABLES
-        string tipofac = "C";
+        string tipofac = "c";
         string usuario = "usu";
         int agrega = -1;
         string num = "",  idasiento = "", nombrepro = "";
-        int id_factura, id_asien, idpro, fila, iddetalle;//, idproveedor;
+        int id_factura, id_asien, idpro, fila, iddetalle, idproveedor;
         
         //TRAE EL ID DE ASIENTO
         private void IDEASIENTO()
@@ -62,14 +62,17 @@ namespace SistemaContable.vista
         //CARGA DATOS DE INICIALIZACION DEL FRM EGRESO
         private void FrmEgreso_Load(object sender, EventArgs e)
         {
-            llenaProveedor(cboProvedor);
+            FrmProveedor f = new FrmProveedor();
+            f.llenaProveedor(cboProvedor);
             txtNomAsiento.CharacterCasing = CharacterCasing.Upper;
             llenaAsiento(cboNomAsiento);
+            FrmProducto fprod = new FrmProducto();
+            fprod.llenaProductos(cboProductoFac);
 
 
         }
   //CARGA LOS ASIENTOS_CONTABLES AL COMBOBOX
-        private void llenaAsiento(ComboBox cbo)
+        public void llenaAsiento(ComboBox cbo)
         {
             AsientoDB objAsi = new AsientoDB();
             objAsi.getAsiento().LISTAASIENTO = objAsi.traeAsiento();
@@ -115,7 +118,7 @@ namespace SistemaContable.vista
                 IDEASIENTO();
                 
                 objpa.getPago().IDPAGO = id_asien.ToString();
-                objpa.getPago().FECHA = Utiles.girafecha(dtFechaAsiento.Value.ToShortDateString());
+                objpa.getPago().FECHA = Utiles.fecha(dtFechaAsiento);
                 objpa.getPago().MONTO = Convert.ToDouble(txtMonto.Text);
 
 
@@ -207,7 +210,7 @@ namespace SistemaContable.vista
 
         private void btnAgregaDetalle_Click(object sender, EventArgs e)
         {
-            if (txtCodLote.Text == "" || txtCantidadCajas.Text == "" || txtCanUnidades.Text == "" || txtCostoCaja.Text == "" || txtCostoUnidad.Text == "" || txtProducto.Text == "")
+            if (txtCodLote.Text == "" || txtCantidadCajas.Text == "" || txtCanUnidades.Text == "" || txtCostoCaja.Text == "" || txtCostoUnidad.Text == "" || cboProductoFac.Text == "")
             {
                 MessageBox.Show("Faltan datos de la factura", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -226,11 +229,11 @@ namespace SistemaContable.vista
                     else
                     {
                         ProductoDB objpro = new ProductoDB();
-                        objpro.getProducto().Nombre = txtProducto.Text;
+                        objpro.getProducto().Nombre = cboProductoFac.Text;
                         int a = objpro.verificacionProducto(objpro.getProducto());
                         if (a != 0)
                         {
-                            objpro.setProducto(objpro.traeProducto(idpro, txtProducto.Text, "nombre"));
+                            objpro.setProducto(objpro.traeProducto(idpro, cboProductoFac.Text, "nombre"));
                             idpro = objpro.getProducto().Id_producto;
                             nombrepro = objpro.getProducto().Nombre;
                             Agrega();
@@ -325,7 +328,7 @@ namespace SistemaContable.vista
 
                 objfac.getFactura().IDPROVEEDOR = Convert.ToInt32(cboProvedor.SelectedValue.ToString());
                 objfac.getFactura().IDFACTURA = id_asien;
-                objfac.getFactura().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
+                objfac.getFactura().FECHA = Utiles.fecha(dtpFechaFactura);
                 objfac.getFactura().TOTAL = totalfactura;
                 objfac.getFactura().SUBTOTAL = subtotal;
                 objfac.getFactura().IVA = iva;
@@ -360,8 +363,8 @@ namespace SistemaContable.vista
                         objLote.getLote().IDPRODUCTO = dtgDetalleFactura.Rows[i].Cells[1].Value.ToString();
                         objLote.getLote().DESCRIPCION = txtDescripFactura.Text;
                         objLote.getLote().STOCKUNIDADES = Convert.ToString(totalunidades);
-                        objLote.getLote().FECHAVENCIMINTO = Utiles.girafecha(dtpFechaCadu.Value.ToShortDateString());
-                        objLote.getLote().FECHAELABORACION = Utiles.girafecha(dtpFechaEla.Value.ToShortDateString());
+                        objLote.getLote().FECHAVENCIMINTO = Utiles.fecha(dtpFechaCadu);
+                        objLote.getLote().FECHAELABORACION = Utiles.fecha(dtpFechaEla);
                         resplo = objLote.InsertaLote(objLote.getLote());
 
                     }
@@ -371,7 +374,7 @@ namespace SistemaContable.vista
                 
 
                 objpa.getPago().IDPAGO = Convert.ToString(id_asien);
-                objpa.getPago().FECHA = Utiles.girafecha(dtpFechaFactura.Value.ToShortDateString());
+                objpa.getPago().FECHA = Utiles.fecha(dtpFechaFactura);
                 objpa.getPago().MONTO = Convert.ToDouble(txtTotal.Text);
                 resppag = objpa.InsertaPago(objpa.getPago());
                 if (resppag == 0)
@@ -457,30 +460,23 @@ namespace SistemaContable.vista
         }
         private void traefechasiento()
         {
-            int idas;
             try
             {
-                PagoDB objpago = new PagoDB();
-                objpago.getPago().LISTAPAGO = objpago.traePAGOfecha(Utiles.girafecha(dtpBuscaAsiento.Value.ToShortDateString()));
-                
-                if (objpago.getPago().LISTAPAGO.Count==0)
+                AsientoContableDB objasicon = new AsientoContableDB();
+                objasicon.getAsientoContable().LISTAASIENTO = objasicon.traeasicon(txtBuscaAsiento.Text);
+                if (objasicon.getAsientoContable().LISTAASIENTO.Count == 0)
                 {
-                    MessageBox.Show("No existen registros de aseinto contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No existen registros de cliente", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    for (int j = 0; j < objpago.getPago().LISTAPAGO.Count; j++)
+                    for (int i = 0; i < objasicon.getAsientoContable().LISTAASIENTO.Count; i++)
                     {
-                        idas = Convert.ToInt32(objpago.getPago().LISTAPAGO[j].IDPAGO);
-                        AsientoContableDB objasicon = new AsientoContableDB();
-                        objasicon.setAsientoContable(objasicon.traeasiconid(idas));
                         dgvAsientoBusca.Rows.Add(1);
-                        dgvAsientoBusca.Rows[j].Cells[0].Value = objasicon.getAsientoContable().IDASIENTO;
-                        dgvAsientoBusca.Rows[j].Cells[1].Value = objasicon.getAsientoContable().NOMBRE_ASIENTO;
-                        dgvAsientoBusca.Rows[j].Cells[2].Value = objasicon.getAsientoContable().DESCRIPCION;
-                        dgvAsientoBusca.Rows[j].Cells[3].Value = objasicon.getAsientoContable().ESTADO;
-
-
+                        dgvAsientoBusca.Rows[i].Cells[0].Value = objasicon.getAsientoContable().LISTAASIENTO[i].IDASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[1].Value = objasicon.getAsientoContable().LISTAASIENTO[i].NOMBRE_ASIENTO;
+                        dgvAsientoBusca.Rows[i].Cells[2].Value = objasicon.getAsientoContable().LISTAASIENTO[i].DESCRIPCION;
+                        dgvAsientoBusca.Rows[i].Cells[3].Value = objasicon.getAsientoContable().LISTAASIENTO[i].ESTADO;
                     }
                 }
             }
@@ -577,18 +573,6 @@ namespace SistemaContable.vista
             }
         }
 
-        private void txtProducto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char le = e.KeyChar;
-            if ((le >= 'a' && le <= 'z') || (le >= 'A' && le <= 'Z') || (le == 8) || (le == 32))
-            { }
-            else
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo letras");
-            }
-        }
-
         private void txtCantidadCajas_KeyPress(object sender, KeyPressEventArgs e)
         {
             char le = e.KeyChar;
@@ -658,28 +642,31 @@ namespace SistemaContable.vista
        
         private void tbpRegistroFactura_Click(object sender, EventArgs e)
         {
+            FrmProveedor fpv = new FrmProveedor();
+            fpv.llenaProveedor(cboProvedor);
             
         }
-        private void llenaProveedor(ComboBox cbo)
-        {
-            ProveedorDB objPro = new ProveedorDB();
-            objPro.getProveedor().ListaProveedor = objPro.traeProveedores();
-            if (objPro.getProveedor().ListaProveedor.Count == 0)
-            {
-                 MessageBox.Show("No existen registros de Asientos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                cbo.DisplayMember = "Nombre";
-                cbo.ValueMember = "IdProveedor";
-                cbo.DataSource = objPro.getProveedor().ListaProveedor;
-            }
-        }
-
         private void cboProvedor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            
 
         }
-        
+
+        public void cargarAsientosRtp(ComboBox cbo)
+        {
+            AsientoContableDB objAsi = new AsientoContableDB();
+            objAsi.getAsientoContable().LISTAASIENTO = objAsi.traeasicon();
+            if (objAsi.getAsientoContable().LISTAASIENTO.Count == 0)
+            {
+                MessageBox.Show("No existen registros de Asientos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                pnlAsiento.Enabled = true;
+                txtNomAsiento.Focus();
+                btnGuardarAsiento.Enabled = false;
+            }
+            cbo.DisplayMember = "NOMBRE_ASIENTO";
+            cbo.ValueMember = "IDASIENTO";
+            cbo.DataSource = objAsi.getAsientoContable().LISTAASIENTO;
+        }
     }
 }
