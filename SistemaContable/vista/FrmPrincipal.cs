@@ -15,7 +15,7 @@ namespace SistemaContable
     public partial class FrmPrincipal : Form
     {
         string tipo;
-        public FrmPrincipal(string tip)
+        public FrmPrincipal(string tip, string nombre, string apellido)
         {
             InitializeComponent();
             tipo = tip;
@@ -52,9 +52,13 @@ namespace SistemaContable
 
         private void egresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tipo.Equals("B"))
+            if (tipo.Equals("C")|| tipo.Equals("B"))
             {
-
+                cuentaDeUsuarioToolStripMenuItem.Enabled = false;
+                productoToolStripMenuItem.Enabled = false;
+                proveedorToolStripMenuItem.Enabled = false;
+                egresosToolStripMenuItem.Enabled = false;
+                reportesToolStripMenuItem.Enabled = false;
             }
             else
             {

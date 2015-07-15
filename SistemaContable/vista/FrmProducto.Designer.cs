@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProducto));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cmbCriterio = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -111,11 +112,14 @@
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Location = new System.Drawing.Point(387, 437);
+            this.btnDesactivar.Image = ((System.Drawing.Image)(resources.GetObject("btnDesactivar.Image")));
+            this.btnDesactivar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDesactivar.Location = new System.Drawing.Point(32, 361);
             this.btnDesactivar.Name = "btnDesactivar";
-            this.btnDesactivar.Size = new System.Drawing.Size(137, 31);
+            this.btnDesactivar.Size = new System.Drawing.Size(137, 70);
             this.btnDesactivar.TabIndex = 7;
             this.btnDesactivar.Text = "Activar/Desactivar";
+            this.btnDesactivar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDesactivar.UseVisualStyleBackColor = true;
             this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
@@ -275,11 +279,14 @@
             // btnBuscar
             // 
             this.btnBuscar.Enabled = false;
-            this.btnBuscar.Location = new System.Drawing.Point(604, 42);
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(601, 27);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(117, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(109, 48);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -369,11 +376,14 @@
             // 
             // btnImportar
             // 
-            this.btnImportar.Location = new System.Drawing.Point(408, 104);
+            this.btnImportar.Image = ((System.Drawing.Image)(resources.GetObject("btnImportar.Image")));
+            this.btnImportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportar.Location = new System.Drawing.Point(399, 90);
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(133, 23);
+            this.btnImportar.Size = new System.Drawing.Size(104, 50);
             this.btnImportar.TabIndex = 10;
             this.btnImportar.Text = "Importar";
+            this.btnImportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImportar.UseVisualStyleBackColor = true;
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 

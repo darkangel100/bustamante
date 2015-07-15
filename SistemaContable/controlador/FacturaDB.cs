@@ -126,7 +126,9 @@ namespace SistemaContable.controlador
             int resp = 0;
             try
             {
-                String sqlcad = "Insert factura Values ('" + factur.IDPROVEEDOR + "','" + factur.IDFACTURA + "','" + factur.FECHA + "','" + factur.TOTAL + "','" + factur.SUBTOTAL + "','" + factur.IVA + "','" + factur.TIPOFACTURA + "')";                
+                //15/07/2015
+                //String sqlcad = "Insert factura Values ('" + factur.IDPROVEEDOR + "','" + factur.IDFACTURA + "','" + factur.FECHA + "','" + factur.TOTAL + "','" + factur.SUBTOTAL + "','" + factur.IVA + "','" + factur.TIPOFACTURA + "')";                
+                String sqlcad = "Insert factura Values (null,'" + factur.IDFACTURA + "','" + factur.FECHA + "','" + factur.TOTAL + "','" + factur.SUBTOTAL + "','" + factur.IVA + "','" + factur.TIPOFACTURA + "')";                
                 cmd = new MySqlCommand(sqlcad, cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
@@ -269,6 +271,58 @@ namespace SistemaContable.controlador
                     fac.SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
                     fac.IVA = Convert.ToDouble(dr[5].ToString());
                     fac.TIPOFACTURA = dr[6].ToString();
+                    ListaFs.Add(fac);
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                fac = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                fac = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return ListaFs;
+        }
+        /// <summary>
+        /// Trae la lista de Facturas en determinada fecha
+        /// </summary>
+        /// <param name="fecha">Cadena que se envia desde vista</param>
+        /// <returns>Lista de facturas encontradas con esa determinada fecha</returns>
+        public List<Factura> TraeFactsFecha(string fecha)
+        {
+            Factura fac = null;
+            List<Factura> ListaFs = new List<Factura>();
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+
+
+
+                string sqlcad = "Select * from factura where fecha='" + fecha + "' order by id_factura";
+
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    fac = new Factura();
+                    fac.IDFACTURA = Convert.ToInt32(dr[1].ToString());
+
+                    fac.FECHA = dr[2].ToString();
+                    fac.TOTAL = Convert.ToDouble(dr[3].ToString());//este es total
+                    fac.SUBTOTAL = Convert.ToDouble(dr[4].ToString());//este es subtotal
+                    fac.IVA = Convert.ToDouble(dr[5].ToString());
+                    fac.TIPOFACTURA = dr[6].ToString();
+
                     ListaFs.Add(fac);
                 }
                 dr.Close();

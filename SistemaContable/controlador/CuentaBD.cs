@@ -82,6 +82,10 @@ namespace SistemaContable.controlador
             }
             cn.Close();
             cmd = null;
+            if(usu==null)
+            {
+                usu = new Cuenta();
+            }
             return usu;
         }
 

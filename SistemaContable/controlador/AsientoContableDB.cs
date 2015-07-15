@@ -239,5 +239,82 @@ namespace SistemaContable.controlador
             cmd = null;
             return per.getAsientoContable();
         }
+        //15
+        public AsientoContable TraeAsientoPorId(int idAsiento)
+        {
+            AsientoContableDB per = null;
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            try
+            {
+                // string sqlcad = "Select * from Factura Where id_fac='" + id + "'";
+                string sqlcad = "Select * from asiento_contable  Where id_asiento=" + idAsiento;
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    per = new AsientoContableDB();
+                    /*
+                    //per.getAsientoContable().IDUSUARIO = Convert.ToString(dr[0].ToString());
+                    per.getAsientoContable().IDASIENTO = Convert.ToString(dr[1].ToString());
+                    per.getAsientoContable().NOMBRE_ASIENTO = Convert.ToString(dr[2].ToString());
+                    per.getAsientoContable().DESCRIPCION = Convert.ToString(dr[3].ToString());
+                    per.getAsientoContable().ESTADO = Convert.ToString(dr[4].ToString());
+
+                    */
+                    per.getAsientoContable().IDUSUARIO = dr[0].ToString();
+                    per.getAsientoContable().IDASIENTO = dr[1].ToString();
+                    per.getAsientoContable().NOMBRE_ASIENTO = dr[2].ToString();
+                    per.getAsientoContable().DESCRIPCION = dr[3].ToString();
+                    per.getAsientoContable().ESTADO = dr[4].ToString();
+                }
+                dr.Close();
+            }
+            catch (MySqlException ex)
+            {
+                per = null;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                per = null;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return per.getAsientoContable();
+        }
+      
+        public int ActualizaASientoContable(AsientoContable asi)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = con.getConexion();
+            int resp;
+            try
+            {
+
+                string sqlcad = "Update asiento_contable set estado='" + asi.ESTADO + "' WHERE id_asiento=" + asi.IDASIENTO + "";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cn.Close();
+            cmd = null;
+            return resp;
+        }
         }
     }

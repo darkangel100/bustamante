@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportes));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp1 = new System.Windows.Forms.TabPage();
             this.btnConsultaLD = new System.Windows.Forms.Button();
@@ -70,6 +71,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dtplm1 = new System.Windows.Forms.DateTimePicker();
             this.tp3 = new System.Windows.Forms.TabPage();
+            this.txtLotes = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtStockGlobal = new System.Windows.Forms.TextBox();
             this.txtPeriodotk = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtptk2 = new System.Windows.Forms.DateTimePicker();
@@ -98,10 +103,6 @@
             this.cboArticuloTk = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtStockGlobal = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtLotes = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvld)).BeginInit();
@@ -145,21 +146,27 @@
             // 
             // btnConsultaLD
             // 
+            this.btnConsultaLD.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultaLD.Image")));
+            this.btnConsultaLD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConsultaLD.Location = new System.Drawing.Point(376, 62);
             this.btnConsultaLD.Name = "btnConsultaLD";
-            this.btnConsultaLD.Size = new System.Drawing.Size(132, 23);
+            this.btnConsultaLD.Size = new System.Drawing.Size(109, 47);
             this.btnConsultaLD.TabIndex = 12;
             this.btnConsultaLD.Text = "Consultar";
+            this.btnConsultaLD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConsultaLD.UseVisualStyleBackColor = true;
             this.btnConsultaLD.Click += new System.EventHandler(this.btnConsultaLD_Click);
             // 
             // btnImprimprirLd
             // 
-            this.btnImprimprirLd.Location = new System.Drawing.Point(390, 432);
+            this.btnImprimprirLd.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimprirLd.Image")));
+            this.btnImprimprirLd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimprirLd.Location = new System.Drawing.Point(376, 416);
             this.btnImprimprirLd.Name = "btnImprimprirLd";
-            this.btnImprimprirLd.Size = new System.Drawing.Size(118, 23);
+            this.btnImprimprirLd.Size = new System.Drawing.Size(109, 57);
             this.btnImprimprirLd.TabIndex = 11;
             this.btnImprimprirLd.Text = "Imprimir";
+            this.btnImprimprirLd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimprirLd.UseVisualStyleBackColor = true;
             this.btnImprimprirLd.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -343,11 +350,14 @@
             // 
             // btnImprimirlm
             // 
-            this.btnImprimirlm.Location = new System.Drawing.Point(386, 434);
+            this.btnImprimirlm.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirlm.Image")));
+            this.btnImprimirlm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirlm.Location = new System.Drawing.Point(386, 415);
             this.btnImprimirlm.Name = "btnImprimirlm";
-            this.btnImprimirlm.Size = new System.Drawing.Size(118, 23);
+            this.btnImprimirlm.Size = new System.Drawing.Size(105, 58);
             this.btnImprimirlm.TabIndex = 29;
             this.btnImprimirlm.Text = "Imprimir";
+            this.btnImprimirlm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimirlm.UseVisualStyleBackColor = true;
             this.btnImprimirlm.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -362,11 +372,14 @@
             // 
             // btnConsultaLM
             // 
+            this.btnConsultaLM.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultaLM.Image")));
+            this.btnConsultaLM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConsultaLM.Location = new System.Drawing.Point(429, 60);
             this.btnConsultaLM.Name = "btnConsultaLM";
-            this.btnConsultaLM.Size = new System.Drawing.Size(132, 23);
+            this.btnConsultaLM.Size = new System.Drawing.Size(100, 42);
             this.btnConsultaLM.TabIndex = 24;
             this.btnConsultaLM.Text = "Consultar";
+            this.btnConsultaLM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConsultaLM.UseVisualStyleBackColor = true;
             this.btnConsultaLM.Click += new System.EventHandler(this.btnConsultaLM_Click);
             // 
@@ -528,6 +541,42 @@
             this.tp3.Text = "Tarjeta Kardex";
             this.tp3.UseVisualStyleBackColor = true;
             // 
+            // txtLotes
+            // 
+            this.txtLotes.Enabled = false;
+            this.txtLotes.Location = new System.Drawing.Point(104, 220);
+            this.txtLotes.Name = "txtLotes";
+            this.txtLotes.Size = new System.Drawing.Size(279, 20);
+            this.txtLotes.TabIndex = 48;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(14, 224);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 16);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "Lotes:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(606, 178);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(113, 16);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "Total Existencias:";
+            // 
+            // txtStockGlobal
+            // 
+            this.txtStockGlobal.Enabled = false;
+            this.txtStockGlobal.Location = new System.Drawing.Point(725, 177);
+            this.txtStockGlobal.Name = "txtStockGlobal";
+            this.txtStockGlobal.Size = new System.Drawing.Size(96, 20);
+            this.txtStockGlobal.TabIndex = 45;
+            // 
             // txtPeriodotk
             // 
             this.txtPeriodotk.Enabled = false;
@@ -580,11 +629,14 @@
             // 
             // btnImprimirtk
             // 
-            this.btnImprimirtk.Location = new System.Drawing.Point(348, 446);
+            this.btnImprimirtk.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirtk.Image")));
+            this.btnImprimirtk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirtk.Location = new System.Drawing.Point(373, 433);
             this.btnImprimirtk.Name = "btnImprimirtk";
-            this.btnImprimirtk.Size = new System.Drawing.Size(118, 23);
+            this.btnImprimirtk.Size = new System.Drawing.Size(101, 42);
             this.btnImprimirtk.TabIndex = 36;
             this.btnImprimirtk.Text = "Imprimir";
+            this.btnImprimirtk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimirtk.UseVisualStyleBackColor = true;
             this.btnImprimirtk.Click += new System.EventHandler(this.btnImprimirtk_Click);
             // 
@@ -738,11 +790,14 @@
             // 
             // btnConsultarTk
             // 
-            this.btnConsultarTk.Location = new System.Drawing.Point(673, 69);
+            this.btnConsultarTk.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultarTk.Image")));
+            this.btnConsultarTk.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnConsultarTk.Location = new System.Drawing.Point(673, 54);
             this.btnConsultarTk.Name = "btnConsultarTk";
-            this.btnConsultarTk.Size = new System.Drawing.Size(132, 23);
+            this.btnConsultarTk.Size = new System.Drawing.Size(132, 68);
             this.btnConsultarTk.TabIndex = 25;
             this.btnConsultarTk.Text = "Consultar";
+            this.btnConsultarTk.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConsultarTk.UseVisualStyleBackColor = true;
             this.btnConsultarTk.Click += new System.EventHandler(this.btnConsultarTk_Click);
             // 
@@ -773,42 +828,6 @@
             this.label16.Size = new System.Drawing.Size(307, 24);
             this.label16.TabIndex = 0;
             this.label16.Text = "Control de Control de Inventario";
-            // 
-            // txtStockGlobal
-            // 
-            this.txtStockGlobal.Enabled = false;
-            this.txtStockGlobal.Location = new System.Drawing.Point(725, 177);
-            this.txtStockGlobal.Name = "txtStockGlobal";
-            this.txtStockGlobal.Size = new System.Drawing.Size(96, 20);
-            this.txtStockGlobal.TabIndex = 45;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(606, 178);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(113, 16);
-            this.label19.TabIndex = 46;
-            this.label19.Text = "Total Existencias:";
-            // 
-            // txtLotes
-            // 
-            this.txtLotes.Enabled = false;
-            this.txtLotes.Location = new System.Drawing.Point(104, 220);
-            this.txtLotes.Name = "txtLotes";
-            this.txtLotes.Size = new System.Drawing.Size(279, 20);
-            this.txtLotes.TabIndex = 48;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(14, 224);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 16);
-            this.label22.TabIndex = 47;
-            this.label22.Text = "Lotes:";
             // 
             // FrmReportes
             // 

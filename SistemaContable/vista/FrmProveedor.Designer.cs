@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProveedor));
             this.tcProveedor = new System.Windows.Forms.TabControl();
             this.tpRegistro = new System.Windows.Forms.TabPage();
             this.btnGuardarProveedor = new System.Windows.Forms.Button();
@@ -139,11 +140,14 @@
             // 
             // btnGuardarProveedor
             // 
-            this.btnGuardarProveedor.Location = new System.Drawing.Point(347, 406);
+            this.btnGuardarProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarProveedor.Image")));
+            this.btnGuardarProveedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardarProveedor.Location = new System.Drawing.Point(347, 373);
             this.btnGuardarProveedor.Name = "btnGuardarProveedor";
-            this.btnGuardarProveedor.Size = new System.Drawing.Size(124, 23);
+            this.btnGuardarProveedor.Size = new System.Drawing.Size(124, 70);
             this.btnGuardarProveedor.TabIndex = 12;
             this.btnGuardarProveedor.Text = "Guardar";
+            this.btnGuardarProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardarProveedor.UseVisualStyleBackColor = true;
             this.btnGuardarProveedor.Click += new System.EventHandler(this.btnGuardarProveedor_Click);
             // 
@@ -151,7 +155,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(442, 105);
+            this.label9.Location = new System.Drawing.Point(443, 76);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 16);
             this.label9.TabIndex = 11;
@@ -168,7 +172,7 @@
             this.pnlDistribuidora.Controls.Add(this.label6);
             this.pnlDistribuidora.Controls.Add(this.label7);
             this.pnlDistribuidora.Enabled = false;
-            this.pnlDistribuidora.Location = new System.Drawing.Point(445, 150);
+            this.pnlDistribuidora.Location = new System.Drawing.Point(446, 121);
             this.pnlDistribuidora.Name = "pnlDistribuidora";
             this.pnlDistribuidora.Size = new System.Drawing.Size(340, 232);
             this.pnlDistribuidora.TabIndex = 10;
@@ -254,7 +258,7 @@
             this.pnlProveedor.Controls.Add(this.label5);
             this.pnlProveedor.Controls.Add(this.label4);
             this.pnlProveedor.Controls.Add(this.label3);
-            this.pnlProveedor.Location = new System.Drawing.Point(32, 150);
+            this.pnlProveedor.Location = new System.Drawing.Point(33, 121);
             this.pnlProveedor.Name = "pnlProveedor";
             this.pnlProveedor.Size = new System.Drawing.Size(340, 232);
             this.pnlProveedor.TabIndex = 9;
@@ -389,7 +393,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 105);
+            this.label2.Location = new System.Drawing.Point(30, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 16);
             this.label2.TabIndex = 8;
@@ -444,7 +448,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Location = new System.Drawing.Point(445, 107);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 260);
+            this.panel1.Size = new System.Drawing.Size(340, 315);
             this.panel1.TabIndex = 16;
             // 
             // cmbMdis
@@ -468,11 +472,14 @@
             // btnMDistri
             // 
             this.btnMDistri.Enabled = false;
-            this.btnMDistri.Location = new System.Drawing.Point(122, 222);
+            this.btnMDistri.Image = ((System.Drawing.Image)(resources.GetObject("btnMDistri.Image")));
+            this.btnMDistri.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMDistri.Location = new System.Drawing.Point(124, 219);
             this.btnMDistri.Name = "btnMDistri";
-            this.btnMDistri.Size = new System.Drawing.Size(124, 23);
+            this.btnMDistri.Size = new System.Drawing.Size(124, 64);
             this.btnMDistri.TabIndex = 13;
             this.btnMDistri.Text = "Guardar";
+            this.btnMDistri.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMDistri.UseVisualStyleBackColor = true;
             this.btnMDistri.Click += new System.EventHandler(this.btnMDistri_Click);
             // 
@@ -546,7 +553,7 @@
             this.panel2.Controls.Add(this.btnMProveedor);
             this.panel2.Location = new System.Drawing.Point(32, 107);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(340, 260);
+            this.panel2.Size = new System.Drawing.Size(340, 315);
             this.panel2.TabIndex = 15;
             // 
             // txtMtiempo
@@ -655,11 +662,14 @@
             // btnMProveedor
             // 
             this.btnMProveedor.Enabled = false;
-            this.btnMProveedor.Location = new System.Drawing.Point(116, 222);
+            this.btnMProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnMProveedor.Image")));
+            this.btnMProveedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMProveedor.Location = new System.Drawing.Point(111, 219);
             this.btnMProveedor.Name = "btnMProveedor";
-            this.btnMProveedor.Size = new System.Drawing.Size(124, 23);
+            this.btnMProveedor.Size = new System.Drawing.Size(124, 64);
             this.btnMProveedor.TabIndex = 18;
             this.btnMProveedor.Text = "Guardar";
+            this.btnMProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMProveedor.UseVisualStyleBackColor = true;
             this.btnMProveedor.Click += new System.EventHandler(this.btnMProveedor_Click);
             // 
@@ -712,11 +722,14 @@
             // 
             // btnActivar
             // 
+            this.btnActivar.Image = ((System.Drawing.Image)(resources.GetObject("btnActivar.Image")));
+            this.btnActivar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActivar.Location = new System.Drawing.Point(335, 393);
             this.btnActivar.Name = "btnActivar";
-            this.btnActivar.Size = new System.Drawing.Size(115, 27);
+            this.btnActivar.Size = new System.Drawing.Size(151, 48);
             this.btnActivar.TabIndex = 5;
             this.btnActivar.Text = "Activar/Desactivar";
+            this.btnActivar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnActivar.UseVisualStyleBackColor = true;
             // 
             // dgvBusqueda
@@ -792,11 +805,14 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(335, 109);
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(335, 104);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(117, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(94, 46);
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 

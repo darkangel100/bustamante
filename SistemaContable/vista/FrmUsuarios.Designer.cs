@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuarios));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAutoIncremeId = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
-            this.txtTel = new System.Windows.Forms.TextBox();
             this.txtDir = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -60,6 +60,9 @@
             this.btnEdita = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbPasMod = new System.Windows.Forms.RadioButton();
+            this.rbActMod = new System.Windows.Forms.RadioButton();
             this.txtCeñaMod = new System.Windows.Forms.TextBox();
             this.txtNomUsuMod = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -80,17 +83,15 @@
             this.label15 = new System.Windows.Forms.Label();
             this.cmbUsuarioSeleccion = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.rbActMod = new System.Windows.Forms.RadioButton();
-            this.rbPasMod = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTel = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +114,7 @@
             // 
             // txtAutoIncremeId
             // 
+            this.txtAutoIncremeId.Enabled = false;
             this.txtAutoIncremeId.Location = new System.Drawing.Point(377, 39);
             this.txtAutoIncremeId.Name = "txtAutoIncremeId";
             this.txtAutoIncremeId.Size = new System.Drawing.Size(265, 22);
@@ -146,19 +148,13 @@
             this.cmbRoles.Size = new System.Drawing.Size(242, 24);
             this.cmbRoles.TabIndex = 11;
             // 
-            // txtTel
-            // 
-            this.txtTel.Location = new System.Drawing.Point(109, 208);
-            this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(241, 22);
-            this.txtTel.TabIndex = 10;
-            // 
             // txtDir
             // 
             this.txtDir.Location = new System.Drawing.Point(108, 162);
             this.txtDir.Name = "txtDir";
             this.txtDir.Size = new System.Drawing.Size(242, 22);
             this.txtDir.TabIndex = 9;
+            this.txtDir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDir_KeyPress);
             // 
             // txtApellido
             // 
@@ -166,6 +162,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(242, 22);
             this.txtApellido.TabIndex = 8;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtNom
             // 
@@ -173,6 +170,7 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(242, 22);
             this.txtNom.TabIndex = 7;
+            this.txtNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNom_KeyPress);
             // 
             // txtCed
             // 
@@ -180,6 +178,7 @@
             this.txtCed.Name = "txtCed";
             this.txtCed.Size = new System.Drawing.Size(242, 22);
             this.txtCed.TabIndex = 6;
+            this.txtCed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCed_KeyPress);
             // 
             // label8
             // 
@@ -274,11 +273,14 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(94, 384);
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.Location = new System.Drawing.Point(528, 289);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(138, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(114, 67);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -292,13 +294,14 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(434, 80);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(368, 287);
+            this.panel2.Size = new System.Drawing.Size(368, 181);
             this.panel2.TabIndex = 6;
             // 
             // txtCeña2
             // 
             this.txtCeña2.Location = new System.Drawing.Point(181, 119);
             this.txtCeña2.Name = "txtCeña2";
+            this.txtCeña2.PasswordChar = '*';
             this.txtCeña2.Size = new System.Drawing.Size(165, 22);
             this.txtCeña2.TabIndex = 8;
             // 
@@ -306,6 +309,7 @@
             // 
             this.txtCeña1.Location = new System.Drawing.Point(177, 84);
             this.txtCeña1.Name = "txtCeña1";
+            this.txtCeña1.PasswordChar = '*';
             this.txtCeña1.Size = new System.Drawing.Size(165, 22);
             this.txtCeña1.TabIndex = 7;
             // 
@@ -372,11 +376,14 @@
             // 
             // btnEdita
             // 
-            this.btnEdita.Location = new System.Drawing.Point(59, 361);
+            this.btnEdita.Image = ((System.Drawing.Image)(resources.GetObject("btnEdita.Image")));
+            this.btnEdita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdita.Location = new System.Drawing.Point(536, 332);
             this.btnEdita.Name = "btnEdita";
-            this.btnEdita.Size = new System.Drawing.Size(124, 23);
+            this.btnEdita.Size = new System.Drawing.Size(124, 49);
             this.btnEdita.TabIndex = 9;
             this.btnEdita.Text = "Modificar";
+            this.btnEdita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdita.UseVisualStyleBackColor = true;
             this.btnEdita.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -398,18 +405,53 @@
             this.panel4.Controls.Add(this.label24);
             this.panel4.Location = new System.Drawing.Point(421, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(368, 276);
+            this.panel4.Size = new System.Drawing.Size(368, 233);
             this.panel4.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbPasMod);
+            this.groupBox2.Controls.Add(this.rbActMod);
+            this.groupBox2.Location = new System.Drawing.Point(36, 130);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(306, 79);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Estado";
+            // 
+            // rbPasMod
+            // 
+            this.rbPasMod.AutoSize = true;
+            this.rbPasMod.Location = new System.Drawing.Point(19, 49);
+            this.rbPasMod.Name = "rbPasMod";
+            this.rbPasMod.Size = new System.Drawing.Size(77, 21);
+            this.rbPasMod.TabIndex = 1;
+            this.rbPasMod.TabStop = true;
+            this.rbPasMod.Text = "Pasivo";
+            this.rbPasMod.UseVisualStyleBackColor = true;
+            // 
+            // rbActMod
+            // 
+            this.rbActMod.AutoSize = true;
+            this.rbActMod.Location = new System.Drawing.Point(19, 21);
+            this.rbActMod.Name = "rbActMod";
+            this.rbActMod.Size = new System.Drawing.Size(73, 21);
+            this.rbActMod.TabIndex = 0;
+            this.rbActMod.TabStop = true;
+            this.rbActMod.Text = "Activo";
+            this.rbActMod.UseVisualStyleBackColor = true;
             // 
             // txtCeñaMod
             // 
             this.txtCeñaMod.Location = new System.Drawing.Point(177, 84);
             this.txtCeñaMod.Name = "txtCeñaMod";
+            this.txtCeñaMod.PasswordChar = '*';
             this.txtCeñaMod.Size = new System.Drawing.Size(165, 22);
             this.txtCeñaMod.TabIndex = 7;
             // 
             // txtNomUsuMod
             // 
+            this.txtNomUsuMod.Enabled = false;
             this.txtNomUsuMod.Location = new System.Drawing.Point(173, 55);
             this.txtNomUsuMod.Name = "txtNomUsuMod";
             this.txtNomUsuMod.Size = new System.Drawing.Size(169, 22);
@@ -466,6 +508,7 @@
             this.txtTelMod.Name = "txtTelMod";
             this.txtTelMod.Size = new System.Drawing.Size(241, 22);
             this.txtTelMod.TabIndex = 10;
+            this.txtTelMod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelMod_KeyPress);
             // 
             // txtDirMod
             // 
@@ -473,13 +516,16 @@
             this.txtDirMod.Name = "txtDirMod";
             this.txtDirMod.Size = new System.Drawing.Size(242, 22);
             this.txtDirMod.TabIndex = 9;
+            this.txtDirMod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDirMod_KeyPress);
             // 
             // txtApeMod
             // 
+            this.txtApeMod.Enabled = false;
             this.txtApeMod.Location = new System.Drawing.Point(108, 119);
             this.txtApeMod.Name = "txtApeMod";
             this.txtApeMod.Size = new System.Drawing.Size(242, 22);
             this.txtApeMod.TabIndex = 8;
+            this.txtApeMod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApeMod_KeyPress);
             // 
             // label20
             // 
@@ -492,17 +538,21 @@
             // 
             // txtNomMod
             // 
+            this.txtNomMod.Enabled = false;
             this.txtNomMod.Location = new System.Drawing.Point(108, 69);
             this.txtNomMod.Name = "txtNomMod";
             this.txtNomMod.Size = new System.Drawing.Size(242, 22);
             this.txtNomMod.TabIndex = 7;
+            this.txtNomMod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomMod_KeyPress);
             // 
             // txtCedMod
             // 
+            this.txtCedMod.Enabled = false;
             this.txtCedMod.Location = new System.Drawing.Point(108, 30);
             this.txtCedMod.Name = "txtCedMod";
             this.txtCedMod.Size = new System.Drawing.Size(242, 22);
             this.txtCedMod.TabIndex = 6;
+            this.txtCedMod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedMod_KeyPress);
             // 
             // label16
             // 
@@ -577,38 +627,13 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Seleccionar ID Usuario";
             // 
-            // rbActMod
+            // txtTel
             // 
-            this.rbActMod.AutoSize = true;
-            this.rbActMod.Location = new System.Drawing.Point(19, 21);
-            this.rbActMod.Name = "rbActMod";
-            this.rbActMod.Size = new System.Drawing.Size(73, 21);
-            this.rbActMod.TabIndex = 0;
-            this.rbActMod.TabStop = true;
-            this.rbActMod.Text = "Activo";
-            this.rbActMod.UseVisualStyleBackColor = true;
-            // 
-            // rbPasMod
-            // 
-            this.rbPasMod.AutoSize = true;
-            this.rbPasMod.Location = new System.Drawing.Point(19, 49);
-            this.rbPasMod.Name = "rbPasMod";
-            this.rbPasMod.Size = new System.Drawing.Size(77, 21);
-            this.rbPasMod.TabIndex = 1;
-            this.rbPasMod.TabStop = true;
-            this.rbPasMod.Text = "Pasivo";
-            this.rbPasMod.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbPasMod);
-            this.groupBox2.Controls.Add(this.rbActMod);
-            this.groupBox2.Location = new System.Drawing.Point(36, 174);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 79);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Estado";
+            this.txtTel.Location = new System.Drawing.Point(109, 208);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(241, 22);
+            this.txtTel.TabIndex = 10;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // FrmUsuarios
             // 
@@ -631,10 +656,10 @@
             this.tabPage2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -646,7 +671,6 @@
         private System.Windows.Forms.TextBox txtAutoIncremeId;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmbRoles;
-        private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtDir;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNom;
@@ -696,5 +720,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbPasMod;
         private System.Windows.Forms.RadioButton rbActMod;
+        private System.Windows.Forms.TextBox txtTel;
     }
 }

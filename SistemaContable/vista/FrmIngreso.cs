@@ -35,7 +35,7 @@ namespace SistemaContable.vista
         {
             pnlFactura.Enabled = true;
         }
-        //Trae el Id Asiento Ultimo+1
+        //Trae el Id Asiento Ultimo + 1
         private void IDEASIENTO()
         {
             AsientoContableDB objasicon = new AsientoContableDB();
@@ -46,7 +46,6 @@ namespace SistemaContable.vista
             }
             else
             {
-
                 id_asien = Convert.ToInt32(idasiento);
                 id_asien++;
                 txtIdFactura.Text = id_asien.ToString();
@@ -62,7 +61,7 @@ namespace SistemaContable.vista
         {
             try
             {
-                //Paso 1
+                // 1: Guardar Asiento
                 AsientoContableDB objAsiVenta = new AsientoContableDB();
                 int respa;
                 objAsiVenta.getAsientoContable().IDUSUARIO = Convert.ToString(Utiles.IdUsuarioActual);
@@ -76,32 +75,9 @@ namespace SistemaContable.vista
                 }
                 else
                 {
-                    //MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 
+                    //MessageBox.Show("Asiento Ingresado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);               
                 }
-                /*Paso 2
-                FacturaBD objF = new FacturaBD();
-                ProductoDB objproducto = new ProductoDB();
-                DetalleFacturaDB objI = new DetalleFacturaDB();
-
-                int resp;
-                int resp1;
-                int resp2;
-                string cp = "";
-                int cca = 0;
-                //IdProveedor debe ir null
-
-                objF.getFacturas().IDFACTURA = Convert.ToInt32(txtIdFactura.Text);
-                //  objF.getFacturas().Fecha = objUtil.girafechaVenta(dtpFec.Value.ToShortDateString());
-                objF.getFacturas().FECHA = Utiles.girafecha(dtpFec.Value.ToShortDateString());
-                objF.getFacturas().TOTAL = Convert.ToDouble(txtTotal.Text);
-                objF.getFacturas().SUBTOTAL = Convert.ToDouble(txtSubt.Text);
-                objF.getFacturas().IVA = Convert.ToDouble(txtIva.Text);
-
-
-                objF.getFacturas().TIPOFACTURA = tipofac;// V de ventas
-                resp = objF.InsertaFacturas(objF.getFacturas(), objF.getFacturas().TIPOFACTURA.ToString());
-                */
+                //2.Guardar Factura
                 FacturaDB objF = new FacturaDB();
                 ProductoDB objproducto = new ProductoDB();
                 DetalleFacturaDB objI = new DetalleFacturaDB();
@@ -146,14 +122,15 @@ namespace SistemaContable.vista
                         {
                             MessageBox.Show("No se ingreso item de datos de la Factura", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        resp2 = objproducto.agregapro(cp, cca);
+                        
+                        resp2 = objproducto.restarpro(cp, cca);
                         if (resp2 == 0)
                         {
                             MessageBox.Show("No se actualizo Productos", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                  
-                  //  MessageBox.Show("Factura de Ventas Ingresada", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Factura de Ventas Ingresada", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
 
                 }
@@ -166,16 +143,50 @@ namespace SistemaContable.vista
 
         private void FrmIngreso_Load(object sender, EventArgs e)
         {
-            //Referncia Nro Asiento, se fija en el txt de Factura
+            //Nro de Factura Generada automaticamente
             IDEASIENTO();
-            //codigo();
+            //Traer Produtos Existentes
             llenaProductos();
-            //Edicion
+            //LLena Nros de Facturas existentes
+            llenafactsTodas("v");
+            //Llena Tabla con Facturas existentes
             llenafacts("v");
+            
         }
+        //LLena la tabla con todas las facturas al mostrar la ventana
+        public void llenafactsTodas(string tipoV)
+        {           
+            try
+            {
+                dgvFacturas.Rows.Clear();
+                FacturaDB objC = new FacturaDB();
+                objC.getFactura().LISTAFACTURA = objC.TraeFacts(tipoV);
+                if (objC.getFactura().LISTAFACTURA.Count == 0)
+                {
+                    MessageBox.Show("No existen Facturas Venta registradas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    fila = 0;
+                    for (int i = 0; i < objC.getFactura().LISTAFACTURA.Count;i++ )
+                    {
+                        dgvFacturas.Rows.Add(1);
+                        dgvFacturas.Rows[i].Cells[0].Value = objC.getFactura().LISTAFACTURA[i].IDFACTURA;
+                        dgvFacturas.Rows[i].Cells[1].Value = objC.getFactura().LISTAFACTURA[i].TOTAL;
+                        dgvFacturas.Rows[i].Cells[2].Value = objC.getFactura().LISTAFACTURA[i].SUBTOTAL;
+                        dgvFacturas.Rows[i].Cells[3].Value = objC.getFactura().LISTAFACTURA[i].IVA;
+                    }
+                }         
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+        }
+        //Muestra los numeros de facturas de venta en el combo 
         private void llenafacts(string tipoV)
-        {
-            //MessageBox.Show(ced.ToString());
+        {        
             try
             {
                 FacturaDB objP = new FacturaDB();
@@ -195,7 +206,7 @@ namespace SistemaContable.vista
             }
         }
 
-
+        //LLena la tabla de productos con la informacion de cada producto
         public void llenaProductos()
         {
             try
@@ -225,58 +236,21 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       /* private void codigo()
-        {
-            try
-            {
-                string cc = "";
-                int nro;
-                FacturaBD objf = new FacturaBD();
-                nro = objf.TraeCodigo();
-
-                if (nro == 0)
-                {
-                    txtIdFactura.Text = "000001";
-                }
-                else
-                {
-                    nro++;
-                    if (nro < 10)
-                        cc = "00000";
-                    else if (nro < 100)
-                        cc = "0000";
-                    else if (nro < 1000)
-                        cc = "000";
-                    else if (nro < 10000)
-                        cc = "00";
-                    else if (nro < 100000)
-                        cc = "0";
-                    else
-                        cc = "";
-                    txtIdFactura.Text = Convert.ToString(cc + nro);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al modificar los Datos," + ex.Message, "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
-
+       
         private void dGVProds_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            fila = dGVProds.CurrentRow.Index;
-           // cargadatos(lstpro.SelectedValue.ToString());
+            fila = dGVProds.CurrentRow.Index;        
             cargadatos(Convert.ToInt32(dGVProds.Rows[fila].Cells[0].Value));
             btnAgrega.Enabled = true;
+            btnQuita.Enabled = false;
         }
+        //Para agregar un detalle mas a la tabla toma un producto 
         private void cargadatos(int cod)
-        {
-           
+        {           
             try
             {
                 ProductoDB pro = new ProductoDB();
-                pro.setProducto(pro.traeProducto(cod,"x","y"));
-                //if (pro.getProducto().Id_producto == "")
+                pro.setProducto(pro.traeProducto(cod,"x","y"));           
                 if (pro.getProducto().Id_producto == 0)
                 {
                     MessageBox.Show("No existe registro del Producto", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -284,8 +258,7 @@ namespace SistemaContable.vista
                 else
                 {
                     txtPrecio.Text = pro.getProducto().Precio.ToString();
-                    txtStock.Text = pro.getProducto().Stock_global.ToString(); ;
-                    //lblIva.Text = pro.getProducto().iva.ToString();
+                    txtStock.Text = pro.getProducto().Stock_global.ToString(); ;             
                 }
             }
             catch (Exception ex)
@@ -299,17 +272,17 @@ namespace SistemaContable.vista
             agregaItems();
             btnAgrega.Enabled = false;
         }
+
         private void agregaItems()
         {
             dgvDatos.Rows.Add(1);
             dgvDatos.Rows[pos].Cells[0].Value = txtCantidad.Text;
-            //codigo Producto
+           
             dgvDatos.Rows[pos].Cells[1].Value = dGVProds.Rows[fila].Cells[0].Value.ToString();
-            //Nombre Producto
+            
             dgvDatos.Rows[pos].Cells[2].Value = dGVProds.Rows[fila].Cells[1].Value.ToString();
             dgvDatos.Rows[pos].Cells[3].Value = dGVProds.Rows[fila].Cells[2].Value.ToString();//Corresponde a "pre_ven" por la ref lblpre
-           // dgvDatos.Rows[pos].Cells[4].Value = ;
-            //Este tot referencia al valor del producto (+ iva) 
+           
             tot =Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(dGVProds.Rows[fila].Cells[2].Value.ToString());
             tot = Math.Round(tot,2);
             txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + (tot/1.12));
@@ -326,9 +299,10 @@ namespace SistemaContable.vista
         {
             fila = dgvDatos.CurrentRow.Index;
             col = dgvDatos.CurrentCell.ColumnIndex;
-            //btnEditar.Enabled = true;
+            btnEditar.Enabled = true;
+            btnQuita.Enabled = true;
         }
-
+        //Registrar: Habilita el panel de detalles
         private void btnNueva_Click(object sender, EventArgs e)
         {
             panel1.Enabled = true;
@@ -339,6 +313,7 @@ namespace SistemaContable.vista
         {
             edita();
         }
+        //Carga los datos de una fila de detalles para  la cantidad
         private void edita()
         {
             string ca = "";
@@ -347,17 +322,12 @@ namespace SistemaContable.vista
                 if (btnEditar.Text == "Editar")
                 {
                     ca = dgvDatos.Rows[fila].Cells[0].Value.ToString();
-                    pre = Convert.ToDouble(dgvDatos.Rows[fila].Cells[3].Value);
-           
-                    tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);
-                    
+                    pre = Convert.ToDouble(dgvDatos.Rows[fila].Cells[3].Value);       
+                    tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);                
                     txtCantidad.Text = ca.ToString();
-                   
                     txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot/1.12));
-                  
                     iva = tot-(tot/1.12);
-                    txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);
-                    
+                    txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);          
                     txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text)-tot);
                     btnAgrega.Enabled = false;
                     btnQuita.Enabled = false;
@@ -366,17 +336,12 @@ namespace SistemaContable.vista
                     txtCantidad.Focus();
                 }
                 else
-                {
-                    
+                {                
                     dgvDatos.Rows[fila].Cells[0].Value = txtCantidad.Text;
-                    tot = Convert.ToDouble(txtCantidad.Text) * pre;
-
-                 
-                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + (tot/1.12));
-                    
+                    tot = Convert.ToDouble(txtCantidad.Text) * pre;              
+                    txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + (tot/1.12));                 
                     iva = tot-(tot/1.12);
-                    txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + iva);
-                   
+                    txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) + iva);                 
                     txtTotal.Text = Convert.ToString(Convert.ToDouble(txtTotal.Text)+tot);
                     dgvDatos.Rows[fila].Cells[4].Value = tot.ToString();
                     btnAgrega.Enabled = true;
@@ -389,59 +354,57 @@ namespace SistemaContable.vista
         private void btnQuita_Click(object sender, EventArgs e)
         {
             quita();
+            btnAgrega.Enabled = false;
         }
+        //Quita una fila de la tabla y resta del total no grabado
         private void quita()
         {
-           
             if (fila >= 0)
             {
-               
                 tot = Convert.ToDouble(dgvDatos.Rows[fila].Cells[4].Value);
-
-                
-                iva = tot-(tot/1.12);
+                iva = tot - (tot / 1.12);
                 txtIva.Text = Convert.ToString(Convert.ToDouble(txtIva.Text) - iva);
-                txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot/1.12));
+                txtSubt.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) - (tot / 1.12));
+                
+                txtTotal.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + Convert.ToDouble(txtIva.Text));
+                dgvDatos.Rows.RemoveAt(fila);
+                pos--;
 
+                fila = -1;
             }
-            txtTotal.Text = Convert.ToString(Convert.ToDouble(txtSubt.Text) + Convert.ToDouble(txtIva.Text));
-            dgvDatos.Rows.RemoveAt(fila);
-            pos--;
-
-            fila = -1;
+            if (pos == 0)
+            {
+                btnEditar.Enabled = false;
+                txtSubt.Text = "0";
+                txtIva.Text = "0";
+                txtTotal.Text = "0";          
+            }              
         }
 
         private void cmbIds_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //mostrar();
+        {        
             btnBusquedaPorNumF.Enabled = true;
         }
+        //Fija la factura encontrada en la tabla de encontrada/s
         public void mostrar()
         {
-
-            //Destino Vista
             try
             {
-
+                dgvFacturas.Rows.Clear();
                 int idFacAnulacion = Convert.ToInt32(cmbIds.SelectedValue.ToString());
                 FacturaDB objFac = new FacturaDB();
                 objFac.setFactura(objFac.Traefactura(idFacAnulacion));
-                //MessageBox.Show("Factura Extraida ");
                 if (objFac.getFactura().SUBTOTAL == 0.0)
                 {
                     MessageBox.Show("No existe registro de la factura", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
-                {
-                  //  MessageBox.Show("Factura A llenar ");
+                {                 
                     dtpFecBusq.Value = Convert.ToDateTime(objFac.getFactura().FECHA);
-                    //txtXXX.Text = objFac.getFactura().IVA.ToString();
                     dgvFacturas.Rows[0].Cells[0].Value = objFac.getFactura().IDFACTURA.ToString();
                     dgvFacturas.Rows[0].Cells[1].Value = objFac.getFactura().TOTAL.ToString();
                     dgvFacturas.Rows[0].Cells[2].Value = objFac.getFactura().SUBTOTAL.ToString();
                     dgvFacturas.Rows[0].Cells[3].Value = objFac.getFactura().IVA.ToString();
-                  
-                    //llenaItems(Convert.ToInt32(objFac.getFactura().IDFACTURA.ToString()));
                 }
             }
             catch (Exception ex)
@@ -450,6 +413,7 @@ namespace SistemaContable.vista
             }
 
         }
+        //LLena los detalles de la factura seleccionada.
         public void llenaItems(int Idfact)
         {
             try
@@ -463,36 +427,20 @@ namespace SistemaContable.vista
                     MessageBox.Show("No existen Items registrados en la factura ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
-                {
-                    //VER-LA
-                    fila = 0;
-                    //
+                {                  
+                    fila = 0;                  
                     for (int i = 0; i < objC.getDetalleFactura().LISTADETALLE.Count; i++)
                     {
                         dgvItemsBusq.Rows.Add(1);
                         dgvItemsBusq.Rows[i].Cells[0].Value = objC.getDetalleFactura().LISTADETALLE[i].CANTIDAD;
                         dgvItemsBusq.Rows[i].Cells[1].Value = objC.getDetalleFactura().LISTADETALLE[i].IDPRODUCTO;
-                        //uso del cod_pro
-                         /* ProductoDB objP = new ProductoDB();
-                          string pr = objC.getDetalleFactura().LISTADETALLE[i].IDPRODUCTO;
-                          int px = Convert.ToInt32(pr);
-                           Producto p = new Producto();
-                           p = objP.traeProducto(px,"X","Y");
-
-                         dgvItemsBusq.Rows[i].Cells[2].Value = p.Nombre.ToString();*/
-                       // dgvItemsBusq.Rows[i].Cells[3].Value = objC.getDetalleFactura().Listaitemfacturas[i].preven;
-                        //dgvItems.Rows[i].Cells[4].Value = p.ivasn;
-                        //dgvItems.Rows[i].Cells[5].Value = objC.getDetalleFactura().Listaitemfacturas[i].pretot;
-
-                        //dgvItems.Rows[i].Cells[3].Value = objC.getPersona().ListaPersonas[i].telper;
-                        //
+                        
                         dgvItemsBusq.Rows[i].Cells[2].Value = objC.getDetalleFactura().LISTADETALLE[i].NOMBREPRODUCTO;
                         dgvItemsBusq.Rows[i].Cells[3].Value = objC.getDetalleFactura().LISTADETALLE[i].COSTOUNITARIO;
                         dgvItemsBusq.Rows[i].Cells[4].Value = objC.getDetalleFactura().LISTADETALLE[i].COSTOTOTAL;
                         if (i == 0)
                         {
-                           // txtPro1.Text = p.nompro.ToString();
-                           // txtStockActualPro1.Text = p.canpro.ToString();
+                          
                         }
                     }
                 }
@@ -505,13 +453,34 @@ namespace SistemaContable.vista
 
         private void btnMostrarDetalles_Click(object sender, EventArgs e)
         {
-         int idF=Convert.ToInt32(dgvFacturas.Rows[0].Cells[0].Value);
+         int idF = Convert.ToInt32(dgvFacturas.Rows[fila].Cells[0].Value);
+         llenaDescripcion(idF);
          llenaItems(idF);
+         panel1.Enabled = true;
+         btnMostrarDetalles.Enabled = false;
+         txtTotalDetalles.Text =Convert.ToString(dgvFacturas.Rows[fila].Cells[1].Value);          
         }
-
-        private void btnBusquedaPorFech_Click(object sender, EventArgs e)
-        {
-
+        //LLenado de la descripcion de asiento contable
+        public void llenaDescripcion(int idF)
+        {         
+            try
+            {
+                AsientoContableDB objA = new AsientoContableDB();
+                objA.setAsientoContable(objA.TraeAsientoPorId(idF));
+                if (objA.getAsientoContable().IDASIENTO == " ")
+                {
+                    MessageBox.Show("No existe registro de ID de  asiento contable", "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    txtExplicacionAsiento.Text = objA.getAsientoContable().DESCRIPCION.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al presentar los datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            btnDesactivar.Enabled = true;
 
         }
 
@@ -519,14 +488,110 @@ namespace SistemaContable.vista
         {
             mostrar();
         }
+        
+        private void btnBusqPorFecha_Click(object sender, EventArgs e)
+        {
+            llenaFacturasPorFecha();          
+        }
+        
+        public void llenaFacturasPorFecha()
+        {
+            try
+            {
+                dgvFacturas.Rows.Clear();
+                FacturaDB objC = new FacturaDB();
+                string dato = Utiles.girafecha(dtpFechaBusq.Value.ToShortDateString());
+                objC.getFactura().LISTAFACTURA = objC.TraeFactsFecha(dato);
+                if (objC.getFactura().LISTAFACTURA.Count == 0)
+                {
+                    MessageBox.Show("No existen Facturas registradas en esta fecha", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {                 
+                    fila = 0;
+                    dtpFecBusq.Value = dtpFechaBusq.Value;
+                    
+                    for (int i = 0; i < objC.getFactura().LISTAFACTURA.Count; i++)
+                    {
+                        dgvFacturas.Rows.Add(1);
+                        dgvFacturas.Rows[i].Cells[0].Value = objC.getFactura().LISTAFACTURA[i].IDFACTURA;
+                        dgvFacturas.Rows[i].Cells[1].Value = objC.getFactura().LISTAFACTURA[i].TOTAL;
+                        dgvFacturas.Rows[i].Cells[2].Value = objC.getFactura().LISTAFACTURA[i].SUBTOTAL;
+                        dgvFacturas.Rows[i].Cells[3].Value = objC.getFactura().LISTAFACTURA[i].IVA;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "Tienda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-      
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvFacturas.Rows.Clear();
+            if (comboBox1.Text == "Id")
+            {
+                cmbIds.Enabled = true;
+                dtpFechaBusq.Enabled = false;
+                btnBusqPorFecha.Enabled = false;
+                btnBusquedaPorNumF.Enabled = true;
+            }
+            else
+            {
+                if (comboBox1.Text == "Fecha")
+                {
+                    cmbIds.Enabled = false;
+                    
+                    dtpFechaBusq.Enabled = true;
+                    btnBusquedaPorNumF.Enabled = false;
+                    btnBusqPorFecha.Enabled = true;
+                }
+            }
+        }
 
+        private void dgvFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            fila = dgvFacturas.CurrentRow.Index;
+            col = dgvFacturas.CurrentCell.ColumnIndex;
+            btnMostrarDetalles.Enabled = true;
+        }
 
-      
+        private void btnDesactivar_Click(object sender, EventArgs e)
+        {
+            int idF = Convert.ToInt32(dgvFacturas.Rows[fila].Cells[0].Value);
+            try
+            {
+                AsientoContableDB objAsiVenta = new AsientoContableDB();
+                int respa;
+                objAsiVenta.getAsientoContable().IDASIENTO = idF.ToString();
+                
+                objAsiVenta.getAsientoContable().ESTADO = "P";
+                respa = objAsiVenta.ActualizaASientoContable(objAsiVenta.getAsientoContable());
+                if (respa == 0)
+                {
+                    MessageBox.Show("No se ingreso datos de  Asiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Asiento Desactivado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al actualizar " + ex.Message);
+            }
+            btnDesactivar.Enabled = false;
+        }
 
-    
-
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if ((letra <= 48 || letra > 57) && letra != 8)
+            {
+                e.Handled = true;
+            }
+        }
       
     }
 }

@@ -9,8 +9,7 @@ namespace SistemaContable
 {
     class conexion
     {
-       //string coneccion = "Database=panda; Data Source=localhost; User Id=Panda; Password=pandita";
-        string coneccion = "Database=panda; Data Source=localhost; User Id=Panda; Password=pandita";
+       string coneccion = "Database=panda; Data Source=localhost; User Id=Panda; Password=pandita";
         public MySqlConnection getConexion()
         {
             MySqlConnection obj = new MySqlConnection(coneccion);

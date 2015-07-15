@@ -65,10 +65,7 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 --
 
 INSERT INTO `cuenta` (`id_usuario`, `usuario`, `contrasenia`, `estado`) VALUES
-(1, 'luis111', 'luis1', 'A'),
-(2, 'dany111', 'dany1', 'A'),
-(3, 'jennifer111', 'jenifer1', 'A'),
-(4, 'jose111', 'jose1', 'A');
+(1, 'administrador', 'administrador', 'A');
 
 -- --------------------------------------------------------
 
@@ -235,11 +232,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `id_rol`, `cedula`, `nombre`, `apellido`, `telefono`, `direccion`) VALUES
-(1, 1, '111', 'Luis', 'Viñamagua', '2580123', 'Argelia'),
-(2, 3, '112', 'Dany', 'Romero', '2580913', 'Sauces'),
-(3, 3, '113', 'Jennifer', 'Bustamante', '2580123', 'Pedestal'),
-(4, 2, '114', 'Jose Luis', 'Astudillo', '2580114', 'Cdla Daniel Alvarez');
+INSERT INTO `usuario` (`id_usuario`,`id_rol`, `cedula`, `nombre`, `apellido`, `telefono`, `direccion`) VALUES
+(1,1, '9999999999', 'administrador', 'administrador', 'default', 'defaultt');
 
 --
 -- Restricciones para tablas volcadas

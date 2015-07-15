@@ -393,5 +393,41 @@ namespace SistemaContable.controlador
 
 
         }
+        /// <summary>
+        /// Actualiza el stock de productos
+        /// </summary>
+        /// <param name="cod">Cadena con el nombre del producto</param>
+        /// <param name="can">Numero de existencias del producto</param>
+        /// <returns>Numero que indica si se realizó la operacion</returns>
+        public int restarpro(string cod, int can)
+        {
+            MySqlCommand cmd;
+            MySqlConnection cn = co.getConexion();
+            int resp;
+
+            try
+            {
+                string sqlcad = "Update producto set stock_global=stock_global-" + can + " where id_producto='" + cod + "'";
+                cmd = new MySqlCommand(sqlcad, cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                resp = cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                resp = 0;
+                throw ex;
+            }
+            cmd = null;
+            cn.Close();
+            return resp;
+
+
+        }
     }
 }

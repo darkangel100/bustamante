@@ -24,8 +24,12 @@ namespace SistemaContable.vista
             dgvld.Rows.Clear();
             if (dtp1ld.Value.Year == dtp2ld.Value.Year && dtp1ld.Value.Month == dtp2ld.Value.Month)
             {
-                txtPeriodoLd.Text = dtp1ld.Value.Month + " del " + dtp1ld.Value.Year;   
+                txtPeriodoLd.Text = dtp1ld.Value.Month + " del " + dtp1ld.Value.Year;
                 libroDiario();
+            }
+            else
+            {
+                MessageBox.Show("Mes y año deben ser iguales", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -125,6 +129,10 @@ namespace SistemaContable.vista
                 txtPeriodolm.Text = dtplm1.Value.Month + " del " + dtplm1.Value.Year;
                 txtCuentalm.Text = cboCuenta.Text;
                 libroMayor();
+            }
+            else
+            {
+                MessageBox.Show("Mes y año deben ser iguales", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         public void libroMayor()

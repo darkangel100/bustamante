@@ -24,6 +24,8 @@ namespace SistemaContable.vista
             llenaUsuarios();
             
         }
+
+        //Edicion: Encuentra y fija al combo los usuarios existentes
         public void llenaUsuarios()
         {
             try
@@ -43,6 +45,7 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error Al Presentar los Datos," + ex.Message, "VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Numero generado para el usuario registrado proximo
         private void codigo()
         {
             try
@@ -79,6 +82,7 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al modificar los Datos," + ex.Message, "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Roles Existentes en la empresa
         public void llenaRoles()
         {
             try
@@ -107,29 +111,27 @@ namespace SistemaContable.vista
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            AdicionaUsuario();
-            AdicionaCuenta();
+        {       
+               AdicionaUsuario();
+               AdicionaCuenta();   
         }
+        //Guarda al Usuario a la DB
         private void AdicionaUsuario()
         {
-           // int numeroIngr = 0;
+           
             try
             {
                 UsuariosBD objU = new UsuariosBD();
                 int resp;
                 objU.getUsuarios().IdUsu = Convert.ToInt32(txtAutoIncremeId.Text.Trim());
                 objU.getUsuarios().IdRol = Convert.ToInt32(cmbRoles.SelectedValue.ToString());
-                //  objF.getFacturas().cedper = cmbCliente.SelectedValue.ToString();
+               
                 objU.getUsuarios().CedUsu = txtCed.Text.Trim();
                 objU.getUsuarios().NomUsu = txtNom.Text.Trim();
                 objU.getUsuarios().ApeUsu = txtApellido.Text.Trim();
                 objU.getUsuarios().TelUsu = txtTel.Text.Trim();
                 objU.getUsuarios().DirUsu = txtDir.Text.Trim();
-                /* if (rbAdm.Checked == true)
-                     objU.getUsuarios().TipUsu = "A";
-                 else
-                     objU.getUsuarios().TipUsu = "V";*/
+                
                 resp = objU.Insertausuario(objU.getUsuarios());
 
                 if (resp == 0)
@@ -138,9 +140,7 @@ namespace SistemaContable.vista
                 }
                 else
                 {
-                    MessageBox.Show("Usuario Ingresado", "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                   // MessageBox.Show("Usuario Ingresado", "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
@@ -150,6 +150,7 @@ namespace SistemaContable.vista
                 MessageBox.Show("Error al Ingresar Datos," + ex.Message, "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Guarda la Cuenta Asociada al Usuario
         private void AdicionaCuenta()
         {
             try
@@ -157,7 +158,7 @@ namespace SistemaContable.vista
                 CuentaBD objU = new CuentaBD();
                 int resp;
                 objU.getCuenta().IdUsuario = Convert.ToInt32(txtAutoIncremeId.Text);
-                //  objF.getFacturas().cedper = cmbCliente.SelectedValue.ToString();
+                
                 objU.getCuenta().Usuario = txtNomUsuario.Text.Trim();
                 if(txtCeña1.Text.ToString().Equals(txtCeña2.Text.ToString())){
                       objU.getCuenta().Contrasenia = txtCeña1.Text.Trim();
@@ -184,8 +185,9 @@ namespace SistemaContable.vista
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Editar();
-            //7destino BD
+           
         }
+        //Guarda Datos nuevos para el usuario y la cuenta respectiva en la DB
         private void Editar()
         {
             try
@@ -195,9 +197,7 @@ namespace SistemaContable.vista
                 objP.getUsuarios().IdUsu = Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString());
                 objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
                 objP.getUsuarios().CedUsu = txtCedMod.Text.Trim();
-                //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
-                //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRoles.SelectedValue.ToString());
-              //  objP.getUsuarios().ApeUsu = txtApeMod.Text.Trim();//ERROR YANI
+               
                 objP.getUsuarios().NomUsu = txtNomMod.Text.Trim();
                 objP.getUsuarios().ApeUsu = txtApeMod.Text.Trim();//ERROR YANI
                 objP.getUsuarios().TelUsu = txtTelMod.Text.Trim();
@@ -231,23 +231,17 @@ namespace SistemaContable.vista
             {
                 CuentaBD objC = new CuentaBD();
                 int resp;
-               // objC.getCuenta().Usuario = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
+              
                 objC.getCuenta().IdUsuario = Convert.ToInt32(cmbUsuarioSeleccion.SelectedValue.ToString());
                 objC.getCuenta().Usuario = txtNomUsuMod.Text.Trim();
-                //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRolMod.SelectedValue.ToString());
-                //objP.getUsuarios().IdRol = Convert.ToInt32(cmbRoles.SelectedValue.ToString());
-                //  objP.getUsuarios().ApeUsu = txtApeMod.Text.Trim();//ERROR YANI
                 objC.getCuenta().Contrasenia = txtCeñaMod.Text.Trim();
                 
-
-         
                 if (rbActMod.Checked == true)
                     objC.getCuenta().Estado = "A";
                 else
                     objC.getCuenta().Estado = "P";
                
                 resp = objC.ActualizaCuenta(objC.getCuenta());
-
 
                 if (resp == 0)
                 {
@@ -256,7 +250,6 @@ namespace SistemaContable.vista
                 else
                 {
                     MessageBox.Show("Cuenta Modificada", "Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             catch (Exception ex)
@@ -265,7 +258,7 @@ namespace SistemaContable.vista
             }
 
         }
-
+        //Fija los datos en el formulario usuario y cuenta
         private void modificar()
         {
             try
@@ -284,9 +277,7 @@ namespace SistemaContable.vista
                     txtNomMod.Text = objB.getUsuarios().NomUsu;
                     txtApeMod.Text = objB.getUsuarios().ApeUsu;
                     txtTelMod.Text = objB.getUsuarios().TelUsu;
-                    txtDirMod.Text = objB.getUsuarios().DirUsu;
-                   
-                   
+                    txtDirMod.Text = objB.getUsuarios().DirUsu;                
                 }
                 //Cuenta
                 CuentaBD objC = new CuentaBD();
@@ -334,6 +325,96 @@ namespace SistemaContable.vista
         private void txtAutoIncremeId_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if ((letra < 48 || letra > 57) && letra != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if ((letra < 48 || letra > 57) && letra != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCedMod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if ((letra < 48 || letra > 57) && letra != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNomMod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApeMod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDirMod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if (!char.IsLetter(letra) && letra != 8 && letra != 13 && letra != 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelMod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char letra = e.KeyChar;
+            if ((letra < 48 || letra > 57) && letra != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

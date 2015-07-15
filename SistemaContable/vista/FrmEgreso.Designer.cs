@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEgreso));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbAsientoContable = new System.Windows.Forms.TabPage();
             this.dtFechaAsiento = new System.Windows.Forms.DateTimePicker();
@@ -95,7 +96,6 @@
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnActiva = new System.Windows.Forms.Button();
             this.dgvBuscPago = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,11 +170,14 @@
             // 
             // btnGuardarAsiento
             // 
+            this.btnGuardarAsiento.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarAsiento.Image")));
+            this.btnGuardarAsiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGuardarAsiento.Location = new System.Drawing.Point(413, 417);
             this.btnGuardarAsiento.Name = "btnGuardarAsiento";
-            this.btnGuardarAsiento.Size = new System.Drawing.Size(141, 25);
+            this.btnGuardarAsiento.Size = new System.Drawing.Size(155, 56);
             this.btnGuardarAsiento.TabIndex = 33;
             this.btnGuardarAsiento.Text = "Guardar Registro";
+            this.btnGuardarAsiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardarAsiento.UseVisualStyleBackColor = true;
             this.btnGuardarAsiento.Click += new System.EventHandler(this.btnGuardarAsiento_Click);
             // 
@@ -219,11 +222,14 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(424, 141);
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.Location = new System.Drawing.Point(413, 161);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(109, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(140, 49);
             this.btnAgregar.TabIndex = 31;
             this.btnAgregar.Text = "Agregar Asiento";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -347,7 +353,7 @@
             this.paneldatosfactura.Controls.Add(this.dtpFechaCadu);
             this.paneldatosfactura.Location = new System.Drawing.Point(54, 52);
             this.paneldatosfactura.Name = "paneldatosfactura";
-            this.paneldatosfactura.Size = new System.Drawing.Size(834, 160);
+            this.paneldatosfactura.Size = new System.Drawing.Size(834, 139);
             this.paneldatosfactura.TabIndex = 73;
             // 
             // cboProductoFac
@@ -568,21 +574,27 @@
             // 
             // btnAgregaDetalle
             // 
-            this.btnAgregaDetalle.Location = new System.Drawing.Point(402, 218);
+            this.btnAgregaDetalle.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregaDetalle.Image")));
+            this.btnAgregaDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregaDetalle.Location = new System.Drawing.Point(411, 209);
             this.btnAgregaDetalle.Name = "btnAgregaDetalle";
-            this.btnAgregaDetalle.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregaDetalle.Size = new System.Drawing.Size(103, 32);
             this.btnAgregaDetalle.TabIndex = 61;
             this.btnAgregaDetalle.Text = "Agregar";
+            this.btnAgregaDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregaDetalle.UseVisualStyleBackColor = true;
             this.btnAgregaDetalle.Click += new System.EventHandler(this.btnAgregaDetalle_Click);
             // 
             // txtGuardaFactura
             // 
-            this.txtGuardaFactura.Location = new System.Drawing.Point(347, 503);
+            this.txtGuardaFactura.Image = ((System.Drawing.Image)(resources.GetObject("txtGuardaFactura.Image")));
+            this.txtGuardaFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtGuardaFactura.Location = new System.Drawing.Point(257, 494);
             this.txtGuardaFactura.Name = "txtGuardaFactura";
-            this.txtGuardaFactura.Size = new System.Drawing.Size(141, 25);
+            this.txtGuardaFactura.Size = new System.Drawing.Size(150, 62);
             this.txtGuardaFactura.TabIndex = 44;
             this.txtGuardaFactura.Text = "Guardar Factura";
+            this.txtGuardaFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.txtGuardaFactura.UseVisualStyleBackColor = true;
             this.txtGuardaFactura.Click += new System.EventHandler(this.txtGuardaFactura_Click);
             // 
@@ -709,7 +721,6 @@
             this.tabPage3.Controls.Add(this.btnBusqueda);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.btnActiva);
             this.tabPage3.Controls.Add(this.dgvBuscPago);
             this.tabPage3.Controls.Add(this.dgvBuscaFactu);
             this.tabPage3.Controls.Add(this.dgvAsientoBusca);
@@ -756,18 +767,21 @@
             // 
             // btnBusqueda
             // 
-            this.btnBusqueda.Location = new System.Drawing.Point(768, 69);
+            this.btnBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btnBusqueda.Image")));
+            this.btnBusqueda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusqueda.Location = new System.Drawing.Point(758, 55);
             this.btnBusqueda.Name = "btnBusqueda";
-            this.btnBusqueda.Size = new System.Drawing.Size(109, 23);
+            this.btnBusqueda.Size = new System.Drawing.Size(108, 57);
             this.btnBusqueda.TabIndex = 47;
             this.btnBusqueda.Text = "Buscar";
+            this.btnBusqueda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBusqueda.UseVisualStyleBackColor = true;
             this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(626, 324);
+            this.label16.Location = new System.Drawing.Point(626, 347);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(87, 13);
             this.label16.TabIndex = 45;
@@ -776,20 +790,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(81, 321);
+            this.label15.Location = new System.Drawing.Point(81, 344);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(69, 13);
             this.label15.TabIndex = 44;
             this.label15.Text = "Pagos Varios";
-            // 
-            // btnActiva
-            // 
-            this.btnActiva.Location = new System.Drawing.Point(425, 288);
-            this.btnActiva.Name = "btnActiva";
-            this.btnActiva.Size = new System.Drawing.Size(109, 23);
-            this.btnActiva.TabIndex = 43;
-            this.btnActiva.Text = "Activar/Desactivar";
-            this.btnActiva.UseVisualStyleBackColor = true;
             // 
             // dgvBuscPago
             // 
@@ -800,11 +805,11 @@
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11});
-            this.dgvBuscPago.Location = new System.Drawing.Point(20, 338);
+            this.dgvBuscPago.Location = new System.Drawing.Point(20, 361);
             this.dgvBuscPago.Name = "dgvBuscPago";
             this.dgvBuscPago.ReadOnly = true;
             this.dgvBuscPago.RowHeadersVisible = false;
-            this.dgvBuscPago.Size = new System.Drawing.Size(304, 80);
+            this.dgvBuscPago.Size = new System.Drawing.Size(304, 139);
             this.dgvBuscPago.TabIndex = 41;
             // 
             // dataGridViewTextBoxColumn9
@@ -836,11 +841,11 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dgvBuscaFactu.Location = new System.Drawing.Point(338, 338);
+            this.dgvBuscaFactu.Location = new System.Drawing.Point(338, 363);
             this.dgvBuscaFactu.Name = "dgvBuscaFactu";
             this.dgvBuscaFactu.ReadOnly = true;
             this.dgvBuscaFactu.RowHeadersVisible = false;
-            this.dgvBuscaFactu.Size = new System.Drawing.Size(603, 80);
+            this.dgvBuscaFactu.Size = new System.Drawing.Size(603, 137);
             this.dgvBuscaFactu.TabIndex = 40;
             this.dgvBuscaFactu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscaFactu_CellClick);
             // 
@@ -1025,7 +1030,6 @@
         private System.Windows.Forms.DateTimePicker dtpBuscaAsiento;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnActiva;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
